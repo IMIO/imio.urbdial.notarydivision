@@ -18,7 +18,7 @@ import unittest2 as unittest
 import imio.urbdial.notarydivision
 
 
-class ImioUrbdialNotarydivisionLayer(PloneSandboxLayer):
+class NakedPloneLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
 
@@ -28,6 +28,22 @@ class ImioUrbdialNotarydivisionLayer(PloneSandboxLayer):
         self.loadZCML(package=imio.urbdial.notarydivision,
                       name='testing.zcml')
         z2.installProduct(app, 'imio.urbdial.notarydivision')
+
+    def tearDownZope(self, app):
+        """Tear down Zope."""
+        z2.uninstallProduct(app, 'imio.urbdial.notarydivision')
+
+NAKED_PLONE_FIXTURE = NakedPloneLayer(
+    name="NAKED_PLONE_FIXTURE"
+)
+
+NAKED_PLONE_INTEGRATION = IntegrationTesting(
+    bases=(NAKED_PLONE_FIXTURE,),
+    name="NAKED_PLONE_INTEGRATION"
+)
+
+
+class ImioUrbdialNotarydivisionLayer(NakedPloneLayer):
 
     def setUpPloneSite(self, portal):
         """Set up Plone."""
@@ -43,11 +59,6 @@ class ImioUrbdialNotarydivisionLayer(PloneSandboxLayer):
         # Commit so that the test browser sees these objects
         import transaction
         transaction.commit()
-
-    def tearDownZope(self, app):
-        """Tear down Zope."""
-        z2.uninstallProduct(app, 'imio.urbdial.notarydivision')
-
 
 FIXTURE = ImioUrbdialNotarydivisionLayer(
     name="FIXTURE"
