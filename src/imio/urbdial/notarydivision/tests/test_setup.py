@@ -48,8 +48,10 @@ class TestInstall(IntegrationTestCase):
         self.assertIn(IImioUrbdialNotarydivisionLayer, utils.registered_layers())
 
 
-class TestSetup(IntegrationTestCase):
+class TestSetup(unittest.TestCase):
     """ Test custom code of setuphandlers.py. """
+
+    layer = NAKED_PLONE_INTEGRATION
 
     def setUp(self):
         self.portal = self.layer['portal']
@@ -58,6 +60,8 @@ class TestSetup(IntegrationTestCase):
         applyProfile(self.portal, 'Products.CMFPlone:plone')
         # create plone root default objects
         applyProfile(self.portal, 'Products.CMFPlone:plone-content')
+        # install urbdial.notarydivision
+        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
 
     def test_plone_root_default_objects_deleted(self):
         root_object_ids = self.portal.objectIds()
