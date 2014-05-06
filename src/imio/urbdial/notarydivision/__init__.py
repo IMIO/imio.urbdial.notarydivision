@@ -3,7 +3,7 @@
 
 from zope.i18nmessageid import MessageFactory
 
-_ = MessageFactory('imio.urbdial.notarydivision')
+_ = MessageFactory('urbdial.divnot')
 
 
 def initialize(context):
