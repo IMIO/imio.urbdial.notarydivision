@@ -13,9 +13,9 @@ from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plone.testing import z2
 
-import unittest2 as unittest
-
 import imio.urbdial.notarydivision
+
+import unittest2 as unittest
 
 
 class NakedPloneLayer(PloneSandboxLayer):
@@ -47,14 +47,11 @@ class ImioUrbdialNotarydivisionLayer(NakedPloneLayer):
 
     def setUpPloneSite(self, portal):
         """Set up Plone."""
-        # Install into Plone site using portal_setup
         applyProfile(portal, 'imio.urbdial.notarydivision:testing')
 
         # Login and create some test content
         setRoles(portal, TEST_USER_ID, ['Manager'])
         login(portal, TEST_USER_NAME)
-        folder_id = portal.invokeFactory('Folder', 'folder')
-        portal[folder_id].reindexObject()
 
         # Commit so that the test browser sees these objects
         import transaction
@@ -62,25 +59,29 @@ class ImioUrbdialNotarydivisionLayer(NakedPloneLayer):
 
 FIXTURE = ImioUrbdialNotarydivisionLayer(
     name="FIXTURE"
-    )
+)
 
 
 INTEGRATION = IntegrationTesting(
     bases=(FIXTURE,),
     name="INTEGRATION"
-    )
+)
 
 
 FUNCTIONAL = FunctionalTesting(
     bases=(FIXTURE,),
     name="FUNCTIONAL"
-    )
+)
 
 
-ACCEPTANCE = FunctionalTesting(bases=(FIXTURE,
-                                      AUTOLOGIN_LIBRARY_FIXTURE,
-                                      z2.ZSERVER_FIXTURE),
-                               name="ACCEPTANCE")
+ACCEPTANCE = FunctionalTesting(
+    bases=(
+        FIXTURE,
+        AUTOLOGIN_LIBRARY_FIXTURE,
+        z2.ZSERVER_FIXTURE
+    ),
+    name="ACCEPTANCE"
+)
 
 
 class IntegrationTestCase(unittest.TestCase):
