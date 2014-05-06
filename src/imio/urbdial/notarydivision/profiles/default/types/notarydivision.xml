@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<object name="notarydivision" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="NotaryDivision" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">NotaryDivision</property>
  <property name="description" i18n:translate="">None</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
- <property name="factory">notarydivision</property>
+ <property name="factory">NotaryDivision</property>
  <property
-    name="add_view_expr">string:${folder_url}/++add++notarydivision</property>
+    name="add_view_expr">string:${folder_url}/++add++NotaryDivision</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>

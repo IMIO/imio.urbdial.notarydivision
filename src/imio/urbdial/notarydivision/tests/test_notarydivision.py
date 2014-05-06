@@ -11,4 +11,4 @@ class TestInstall(IntegrationTestCase):
     def test_portal_type_is_registered(self):
         portal_types = api.portal.get_tool("portal_types")
         registered_types = portal_types.listContentTypes()
-        self.assertTrue('notarydivision' in registered_types)
+        self.assertTrue('NotaryDivision' in registered_types)
