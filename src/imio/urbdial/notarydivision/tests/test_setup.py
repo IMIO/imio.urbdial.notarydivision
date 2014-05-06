@@ -40,7 +40,6 @@ class TestInstall(IntegrationTestCase):
         self.installer.uninstallProducts(['imio.urbdial.notarydivision'])
         self.assertTrue(not self.installer.isProductInstalled('imio.urbdial.notarydivision'))
 
-    # browserlayer.xml
     def test_browserlayer(self):
         """Test that IImioUrbdialNotarydivisionLayer is registered."""
         from imio.urbdial.notarydivision.interfaces import IImioUrbdialNotarydivisionLayer
