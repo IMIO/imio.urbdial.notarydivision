@@ -43,7 +43,7 @@ NAKED_PLONE_INTEGRATION = IntegrationTesting(
 )
 
 
-class ImioUrbdialNotarydivisionLayer(NakedPloneLayer):
+class TestInstallUrbdialLayer(NakedPloneLayer):
 
     def setUpPloneSite(self, portal):
         """Set up Plone."""
@@ -57,26 +57,53 @@ class ImioUrbdialNotarydivisionLayer(NakedPloneLayer):
         import transaction
         transaction.commit()
 
-FIXTURE = ImioUrbdialNotarydivisionLayer(
-    name="FIXTURE"
+TEST_INSTALL_FIXTURE = TestInstallUrbdialLayer(
+    name="TEST_INSTALL_FIXTURE"
+)
+
+TEST_INSTALL_INTEGRATION = IntegrationTesting(
+    bases=(TEST_INSTALL_FIXTURE,),
+    name="TEST_INSTALL_INTEGRATION"
 )
 
 
-INTEGRATION = IntegrationTesting(
-    bases=(FIXTURE,),
-    name="INTEGRATION"
+TEST_INSTALL_FUNCTIONAL = FunctionalTesting(
+    bases=(TEST_INSTALL_FIXTURE,),
+    name="TEST_INSTALL_FUNCTIONAL"
 )
 
 
-FUNCTIONAL = FunctionalTesting(
-    bases=(FIXTURE,),
-    name="FUNCTIONAL"
+class RealInstallUrbdialLayer(TestInstallUrbdialLayer):
+
+    def setUpPloneSite(self, portal):
+        """Set up Plone."""
+        # apply plone default profile so we have default workflows on plone
+        # content types and we can run the next import step without troubles
+        applyProfile(portal, 'Products.CMFPlone:plone')
+        # create plone root default objects
+        applyProfile(portal, 'Products.CMFPlone:plone-content')
+        # install urbdial.notarydivision
+        super(RealInstallUrbdialLayer, self).setUpPloneSite(portal)
+
+REAL_INSTALL_FIXTURE = RealInstallUrbdialLayer(
+    name="REAL_INSTALL_FIXTURE"
+)
+
+REAL_INSTALL_INTEGRATION = IntegrationTesting(
+    bases=(REAL_INSTALL_FIXTURE,),
+    name="REAL_INSTALL_INTEGRATION"
+)
+
+
+REAL_INSTALL_FUNCTIONAL = FunctionalTesting(
+    bases=(REAL_INSTALL_FIXTURE,),
+    name="REAL_INSTALL_FUNCTIONAL"
 )
 
 
 ACCEPTANCE = FunctionalTesting(
     bases=(
-        FIXTURE,
+        REAL_INSTALL_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
@@ -87,7 +114,7 @@ ACCEPTANCE = FunctionalTesting(
 class IntegrationTestCase(unittest.TestCase):
     """Base class for integration tests."""
 
-    layer = INTEGRATION
+    layer = TEST_INSTALL_INTEGRATION
 
     def setUp(self):
         super(IntegrationTestCase, self).setUp()
@@ -97,4 +124,4 @@ class IntegrationTestCase(unittest.TestCase):
 class FunctionalTestCase(unittest.TestCase):
     """Base class for functional tests."""
 
-    layer = FUNCTIONAL
+    layer = TEST_INSTALL_FUNCTIONAL

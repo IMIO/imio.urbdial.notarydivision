@@ -3,6 +3,7 @@
 
 from imio.urbdial.notarydivision.testing import IntegrationTestCase
 from imio.urbdial.notarydivision.testing import NAKED_PLONE_INTEGRATION
+from imio.urbdial.notarydivision.testing import REAL_INSTALL_INTEGRATION
 from plone.app.testing import applyProfile
 from plone import api
 import unittest
@@ -61,17 +62,10 @@ class TestSetup(unittest.TestCase):
     Test custom code of setuphandlers.py.
     """
 
-    layer = NAKED_PLONE_INTEGRATION
+    layer = REAL_INSTALL_INTEGRATION
 
     def setUp(self):
         self.portal = self.layer['portal']
-        # apply plone default profile so we have default workflows on plone
-        # content types and we can run the next import step without troubles
-        applyProfile(self.portal, 'Products.CMFPlone:plone')
-        # create plone root default objects
-        applyProfile(self.portal, 'Products.CMFPlone:plone-content')
-        # install urbdial.notarydivision
-        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
 
     def test_plone_root_default_objects_deleted(self):
         """
@@ -101,7 +95,7 @@ class TestSetup(unittest.TestCase):
         The notarydivisions folder should only contains NotaryDivision objects.
         """
         portal_types = api.portal.get_tool('portal_types')
-        divnot_type = portal_types.notarydivision
+        divnot_type = portal_types.NotaryDivision
         divnot_folder = self.portal.notarydivisions
         allowed_types = divnot_folder.allowedContentTypes()
         self.assertTrue(len(allowed_types) == 1)
