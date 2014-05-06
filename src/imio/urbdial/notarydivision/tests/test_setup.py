@@ -90,6 +90,12 @@ class TestSetup(unittest.TestCase):
         divnot_folder = self.portal.notarydivisions
         self.assertTrue(divnot_folder.portal_type == 'Folder')
 
+    def test_notarydivisions_folder_translation(self):
+        """
+        """
+        divnot_folder = self.portal.notarydivisions
+        self.assertTrue(divnot_folder.Title() == 'Divisions notariales')
+
     def test_notarydivisions_folder_allowed_types(self):
         """
         The notarydivisions folder should only contains NotaryDivision objects.
