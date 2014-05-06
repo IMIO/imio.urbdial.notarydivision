@@ -103,7 +103,7 @@ REAL_INSTALL_FUNCTIONAL = FunctionalTesting(
 
 ACCEPTANCE = FunctionalTesting(
     bases=(
-        REAL_INSTALL_FIXTURE,
+        TEST_INSTALL_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
