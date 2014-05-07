@@ -4,5 +4,10 @@
     <role name="NotaryDivision Creator"/>
  </roles>
  <permissions>
+     <permission
+         name="imio.urbdial.notarydivision: Add NotaryDivision"
+         acquire="True">
+         <role name="NotaryDivision Creator" />
+     </permission>
  </permissions>
 </rolemap>
