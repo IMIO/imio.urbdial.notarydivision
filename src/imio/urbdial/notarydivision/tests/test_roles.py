@@ -2,8 +2,6 @@
 """roles tests for this package."""
 
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
-from plone.app.testing import applyProfile
-from plone import api
 import unittest
 
 
