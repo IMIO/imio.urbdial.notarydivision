@@ -26,6 +26,9 @@ def post_install(context):
     logger.info('deletePloneRootDefaultObjects : starting...')
     deletePloneRootDefaultObjects(context)
     logger.info('deletePloneRootDefaultObjects : Done')
+    logger.info('createGroups : starting...')
+    createGroups(context)
+    logger.info('createGroups : Done')
     logger.info('createNotarydivisionsFolder : starting...')
     createNotarydivisionsFolder(context)
     logger.info('createNotarydivisionsFolder : Done')
@@ -42,6 +45,24 @@ def deletePloneRootDefaultObjects(context):
     for _id in object__ids:
         if _id in portal.objectIds():
             api.content.delete(portal[_id])
+
+
+def createGroups(context):
+    """
+    Create all customs groups
+    """
+    createNotariesGroup(context)
+
+def createNotariesGroup(context):
+    """
+    """
+    portal = context.getSite()
+
+    notaries_group = api.group.create(
+        groupname='notaries',
+        title=_('Notaries', 'urbdial.divnot', context=portal.REQUEST),
+        roles=['Member', ],
+    )
 
 
 def createNotarydivisionsFolder(context):
