@@ -78,10 +78,12 @@ class RealInstallUrbdialLayer(TestInstallUrbdialLayer):
     def setUpPloneSite(self, portal):
         """Set up Plone."""
         # apply plone default profile so we have default workflows on plone
-        # content types and we can run the next import step without troubles
+        # content types and we can apply 'plone-content' profile without troubles
         applyProfile(portal, 'Products.CMFPlone:plone')
+        applyProfile(portal, 'Products.CMFPlone:dependencies')
         # create plone root default objects
         applyProfile(portal, 'Products.CMFPlone:plone-content')
+        applyProfile(portal, 'plonetheme.sunburst:default')
         # install urbdial.notarydivision
         super(RealInstallUrbdialLayer, self).setUpPloneSite(portal)
 
@@ -103,7 +105,7 @@ REAL_INSTALL_FUNCTIONAL = FunctionalTesting(
 
 ACCEPTANCE = FunctionalTesting(
     bases=(
-        TEST_INSTALL_FIXTURE,
+        REAL_INSTALL_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
