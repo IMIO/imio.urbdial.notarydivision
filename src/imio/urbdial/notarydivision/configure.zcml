@@ -13,11 +13,17 @@
     <include package="five.grok" />
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
+    <include package="collective.autopermission" />
 
     <include package=".browser" />
     <include package=".content" />
 
     <grok:grok package="." />
+
+    <permission
+        id="imio.urbdial.notarydivision.AddNotaryDivision"
+        title="imio.urbdial.notarydivision: Add NotaryDivision"
+    />
 
     <genericsetup:registerProfile
         name="default"

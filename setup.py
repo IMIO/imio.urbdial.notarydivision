@@ -44,6 +44,7 @@ setup(
         'five.grok',
         'plone.api',
         'setuptools',
+        'collective.autopermission',
     ],
     extras_require={
         'test': [
