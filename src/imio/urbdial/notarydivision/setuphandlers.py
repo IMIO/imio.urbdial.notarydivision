@@ -53,12 +53,13 @@ def createGroups(context):
     """
     createNotariesGroup(context)
 
+
 def createNotariesGroup(context):
     """
     """
     portal = context.getSite()
 
-    notaries_group = api.group.create(
+    api.group.create(
         groupname='notaries',
         title=_('Notaries', 'urbdial.divnot', context=portal.REQUEST),
         roles=['Member', ],
