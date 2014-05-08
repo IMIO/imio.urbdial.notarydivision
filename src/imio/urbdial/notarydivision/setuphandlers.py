@@ -81,7 +81,7 @@ def createNotariesGroup(context):
     api.group.create(
         groupname='notaries',
         title=_('Notaries', 'urbdial.divnot', context=portal.REQUEST),
-        roles=['NotaryDivision Creator', 'Reader'],
+        roles=['NotaryDivision Creator'],
     )
 
 
@@ -100,6 +100,7 @@ def createNotarydivisionsFolder(context):
             title=_('notarydivisions_folder_title', 'urbdial.divnot', context=portal.REQUEST),
         )
         folder = getattr(portal, folder_id)
+        folder.manage_addLocalRoles('notaries', ['Reader'])
         _setFolderAllowedTypes(folder, 'NotaryDivision')
 
 

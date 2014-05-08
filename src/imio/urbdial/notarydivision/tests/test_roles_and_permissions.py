@@ -40,9 +40,3 @@ class TestRolesAndPermissions(unittest.TestCase):
         """
         roles_of_notaries_group = api.group.get_roles('notaries')
         self.assertTrue('NotaryDivision Creator' in roles_of_notaries_group)
-
-    def test_Reader_role_is_assigned_to_notaries_group(self):
-        """
-        """
-        roles_of_notaries_group = api.group.get_roles('notaries')
-        self.assertTrue('Reader' in roles_of_notaries_group)

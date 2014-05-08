@@ -100,3 +100,12 @@ class TestSetup(unittest.TestCase):
         allowed_types = divnot_folder.allowedContentTypes()
         self.assertTrue(len(allowed_types) == 1)
         self.assertTrue(divnot_type in allowed_types)
+
+    def test_notarydivisions_folder_Reader_local_role(self):
+        """
+        Members of group 'notaries' should have the local role 'Reader' on that folder
+        """
+        divnot_folder = self.portal.notarydivisions
+        folder_local_roles = divnot_folder.get_local_roles()
+        reader_local_role = ('notaries', (u'Reader',))
+        self.assertTrue(reader_local_role in folder_local_roles)
