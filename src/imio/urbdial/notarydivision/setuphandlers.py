@@ -81,7 +81,7 @@ def createNotariesGroup(context):
     api.group.create(
         groupname='notaries',
         title=_('Notaries', 'urbdial.divnot', context=portal.REQUEST),
-        roles=['NotaryDivision Creator'],
+        roles=['Member'],
     )
 
 
