@@ -100,7 +100,7 @@ def createNotarydivisionsFolder(context):
             title=_('notarydivisions_folder_title', 'urbdial.divnot', context=portal.REQUEST),
         )
         folder = getattr(portal, folder_id)
-        folder.manage_addLocalRoles('notaries', ['Reader'])
+        folder.manage_addLocalRoles('notaries', ['Reader', 'NotaryDivision Creator'])
         _setFolderAllowedTypes(folder, 'NotaryDivision')
 
 
