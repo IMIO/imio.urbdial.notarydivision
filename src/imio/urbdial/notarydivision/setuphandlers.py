@@ -2,7 +2,11 @@
 
 from plone import api
 
-from zope.component import queryUtility
+from plone.portlets.interfaces import IPortletAssignmentMapping
+from plone.portlets.interfaces import IPortletManager
+
+from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.i18n.interfaces import ITranslationDomain
 
 import logging
@@ -10,7 +14,7 @@ logger = logging.getLogger('imio.urbdial.notarydivision: setuphandlers')
 
 
 def _(msgid, domain, context):
-    translation_domain = queryUtility(ITranslationDomain, domain)
+    translation_domain = getUtility(ITranslationDomain, domain)
     return translation_domain.translate(msgid, target_language='fr', default='')
 
 
@@ -26,6 +30,9 @@ def post_install(context):
     logger.info('deletePloneRootDefaultObjects : starting...')
     deletePloneRootDefaultObjects(context)
     logger.info('deletePloneRootDefaultObjects : Done')
+    logger.info('removePloneDefaultPortlets : starting...')
+    removePloneDefaultPortlets(context)
+    logger.info('removePloneDefaultPortlets : Done')
     logger.info('createGroups : starting...')
     createGroups(context)
     logger.info('createGroups : Done')
@@ -36,15 +43,27 @@ def post_install(context):
 
 def deletePloneRootDefaultObjects(context):
     """
-    Get rid of plone root default objects.
+    Delete plone root default objects.
     """
-
     portal = context.getSite()
 
     object__ids = ['news', 'events', 'front-page', 'Members']
     for _id in object__ids:
         if _id in portal.objectIds():
             api.content.delete(portal[_id])
+
+
+def removePloneDefaultPortlets(context):
+    """
+    Remove plone default portlets.
+    """
+    portal = context.getSite()
+
+    for column in [u'plone.leftcolumn', u'plone.rightcolumn']:
+        manager = getUtility(IPortletManager, name=column, context=portal)
+        assignments = getMultiAdapter((portal, manager), IPortletAssignmentMapping)
+        for portlet in assignments:
+            del assignments[portlet]
 
 
 def createGroups(context):
