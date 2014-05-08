@@ -28,9 +28,15 @@ class TestRolesAndPermissions(unittest.TestCase):
 
     def test_NotaryDivision_rolemap(self):
         """
-        AddNotaryDivision permission should be given to the 'NotaryDivision Creator' role
+        'AddNotaryDivision' permission should be given to the 'NotaryDivision Creator' role
         """
         role_permissions = self.portal.permissionsOfRole('NotaryDivision Creator')
         permission_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('imio.urbdial.notarydivision: Add NotaryDivision' in permission_names)
         self.assertTrue(len(permission_names) == 1)
+
+    def test_NotaryDivisionCreator_role_is_assigned_to_notaries_group(self):
+        """
+        """
+        roles_of_notaries_group = api.group.get_roles('notaries')
+        self.assertTrue('NotaryDivision Creator' in roles_of_notaries_group)
