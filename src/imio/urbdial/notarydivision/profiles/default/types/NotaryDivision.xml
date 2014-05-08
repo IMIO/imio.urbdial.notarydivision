@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<object name="NotaryDivision" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="NotaryDivision" meta_type="Dexterity FTI" i18n:domain="urbdial.divnot"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">NotaryDivision</property>
  <property name="description" i18n:translate="">None</property>
@@ -18,7 +18,7 @@
   <element value="view"/>
  </property>
  <property name="default_view_fallback">False</property>
- <property name="add_permission">cmf.AddPortalContent</property>
+ <property name="add_permission">imio.urbdial.notarydivision.AddNotaryDivision</property>
  <property name="klass">plone.dexterity.content.Container</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>

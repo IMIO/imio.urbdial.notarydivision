@@ -35,8 +35,8 @@ class TestRolesAndPermissions(unittest.TestCase):
         self.assertTrue('imio.urbdial.notarydivision: Add NotaryDivision' in permission_names)
         self.assertTrue(len(permission_names) == 1)
 
-    def test_NotaryDivisionCreator_role_is_assigned_to_notaries_group(self):
+    def test_Member_role_is_assigned_to_notaries_group(self):
         """
         """
         roles_of_notaries_group = api.group.get_roles('notaries')
-        self.assertTrue('NotaryDivision Creator' in roles_of_notaries_group)
+        self.assertTrue('Member' in roles_of_notaries_group)
