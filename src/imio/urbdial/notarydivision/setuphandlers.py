@@ -27,21 +27,21 @@ def post_install(context):
     if isNotCurrentProfile(context):
         return
 
-    logger.info('deletePloneRootDefaultObjects : starting...')
-    deletePloneRootDefaultObjects(context)
-    logger.info('deletePloneRootDefaultObjects : Done')
-    logger.info('removePloneDefaultPortlets : starting...')
-    removePloneDefaultPortlets(context)
-    logger.info('removePloneDefaultPortlets : Done')
-    logger.info('createGroups : starting...')
-    createGroups(context)
-    logger.info('createGroups : Done')
-    logger.info('createNotarydivisionsFolder : starting...')
-    createNotarydivisionsFolder(context)
-    logger.info('createNotarydivisionsFolder : Done')
+    logger.info('delete_plone_root_default_objects : starting...')
+    delete_plone_root_default_objects(context)
+    logger.info('delete_plone_root_default_objects : Done')
+    logger.info('remove_plone_default_portlets : starting...')
+    remove_plone_default_portlets(context)
+    logger.info('remove_plone_default_portlets : Done')
+    logger.info('create_groups : starting...')
+    create_groups(context)
+    logger.info('create_groups : Done')
+    logger.info('create_notarydivisions_folder : starting...')
+    create_notarydivisions_folder(context)
+    logger.info('create_notarydivisions_folder : Done')
 
 
-def deletePloneRootDefaultObjects(context):
+def delete_plone_root_default_objects(context):
     """
     Delete plone root default objects.
     """
@@ -53,7 +53,7 @@ def deletePloneRootDefaultObjects(context):
             api.content.delete(portal[_id])
 
 
-def removePloneDefaultPortlets(context):
+def remove_plone_default_portlets(context):
     """
     Remove plone default portlets.
     """
@@ -66,14 +66,14 @@ def removePloneDefaultPortlets(context):
             del assignments[portlet]
 
 
-def createGroups(context):
+def create_groups(context):
     """
     Create all customs groups
     """
-    createNotariesGroup(context)
+    create_notaries_group(context)
 
 
-def createNotariesGroup(context):
+def create_notaries_group(context):
     """
     """
     portal = context.getSite()
@@ -85,7 +85,7 @@ def createNotariesGroup(context):
     )
 
 
-def createNotarydivisionsFolder(context):
+def create_notarydivisions_folder(context):
     """
      Create a folder which will contain all our NotaryDivision objects.
     """
@@ -101,10 +101,10 @@ def createNotarydivisionsFolder(context):
         )
         folder = getattr(portal, folder_id)
         folder.manage_addLocalRoles('notaries', ['Reader', 'NotaryDivision Creator'])
-        _setFolderAllowedTypes(folder, 'NotaryDivision')
+        _set_AllowedTypes_of_folder(folder, 'NotaryDivision')
 
 
-def _setFolderAllowedTypes(folder, portal_types):
+def _set_AllowedTypes_of_folder(folder, portal_types):
     """
     Set allowed content types of given folder.
     """
