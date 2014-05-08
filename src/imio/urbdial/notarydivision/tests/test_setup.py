@@ -4,8 +4,11 @@
 from imio.urbdial.notarydivision.testing import IntegrationTestCase
 from imio.urbdial.notarydivision.testing import NAKED_PLONE_INTEGRATION
 from imio.urbdial.notarydivision.testing import REAL_INSTALL_INTEGRATION
-from plone.app.testing import applyProfile
+
 from plone import api
+from plone.app.layout.navigation.interfaces import INavigationRoot
+from plone.app.testing import applyProfile
+
 import unittest
 
 
@@ -116,3 +119,9 @@ class TestSetup(unittest.TestCase):
         divnot_folder = self.portal.notarydivisions
         folder_local_roles = dict(divnot_folder.get_local_roles())
         self.assertTrue(u'NotaryDivision Creator' in folder_local_roles['notaries'])
+
+    def test_notarydivisions_folder_provides_INavigationRoot(self):
+        """
+        """
+        divnot_folder = self.portal.notarydivisions
+        self.assertTrue(INavigationRoot.providedBy(divnot_folder))

@@ -2,12 +2,15 @@
 
 from plone import api
 
+from plone.app.layout.navigation.interfaces import INavigationRoot
+
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
 
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.i18n.interfaces import ITranslationDomain
+from zope.interface import alsoProvides
 
 import logging
 logger = logging.getLogger('imio.urbdial.notarydivision: setuphandlers')
@@ -104,6 +107,9 @@ def create_notarydivisions_folder(context):
         )
 
         folder = getattr(portal, folder_id)
+
+        # this folder will behave as the site root
+        alsoProvides(folder, INavigationRoot)
 
         folder.manage_addLocalRoles('notaries', ['Reader', 'NotaryDivision Creator'])
 
