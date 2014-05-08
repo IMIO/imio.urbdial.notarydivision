@@ -39,6 +39,9 @@ def post_install(context):
     logger.info('create_notarydivisions_folder : starting...')
     create_notarydivisions_folder(context)
     logger.info('create_notarydivisions_folder : Done')
+    logger.info('redirect_root_default_view : starting...')
+    redirect_root_default_view(context)
+    logger.info('redirect_root_default_view : Done')
 
 
 def delete_plone_root_default_objects(context):
@@ -99,9 +102,21 @@ def create_notarydivisions_folder(context):
             id=folder_id,
             title=_('notarydivisions_folder_title', 'urbdial.divnot', context=portal.REQUEST),
         )
+
         folder = getattr(portal, folder_id)
+
         folder.manage_addLocalRoles('notaries', ['Reader', 'NotaryDivision Creator'])
+
         _set_AllowedTypes_of_folder(folder, 'NotaryDivision')
+
+
+def redirect_root_default_view(context):
+    """
+    Redirect default view of the site on 'notarydivisions' folder
+    """
+
+    portal = context.getSite()
+    portal.setLayout('redirect_root_view')
 
 
 def _set_AllowedTypes_of_folder(folder, portal_types):

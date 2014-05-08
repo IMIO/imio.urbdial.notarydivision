@@ -10,4 +10,11 @@
       directory="static"
     />
 
+  <browser:page
+     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+     name="redirect_root_view"
+     template="templates/redirect_root_view.pt"
+     permission="zope2.View"
+  />
+
 </configure>

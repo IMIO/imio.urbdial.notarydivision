@@ -25,6 +25,17 @@ Test plone root default portlets are disabled
     Page Should Not Contain Button  navigation-hide
 
 
+Test site view redirect to notarydivisions folder view
+    Go to  ${PLONE_URL}
+    Location should be  ${PLONE_URL}/notarydivisions
+
+
+Test redirect to login form page for anonymous
+    Logout
+    Go to  ${PLONE_URL}
+    Page Should Contain Button  Log in
+
+
 *** Keywords ***
 
 Suite Setup

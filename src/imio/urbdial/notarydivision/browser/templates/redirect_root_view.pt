@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="urbdial.divnot">
+
+    <body>
+        <metal:main fill-slot="main">
+            <metal:main_macro define-macro="main">
+                <metal:body define-macro="body_macro" tal:define="isAnon context/@@plone_portal_state/anonymous;">
+                    <tal:notIsAnon condition="not: isAnon">
+                        <span tal:define="dummy python: context.REQUEST.RESPONSE.redirect(context.absolute_url() + '/notarydivisions')">
+                            Redirection to notarydivisions folder
+                        </span>
+                    </tal:notIsAnon>
+                    <tal:isAnon condition="isAnon">
+                        <span tal:define="dummy python: context.REQUEST.RESPONSE.redirect(context.absolute_url() + '/notarydivisions/login')">
+                                Redirection to login page
+                        </span>
+                    </tal:isAnon>
+                </metal:body>
+            </metal:main_macro>
+        </metal:main>
+    </body>
+</html>
