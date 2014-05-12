@@ -2,6 +2,7 @@
 *.mo
 *.pyc
 *.swp
+.coverage
 .installed.cfg
 .mr.developer.cfg
 .project
@@ -10,10 +11,15 @@
 bin/
 buildout-cache/
 develop-eggs/
+htmlcov/
 include/
 lib/
+log.html
 local/
+output.xml
 parts/
+report.html
+selenium*
 src/*
 !src/imio
 var/
