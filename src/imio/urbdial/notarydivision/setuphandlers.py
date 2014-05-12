@@ -136,3 +136,28 @@ def _set_AllowedTypes_of_folder(folder, portal_types):
     folder.setConstrainTypesMode(1)
     folder.setLocallyAllowedTypes(portal_types)
     folder.setImmediatelyAddableTypes(portal_types)
+
+
+def testing_post_install(context):
+    """Post install script"""
+    if isNotCurrentProfile(context):
+        return
+
+    logger.info('create_test_users : starting...')
+    create_test_users(context)
+    logger.info('create_test_users : Done')
+
+
+def create_test_users(context):
+    """
+    Create tests user for the different groups.
+    """
+    if context.readDataFile("urbdialnotarydivision_testing_marker.txt") is None:
+        return
+
+    site = context.getSite()
+
+    password = '12345'
+    notary_user = site.portal_registration.addMember(id="notary", password=password)
+    notary_user.setMemberProperties({'ext_editor': True})
+    site.acl_users.source_groups.addPrincipalToGroup("notary", "notaries")
