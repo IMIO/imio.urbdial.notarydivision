@@ -1,0 +1,36 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="urbdial.divnot">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="imio.urbdial.notarydivision"
+        directory="profiles/default"
+        description="Installs the imio.urbdial.notarydivision add-on."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:importStep
+        name="imio.urbdial.notarydivision-postInstall"
+        title="imio.urbdial.notarydivision post_install import step"
+        description="Post install import step from imio.urbdial.notarydivision"
+        handler=".setuphandlers.post_install">
+    </genericsetup:importStep>
+
+    <genericsetup:registerProfile
+        name="testing"
+        title="imio.urbdial.notarydivision.testing"
+        directory="profiles/testing"
+        description="Installs the imio.urbdial.notarydivision add-on and create some mockup objects."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:importStep
+        name="imio.urbdial.notarydivision.testing-postInstall"
+        title="imio.urbdial.notarydivision.testing post_install import step"
+        description="Testing post install import step from imio.urbdial.notarydivision"
+        handler=".setuphandlers.testing_post_install">
+    </genericsetup:importStep>
+
+</configure>

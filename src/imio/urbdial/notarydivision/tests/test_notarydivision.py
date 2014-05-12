@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """Setup/installation tests for this package."""
 
-from imio.urbdial.notarydivision.testing import IntegrationTestCase
 from plone import api
+
+from imio.urbdial.notarydivision.testing import IntegrationTestCase
 
 
 class TestInstall(IntegrationTestCase):
@@ -19,3 +20,23 @@ class TestInstall(IntegrationTestCase):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
         self.assertTrue(divnot_type.add_permission == 'imio.urbdial.notarydivision.AddNotaryDivision')
+
+
+class TestNotaryDivisionFields(IntegrationTestCase):
+    """
+    Test schema fields declaration
+    """
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+
+        # create a test NotaryDivision
+        self.divnot = api.content.create(
+            type='NotaryDivision',
+            id='test_notarydivision',
+            container=self.portal.notarydivisions,
+        )
+
+    def test_class_registration(self):
+        from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivision
+        self.assertTrue(self.divnot.__class__ == NotaryDivision)

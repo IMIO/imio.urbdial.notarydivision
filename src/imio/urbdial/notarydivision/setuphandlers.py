@@ -136,3 +136,22 @@ def _set_AllowedTypes_of_folder(folder, portal_types):
     folder.setConstrainTypesMode(1)
     folder.setLocallyAllowedTypes(portal_types)
     folder.setImmediatelyAddableTypes(portal_types)
+
+
+def testing_post_install(context):
+    """Post install script"""
+    if context.readDataFile("urbdialnotarydivision_testing_marker.txt") is None:
+        return
+
+    logger.info('create_test_users : starting...')
+    create_test_users(context)
+    logger.info('create_test_users : Done')
+
+
+def create_test_users(context):
+    """
+    Create tests user for the different groups.
+    """
+    password = '12345'
+    api.user.create(username="notary", password=password, email='notary@frnb.be')
+    api.group.add_user(username='notary', groupname='notaries')
