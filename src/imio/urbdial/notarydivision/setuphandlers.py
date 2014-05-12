@@ -140,7 +140,7 @@ def _set_AllowedTypes_of_folder(folder, portal_types):
 
 def testing_post_install(context):
     """Post install script"""
-    if isNotCurrentProfile(context):
+    if context.readDataFile("urbdialnotarydivision_testing_marker.txt") is None:
         return
 
     logger.info('create_test_users : starting...')
@@ -152,12 +152,6 @@ def create_test_users(context):
     """
     Create tests user for the different groups.
     """
-    if context.readDataFile("urbdialnotarydivision_testing_marker.txt") is None:
-        return
-
-    site = context.getSite()
-
     password = '12345'
-    notary_user = site.portal_registration.addMember(id="notary", password=password)
-    notary_user.setMemberProperties({'ext_editor': True})
-    site.acl_users.source_groups.addPrincipalToGroup("notary", "notaries")
+    api.user.create(username="notary", password=password, email='notary@frnb.be')
+    api.group.add_user(username='notary', groupname='notaries')
