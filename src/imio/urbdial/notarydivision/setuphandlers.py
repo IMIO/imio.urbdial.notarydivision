@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision.utils import translate as _
+
 from plone import api
 
 from plone.app.layout.navigation.interfaces import INavigationRoot
@@ -9,16 +11,10 @@ from plone.portlets.interfaces import IPortletManager
 
 from zope.component import getMultiAdapter
 from zope.component import getUtility
-from zope.i18n.interfaces import ITranslationDomain
 from zope.interface import alsoProvides
 
 import logging
 logger = logging.getLogger('imio.urbdial.notarydivision: setuphandlers')
-
-
-def _(msgid, domain, context):
-    translation_domain = getUtility(ITranslationDomain, domain)
-    return translation_domain.translate(msgid, target_language='fr', default='')
 
 
 def isNotCurrentProfile(context):
@@ -82,11 +78,9 @@ def create_groups(context):
 def create_notaries_group(context):
     """
     """
-    portal = context.getSite()
-
     api.group.create(
         groupname='notaries',
-        title=_('Notaries', 'urbdial.divnot', context=portal.REQUEST),
+        title=_('Notaries'),
         roles=['Member'],
     )
 
@@ -103,7 +97,7 @@ def create_notarydivisions_folder(context):
         portal.invokeFactory(
             'Folder',
             id=folder_id,
-            title=_('notarydivisions_folder_title', 'urbdial.divnot', context=portal.REQUEST),
+            title=_('notarydivisions_folder_title'),
         )
 
         folder = getattr(portal, folder_id)
