@@ -3,8 +3,8 @@ python:
   - 2.7
 install:
   - mkdir -p buildout-cache/{eggs,downloads}
-  - python bootstrap.py -c buildout.cfg
-  - bin/buildout -c "buildout.d/travis.cfg" -Nqt 5
+  - python bootstrap.py -c buildout.d/travis.cfg
+  - bin/buildout -c buildout.d/travis.cfg -Nqt 5
   - src/imio/urbdial/notarydivision/locales/compile_po_files.sh
 before_script:
   - export DISPLAY=:99.0
