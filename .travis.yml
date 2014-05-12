@@ -1,8 +1,6 @@
 language: python
 python:
   - 2.7
-env:
-  - TARGET=test
 install:
   - mkdir -p buildout-cache/{eggs,downloads}
   - python bootstrap.py -c travis.cfg
@@ -11,7 +9,12 @@ install:
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-script: bin/$TARGET
+script: 
+  - bin/test
+after_success:
+  - bin/createcoverage run bin/test
+  - pip install -q coveralls
+  - coveralls
 notifications:
   email:
     - franck.ngaha@imio.be
