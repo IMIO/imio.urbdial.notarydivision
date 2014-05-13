@@ -40,3 +40,8 @@ class TestNotaryDivisionFields(IntegrationTestCase):
     def test_class_registration(self):
         from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivision
         self.assertTrue(self.divnot.__class__ == NotaryDivision)
+
+    def test_schema_registration(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.get(self.divnot.portal_type)
+        self.assertTrue('INotaryDivision' in divnot_type.schema)
