@@ -45,6 +45,7 @@ setup(
         'plone.api',
         'setuptools',
         'collective.autopermission',
+        'plone.directives.dexterity',
     ],
     extras_require={
         'test': [
