@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from five import grok
+
 from imio.urbdial.notarydivision import _
 
 from plone.dexterity.content import Container
-
+from plone.directives import dexterity
 from plone.supermodel import model
 
 from zope import schema
@@ -24,3 +26,9 @@ class NotaryDivision(Container):
     """
     """
     implements(INotaryDivision)
+    grok.name('NotaryDivision')
+
+
+class NotaryDivisionAddForm(dexterity.AddForm):
+    grok.name('NotaryDivision')
+    grok.require('imio.urbdial.notarydivision.AddNotaryDivision')

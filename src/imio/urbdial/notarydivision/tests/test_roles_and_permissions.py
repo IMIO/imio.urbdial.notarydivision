@@ -29,7 +29,6 @@ class TestRolesAndPermissions(unittest.TestCase):
         role_permissions = self.portal.permissionsOfRole('NotaryDivision Creator')
         permission_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('imio.urbdial.notarydivision: Add NotaryDivision' in permission_names)
-        self.assertTrue(len(permission_names) == 1)
 
     def test_EditNotaryDivision_permission_registration(self):
         registered_permissions = self.portal.acl_users.possible_permissions()

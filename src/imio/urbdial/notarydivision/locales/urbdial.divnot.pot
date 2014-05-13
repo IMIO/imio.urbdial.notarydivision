@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-12 14:14+0000\n"
+"POT-Creation-Date: 2014-05-13 12:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#. Default: "urbdial.divnot"
-#: ../setuphandlers.py:89
+#: ../setuphandlers.py:83
 msgid "Notaries"
 msgstr ""
 
@@ -30,12 +29,11 @@ msgstr ""
 msgid "NotaryDivision"
 msgstr ""
 
-#: ../content/NotaryDivision.py:24
+#: ../content/NotaryDivision.py:20
 msgid "Reference"
 msgstr ""
 
-#. Default: "urbdial.divnot"
-#: ../setuphandlers.py:106
+#: ../setuphandlers.py:100
 msgid "notarydivisions_folder_title"
 msgstr ""
 
