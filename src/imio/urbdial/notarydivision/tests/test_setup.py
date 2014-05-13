@@ -28,6 +28,14 @@ class TestInstallDependencies(unittest.TestCase):
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
         self.assertTrue(self.installer.isProductInstalled('plone.app.dexterity'))
 
+    def test_z3cformDataGridField_is_dependency_of_urbdial(self):
+        """
+        Collective.z3cform.datagridfield should be installed when we install urbdial
+        """
+        self.assertTrue(not self.installer.isProductInstalled('collective.z3cform.datagridfield'))
+        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
+        self.assertTrue(self.installer.isProductInstalled('collective.z3cform.datagridfield'))
+
 
 class TestInstall(IntegrationTestCase):
     """
