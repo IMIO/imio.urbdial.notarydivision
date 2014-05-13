@@ -46,3 +46,6 @@ class TestNotaryDivisionFields(IntegrationTestCase):
 
     def test_Reference_field_declaration(self):
         self.assertTrue(hasattr(self.divnot, 'reference'))
+
+    def test_Applicants_field_declaration(self):
+        self.assertTrue(hasattr(self.divnot, 'applicants'))
