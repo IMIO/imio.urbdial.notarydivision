@@ -45,3 +45,6 @@ class TestNotaryDivisionFields(IntegrationTestCase):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.get(self.divnot.portal_type)
         self.assertTrue('INotaryDivision' in divnot_type.schema)
+
+    def test_Reference_field_declaration(self):
+        self.assertTrue(hasattr(self.divnot, 'reference'))
