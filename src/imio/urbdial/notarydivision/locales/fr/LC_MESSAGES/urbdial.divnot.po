@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-05-13 12:10+0000\n"
+"POT-Creation-Date: 2014-05-13 14:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,6 +14,18 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
+
+#: ../content/NotaryDivision.py:52
+msgid "Applicants"
+msgstr "Requérant(s)"
+
+#: ../content/NotaryDivision.py:33
+msgid "Firstname"
+msgstr "Prénom"
+
+#: ../content/NotaryDivision.py:28
+msgid "Name"
+msgstr "Nom"
 
 #: ../profiles/default/types/NotaryDivision.xml
 msgid "None"
@@ -28,7 +40,7 @@ msgstr "Notaires"
 msgid "NotaryDivision"
 msgstr "Division notariale"
 
-#: ../content/NotaryDivision.py:20
+#: ../content/NotaryDivision.py:48
 msgid "Reference"
 msgstr "Référence"
 

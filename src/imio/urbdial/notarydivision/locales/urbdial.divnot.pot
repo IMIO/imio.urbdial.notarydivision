@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-13 12:10+0000\n"
+"POT-Creation-Date: 2014-05-13 14:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,18 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
+
+#: ../content/NotaryDivision.py:52
+msgid "Applicants"
+msgstr ""
+
+#: ../content/NotaryDivision.py:33
+msgid "Firstname"
+msgstr ""
+
+#: ../content/NotaryDivision.py:28
+msgid "Name"
+msgstr ""
 
 #: ../profiles/default/types/NotaryDivision.xml
 msgid "None"
@@ -29,7 +41,7 @@ msgstr ""
 msgid "NotaryDivision"
 msgstr ""
 
-#: ../content/NotaryDivision.py:20
+#: ../content/NotaryDivision.py:48
 msgid "Reference"
 msgstr ""
 
