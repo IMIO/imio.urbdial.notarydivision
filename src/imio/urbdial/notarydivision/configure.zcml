@@ -12,7 +12,6 @@
     <include package="five.grok" />
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
-    <include package="collective.autopermission" />
 
     <include package=".browser" />
     <include package=".content" />
@@ -20,10 +19,5 @@
      <grok:grok package="." />
 
     <include file="profiles.zcml" />
-
-    <permission
-        id="imio.urbdial.notarydivision.AddNotaryDivision"
-        title="imio.urbdial.notarydivision: Add NotaryDivision"
-    />
 
 </configure>
