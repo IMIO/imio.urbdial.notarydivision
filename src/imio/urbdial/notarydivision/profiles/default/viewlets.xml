@@ -2,6 +2,9 @@
     <hidden manager="plone.portalheader" skinname="Sunburst Theme">
         <viewlet name="plone.searchbox"/>
     </hidden>
+    <hidden manager="plone.portalheader" skinname="Sunburst Theme">
+        <viewlet name="plone.logo"/>
+    </hidden>
     <hidden manager="plone.portalfooter" skinname="Sunburst Theme">
         <viewlet name="plone.footer"/>
     </hidden>

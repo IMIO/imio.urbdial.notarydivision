@@ -17,6 +17,9 @@ Test plone searchbox is disabled
     Page Should Not Contain Button  searchGadget
     Page Should Not Contain Button  searchButton
 
+Test Plone logo is hidden
+    Page should not contain image  ${PLONE_URL}/logo.png
+
 Test footer viewlets are hidden
     Page should not contain   Distribué sous Licence GNU GPL.
     Page Should Not Contain Link  Plan du site
