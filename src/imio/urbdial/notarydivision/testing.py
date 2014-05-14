@@ -15,8 +15,6 @@ from plone.testing import z2
 
 import imio.urbdial.notarydivision
 
-import unittest2 as unittest
-
 
 class NakedPloneLayer(PloneSandboxLayer):
 
