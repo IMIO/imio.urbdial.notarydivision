@@ -68,9 +68,24 @@ class NotaryDivision(Container):
     __ac_local_roles_block__ = True
 
 
+def setINotaryDivisionWidgetFactories():
+    """
+    Factorize widget factory assignment for both Edit and Add form.
+    """
+    fields = field.Fields(INotaryDivision)
+    fields['applicants'].widgetFactory = DataGridFieldFactory
+    return fields
+
+
 class NotaryDivisionAddForm(dexterity.AddForm):
     grok.name('NotaryDivision')
     grok.require('imio.urbdial.notarydivision.AddNotaryDivision')
 
-    fields = field.Fields(INotaryDivision)
-    fields['applicants'].widgetFactory = DataGridFieldFactory
+    fields = setINotaryDivisionWidgetFactories()
+
+
+class NotaryDivisionEditForm(dexterity.EditForm):
+    grok.context(INotaryDivision)
+    grok.require('imio.urbdial.notarydivision.EditNotaryDivision')
+
+    fields = setINotaryDivisionWidgetFactories()
