@@ -4,7 +4,6 @@ from imio.urbdial.notarydivision.testing import EXAMPLE_DIVISION_INTEGRATION
 
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_PASSWORD
-from plone.app.testing import login
 from plone.testing.z2 import Browser
 
 import unittest
@@ -18,7 +17,6 @@ class TestErgonomy(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
 
-        login(self.portal, TEST_USER_NAME)
         self.browser = Browser(self.portal)
         self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
         self.browser.handleErrors = False
