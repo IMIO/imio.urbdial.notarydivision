@@ -15,8 +15,11 @@ Suite Teardown  Close all browsers
 Test edit form fields
     Go to  ${PLONE_URL}/notarydivisions/++add++NotaryDivision
     Page should contain  Ajouter Division notariale
+
     Page should contain  Référence
     Page should contain textfield  form-widgets-reference
+
+    Page should contain  Requérant(s)
 
 
 *** Keywords ***

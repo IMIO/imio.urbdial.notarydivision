@@ -71,3 +71,6 @@ class NotaryDivision(Container):
 class NotaryDivisionAddForm(dexterity.AddForm):
     grok.name('NotaryDivision')
     grok.require('imio.urbdial.notarydivision.AddNotaryDivision')
+
+    fields = field.Fields(INotaryDivision)
+    fields['applicants'].widgetFactory = DataGridFieldFactory
