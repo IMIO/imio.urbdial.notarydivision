@@ -1,0 +1,6 @@
+/* imio.urbdial.notarydivision.core stylesheet */
+
+/* Resize applicants datagrid  */
+#formfield-form-widgets-applicants .datagridwidget-table-view{
+    width: 35em;
+}
