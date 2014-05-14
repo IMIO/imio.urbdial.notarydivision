@@ -3,11 +3,15 @@
 
 from plone import api
 
-from imio.urbdial.notarydivision.testing import IntegrationTestCase
+from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
+
+import unittest
 
 
-class TestInstall(IntegrationTestCase):
+class TestInstall(unittest.TestCase):
     """Test installation of imio.urbdial.notarydivision into Plone."""
+
+    layer = TEST_INSTALL_INTEGRATION
 
     def test_portal_type_is_registered(self):
         portal_types = api.portal.get_tool('portal_types')
@@ -20,10 +24,12 @@ class TestInstall(IntegrationTestCase):
         self.assertTrue(divnot_type.add_permission == 'imio.urbdial.notarydivision.AddNotaryDivision')
 
 
-class TestNotaryDivisionFields(IntegrationTestCase):
+class TestNotaryDivisionFields(unittest.TestCase):
     """
     Test schema fields declaration
     """
+
+    layer = TEST_INSTALL_INTEGRATION
 
     def setUp(self):
         self.portal = self.layer['portal']

@@ -111,19 +111,3 @@ ACCEPTANCE = FunctionalTesting(
     ),
     name="ACCEPTANCE"
 )
-
-
-class IntegrationTestCase(unittest.TestCase):
-    """Base class for integration tests."""
-
-    layer = TEST_INSTALL_INTEGRATION
-
-    def setUp(self):
-        super(IntegrationTestCase, self).setUp()
-        self.portal = self.layer['portal']
-
-
-class FunctionalTestCase(unittest.TestCase):
-    """Base class for functional tests."""
-
-    layer = TEST_INSTALL_FUNCTIONAL

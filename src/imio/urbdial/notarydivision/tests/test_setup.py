@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Setup/installation tests for this package."""
 
-from imio.urbdial.notarydivision.testing import IntegrationTestCase
 from imio.urbdial.notarydivision.testing import NAKED_PLONE_INTEGRATION
 from imio.urbdial.notarydivision.testing import REAL_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 
 from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
@@ -37,10 +37,12 @@ class TestInstallDependencies(unittest.TestCase):
         self.assertTrue(self.installer.isProductInstalled('collective.z3cform.datagridfield'))
 
 
-class TestInstall(IntegrationTestCase):
+class TestInstall(unittest.TestCase):
     """
     Test installation of imio.urbdial.notarydivision into Plone.
     """
+
+    layer = TEST_INSTALL_INTEGRATION
 
     def setUp(self):
         self.portal = self.layer['portal']
