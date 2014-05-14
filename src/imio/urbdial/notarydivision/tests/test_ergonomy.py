@@ -1,31 +1,20 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision.testing import BrowserTest
 from imio.urbdial.notarydivision.testing import EXAMPLE_DIVISION_INTEGRATION
 
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_PASSWORD
-from plone.testing.z2 import Browser
-
-import unittest
 
 
-class TestErgonomy(unittest.TestCase):
+class TestErgonomy(BrowserTest):
     """Test miscellaneous ergonomy changes brought by urbdial"""
 
     layer = EXAMPLE_DIVISION_INTEGRATION
 
     def setUp(self):
-        self.portal = self.layer['portal']
-
-        self.browser = Browser(self.portal)
+        super(TestErgonomy, self).setUp()
         self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
-        self.browser.handleErrors = False
-
-    def browserLogin(self, user, password):
-        self.browser.open(self.portal.absolute_url() + "/login_form")
-        self.browser.getControl(name='__ac_name').value = user
-        self.browser.getControl(name='__ac_password').value = password
-        self.browser.getControl(name='submit').click()
 
     def test_plone_searchbox_disabled(self):
         self.browser.open(self.portal.absolute_url())
