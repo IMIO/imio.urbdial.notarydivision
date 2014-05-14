@@ -13,8 +13,11 @@ from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plone.testing import z2
+from plone.testing.z2 import Browser
 
 import imio.urbdial.notarydivision
+
+import unittest
 
 
 class NakedPloneLayer(PloneSandboxLayer):
@@ -143,3 +146,29 @@ EXAMPLE_DIVISION_FUNCTIONAL = FunctionalTesting(
     bases=(EXAMPLE_DIVISION_FIXTURE,),
     name="EXAMPLE_DIVISION_FUNCTIONAL"
 )
+
+
+class BaseTest(unittest.TestCase):
+    """
+    Helper class for tests.
+    """
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+
+
+class BrowserTest(BaseTest):
+    """
+    Helper class for Browser tests.
+    """
+
+    def setUp(self):
+        super(BrowserTest, self).setUp()
+        self.browser = Browser(self.portal)
+        self.browser.handleErrors = False
+
+    def browserLogin(self, user, password):
+        self.browser.open(self.portal.absolute_url() + "/login_form")
+        self.browser.getControl(name='__ac_name').value = user
+        self.browser.getControl(name='__ac_password').value = password
+        self.browser.getControl(name='submit').click()
