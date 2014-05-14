@@ -8,9 +8,11 @@ from imio.urbdial.notarydivision import _
 
 from plone.dexterity.content import Container
 from plone.directives import dexterity
+from plone.directives import form
 from plone.supermodel import model
 
 from z3c.form import field
+from z3c.form import interfaces
 
 from zope import schema
 from zope.interface import implements
@@ -44,10 +46,17 @@ class INotaryDivision(model.Schema):
     NotaryDivision dexterity schema
     """
 
+    form.omitted('exclude_from_nav')
+    exclude_from_nav = schema.Bool(
+        title=_(u'Exclude from navigation'),
+        default=True,
+    )
+
     reference = schema.TextLine(
         title=_(u'Reference'),
         required=False,
     )
+
     applicants = schema.List(
         title=_(u'Applicants'),
         required=False,
@@ -77,11 +86,23 @@ def setINotaryDivisionWidgetFactories():
     return fields
 
 
+def allFormsUpdateWidgets(widgets):
+    """
+    Factorize all the widget treatments that should be done for all the
+    NotaryDivision forms.
+    """
+    widgets['exclude_from_nav'].mode = interfaces.HIDDEN_MODE
+
+
 class NotaryDivisionAddForm(dexterity.AddForm):
     grok.name('NotaryDivision')
     grok.require('imio.urbdial.notarydivision.AddNotaryDivision')
 
     fields = setINotaryDivisionWidgetFactories()
+
+    def updateWidgets(self):
+        super(NotaryDivisionAddForm, self).updateWidgets()
+        allFormsUpdateWidgets(self.widgets)
 
 
 class NotaryDivisionEditForm(dexterity.EditForm):
@@ -89,3 +110,7 @@ class NotaryDivisionEditForm(dexterity.EditForm):
     grok.require('imio.urbdial.notarydivision.EditNotaryDivision')
 
     fields = setINotaryDivisionWidgetFactories()
+
+    def updateWidgets(self):
+        super(NotaryDivisionEditForm, self).updateWidgets()
+        allFormsUpdateWidgets(self.widgets)

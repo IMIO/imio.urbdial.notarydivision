@@ -16,6 +16,8 @@ Test edit form fields
     Go to  ${PLONE_URL}/notarydivisions/++add++NotaryDivision
     Page should contain  Ajouter Division notariale
 
+    Page should not contain  Exclude from navigation
+
     Page should contain  Référence
     Page should contain textfield  form-widgets-reference
 
