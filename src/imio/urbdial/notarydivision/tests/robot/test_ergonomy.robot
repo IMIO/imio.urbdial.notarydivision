@@ -12,20 +12,6 @@ Suite Teardown  Close all browsers
 
 *** Test Cases ***
 
-Test plone searchbox is disabled
-    Go to  ${PLONE_URL}
-    Page Should Not Contain Button  searchGadget
-    Page Should Not Contain Button  searchButton
-
-Test Plone logo is hidden
-    Page should not contain image  ${PLONE_URL}/logo.png
-
-Test footer viewlets are hidden
-    Page should not contain   Distribué sous Licence GNU GPL.
-    Page Should Not Contain Link  Plan du site
-    Page Should Not Contain Link  Accessibilité
-    Page Should Not Contain Link  Contact
-
 Test plone root default portlets are disabled
     Go to  ${PLONE_URL}/@@manage-portlets
     Page should contain  Gérer les portlets
