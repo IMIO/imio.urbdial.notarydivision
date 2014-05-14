@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
+from plone import api
 from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
@@ -108,4 +109,37 @@ ACCEPTANCE = FunctionalTesting(
         z2.ZSERVER_FIXTURE
     ),
     name="ACCEPTANCE"
+)
+
+
+class ExampleDivisionLayer(TestInstallUrbdialLayer):
+
+    def setUpPloneSite(self, portal):
+        super(ExampleDivisionLayer, self).setUpPloneSite(portal)
+
+        # Create some test content
+        api.content.create(
+            type='NotaryDivision',
+            id='test_notarydivision',
+            container=portal.notarydivisions,
+        )
+
+        # Commit so that the test browser sees these objects
+        import transaction
+        transaction.commit()
+
+
+EXAMPLE_DIVISION_FIXTURE = ExampleDivisionLayer(
+    name="EXAMPLE_DIVISION_FIXTURE"
+)
+
+EXAMPLE_DIVISION_INTEGRATION = IntegrationTesting(
+    bases=(EXAMPLE_DIVISION_FIXTURE,),
+    name="EXAMPLE_DIVISION_INTEGRATION"
+)
+
+
+EXAMPLE_DIVISION_FUNCTIONAL = FunctionalTesting(
+    bases=(EXAMPLE_DIVISION_FIXTURE,),
+    name="EXAMPLE_DIVISION_FUNCTIONAL"
 )

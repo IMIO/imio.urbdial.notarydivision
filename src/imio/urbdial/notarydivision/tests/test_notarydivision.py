@@ -3,6 +3,7 @@
 
 from plone import api
 
+from imio.urbdial.notarydivision.testing import EXAMPLE_DIVISION_INTEGRATION
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 
 import unittest
@@ -29,17 +30,11 @@ class TestNotaryDivisionFields(unittest.TestCase):
     Test schema fields declaration
     """
 
-    layer = TEST_INSTALL_INTEGRATION
+    layer = EXAMPLE_DIVISION_INTEGRATION
 
     def setUp(self):
         self.portal = self.layer['portal']
-
-        # create a test NotaryDivision
-        self.divnot = api.content.create(
-            type='NotaryDivision',
-            id='test_notarydivision',
-            container=self.portal.notarydivisions,
-        )
+        self.divnot = self.portal.notarydivisions.objectValues()[0]
 
     def test_class_registration(self):
         from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivision
