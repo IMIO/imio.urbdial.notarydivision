@@ -3,14 +3,14 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="urbdial.divnot">
 
-  <include file="configure.zcml" />
+    <include file="configure.zcml" />
 
-  <genericsetup:registerProfile
+    <genericsetup:registerProfile
       name="testing"
       title="imio.urbdial.notarydivision tests"
       directory="profiles/testing"
       description="Steps to ease tests of imio.urbdial.notarydivision"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+    />
 
 </configure>
