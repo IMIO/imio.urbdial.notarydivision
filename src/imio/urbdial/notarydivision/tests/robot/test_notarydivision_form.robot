@@ -20,6 +20,8 @@ Test edit form fields
     Page should contain textfield  form-widgets-reference
 
     Page should contain  Requérant(s)
+    Page should contain  Nom
+    Page should contain  Prénom
 
 
 *** Keywords ***

@@ -9,16 +9,18 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
+    <include package="collective.z3cform.datagridfield"/>
     <include package="five.grok" />
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
     <include package="plone.directives.dexterity" />
-    <include package="collective.z3cform.datagridfield"/>
+    <!-- to delete if plone.directives.dexterity changes are accepted -->
+    <include package="plone.directives.dexterity" file="meta.zcml"/>
 
     <include package=".browser" />
     <include package=".content" />
 
-     <grok:grok package="." />
+    <grok:grok package="." />
 
     <include file="profiles.zcml" />
 
