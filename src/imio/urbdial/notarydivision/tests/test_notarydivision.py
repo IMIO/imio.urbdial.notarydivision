@@ -66,9 +66,9 @@ class TestNotaryDivisionFields(unittest.TestCase):
         self.assertTrue(hasattr(self.test_divnot, 'applicants'))
 
 
-class TestAddNotaryDivision(BrowserTest):
+class NotaryDivisionBrowserTest(BrowserTest):
     """
-    Test NotaryDivision Add form.
+    Helper class factorizing setUp of all NotaryDivision Browser tests.
     """
 
     layer = EXAMPLE_DIVISION_INTEGRATION
@@ -78,23 +78,22 @@ class TestAddNotaryDivision(BrowserTest):
         self.test_divnot = self.portal.notarydivisions.objectValues()[0]
         self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
 
+
+class TestAddNotaryDivision(NotaryDivisionBrowserTest):
+    """
+    Test NotaryDivision Add form.
+    """
+
     def test_NotaryDivisionAddForm_class_registration(self):
         from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivisionAddForm
         add_form = self.portal.notarydivisions.restrictedTraverse('++add++NotaryDivision')
         self.assertTrue(add_form.form.__name__ == NotaryDivisionAddForm.__name__)
 
 
-class TestNotaryDivisionEdit(BrowserTest):
+class TestNotaryDivisionEdit(NotaryDivisionBrowserTest):
     """
     Test NotaryDivision Edit form.
     """
-
-    layer = EXAMPLE_DIVISION_INTEGRATION
-
-    def setUp(self):
-        super(TestNotaryDivisionEdit, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.objectValues()[0]
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
 
     def test_NotaryDivisionEditForm_class_registration(self):
         from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivisionEditForm
@@ -102,21 +101,14 @@ class TestNotaryDivisionEdit(BrowserTest):
         self.assertTrue(edit.__class__.__name__ == NotaryDivisionEditForm.__name__)
 
 
-class TestNotaryDivisionView(BrowserTest):
+class TestNotaryDivisionView(NotaryDivisionBrowserTest):
     """
     Test NotaryDivision View.
     """
 
-    layer = EXAMPLE_DIVISION_INTEGRATION
-
-    def setUp(self):
-        super(TestNotaryDivisionView, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.objectValues()[0]
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
-
     def test_NotaryDivisionView_class_registration(self):
-        view = self.test_divnot.restrictedTraverse('view')
         from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivisionView
+        view = self.test_divnot.restrictedTraverse('view')
         self.assertTrue(view.__class__.__name__ == NotaryDivisionView.__name__)
 
     def test_NotaryDivision_excluded_from_navigation(self):
