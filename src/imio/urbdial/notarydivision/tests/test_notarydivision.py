@@ -114,6 +114,11 @@ class TestNotaryDivisionView(BrowserTest):
         self.test_divnot = self.portal.notarydivisions.objectValues()[0]
         self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
 
+    def test_NotaryDivisionView_class_registration(self):
+        view = self.test_divnot.restrictedTraverse('view')
+        from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivisionView
+        self.assertTrue(view.__class__.__name__ == NotaryDivisionView.__name__)
+
     def test_NotaryDivision_excluded_from_navigation(self):
         self.browser.open(self.portal.absolute_url())
         contents = self.browser.contents
