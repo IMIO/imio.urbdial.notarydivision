@@ -7,6 +7,7 @@ from five import grok
 from imio.urbdial.notarydivision import _
 
 from plone.autoform import directives as form
+from plone.dexterity.browser import view
 from plone.dexterity.content import Container
 from plone.directives import dexterity
 from plone.supermodel import model
@@ -122,13 +123,7 @@ class NotaryDivisionEditForm(dexterity.EditForm):
         allFormsUpdateWidgets(self.widgets)
 
 
-class NotaryDivisionView(dexterity.DisplayForm):
+class NotaryDivisionView(view.DefaultView):
     """
     NotaryDivision custom View.
     """
-    grok.context(INotaryDivision)
-    grok.name('view')
-    grok.require('imio.urbdial.notarydivision.ViewNotaryDivision')
-
-    def render(self):
-        """ """

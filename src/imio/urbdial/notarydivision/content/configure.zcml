@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:grok="http://namespaces.zope.org/grok"
     i18n_domain="urbdial.divnot">
 
@@ -18,6 +19,14 @@
     <permission
         id="imio.urbdial.notarydivision.ViewNotaryDivision"
         title="imio.urbdial.notarydivision: View NotaryDivision"
+    />
+
+    <browser:page
+        for="imio.urbdial.notarydivision.content.interfaces.INotaryDivision"
+        name="view"
+        class="imio.urbdial.notarydivision.content.NotaryDivision.NotaryDivisionView"
+        template="templates/notarydivision_view.pt"
+        permission="imio.urbdial.notarydivision.ViewNotaryDivision"
     />
 
 </configure>
