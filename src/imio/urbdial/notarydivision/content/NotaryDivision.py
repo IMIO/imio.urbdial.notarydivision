@@ -2,15 +2,13 @@
 
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 
-from five import grok
-
 from imio.urbdial.notarydivision import _
 
 from plone.autoform import directives as form
+from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
 from plone.dexterity.browser import view
 from plone.dexterity.content import Container
-from plone.directives import dexterity
 from plone.supermodel import model
 
 from z3c.form import field
@@ -95,18 +93,26 @@ def allFormsUpdateWidgets(widgets):
     widgets['exclude_from_nav'].mode = interfaces.HIDDEN_MODE
 
 
-class NotaryDivisionAddForm(dexterity.AddForm):
+class NotaryDivisionAddForm(add.DefaultAddForm):
     """
     NotaryDivision custom Add form.
     """
-    grok.name('NotaryDivision')
-    grok.require('imio.urbdial.notarydivision.AddNotaryDivision')
 
     fields = setINotaryDivisionWidgetFactories()
 
     def updateWidgets(self):
         super(NotaryDivisionAddForm, self).updateWidgets()
         allFormsUpdateWidgets(self.widgets)
+
+
+class NotaryDivisionAddView(add.DefaultAddView):
+    """
+    NotaryDivision custom AddView.
+    Required to customize AddForm:
+    - first we override the attr 'form' with our custom AddForm.
+    - then we register the AddView for our NotaryDivision FTI.
+    """
+    form = NotaryDivisionAddForm
 
 
 class NotaryDivisionEditForm(edit.DefaultEditForm):

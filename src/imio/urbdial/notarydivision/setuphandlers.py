@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision.interfaces import INotaryDivisionFTI
 from imio.urbdial.notarydivision.utils import translate as _
 
 from plone import api
@@ -26,6 +27,9 @@ def post_install(context):
     if isNotCurrentProfile(context):
         return
 
+    logger.info('set_NotaryDivision_FTI_marker_interface : starting...')
+    set_NotaryDivision_FTI_marker_interface(context)
+    logger.info('set_NotaryDivision_FTI_marker_interface : Done')
     logger.info('delete_plone_root_default_objects : starting...')
     delete_plone_root_default_objects(context)
     logger.info('delete_plone_root_default_objects : Done')
@@ -41,6 +45,16 @@ def post_install(context):
     logger.info('redirect_root_default_view : starting...')
     redirect_root_default_view(context)
     logger.info('redirect_root_default_view : Done')
+
+
+def set_NotaryDivision_FTI_marker_interface(context):
+    """
+    Set INotaryDivisionFTI interface on NotaryDivision FTI, so we can register
+    custom AddView for this specific interface.
+    """
+    site = context.getSite()
+    divnot_type = site.portal_types.NotaryDivision
+    alsoProvides(divnot_type, INotaryDivisionFTI)
 
 
 def delete_plone_root_default_objects(context):

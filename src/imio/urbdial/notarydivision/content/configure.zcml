@@ -21,6 +21,25 @@
         title="imio.urbdial.notarydivision: View NotaryDivision"
     />
 
+    <!--
+        This is how you register custom dexterity AddForm:
+        you register a custom AddView where you set the attr 'form' to your
+        custom AddForm. Then you register your AddView for your content type FTI.
+    -->
+    <adapter
+        for="Products.CMFCore.interfaces.IFolderish
+             zope.publisher.interfaces.browser.IDefaultBrowserLayer
+             imio.urbdial.notarydivision.interfaces.INotaryDivisionFTI"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        factory=".NotaryDivision.NotaryDivisionAddView"
+     />
+    <class class=".NotaryDivision.NotaryDivisionAddView">
+        <require
+            permission="imio.urbdial.notarydivision.AddNotaryDivision"
+            interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+    </class>
+
     <browser:page
         for=".interfaces.INotaryDivision"
         name="edit"
