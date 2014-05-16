@@ -87,7 +87,7 @@ class TestAddNotaryDivision(NotaryDivisionBrowserTest):
     def test_NotaryDivisionAddForm_class_registration(self):
         from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivisionAddForm
         add_form = self.portal.notarydivisions.restrictedTraverse('++add++NotaryDivision')
-        self.assertTrue(add_form.form.__name__ == NotaryDivisionAddForm.__name__)
+        self.assertTrue(add_form.form == NotaryDivisionAddForm)
 
 
 class TestNotaryDivisionEdit(NotaryDivisionBrowserTest):
@@ -98,7 +98,7 @@ class TestNotaryDivisionEdit(NotaryDivisionBrowserTest):
     def test_NotaryDivisionEditForm_class_registration(self):
         from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivisionEditForm
         edit = self.test_divnot.restrictedTraverse('@@edit')
-        self.assertTrue(edit.__class__.__name__ == NotaryDivisionEditForm.__name__)
+        self.assertTrue(isinstance(edit, NotaryDivisionEditForm))
 
 
 class TestNotaryDivisionView(NotaryDivisionBrowserTest):
@@ -109,7 +109,7 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
     def test_NotaryDivisionView_class_registration(self):
         from imio.urbdial.notarydivision.content.NotaryDivision import NotaryDivisionView
         view = self.test_divnot.restrictedTraverse('view')
-        self.assertTrue(view.__class__.__name__ == NotaryDivisionView.__name__)
+        self.assertTrue(isinstance(view, NotaryDivisionView))
 
     def test_NotaryDivision_excluded_from_navigation(self):
         self.browser.open(self.portal.absolute_url())
