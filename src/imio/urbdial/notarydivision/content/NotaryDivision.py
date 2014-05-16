@@ -131,4 +131,4 @@ class NotaryDivisionView(dexterity.DisplayForm):
     grok.require('imio.urbdial.notarydivision.ViewNotaryDivision')
 
     def render(self):
-        super(NotaryDivision, self).render()
+        """ """
