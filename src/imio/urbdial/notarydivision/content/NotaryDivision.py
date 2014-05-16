@@ -7,6 +7,7 @@ from five import grok
 from imio.urbdial.notarydivision import _
 
 from plone.autoform import directives as form
+from plone.dexterity.browser import edit
 from plone.dexterity.browser import view
 from plone.dexterity.content import Container
 from plone.directives import dexterity
@@ -73,7 +74,6 @@ class NotaryDivision(Container):
     NotaryDivision dexterity class
     """
     implements(INotaryDivision)
-    grok.name('NotaryDivision')
 
     __ac_local_roles_block__ = True
 
@@ -109,12 +109,10 @@ class NotaryDivisionAddForm(dexterity.AddForm):
         allFormsUpdateWidgets(self.widgets)
 
 
-class NotaryDivisionEditForm(dexterity.EditForm):
+class NotaryDivisionEditForm(edit.DefaultEditForm):
     """
     NotaryDivision custom Edit form.
     """
-    grok.context(INotaryDivision)
-    grok.require('imio.urbdial.notarydivision.EditNotaryDivision')
 
     fields = setINotaryDivisionWidgetFactories()
 
