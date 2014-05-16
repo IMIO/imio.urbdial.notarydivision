@@ -117,6 +117,16 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
         msg = 'test NotaryDivision appears in navigation bar'
         self.assertTrue('<li id="portaltab-test_notarydivision" class="plain">' not in contents, msg)
 
+    def test_view_template_customize_body_slot_of_Plone_main_template(self):
+        """
+        The 'Last modification' link should not appears.
+        """
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'Last modification link is still visible.'
+        self.assertTrue('<span class="documentAuthor">' not in contents, msg)
+        self.assertTrue('<span class="documentModified">' not in contents, msg)
+
     def test_exclude_from_navigation_field_is_hidden(self):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
