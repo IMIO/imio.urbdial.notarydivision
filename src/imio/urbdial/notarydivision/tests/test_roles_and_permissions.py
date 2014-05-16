@@ -34,6 +34,10 @@ class TestRolesAndPermissions(unittest.TestCase):
         registered_permissions = self.portal.acl_users.possible_permissions()
         self.assertTrue('imio.urbdial.notarydivision: Edit NotaryDivision' in registered_permissions)
 
+    def test_ViewNotaryDivision_permission_registration(self):
+        registered_permissions = self.portal.acl_users.possible_permissions()
+        self.assertTrue('imio.urbdial.notarydivision: View NotaryDivision' in registered_permissions)
+
     def test_Member_role_is_assigned_to_notaries_group(self):
         roles_of_notaries_group = api.group.get_roles('notaries')
         self.assertTrue('Member' in roles_of_notaries_group)

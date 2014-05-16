@@ -15,4 +15,9 @@
         title="imio.urbdial.notarydivision: Edit NotaryDivision"
     />
 
+    <permission
+        id="imio.urbdial.notarydivision.ViewNotaryDivision"
+        title="imio.urbdial.notarydivision: View NotaryDivision"
+    />
+
 </configure>
