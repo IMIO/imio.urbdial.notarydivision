@@ -4,23 +4,6 @@
     xmlns:grok="http://namespaces.zope.org/grok"
     i18n_domain="urbdial.divnot">
 
-    <include package="collective.autopermission" />
-
-    <permission
-        id="imio.urbdial.notarydivision.AddNotaryDivision"
-        title="imio.urbdial.notarydivision: Add NotaryDivision"
-    />
-
-    <permission
-        id="imio.urbdial.notarydivision.EditNotaryDivision"
-        title="imio.urbdial.notarydivision: Edit NotaryDivision"
-    />
-
-    <permission
-        id="imio.urbdial.notarydivision.ViewNotaryDivision"
-        title="imio.urbdial.notarydivision: View NotaryDivision"
-    />
-
     <!--
         This is how you register custom dexterity AddForm:
         you register a custom AddView where you set the attr 'form' to your
@@ -35,7 +18,7 @@
      />
     <class class=".NotaryDivision.NotaryDivisionAddView">
         <require
-            permission="imio.urbdial.notarydivision.AddNotaryDivision"
+            permission="cmf.AddPortalContent"
             interface="zope.publisher.interfaces.browser.IBrowserPage"
         />
     </class>
@@ -44,7 +27,7 @@
         for=".interfaces.INotaryDivision"
         name="edit"
         class=".NotaryDivision.NotaryDivisionEditForm"
-        permission="imio.urbdial.notarydivision.EditNotaryDivision"
+        permission="cmf.ModifyPortalContent"
     />
 
     <browser:page
@@ -52,7 +35,7 @@
         name="view"
         class=".NotaryDivision.NotaryDivisionView"
         template="templates/notarydivision_view.pt"
-        permission="imio.urbdial.notarydivision.ViewNotaryDivision"
+        permission="zope2.View"
     />
 
 </configure>

@@ -13,10 +13,6 @@ class TestRolesAndPermissions(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
 
-    def test_AddNotaryDivision_permission_registration(self):
-        registered_permissions = self.portal.acl_users.possible_permissions()
-        self.assertTrue('imio.urbdial.notarydivision: Add NotaryDivision' in registered_permissions)
-
     def test_NotaryDivisionCreator_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
         registered_roles = portal_roles.listRoleIds()
@@ -24,19 +20,11 @@ class TestRolesAndPermissions(unittest.TestCase):
 
     def test_add_NotaryDivision_rolemap(self):
         """
-        'AddNotaryDivision' permission should be given to the 'NotaryDivision Creator' role
+        'cmf.AddPortalContent' permission should be given to the 'NotaryDivision Creator' role
         """
-        role_permissions = self.portal.permissionsOfRole('NotaryDivision Creator')
-        permission_names = [p['name'] for p in role_permissions if p['selected']]
-        self.assertTrue('imio.urbdial.notarydivision: Add NotaryDivision' in permission_names)
-
-    def test_EditNotaryDivision_permission_registration(self):
-        registered_permissions = self.portal.acl_users.possible_permissions()
-        self.assertTrue('imio.urbdial.notarydivision: Edit NotaryDivision' in registered_permissions)
-
-    def test_ViewNotaryDivision_permission_registration(self):
-        registered_permissions = self.portal.acl_users.possible_permissions()
-        self.assertTrue('imio.urbdial.notarydivision: View NotaryDivision' in registered_permissions)
+        role_permissions = self.portal.rolesOfPermission('Add portal content')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('NotaryDivision Creator' in role_names)
 
     def test_Member_role_is_assigned_to_notaries_group(self):
         roles_of_notaries_group = api.group.get_roles('notaries')

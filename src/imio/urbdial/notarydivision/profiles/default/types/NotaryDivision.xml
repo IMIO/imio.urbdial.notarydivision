@@ -18,7 +18,7 @@
   <element value="view"/>
  </property>
  <property name="default_view_fallback">False</property>
- <property name="add_permission">imio.urbdial.notarydivision.AddNotaryDivision</property>
+ <property name="add_permission">cmf.AddPortalContent</property>
  <property name="klass">imio.urbdial.notarydivision.content.NotaryDivision.NotaryDivision</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>

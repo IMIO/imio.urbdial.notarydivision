@@ -27,10 +27,10 @@ class TestInstall(unittest.TestCase):
         registered_types = portal_types.listContentTypes()
         self.assertTrue('NotaryDivision' in registered_types)
 
-    def test_creation_permission_is_addNotaryDivision(self):
+    def test_creation_permission_is_cmfAddPortalContent(self):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
-        self.assertTrue(divnot_type.add_permission == 'imio.urbdial.notarydivision.AddNotaryDivision')
+        self.assertTrue(divnot_type.add_permission == 'cmf.AddPortalContent')
 
 
 class TestNotaryDivisionFields(unittest.TestCase):
