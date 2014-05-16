@@ -22,16 +22,16 @@
     />
 
     <browser:page
-        for="imio.urbdial.notarydivision.content.interfaces.INotaryDivision"
+        for=".interfaces.INotaryDivision"
         name="edit"
-        class="imio.urbdial.notarydivision.content.NotaryDivision.NotaryDivisionEditForm"
+        class=".NotaryDivision.NotaryDivisionEditForm"
         permission="imio.urbdial.notarydivision.EditNotaryDivision"
     />
 
     <browser:page
-        for="imio.urbdial.notarydivision.content.interfaces.INotaryDivision"
+        for=".interfaces.INotaryDivision"
         name="view"
-        class="imio.urbdial.notarydivision.content.NotaryDivision.NotaryDivisionView"
+        class=".NotaryDivision.NotaryDivisionView"
         template="templates/notarydivision_view.pt"
         permission="imio.urbdial.notarydivision.ViewNotaryDivision"
     />
