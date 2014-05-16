@@ -74,7 +74,7 @@ class NotaryDivisionBrowserTest(BrowserTest):
     layer = EXAMPLE_DIVISION_INTEGRATION
 
     def setUp(self):
-        super(TestAddNotaryDivision, self).setUp()
+        super(NotaryDivisionBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.objectValues()[0]
         self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
 
