@@ -42,7 +42,6 @@ setup(
     zip_safe=False,
     install_requires=[
         'collective.z3cform.datagridfield',
-        'five.grok',
         'plone.api',
         'plone.directives.dexterity',
         'setuptools',
