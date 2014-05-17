@@ -43,7 +43,6 @@ setup(
     install_requires=[
         'collective.z3cform.datagridfield',
         'plone.api',
-        'plone.directives.dexterity',
         'setuptools',
     ],
     extras_require={

@@ -11,9 +11,6 @@
     <include package="collective.z3cform.datagridfield"/>
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
-    <include package="plone.directives.dexterity" />
-    <!-- to delete if plone.directives.dexterity changes are accepted -->
-    <include package="plone.directives.dexterity" file="meta.zcml"/>
 
     <include package=".browser" />
     <include package=".content" />
