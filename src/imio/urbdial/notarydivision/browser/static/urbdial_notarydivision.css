@@ -10,6 +10,9 @@ tr.field_row_display > td{
 tr.field_row_display{
     border-bottom: 1px solid #EFEFEF;
 }
+#content {
+    font-size: 88%;
+}
 
 
 /* Remove gray background and border of all datagrids */
