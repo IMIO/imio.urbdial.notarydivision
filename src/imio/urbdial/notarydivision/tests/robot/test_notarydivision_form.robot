@@ -33,15 +33,9 @@ Test edit form fields
 Suite Setup
     Open test browser
     Log in as admin
-    Set site langage to french
 
 Log in as admin
     Go to  ${PLONE_URL}/login
     Input text  id=__ac_name  test-user
     Input password  id=__ac_password  secret
     Click Button  submit
-
-Set site langage to french
-    Go to  ${PLONE_URL}/@@language-controlpanel
-    Select from list  id=form.default_language  fr
-    Click button  form.actions.save
