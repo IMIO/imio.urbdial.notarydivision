@@ -5,6 +5,7 @@ from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
 
+from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.supermodel import model
@@ -50,6 +51,7 @@ class INotaryDivision(model.Schema):
         required=False,
     )
 
+    form.widget('applicants', DataGridFieldFactory)
     applicants = schema.List(
         title=_(u'Applicants'),
         required=False,
@@ -58,7 +60,12 @@ class INotaryDivision(model.Schema):
             required=False
         ),
     )
-    form.widget('applicants', DataGridFieldFactory)
+
+    form.widget('actual_use', WysiwygFieldWidget)
+    actual_use = schema.Text(
+        title=_(u'Estate actual use'),
+        required=False,
+    )
 
 
 class NotaryDivision(Container):
