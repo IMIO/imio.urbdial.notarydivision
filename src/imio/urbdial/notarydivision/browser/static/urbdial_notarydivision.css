@@ -1,5 +1,27 @@
 /* imio.urbdial.notarydivision.core stylesheet */
 
+
+/* */
+tr.field_row_display > td{
+    padding-bottom: 0.5em;
+    padding-top: 1em;
+    padding-right: 2em;
+}
+tr.field_row_display{
+    border-bottom: 1px solid #EFEFEF;
+}
+
+
+
+/* Remove gray background and border of all datagrids */
+.datagridwidget-table-view .header{
+    padding-right: 1em;
+}
+.datagridwidget-table-view{
+    background: none;
+    border: 0px;
+}
+
 /* Resize applicants datagrid  */
 #formfield-form-widgets-applicants .datagridwidget-table-view{
     width: 35em;
