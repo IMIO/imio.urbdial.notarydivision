@@ -13,9 +13,9 @@
              zope.publisher.interfaces.browser.IDefaultBrowserLayer
              imio.urbdial.notarydivision.interfaces.INotaryDivisionFTI"
         provides="zope.publisher.interfaces.browser.IBrowserPage"
-        factory=".NotaryDivision.NotaryDivisionAddView"
+        factory=".NotaryDivision_view.NotaryDivisionAddView"
      />
-    <class class=".NotaryDivision.NotaryDivisionAddView">
+    <class class=".NotaryDivision_view.NotaryDivisionAddView">
         <require
             permission="cmf.AddPortalContent"
             interface="zope.publisher.interfaces.browser.IBrowserPage"
@@ -25,14 +25,14 @@
     <browser:page
         for=".interfaces.INotaryDivision"
         name="edit"
-        class=".NotaryDivision.NotaryDivisionEditForm"
+        class=".NotaryDivision_view.NotaryDivisionEditForm"
         permission="cmf.ModifyPortalContent"
     />
 
     <browser:page
         for=".interfaces.INotaryDivision"
         name="view"
-        class=".NotaryDivision.NotaryDivisionView"
+        class=".NotaryDivision_view.NotaryDivisionView"
         template="templates/notarydivision_view.pt"
         permission="zope2.View"
     />
