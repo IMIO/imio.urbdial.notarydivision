@@ -1,18 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
+from collective.z3cform.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
 
 from plone.autoform import directives as form
-from plone.dexterity.browser import add
-from plone.dexterity.browser import edit
-from plone.dexterity.browser import view
 from plone.dexterity.content import Container
 from plone.supermodel import model
-
-from z3c.form import field
-from z3c.form import interfaces
 
 from zope import schema
 from zope.interface import implements
@@ -20,23 +15,21 @@ from zope.interface import implements
 import zope
 
 
-# DataGridField schemas #
+# Applicant's DataGridField schema #
 
 class IApplicantsRowSchema(zope.interface.Interface):
     """
     Schema for DataGridField widget's row of field 'applicants'
     """
-    name = schema.TextLine(
-        title=_(u'Name'),
-        required=False,
-    )
-
     firstname = schema.TextLine(
         title=_(u'Firstname'),
         required=False,
     )
 
-# DataGridField schemas end #
+    name = schema.TextLine(
+        title=_(u'Name'),
+        required=False,
+    )
 
 
 # NotaryDivision schema #
@@ -65,6 +58,7 @@ class INotaryDivision(model.Schema):
             required=False
         ),
     )
+    form.widget('applicants', DataGridFieldFactory)
 
 
 class NotaryDivision(Container):
@@ -74,60 +68,3 @@ class NotaryDivision(Container):
     implements(INotaryDivision)
 
     __ac_local_roles_block__ = True
-
-
-def setINotaryDivisionWidgetFactories():
-    """
-    Factorize widget factory assignment for both Edit and Add form.
-    """
-    fields = field.Fields(INotaryDivision)
-    fields['applicants'].widgetFactory = DataGridFieldFactory
-    return fields
-
-
-def allFormsUpdateWidgets(widgets):
-    """
-    Factorize all the widget treatments that should be done for all the
-    NotaryDivision forms.
-    """
-    widgets['exclude_from_nav'].mode = interfaces.HIDDEN_MODE
-
-
-class NotaryDivisionAddForm(add.DefaultAddForm):
-    """
-    NotaryDivision custom Add form.
-    """
-
-    fields = setINotaryDivisionWidgetFactories()
-
-    def updateWidgets(self):
-        super(NotaryDivisionAddForm, self).updateWidgets()
-        allFormsUpdateWidgets(self.widgets)
-
-
-class NotaryDivisionAddView(add.DefaultAddView):
-    """
-    NotaryDivision custom AddView.
-    Required to customize AddForm:
-    - first we override the attr 'form' with our custom AddForm.
-    - then we register the AddView for our NotaryDivision FTI.
-    """
-    form = NotaryDivisionAddForm
-
-
-class NotaryDivisionEditForm(edit.DefaultEditForm):
-    """
-    NotaryDivision custom Edit form.
-    """
-
-    fields = setINotaryDivisionWidgetFactories()
-
-    def updateWidgets(self):
-        super(NotaryDivisionEditForm, self).updateWidgets()
-        allFormsUpdateWidgets(self.widgets)
-
-
-class NotaryDivisionView(view.DefaultView):
-    """
-    NotaryDivision custom View.
-    """
