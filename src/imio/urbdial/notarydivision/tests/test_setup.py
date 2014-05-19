@@ -36,6 +36,14 @@ class TestInstallDependencies(unittest.TestCase):
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
         self.assertTrue(self.installer.isProductInstalled('collective.z3cform.datagridfield'))
 
+    def test_CKEditor_is_dependency_of_urbdial(self):
+        """
+        Collective.CKEditor should be installed when we install urbdial
+        """
+        self.assertTrue(not self.installer.isProductInstalled('collective.ckeditor'))
+        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
+        self.assertTrue(self.installer.isProductInstalled('collective.ckeditor'))
+
 
 class TestInstall(unittest.TestCase):
     """
