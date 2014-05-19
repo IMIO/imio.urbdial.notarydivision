@@ -109,6 +109,12 @@ class TestNotaryDivisionEdit(NotaryDivisionBrowserTest):
         msg = 'field exclude_from_nav should be hidden in Display View'
         self.assertTrue('<span class="label">Exclude from navigation</span>' not in contents, msg)
 
+    def test_ActualUse_field_has_CKEditor_widget(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "edition widget of field 'actual_use' is not CKEditor"
+        self.assertTrue('class="ckeditor_plone" style="display:none" name="form.widgets.actual_use"' in contents, msg)
+
 
 class TestNotaryDivisionView(NotaryDivisionBrowserTest):
     """
