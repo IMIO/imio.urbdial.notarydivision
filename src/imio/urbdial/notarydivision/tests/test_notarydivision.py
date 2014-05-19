@@ -59,11 +59,14 @@ class TestNotaryDivisionFields(unittest.TestCase):
     def test_exclude_from_navigation_field_default_value_is_True(self):
         self.assertTrue(self.test_divnot.exclude_from_nav)
 
-    def test_Reference_field_declaration(self):
+    def test_Reference_attribute(self):
         self.assertTrue(hasattr(self.test_divnot, 'reference'))
 
-    def test_Applicants_field_declaration(self):
+    def test_Applicants_attribute(self):
         self.assertTrue(hasattr(self.test_divnot, 'applicants'))
+
+    def test_ActualUse_attribute(self):
+        self.assertTrue(hasattr(self.test_divnot, 'actual_use'))
 
 
 class NotaryDivisionBrowserTest(BrowserTest):
@@ -100,6 +103,12 @@ class TestNotaryDivisionEdit(NotaryDivisionBrowserTest):
         edit = self.test_divnot.restrictedTraverse('@@edit')
         self.assertTrue(isinstance(edit, NotaryDivisionEditForm))
 
+    def test_exclude_from_navigation_field_is_hidden_on_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'field exclude_from_nav should be hidden in Display View'
+        self.assertTrue('<span class="label">Exclude from navigation</span>' not in contents, msg)
+
 
 class TestNotaryDivisionView(NotaryDivisionBrowserTest):
     """
@@ -127,7 +136,7 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
         self.assertTrue('<span class="documentAuthor">' not in contents, msg)
         self.assertTrue('<span class="documentModified">' not in contents, msg)
 
-    def test_exclude_from_navigation_field_is_hidden(self):
+    def test_exclude_from_navigation_field_is_hidden_on_display(self):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = 'field exclude_from_nav should be hidden in Display View'

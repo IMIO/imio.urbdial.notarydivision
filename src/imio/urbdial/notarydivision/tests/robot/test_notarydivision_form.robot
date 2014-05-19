@@ -25,6 +25,8 @@ Test edit form fields
     Page should contain  Nom
     Page should contain  Prénom
 
+    Page should contain  Affectation actuelle du bien
+
 
 *** Keywords ***
 
