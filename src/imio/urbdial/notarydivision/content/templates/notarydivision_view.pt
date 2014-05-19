@@ -16,9 +16,12 @@
                     <span tal:replace="here/Title" tal:omit-tag="">Title</span>
                 </h1>
                 <table class="no-style-table">
-                    <tr tal:repeat="widget view/widgets/values">
-                        <td style="vertical-align:top"class="table_widget_label"><label tal:content="widget/label">Label</label></td>
-                        <td width=15px></td>
+                    <tr tal:repeat="widget view/widgets/values" class="field_row_display">
+                        <td style="vertical-align:top"class="table_widget_label">
+                            <label>
+                                <tal:label content="widget/label">Label</tal:label>:
+                            </label>
+                        </td>
                         <td class="table_widget_value" tal:content="structure widget/render">Value</td>
                     </tr>
                 </table>
