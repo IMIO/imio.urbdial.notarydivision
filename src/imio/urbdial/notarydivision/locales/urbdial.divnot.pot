@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-13 14:09+0000\n"
+"POT-Creation-Date: 2014-05-19 11:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,23 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/NotaryDivision.py:52
+#: ../content/NotaryDivision.py:56
 msgid "Applicants"
 msgstr ""
 
-#: ../content/NotaryDivision.py:33
+#: ../content/NotaryDivision.py:65
+msgid "Estate actual use"
+msgstr ""
+
+#: ../content/NotaryDivision.py:45
+msgid "Exclude from navigation"
+msgstr ""
+
+#: ../content/NotaryDivision.py:26
 msgid "Firstname"
 msgstr ""
 
-#: ../content/NotaryDivision.py:28
+#: ../content/NotaryDivision.py:31
 msgid "Name"
 msgstr ""
 
@@ -33,7 +41,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: ../setuphandlers.py:83
+#: ../setuphandlers.py:97
 msgid "Notaries"
 msgstr ""
 
@@ -41,11 +49,11 @@ msgstr ""
 msgid "NotaryDivision"
 msgstr ""
 
-#: ../content/NotaryDivision.py:48
+#: ../content/NotaryDivision.py:50
 msgid "Reference"
 msgstr ""
 
-#: ../setuphandlers.py:100
+#: ../setuphandlers.py:114
 msgid "notarydivisions_folder_title"
 msgstr ""
 
