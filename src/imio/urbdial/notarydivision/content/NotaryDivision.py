@@ -4,6 +4,7 @@ from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
+from imio.urbdial.notarydivision.content.NotaryDivision_view import initial_estate_DataGridFieldFactory
 
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
@@ -80,7 +81,7 @@ class IInitialEstateRowSchema(zope.interface.Interface):
     )
 
     specific_rights = schema.Text(
-        title=_(u'Specific rights (case of undivided or dismembered estate'),
+        title=_(u'Specific rights (case of undivided or dismembered estate)'),
         required=False,
     )
 
@@ -118,7 +119,7 @@ class INotaryDivision(model.Schema):
         required=False,
     )
 
-    form.widget('initial_estate', DataGridFieldFactory)
+    form.widget('initial_estate', initial_estate_DataGridFieldFactory)
     initial_estate = schema.List(
         title=_(u'Initial estate'),
         required=False,
