@@ -45,7 +45,7 @@ class TestErgonomy(BrowserTest):
         self.browser.open(self.portal.absolute_url() + '/@@manage-portlets')
         contents = self.browser.contents
         msg = 'Plone site actions are not hidden'
-        self.assertTrue('Manage portlets' in contents, msg)
+        self.assertTrue('Gérer les portlets' in contents, msg)
         self.assertTrue('<span class="managedPortletActions">' not in contents, msg)
 
     def test_site_view_redirects_to_notarydivisions_folder(self):

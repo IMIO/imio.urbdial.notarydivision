@@ -110,12 +110,23 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         self.assertTrue('form.widgets.applicants' in contents, msg)
         msg = "field 'applicants' is not translated"
         self.assertTrue('Requérant(s)' in contents, msg)
+        self.assertTrue('Nom' in contents)
+        self.assertTrue('Prénom' in contents)
 
     def test_applicants_field_edit(self):
         self.browser.open(self.test_divnot.absolute_url() + '/edit')
         contents = self.browser.contents
         msg = "field 'applicants' is not editable"
         self.assertTrue('Requérant(s)' in contents, msg)
+        datagrid_columns = [
+            ('firstname', 'Prénom'),
+            ('name', 'Nom'),
+        ]
+        for column_name, translation in datagrid_columns:
+            msg = "column '{}' of 'applicants' field is not editable".format(column_name)
+            self.assertTrue('<input id="form-widgets-applicants-AA-widgets-{}"'.format(column_name) in contents, msg)
+            msg = "column '{}' of 'applicants' field is not translated".format(column_name)
+            self.assertTrue(translation in contents, msg)
 
     def test_actual_use_attribute(self):
         test_divnot = aq_base(self.test_divnot)
@@ -134,6 +145,40 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         contents = self.browser.contents
         msg = "field 'actual_use' is not editable"
         self.assertTrue('Affectation actuelle du bien' in contents, msg)
+
+    def test_initial_estate_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'initial_estate'))
+
+    def test_initial_estate_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "field 'initial_estate' is not displayed"
+        self.assertTrue('form.widgets.initial_estate' in contents, msg)
+        msg = "field 'initial_estate' is not translated"
+        self.assertTrue('Ensemble immobilier initial' in contents, msg)
+
+    def test_initial_estate_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'initial_estate' is not editable"
+        self.assertTrue('Ensemble immobilier initial' in contents, msg)
+        datagrid_columns = [
+            ('locality', 'Commune'),
+            ('division', 'Division'),
+            ('section', 'Section'),
+            ('radical', 'Radical'),
+            ('bis', 'Bis'),
+            ('exposant', 'Exposant'),
+            ('power', 'Puissance'),
+            ('surface', 'Superficie'),
+            ('specific_rights', 'Droits des parties (indivision ou démembrement'),
+        ]
+        for column_name, translation in datagrid_columns:
+            msg = "column '{}' of 'initial_estate' field is not editable".format(column_name)
+            self.assertTrue('id="form-widgets-initial_estate-AA-widgets-{}"'.format(column_name) in contents, msg)
+            msg = "column '{}' of 'initial_estate' field is not translated".format(column_name)
+            self.assertTrue(translation in contents, msg)
 
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):

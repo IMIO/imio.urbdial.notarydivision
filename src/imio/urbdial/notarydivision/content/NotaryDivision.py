@@ -5,7 +5,6 @@ from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
 
-from plone.app.textfield import RichText
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.supermodel import model
@@ -29,6 +28,59 @@ class IApplicantsRowSchema(zope.interface.Interface):
 
     name = schema.TextLine(
         title=_(u'Name'),
+        required=False,
+    )
+
+
+# Initial estate's DataGridField schema #
+
+class IInitialEstateRowSchema(zope.interface.Interface):
+    """
+    Schema for DataGridField widget's row of field 'initial_estate'
+    """
+
+    locality = schema.TextLine(
+        title=_(u'Locality'),
+        required=False,
+    )
+
+    division = schema.TextLine(
+        title=_(u'Division'),
+        required=False,
+    )
+
+    section = schema.TextLine(
+        title=_(u'Section'),
+        required=False,
+    )
+
+    radical = schema.TextLine(
+        title=_(u'Radical'),
+        required=False,
+    )
+
+    bis = schema.TextLine(
+        title=_(u'Bis'),
+        required=False,
+    )
+
+    exposant = schema.TextLine(
+        title=_(u'Exposant'),
+        required=False,
+    )
+
+    power = schema.TextLine(
+        title=_(u'Power'),
+        required=False,
+    )
+
+    surface = schema.TextLine(
+        title=_(u'Surface'),
+        required=False,
+    )
+
+    specific_rights = schema.Text(
+        title=_(u'Specific rights (case of undivided or dismembered estate'),
         required=False,
     )
 
@@ -61,12 +113,19 @@ class INotaryDivision(model.Schema):
         ),
     )
 
-    actual_use = RichText(
+    actual_use = schema.Text(
         title=_(u'Estate actual use'),
         required=False,
-        default_mime_type='text/html',
-        output_mime_type='text/html',
-        allowed_mime_types=('text/html',),
+    )
+
+    form.widget('initial_estate', DataGridFieldFactory)
+    initial_estate = schema.List(
+        title=_(u'Initial estate'),
+        required=False,
+        value_type=DictRow(
+            schema=IInitialEstateRowSchema,
+            required=False
+        ),
     )
 
 

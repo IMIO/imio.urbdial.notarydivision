@@ -12,20 +12,24 @@ Suite Teardown  Close all browsers
 
 *** Test Cases ***
 
-Test edit form fields
+Test datagrid fields
     Go to  ${PLONE_URL}/notarydivisions/++add++NotaryDivision
     Page should contain  Ajouter Division notariale
-
-    Page should not contain  Exclude from navigation
-
-    Page should contain  Référence
-    Page should contain textfield  form-widgets-reference
 
     Page should contain  Requérant(s)
     Page should contain  Nom
     Page should contain  Prénom
 
-    Page should contain  Affectation actuelle du bien
+    Page should contain  Ensemble immobilier initial
+    Page should contain  Commune
+    Page should contain  Division
+    Page should contain  Section
+    Page should contain  Radical
+    Page should contain  Bis
+    Page should contain  Exposant
+    Page should contain  Puissance
+    Page should contain  Superficie
+    Page should contain  Droits des parties (indivision ou démembrement)
 
 
 *** Keywords ***

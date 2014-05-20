@@ -15,7 +15,7 @@ tr.field_row_display{
 }
 
 
-/* Remove gray background and border of all datagrids */
+/* Remove gray background and border of all datagrids , align cell widgets to the top*/
 .datagridwidget-table-view .header{
     padding-right: 1em;
 }
@@ -23,8 +23,28 @@ tr.field_row_display{
     background: none;
     border: 0px;
 }
+.datagridwidget-cell{
+   vertical-align: top;
+}
+
 
 /* Resize applicants datagrid  */
 #formfield-form-widgets-applicants .datagridwidget-table-view{
     width: 35em;
+}
+
+
+/* Resize cadastral ref widget columns */
+#formfield-form-widgets-initial_estate table{
+    width: 0%;
+}
+#formfield-form-widgets-initial_estate input[name$=locality]{
+    width: 12em;
+}
+#formfield-form-widgets-initial_estate input[name$=division]{
+    width: 12em;
+}
+#formfield-form-widgets-initial_estate textarea[name$=specific_rights]{
+    height: 1.4em;
+    width: 30em;
 }
