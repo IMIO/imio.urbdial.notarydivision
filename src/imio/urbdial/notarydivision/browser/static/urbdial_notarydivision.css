@@ -22,6 +22,7 @@ tr.field_row_display{
 .datagridwidget-table-view{
     background: none;
     border: 0px;
+    width: 0%;
 }
 .datagridwidget-cell{
    vertical-align: top;
