@@ -22,7 +22,7 @@ class TestInstallDependencies(unittest.TestCase):
 
     def test_dexterity_is_dependency_of_urbdial(self):
         """
-        Dexterity should be installed when we install urbdial
+        dexterity should be installed when we install urbdial
         """
         self.assertTrue(not self.installer.isProductInstalled('plone.app.dexterity'))
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
@@ -30,7 +30,7 @@ class TestInstallDependencies(unittest.TestCase):
 
     def test_z3cformDataGridField_is_dependency_of_urbdial(self):
         """
-        Collective.z3cform.datagridfield should be installed when we install urbdial
+        collective.z3cform.datagridfield should be installed when we install urbdial
         """
         self.assertTrue(not self.installer.isProductInstalled('collective.z3cform.datagridfield'))
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
@@ -38,11 +38,19 @@ class TestInstallDependencies(unittest.TestCase):
 
     def test_CKEditor_is_dependency_of_urbdial(self):
         """
-        Collective.CKEditor should be installed when we install urbdial
+        collective.CKEditor should be installed when we install urbdial
         """
         self.assertTrue(not self.installer.isProductInstalled('collective.ckeditor'))
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
         self.assertTrue(self.installer.isProductInstalled('collective.ckeditor'))
+
+    def test_ploneFormwidgetAutocomplete_is_dependency_of_urbdial(self):
+        """
+        plone.formwidget.autocomplete should be installed when we install urbdial
+        """
+        self.assertTrue(not self.installer.isProductInstalled('plone.formwidget.autocomplete'))
+        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
+        self.assertTrue(self.installer.isProductInstalled('plone.formwidget.autocomplete'))
 
 
 class TestInstall(unittest.TestCase):
