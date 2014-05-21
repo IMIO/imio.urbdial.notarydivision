@@ -12,7 +12,6 @@
     <include package="collective.z3cform.datagridfield"/>
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
-    <include package="plone.formwidget.autocomplete" />
 
     <include package=".browser" />
     <include package=".content" />

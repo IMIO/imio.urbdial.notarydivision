@@ -44,7 +44,6 @@ setup(
         'collective.ckeditor',
         'collective.z3cform.datagridfield',
         'plone.api',
-        'plone.formwidget.autocomplete',
         'setuptools',
     ],
     extras_require={

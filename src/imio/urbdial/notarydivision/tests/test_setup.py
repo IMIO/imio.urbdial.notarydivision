@@ -44,14 +44,6 @@ class TestInstallDependencies(unittest.TestCase):
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
         self.assertTrue(self.installer.isProductInstalled('collective.ckeditor'))
 
-    def test_ploneFormwidgetAutocomplete_is_dependency_of_urbdial(self):
-        """
-        plone.formwidget.autocomplete should be installed when we install urbdial
-        """
-        self.assertTrue(not self.installer.isProductInstalled('plone.formwidget.autocomplete'))
-        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
-        self.assertTrue(self.installer.isProductInstalled('plone.formwidget.autocomplete'))
-
 
 class TestInstall(unittest.TestCase):
     """
