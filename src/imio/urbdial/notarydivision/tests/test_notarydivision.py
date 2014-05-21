@@ -202,6 +202,14 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             msg = "column '{}' of 'initial_estate' field is not translated".format(column_name)
             self.assertTrue(translation in contents, msg)
 
+    def test_locality_field_vocabulary(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'Localities vocabulary not displayed in locality field of initial_estate'
+        self.assertTrue('widgets-locality-0" value="Aiseau-Presles">' in contents, msg)
+        self.assertTrue('widgets-locality-7" value="Namur">' in contents, msg)
+        self.assertTrue('widgets-locality-10" value="Wanze">' in contents, msg)
+
 
 class TestInitialEstateFieldCustomDataGrid(NotaryDivisionFunctionalBrowserTest):
     """

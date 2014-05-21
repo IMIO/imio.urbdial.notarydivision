@@ -33,4 +33,12 @@
         handler=".setuphandlers.testing_post_install">
     </genericsetup:importStep>
 
+    <genericsetup:registerProfile
+        name="wallonie"
+        title="imio.urbdial.notarydivision.wallonie"
+        directory="profiles/wallonie"
+        description="Initialize vocabularies to Wallonie values"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
 </configure>

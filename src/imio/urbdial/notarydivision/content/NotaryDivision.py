@@ -40,9 +40,9 @@ class IInitialEstateRowSchema(zope.interface.Interface):
     Schema for DataGridField widget's row of field 'initial_estate'
     """
 
-    locality = schema.TextLine(
+    locality = schema.Choice(
         title=_(u'Locality'),
-        required=False,
+        vocabulary='imio.urbdial.notarydivision.Localities',
     )
 
     division = schema.TextLine(

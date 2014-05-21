@@ -1,0 +1,24 @@
+<registry>
+    <record
+        field="locality"
+        interface="imio.urbdial.notarydivision.content.interfaces.INotaryDivision"
+        name="imio.urbdial.notarydivision.localities">
+        <field type="plone.registry.field.Tuple">
+            <title>Walloon localities</title>
+            <value_type type="plone.registry.field.TextLine" />
+        </field>
+        <value>
+            <element>Aiseau-Presles</element>
+            <element>Amay</element>
+            <element>Berloz</element>
+            <element>Eupen</element>
+            <element>Herstal</element>
+            <element>Le Roeulx</element>
+            <element>Libramont-Chevigny</element>
+            <element>Namur</element>
+            <element>Ottignies-Louvain-la-Neuve</element>
+            <element>Quaregnon</element>
+            <element>Wanze</element>
+        </value>
+    </record>
+</registry>

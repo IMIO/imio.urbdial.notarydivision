@@ -47,4 +47,11 @@
         template="templates/initial_estate_display.pt"
     />
 
+    <!-- Localities Vocabulary -->
+    <utility
+        factory=".vocabulary.LocalitiesVocabularyFactory"
+        name="imio.urbdial.notarydivision.Localities"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
 </configure>
