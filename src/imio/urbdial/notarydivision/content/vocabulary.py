@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from Products.CMFPlone.utils import normalizeString
+
 from plone import api
 
 from zope.schema.vocabulary import SimpleTerm
@@ -14,5 +16,15 @@ class LocalitiesVocabularyFactory(object):
     def __call__(self, context):
         registry = api.portal.get_tool('portal_registry')
         localities = registry.records.get('imio.urbdial.notarydivision.localities')
-        vocabulary = SimpleVocabulary([SimpleTerm(term, term, term) for term in localities.value])
+
+        vocabulary = []
+        for term in localities.value:
+            vocabulary.append(
+                SimpleTerm(
+                    term,
+                    normalizeString(term),
+                    term,
+                )
+            )
+        vocabulary = SimpleVocabulary(vocabulary)
         return vocabulary
