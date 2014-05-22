@@ -202,12 +202,41 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             msg = "column '{}' of 'initial_estate' field is not translated".format(column_name)
             self.assertTrue(translation in contents, msg)
 
-    def test_locality_field_vocabulary(self):
+    def test_created_estate_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'created_estate'))
+
+    def test_created_estate_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "field 'created_estate' is not displayed"
+        self.assertTrue('form.widgets.created_estate' in contents, msg)
+        msg = "field 'created_estate' is not translated"
+        self.assertTrue('Ensemble immobilier créé' in contents, msg)
+
+    def test_created_estate_field_edit(self):
         self.browser.open(self.test_divnot.absolute_url() + '/edit')
         contents = self.browser.contents
-        msg = 'Localities vocabulary not displayed in locality field of initial_estate'
-        self.assertTrue('widgets-locality-0" value="6250">Aiseau-Presles' in contents, msg)
-        self.assertTrue('widgets-locality-8" value="5000">Namur' in contents, msg)
+
+        msg = "field 'created_estate' is not editable"
+        self.assertTrue('Ensemble immobilier created' in contents, msg)
+
+        datagrid_columns = [
+            ('locality', 'Commune'),
+            ('division', 'Division'),
+            ('section', 'Section'),
+            ('radical', 'Radical'),
+            ('bis', 'Bis'),
+            ('exposant', 'Exposant'),
+            ('power', 'Puissance'),
+            ('surface', 'Superficie'),
+            ('specific_rights', 'Droits des parties (indivision ou démembrement'),
+        ]
+        for column_name, translation in datagrid_columns:
+            msg = "column '{}' of 'created_estate' field is not editable".format(column_name)
+            self.assertTrue('id="form-widgets-created_estate-AA-widgets-{}"'.format(column_name) in contents, msg)
+            msg = "column '{}' of 'created_estate' field is not translated".format(column_name)
+            self.assertTrue(translation in contents, msg)
 
 
 class TestInitialEstateFieldCustomDataGrid(NotaryDivisionFunctionalBrowserTest):
@@ -241,6 +270,13 @@ class TestInitialEstateFieldCustomDataGrid(NotaryDivisionFunctionalBrowserTest):
             IPageTemplate, name='display'
         )
         self.assertTrue(template.filename.endswith('initial_estate_display.pt'))
+
+    def test_locality_field_vocabulary(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'Localities vocabulary not displayed in locality field of initial_estate'
+        self.assertTrue('widgets-locality-0" value="6250">Aiseau-Presles' in contents, msg)
+        self.assertTrue('widgets-locality-8" value="5000">Namur' in contents, msg)
 
     def test_initial_estate_field_custom_display_template(self):
         self.browser.open(self.test_divnot.absolute_url())
