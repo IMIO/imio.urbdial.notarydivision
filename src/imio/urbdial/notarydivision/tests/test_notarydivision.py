@@ -275,6 +275,26 @@ class TestInitialEstateFieldCustomDataGrid(NotaryDivisionFunctionalBrowserTest):
         msg = "Specific rights value of 'initial_estate field' is not displayed"
         self.assertTrue('Yo moma in pyjama!' in contents, msg)
 
+    def test_empty_values_display(self):
+        initial_estate_value = {
+            'locality': '',
+            'division': None,
+            'section': 'A',
+            'radical': '42',
+            'bis': '^2',
+            'exposant': 'E',
+            'power': '66',
+            'surface': '',
+            'specific_rights': None,
+        }
+        self.test_divnot.initial_estate = [initial_estate_value]
+        transaction.commit()
+
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "Empty values are not displayed as 'N.C.'"
+        self.assertTrue('<span class="discreet">N.C</span>' in contents, msg)
+
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):
     """

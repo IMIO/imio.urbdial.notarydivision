@@ -87,7 +87,7 @@ class InitialEstateDataGridField(DataGridField):
 
     def get_display_value(self, field_id, line):
         val = line[field_id]
-        if val is None:
+        if not val:
             display_value = '<span class="discreet">N.C</span>'
         else:
             index = self.value.index(line)
