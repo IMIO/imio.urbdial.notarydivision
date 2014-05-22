@@ -5,18 +5,10 @@ from Acquisition import aq_base
 
 from plone import api
 
-from imio.urbdial.notarydivision.testing import BrowserTest
-from imio.urbdial.notarydivision.testing import EXAMPLE_DIVISION_FUNCTIONAL
 from imio.urbdial.notarydivision.testing import EXAMPLE_DIVISION_INTEGRATION
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.testing import NotaryDivisionBrowserTest
 
-from plone.app.testing import TEST_USER_NAME
-from plone.app.testing import TEST_USER_PASSWORD
-
-from zope.component import getMultiAdapter
-from zope.pagetemplate.interfaces import IPageTemplate
-
-import transaction
 import unittest
 
 
@@ -36,32 +28,6 @@ class TestInstall(unittest.TestCase):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
         self.assertTrue(divnot_type.add_permission == 'cmf.AddPortalContent')
-
-
-class NotaryDivisionBrowserTest(BrowserTest):
-    """
-    Helper class factorizing setUp of all NotaryDivision Browser tests.
-    """
-
-    layer = EXAMPLE_DIVISION_INTEGRATION
-
-    def setUp(self):
-        super(NotaryDivisionBrowserTest, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.objectValues()[0]
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
-
-
-class NotaryDivisionFunctionalBrowserTest(BrowserTest):
-    """
-    Helper class factorizing setUp of all NotaryDivision Browser tests.
-    """
-
-    layer = EXAMPLE_DIVISION_FUNCTIONAL
-
-    def setUp(self):
-        super(NotaryDivisionFunctionalBrowserTest, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.objectValues()[0]
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
 class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
@@ -237,99 +203,6 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             self.assertTrue('id="form-widgets-created_estate-AA-widgets-{}"'.format(column_name) in contents, msg)
             msg = "column '{}' of 'created_estate' field is not translated".format(column_name)
             self.assertTrue(translation in contents, msg)
-
-
-class TestInitialEstateFieldCustomDataGrid(NotaryDivisionFunctionalBrowserTest):
-    """
-    Test customization of initial_estate DataGridField.
-    Changes:
-        - display template customization
-    """
-
-    def test_initial_state_DataGridField_is_overriden(self):
-        """
-        DataGridField of initial_estate field should be overriden so we can regsiter our
-        custom display template on it.
-        """
-        from imio.urbdial.notarydivision.content.NotaryDivision_view import EstateDataGridField
-        view = self.test_divnot.restrictedTraverse('view')
-        view.update()
-        initial_estate_widget = view.widgets['initial_estate']
-        self.assertTrue(isinstance(initial_estate_widget, EstateDataGridField))
-
-    def test_custom_display_template_is_registered(self):
-        """
-        Test custom template registration.
-        """
-        view = self.test_divnot.restrictedTraverse('view')
-        view.update()
-        field = view.fields['initial_estate']
-        widget = view.widgets['initial_estate']
-        template = getMultiAdapter(
-            (self.test_divnot, view.request, widget.form, field, widget),
-            IPageTemplate, name='display'
-        )
-        self.assertTrue(template.filename.endswith('initial_estate_display.pt'))
-
-    def test_locality_field_vocabulary(self):
-        self.browser.open(self.test_divnot.absolute_url() + '/edit')
-        contents = self.browser.contents
-        msg = 'Localities vocabulary not displayed in locality field of initial_estate'
-        self.assertTrue('widgets-locality-0" value="6250">Aiseau-Presles' in contents, msg)
-        self.assertTrue('widgets-locality-8" value="5000">Namur' in contents, msg)
-
-    def test_initial_estate_field_custom_display_template(self):
-        self.browser.open(self.test_divnot.absolute_url())
-        contents = self.browser.contents
-        datagrid_columns = ['Commune', 'Référence cadastrale', 'Superficie', 'Droits des parties']
-        for translation in datagrid_columns:
-            self.assertTrue(translation in contents)
-
-    def test_all_values_encoded_are_displayed(self):
-        initial_estate_value = {
-            'locality': 'Namur',
-            'division': 'Beez',
-            'section': 'A',
-            'radical': '42',
-            'bis': '^2',
-            'exposant': 'E',
-            'power': '66',
-            'surface': '45 ares',
-            'specific_rights': 'Yo moma in pyjama!',
-        }
-        self.test_divnot.initial_estate = [initial_estate_value]
-        transaction.commit()
-
-        self.browser.open(self.test_divnot.absolute_url())
-        contents = self.browser.contents
-        msg = "Locality value of 'initial_estate' field is not displayed"
-        self.assertTrue('Namur' in contents, msg)
-        msg = "Cadatsral reference value of 'initial_estate'field is not correctly displayed"
-        self.assertTrue('Beez A 42 ^2 E 66' in contents, msg)
-        msg = "Surface value of 'initial_estate' field is not displayed"
-        self.assertTrue('45 ares' in contents, msg)
-        msg = "Specific rights value of 'initial_estate field' is not displayed"
-        self.assertTrue('Yo moma in pyjama!' in contents, msg)
-
-    def test_empty_values_display(self):
-        initial_estate_value = {
-            'locality': '',
-            'division': None,
-            'section': 'A',
-            'radical': '42',
-            'bis': '^2',
-            'exposant': 'E',
-            'power': '66',
-            'surface': '',
-            'specific_rights': None,
-        }
-        self.test_divnot.initial_estate = [initial_estate_value]
-        transaction.commit()
-
-        self.browser.open(self.test_divnot.absolute_url())
-        contents = self.browser.contents
-        msg = "Empty values are not displayed as 'N.C.'"
-        self.assertTrue('<span class="discreet">N.C</span>' in contents, msg)
 
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):

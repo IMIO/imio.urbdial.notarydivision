@@ -2,6 +2,7 @@
 """Base module for unittesting."""
 
 from plone import api
+
 from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
@@ -12,6 +13,8 @@ from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
+from plone.app.testing import TEST_USER_PASSWORD
+
 from plone.testing import z2
 from plone.testing.z2 import Browser
 
@@ -172,3 +175,29 @@ class BrowserTest(BaseTest):
         self.browser.getControl(name='__ac_name').value = user
         self.browser.getControl(name='__ac_password').value = password
         self.browser.getControl(name='submit').click()
+
+
+class NotaryDivisionBrowserTest(BrowserTest):
+    """
+    Helper class factorizing setUp of all NotaryDivision Browser tests.
+    """
+
+    layer = EXAMPLE_DIVISION_INTEGRATION
+
+    def setUp(self):
+        super(NotaryDivisionBrowserTest, self).setUp()
+        self.test_divnot = self.portal.notarydivisions.objectValues()[0]
+        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
+
+
+class NotaryDivisionFunctionalBrowserTest(BrowserTest):
+    """
+    Helper class factorizing setUp of all NotaryDivision Browser tests.
+    """
+
+    layer = EXAMPLE_DIVISION_FUNCTIONAL
+
+    def setUp(self):
+        super(NotaryDivisionFunctionalBrowserTest, self).setUp()
+        self.test_divnot = self.portal.notarydivisions.objectValues()[0]
+        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)

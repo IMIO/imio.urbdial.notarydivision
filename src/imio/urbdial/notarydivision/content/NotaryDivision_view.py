@@ -41,46 +41,63 @@ class NotaryDivisionView(view.DefaultView):
 
 
 class EstateDataGridField(DataGridField):
-    """Custom DataGridField for 'initial_estate' field."""
+    """
+    Custom DataGridField for 'initial_estate' and 'created_estate' fields.
+    """
 
-    def display_initial_state(self):
-        """
-        Render table HTML display of initial_estate datagrid.
-        """
-        if not self.value:
-            return u''
+    reference_field_ids = ['division', 'section', 'radical', 'bis', 'exposant', 'power']
 
+    def display_table_body(self):
+        """
+        Render table HTML display of the datagrid.
+        """
         table_lines = []
 
-        for line in self.value:
-            display_line = self.get_line_display(line)
-            table_line = u'<tr>{}</tr>'.format(display_line)
-            table_lines.append(table_line)
+        if self.value:
+            for line in self.value:
+                display_line = self.get_line_display(line)
+                table_line = u'<tr>{}</tr>'.format(display_line)
+                table_lines.append(table_line)
 
-        html_table = u''.join(table_lines)
+        table_body = u''.join(table_lines)
+        return table_body
 
-        return html_table
+    def get_header_labels(self):
+        """
+        Return labels to display in header colummns.
+        """
+        header_labels = []
+
+        for column in self.columns:
+            if column['mode'] != 'hidden':
+                field_id = column['name']
+                if field_id not in self.reference_field_ids:
+                    header_labels.append(column['label'])
+                elif field_id == 'division':
+                    header_labels.append(u'Cadastral reference')
+
+        return header_labels
 
     def get_line_display(self, line):
         """
-        Render HTML table line display of a line value of initial_estate datagrid.
+        Render HTML table line display of a line value of the datagrid.
         """
         index = self.value.index(line)
         datagrid_widget = self.widgets[index]
 
-        reference_field_ids = ['division', 'section', 'radical', 'bis', 'exposant', 'power']
-
         display_line = []
         for field_id, widget in datagrid_widget.subform.widgets.items():
-            if field_id not in reference_field_ids:
-                cell_value = self.get_display_value(field_id, line)
-                html_cell = u'<td>{value}</td>'.format(value=cell_value)
-                display_line.append(html_cell)
+            # render cell content only if widget is not hidden
+            if widget.mode != 'hidden':
+                if field_id not in self.reference_field_ids:
+                    cell_value = self.get_display_value(field_id, line)
+                    html_cell = u'<td class="datagridwidget-cell">{value}</td>'.format(value=cell_value)
+                    display_line.append(html_cell)
 
-            elif field_id == 'division':
-                reference = self.get_reference_display(line)
-                html_cell = u'<td>{value}</td>'.format(value=reference)
-                display_line.append(html_cell)
+                elif field_id == 'division':
+                    reference = self.get_reference_display(line)
+                    html_cell = u'<td class="datagridwidget-cell">{value}</td>'.format(value=reference)
+                    display_line.append(html_cell)
 
         html_line = u''.join(display_line)
         return html_line

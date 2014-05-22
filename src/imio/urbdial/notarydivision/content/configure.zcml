@@ -44,7 +44,7 @@
         mode="display"
         widget="imio.urbdial.notarydivision.content.NotaryDivision_view.EstateDataGridField"
         layer="imio.urbdial.notarydivision.interfaces.IImioUrbdialNotarydivisionLayer"
-        template="templates/initial_estate_display.pt"
+        template="templates/datagrid_estate_display.pt"
     />
 
     <!-- Localities Vocabulary -->

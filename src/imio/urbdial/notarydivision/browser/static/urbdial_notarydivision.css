@@ -26,6 +26,7 @@ tr.field_row_display{
 }
 .datagridwidget-cell{
    vertical-align: top;
+   padding-right: 1em;
 }
 
 
