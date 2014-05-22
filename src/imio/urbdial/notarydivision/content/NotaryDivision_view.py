@@ -47,6 +47,9 @@ class InitialEstateDataGridField(DataGridField):
         """
         Render table HTML display of initial_estate datagrid.
         """
+        if not self.value:
+            return u''
+
         table_lines = []
 
         for line in self.value:
