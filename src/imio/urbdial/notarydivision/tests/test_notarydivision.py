@@ -206,9 +206,8 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         self.browser.open(self.test_divnot.absolute_url() + '/edit')
         contents = self.browser.contents
         msg = 'Localities vocabulary not displayed in locality field of initial_estate'
-        self.assertTrue('widgets-locality-0" value="Aiseau-Presles">' in contents, msg)
-        self.assertTrue('widgets-locality-7" value="Namur">' in contents, msg)
-        self.assertTrue('widgets-locality-10" value="Wanze">' in contents, msg)
+        self.assertTrue('widgets-locality-0" value="6250">Aiseau-Presles' in contents, msg)
+        self.assertTrue('widgets-locality-8" value="5000">Namur' in contents, msg)
 
 
 class TestInitialEstateFieldCustomDataGrid(NotaryDivisionFunctionalBrowserTest):

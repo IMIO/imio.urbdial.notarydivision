@@ -33,14 +33,25 @@ class TestVocabularies(unittest.TestCase):
         """
         voc_name = 'imio.urbdial.notarydivision.localities'
         record = self.registry.records.get(voc_name)
-        localities = record.value
+        localities = record.value.values()
         self.assertTrue(u'Aiseau-Presles' in localities)
         self.assertTrue(u'Namur' in localities)
         self.assertTrue(u'Wanze' in localities)
 
     def test_localities_vocabulary_factory_registration(self):
         """
-        Register the localities voc factory as a named utility.
+        Localities voc factory should be registered as a named utility.
         """
         factory_name = 'imio.urbdial.notarydivision.Localities'
         self.assertTrue(queryUtility(IVocabularyFactory, factory_name))
+
+    def test_localities_vocabulary_is_sorted_on_title(self):
+        """
+        Localities should be sorted on title.
+        """
+        factory_name = 'imio.urbdial.notarydivision.Localities'
+        localities_voc_factory = queryUtility(IVocabularyFactory, factory_name)
+
+        localities = localities_voc_factory(self.portal)
+        localities_title = [term.title for term in localities]
+        self.assertTrue(localities_title == sorted(localities_title))
