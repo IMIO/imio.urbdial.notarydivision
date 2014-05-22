@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-20 11:56+0000\n"
+"POT-Creation-Date: 2014-05-22 13:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/NotaryDivision.py:109
+#: ../content/NotaryDivision.py:117
 msgid "Applicants"
 msgstr ""
 
@@ -25,19 +25,23 @@ msgstr ""
 msgid "Bis"
 msgstr ""
 
-#: ../content/templates/initial_estate_display.pt:12
+#: ../content/templates/initial_estate_display.pt:15
 msgid "Cadastral reference"
+msgstr ""
+
+#: ../content/NotaryDivision.py:142
+msgid "Created estate"
 msgstr ""
 
 #: ../content/NotaryDivision.py:49
 msgid "Division"
 msgstr ""
 
-#: ../content/NotaryDivision.py:118
+#: ../content/NotaryDivision.py:126
 msgid "Estate actual use"
 msgstr ""
 
-#: ../content/NotaryDivision.py:98
+#: ../content/NotaryDivision.py:106
 msgid "Exclude from navigation"
 msgstr ""
 
@@ -49,11 +53,12 @@ msgstr ""
 msgid "Firstname"
 msgstr ""
 
-#: ../content/NotaryDivision.py:124
+#: ../content/NotaryDivision.py:132
 msgid "Initial estate"
 msgstr ""
 
 #: ../content/NotaryDivision.py:44
+#: ../content/templates/initial_estate_display.pt:12
 msgid "Locality"
 msgstr ""
 
@@ -81,7 +86,7 @@ msgstr ""
 msgid "Radical"
 msgstr ""
 
-#: ../content/NotaryDivision.py:103
+#: ../content/NotaryDivision.py:111
 msgid "Reference"
 msgstr ""
 
@@ -89,7 +94,7 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: ../content/templates/initial_estate_display.pt:18
+#: ../content/templates/initial_estate_display.pt:21
 msgid "Specific rights"
 msgstr ""
 
@@ -98,7 +103,7 @@ msgid "Specific rights (case of undivided or dismembered estate)"
 msgstr ""
 
 #: ../content/NotaryDivision.py:79
-#: ../content/templates/initial_estate_display.pt:15
+#: ../content/templates/initial_estate_display.pt:18
 msgid "Surface"
 msgstr ""
 

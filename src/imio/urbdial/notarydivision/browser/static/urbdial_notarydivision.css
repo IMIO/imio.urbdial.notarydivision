@@ -49,3 +49,16 @@ tr.field_row_display{
     height: 1.4em;
     width: 30em;
 }
+#formfield-form-widgets-created_estate table{
+    width: 0%;
+}
+#formfield-form-widgets-created_estate input[name$=locality]{
+    width: 12em;
+}
+#formfield-form-widgets-created_estate input[name$=division]{
+    width: 12em;
+}
+#formfield-form-widgets-created_estate textarea[name$=specific_rights]{
+    height: 1.4em;
+    width: 30em;
+}

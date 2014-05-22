@@ -4,7 +4,7 @@ from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.content.NotaryDivision_view import initial_estate_DataGridFieldFactory
+from imio.urbdial.notarydivision.content.NotaryDivision_view import estate_DataGridFieldFactory
 
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
@@ -86,6 +86,14 @@ class IInitialEstateRowSchema(zope.interface.Interface):
     )
 
 
+# Created estate's DataGridField schema #
+
+class ICreatedEstateRowSchema(IInitialEstateRowSchema):
+    """
+    Schema for DataGridField widget's row of field 'created_estate'
+    """
+
+
 # NotaryDivision schema #
 
 class INotaryDivision(model.Schema):
@@ -119,12 +127,22 @@ class INotaryDivision(model.Schema):
         required=False,
     )
 
-    form.widget('initial_estate', initial_estate_DataGridFieldFactory)
+    form.widget('initial_estate', estate_DataGridFieldFactory)
     initial_estate = schema.List(
         title=_(u'Initial estate'),
         required=False,
         value_type=DictRow(
             schema=IInitialEstateRowSchema,
+            required=False
+        ),
+    )
+
+    form.widget('created_estate', estate_DataGridFieldFactory)
+    created_estate = schema.List(
+        title=_(u'Created estate'),
+        required=False,
+        value_type=DictRow(
+            schema=ICreatedEstateRowSchema,
             required=False
         ),
     )

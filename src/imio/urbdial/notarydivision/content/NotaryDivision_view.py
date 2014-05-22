@@ -40,7 +40,7 @@ class NotaryDivisionView(view.DefaultView):
     """
 
 
-class InitialEstateDataGridField(DataGridField):
+class EstateDataGridField(DataGridField):
     """Custom DataGridField for 'initial_estate' field."""
 
     def display_initial_state(self):
@@ -63,23 +63,32 @@ class InitialEstateDataGridField(DataGridField):
 
     def get_line_display(self, line):
         """
-        Render HTMl display of a line value of initial_estate field.
+        Render HTML table line display of a line value of initial_estate datagrid.
         """
-        locality = self.get_display_value('locality', line)
-        reference = self.get_reference(line)
-        surface = self.get_display_value('surface', line)
-        specific_rights = self.get_display_value('specific_rights', line)
+        index = self.value.index(line)
+        datagrid_widget = self.widgets[index]
 
-        display_line = u'<td>{locality}</td><td>{reference}</td><td>{surface}</td><td>{specific_rights}</td>'.format(
-            locality=locality,
-            reference=reference,
-            surface=surface,
-            specific_rights=specific_rights,
-        )
+        reference_field_ids = ['division', 'section', 'radical', 'bis', 'exposant', 'power']
 
-        return display_line
+        display_line = []
+        for field_id, widget in datagrid_widget.subform.widgets.items():
+            if field_id not in reference_field_ids:
+                cell_value = self.get_display_value(field_id, line)
+                html_cell = u'<td>{value}</td>'.format(value=cell_value)
+                display_line.append(html_cell)
 
-    def get_reference(self, line):
+            elif field_id == 'division':
+                reference = self.get_reference_display(line)
+                html_cell = u'<td>{value}</td>'.format(value=reference)
+                display_line.append(html_cell)
+
+        html_line = u''.join(display_line)
+        return html_line
+
+    def get_reference_display(self, line):
+        """
+        Render HTML cell of cadastral reference value.
+        """
         reference_fields = ['division', 'section', 'radical', 'bis', 'exposant', 'power']
         reference_values = [line[name] for name in reference_fields if line[name] is not None]
         reference = ' '.join(reference_values)
@@ -97,6 +106,6 @@ class InitialEstateDataGridField(DataGridField):
 
 
 @zope.interface.implementer(interfaces.IFieldWidget)
-def initial_estate_DataGridFieldFactory(field, request):
-    """IFieldWidget factory for InitialEstateDataGridField."""
-    return FieldWidget(field, InitialEstateDataGridField(request))
+def estate_DataGridFieldFactory(field, request):
+    """IFieldWidget factory for EstateDataGridField."""
+    return FieldWidget(field, EstateDataGridField(request))

@@ -219,7 +219,7 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         contents = self.browser.contents
 
         msg = "field 'created_estate' is not editable"
-        self.assertTrue('Ensemble immobilier created' in contents, msg)
+        self.assertTrue('Ensemble immobilier créé' in contents, msg)
 
         datagrid_columns = [
             ('locality', 'Commune'),
@@ -251,11 +251,11 @@ class TestInitialEstateFieldCustomDataGrid(NotaryDivisionFunctionalBrowserTest):
         DataGridField of initial_estate field should be overriden so we can regsiter our
         custom display template on it.
         """
-        from imio.urbdial.notarydivision.content.NotaryDivision_view import InitialEstateDataGridField
+        from imio.urbdial.notarydivision.content.NotaryDivision_view import EstateDataGridField
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
         initial_estate_widget = view.widgets['initial_estate']
-        self.assertTrue(isinstance(initial_estate_widget, InitialEstateDataGridField))
+        self.assertTrue(isinstance(initial_estate_widget, EstateDataGridField))
 
     def test_custom_display_template_is_registered(self):
         """
