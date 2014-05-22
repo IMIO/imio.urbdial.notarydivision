@@ -23,11 +23,7 @@
             </tr>
         </thead>
         <tbody id="datagridwidget-tbody" tal:attributes="data-name_prefix view/name_prefix; data-id_prefix view/id_prefix">
-            <tal:block repeat="line view/value">
-                <tr>
-                    <td tal:replace="structure python:view.display_initial_state_line(line)"></td>
-                </tr>
-            </tal:block>
+            <tal:block replace="structure view/display_initial_state" />
         </tbody>
     </table>
 </html>

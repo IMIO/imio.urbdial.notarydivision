@@ -43,12 +43,27 @@ class NotaryDivisionView(view.DefaultView):
 class InitialEstateDataGridField(DataGridField):
     """Custom DataGridField for 'initial_estate' field."""
 
-    def display_initial_state_line(self, line):
+    def display_initial_state(self):
+        """
+        Render table HTML display of initial_estate datagrid.
+        """
+        table_lines = []
+
+        for line in self.value:
+            display_line = self.get_line_display(line)
+            table_line = u'<tr>{}</tr>'.format(display_line)
+            table_lines.append(table_line)
+
+        html_table = u''.join(table_lines)
+
+        return html_table
+
+    def get_line_display(self, line):
         """
         Render HTMl display of a line value of initial_estate field.
         """
         locality = self.get_display_value('locality', line)
-        reference = self._get_initial_state_reference(line)
+        reference = self.get_reference(line)
         surface = self.get_display_value('surface', line)
         specific_rights = self.get_display_value('specific_rights', line)
 
@@ -61,17 +76,21 @@ class InitialEstateDataGridField(DataGridField):
 
         return display_line
 
-    def _get_initial_state_reference(self, line):
+    def get_reference(self, line):
         reference_fields = ['division', 'section', 'radical', 'bis', 'exposant', 'power']
         reference_values = [line[name] for name in reference_fields if line[name] is not None]
         reference = ' '.join(reference_values)
         return reference
 
-    def get_display_value(self, value_name, line):
-        val = line[value_name]
+    def get_display_value(self, field_id, line):
+        val = line[field_id]
         if val is None:
-            val = '<span class="discreet">N.C</span>'
-        return val
+            display_value = '<span class="discreet">N.C</span>'
+        else:
+            index = self.value.index(line)
+            widget = self.widgets[index].subform.widgets[field_id]
+            display_value = widget.render()
+        return display_value
 
 
 @zope.interface.implementer(interfaces.IFieldWidget)
