@@ -23,5 +23,12 @@ after_success:
 
 notifications:
   email:
-    - franck.ngaha@imio.be
-    - simon.delcourt@imio.be
+    recipients:
+      - devs@imio.be
+    on_success: change
+    on_failure: change
+  irc:
+    channels:
+      - "irc.freenode.org#imio"
+    on_success: change
+    on_failure: always
