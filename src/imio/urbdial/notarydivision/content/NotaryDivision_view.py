@@ -91,12 +91,12 @@ class EstateDataGridField(DataGridField):
             if widget.mode != 'hidden':
                 if field_id not in self.reference_field_ids:
                     cell_value = self.get_display_value(field_id, line)
-                    html_cell = u'<td class="datagridwidget-cell">{value}</td>'.format(value=cell_value)
+                    html_cell = u'<td class="datagridwidget-cell datagridwidget-cell-display">{value}</td>'.format(value=cell_value)
                     display_line.append(html_cell)
 
                 elif field_id == 'division':
                     reference = self.get_reference_display(line)
-                    html_cell = u'<td class="datagridwidget-cell">{value}</td>'.format(value=reference)
+                    html_cell = u'<td class="datagridwidget-cell datagridwidget-cell-display">{value}</td>'.format(value=reference)
                     display_line.append(html_cell)
 
         html_line = u''.join(display_line)
