@@ -88,10 +88,64 @@ class IInitialEstateRowSchema(zope.interface.Interface):
 
 # Created estate's DataGridField schema #
 
-class ICreatedEstateRowSchema(IInitialEstateRowSchema):
+class ICreatedEstateRowSchema(zope.interface.Interface):
     """
     Schema for DataGridField widget's row of field 'created_estate'
+    We fully duplicate the schema of IInitialEstateRowSchema rather than
+    inheriting it because fields reordering is likely impossible to be done
+    in a clean way.
     """
+
+    locality = schema.Choice(
+        title=_(u'Locality'),
+        vocabulary='imio.urbdial.notarydivision.Localities',
+    )
+
+    division = schema.TextLine(
+        title=_(u'Division'),
+        required=False,
+    )
+
+    section = schema.TextLine(
+        title=_(u'Section'),
+        required=False,
+    )
+
+    radical = schema.TextLine(
+        title=_(u'Radical'),
+        required=False,
+    )
+
+    bis = schema.TextLine(
+        title=_(u'Bis'),
+        required=False,
+    )
+
+    exposant = schema.TextLine(
+        title=_(u'Exposant'),
+        required=False,
+    )
+
+    power = schema.TextLine(
+        title=_(u'Power'),
+        required=False,
+    )
+
+    surface = schema.TextLine(
+        title=_(u'Surface'),
+        required=False,
+    )
+
+    surface_accuracy = schema.Choice(
+        title=_(u'Surface accuracy'),
+        vocabulary='imio.urbdial.notarydivision.SurfaceAccuracies',
+        required=False,
+    )
+
+    specific_rights = schema.Text(
+        title=_(u'Specific rights (case of undivided or dismembered estate)'),
+        required=False,
+    )
 
 
 # NotaryDivision schema #

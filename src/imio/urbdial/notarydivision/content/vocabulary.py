@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from Products.CMFPlone.utils import normalizeString
+
+from imio.urbdial.notarydivision.utils import translate as _
+
 from plone import api
 
 from zope.schema.vocabulary import SimpleTerm
@@ -24,5 +28,25 @@ class LocalitiesVocabularyFactory(object):
 
         # Sort values alphabetically
         vocabulary_terms = sorted(vocabulary_terms, key=lambda term: term.title)
+        vocabulary = SimpleVocabulary(vocabulary_terms)
+        return vocabulary
+
+
+class SurfaceAccuraciesVocabularyFactory(object):
+    """
+    Vocabulary factory for surface accuracy
+    """
+
+    def __call__(self, context):
+        registry = api.portal.get_tool('portal_registry')
+        accuracies = registry.records.get('imio.urbdial.notarydivision.surface_accuracies')
+
+        vocabulary_terms = []
+        for accuracy in accuracies.value:
+            term_key = normalizeString(accuracy)
+            vocabulary_terms.append(
+                SimpleTerm(term_key, term_key, _(accuracy))
+            )
+
         vocabulary = SimpleVocabulary(vocabulary_terms)
         return vocabulary

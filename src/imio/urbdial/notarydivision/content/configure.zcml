@@ -54,4 +54,11 @@
         provides="zope.schema.interfaces.IVocabularyFactory"
     />
 
+    <!-- Surface accuracy Vocabulary -->
+    <utility
+        factory=".vocabulary.SurfaceAccuraciesVocabularyFactory"
+        name="imio.urbdial.notarydivision.SurfaceAccuracies"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
 </configure>

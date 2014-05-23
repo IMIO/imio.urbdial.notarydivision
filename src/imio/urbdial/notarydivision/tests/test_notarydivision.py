@@ -168,6 +168,13 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             msg = "column '{}' of 'initial_estate' field is not translated".format(column_name)
             self.assertTrue(translation in contents, msg)
 
+    def test_locality_field_vocabulary_displayed_for_initial_estate_field(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'Localities vocabulary not displayed in locality field of initial_estate'
+        self.assertTrue('initial_estate-AA-widgets-locality-0" value="6250">Aiseau-Presles' in contents, msg)
+        self.assertTrue('initial_estate-AA-widgets-locality-8" value="5000">Namur' in contents, msg)
+
     def test_created_estate_attribute(self):
         test_divnot = aq_base(self.test_divnot)
         self.assertTrue(hasattr(test_divnot, 'created_estate'))
@@ -195,14 +202,29 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             ('bis', 'Bis'),
             ('exposant', 'Exposant'),
             ('power', 'Puissance'),
-            ('surface', 'Superficie'),
-            ('specific_rights', 'Droits des parties (indivision ou démembrement'),
+            ('surface_accuracy', 'Superficie'),
+            ('surface', ''),
+            ('specific_rights', 'Droits des parties (indivision ou démembrement)'),
         ]
         for column_name, translation in datagrid_columns:
             msg = "column '{}' of 'created_estate' field is not editable".format(column_name)
             self.assertTrue('id="form-widgets-created_estate-AA-widgets-{}"'.format(column_name) in contents, msg)
             msg = "column '{}' of 'created_estate' field is not translated".format(column_name)
             self.assertTrue(translation in contents, msg)
+
+    def test_locality_field_vocabulary_displayed_for_created_estate_field(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'Localities vocabulary not displayed in locality field of created_estate'
+        self.assertTrue('created_estate-AA-widgets-locality-0" value="6250">Aiseau-Presles' in contents, msg)
+        self.assertTrue('created_estate-AA-widgets-locality-8" value="5000">Namur' in contents, msg)
+
+    def test_surface_accuracy_field_vocabulary_displayed_for_created_estate_field(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'Surface accuracy vocabulary not displayed in locality field of created_estate'
+        self.assertTrue('created_estate-AA-widgets-surface_accuracy-0" value="cadastrale">' in contents, msg)
+        self.assertTrue('created_estate-AA-widgets-surface_accuracy-1" value="mesuree">' in contents, msg)
 
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):

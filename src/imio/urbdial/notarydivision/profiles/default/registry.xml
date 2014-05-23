@@ -1,0 +1,15 @@
+<registry>
+    <record
+        field="surface_accuracy"
+        interface="imio.urbdial.notarydivision.content.interfaces.INotaryDivision"
+        name="imio.urbdial.notarydivision.surface_accuracies">
+        <field type="plone.registry.field.Tuple">
+            <title>Walloon localities</title>
+            <value_type type="plone.registry.field.TextLine" />
+        </field>
+        <value>
+            <element>cadastrale</element>
+            <element>mesurée</element>
+        </value>
+    </record>
+</registry>

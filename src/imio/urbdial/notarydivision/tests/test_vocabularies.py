@@ -24,7 +24,7 @@ class TestVocabularies(unittest.TestCase):
         portal_registry after installation.
         """
         voc_name = 'imio.urbdial.notarydivision.localities'
-        msg = 'Localities are not loaded in the regsitry'
+        msg = 'Localities are not loaded in the registry'
         self.assertTrue(voc_name in self.registry.records, msg)
 
     def test_localities_vocabulary_values(self):
@@ -55,3 +55,29 @@ class TestVocabularies(unittest.TestCase):
         localities = localities_voc_factory(self.portal)
         localities_title = [term.title for term in localities]
         self.assertTrue(localities_title == sorted(localities_title))
+
+    def test_surface_accuracy_vocabulary_registration(self):
+        """
+        Surface accuracies defined in registry.xml should be available in
+        portal_registry after installation.
+        """
+        voc_name = 'imio.urbdial.notarydivision.surface_accuracies'
+        msg = 'Surface accuracies are not loaded in the registry'
+        self.assertTrue(voc_name in self.registry.records, msg)
+
+    def test_surface_accuracy_vocabulary_values(self):
+        """
+        Test some surface_accuracy values.
+        """
+        voc_name = 'imio.urbdial.notarydivision.surface_accuracies'
+        record = self.registry.records.get(voc_name)
+        surface_accuracies = record.value
+        self.assertTrue(u'cadastrale' in surface_accuracies)
+        self.assertTrue(u'mesurée' in surface_accuracies)
+
+    def test_surface_accuracy_vocabulary_factory_registration(self):
+        """
+        Surface accuracies voc factory should be registered as a named utility.
+        """
+        factory_name = 'imio.urbdial.notarydivision.SurfaceAccuracies'
+        self.assertTrue(queryUtility(IVocabularyFactory, factory_name))
