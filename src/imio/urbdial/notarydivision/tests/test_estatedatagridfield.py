@@ -9,7 +9,7 @@ from zope.pagetemplate.interfaces import IPageTemplate
 import transaction
 
 
-class TestEstateDataGridFieldFunctional(NotaryDivisionBrowserTest):
+class TestEstateDataGridField(NotaryDivisionBrowserTest):
     """
     Test EstateDataGridField which customize the display template to render
     the cadastral reference  (divsion, section, radical, exposant, power) in one colum.
@@ -140,7 +140,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'exposant': 'E',
             'power': '66',
             'surface': '',
-            'surface_accuracy': 'measured',
+            'surface_accuracy': None,
             'specific_rights': None,
         }
         self.test_divnot.initial_estate = [initial_estate_value]
