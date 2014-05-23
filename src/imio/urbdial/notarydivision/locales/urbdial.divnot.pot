@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-22 13:58+0000\n"
+"POT-Creation-Date: 2014-05-23 09:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/NotaryDivision.py:117
+#: ../content/NotaryDivision.py:171
 msgid "Applicants"
 msgstr ""
 
@@ -25,11 +25,11 @@ msgstr ""
 msgid "Bis"
 msgstr ""
 
-#: ../content/templates/initial_estate_display.pt:15
+#. Default: "Référence cadastrale"
 msgid "Cadastral reference"
 msgstr ""
 
-#: ../content/NotaryDivision.py:142
+#: ../content/NotaryDivision.py:196
 msgid "Created estate"
 msgstr ""
 
@@ -37,11 +37,11 @@ msgstr ""
 msgid "Division"
 msgstr ""
 
-#: ../content/NotaryDivision.py:126
+#: ../content/NotaryDivision.py:180
 msgid "Estate actual use"
 msgstr ""
 
-#: ../content/NotaryDivision.py:106
+#: ../content/NotaryDivision.py:160
 msgid "Exclude from navigation"
 msgstr ""
 
@@ -53,12 +53,11 @@ msgstr ""
 msgid "Firstname"
 msgstr ""
 
-#: ../content/NotaryDivision.py:132
+#: ../content/NotaryDivision.py:186
 msgid "Initial estate"
 msgstr ""
 
 #: ../content/NotaryDivision.py:44
-#: ../content/templates/initial_estate_display.pt:12
 msgid "Locality"
 msgstr ""
 
@@ -86,7 +85,7 @@ msgstr ""
 msgid "Radical"
 msgstr ""
 
-#: ../content/NotaryDivision.py:111
+#: ../content/NotaryDivision.py:165
 msgid "Reference"
 msgstr ""
 
@@ -94,17 +93,16 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: ../content/templates/initial_estate_display.pt:21
-msgid "Specific rights"
-msgstr ""
-
 #: ../content/NotaryDivision.py:84
 msgid "Specific rights (case of undivided or dismembered estate)"
 msgstr ""
 
 #: ../content/NotaryDivision.py:79
-#: ../content/templates/initial_estate_display.pt:18
 msgid "Surface"
+msgstr ""
+
+#: ../content/NotaryDivision.py:140
+msgid "Surface accuracy"
 msgstr ""
 
 #: ../setuphandlers.py:114
