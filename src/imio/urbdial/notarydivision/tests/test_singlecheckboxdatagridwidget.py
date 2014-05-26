@@ -40,7 +40,7 @@ class TestSingleCheckBoxDataGridWidgetFunctional(NotaryDivisionFunctionalBrowser
         return built_widget
 
     def test_SingleCheckBoxDataGridWidget_is_widget_of_field_built(self):
-        from imio.urbdial.notarydivision.content.NotaryDivision_view import SingleCheckBoxDataGridWidget
+        from imio.urbdial.notarydivision.content.notarydivision_view import SingleCheckBoxDataGridWidget
         built_widget = self.getBuiltFieldWidget('view')
         self.assertTrue(isinstance(built_widget, SingleCheckBoxDataGridWidget))
 

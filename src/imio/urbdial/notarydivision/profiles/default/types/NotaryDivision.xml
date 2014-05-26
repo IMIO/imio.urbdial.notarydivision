@@ -19,11 +19,11 @@
  </property>
  <property name="default_view_fallback">False</property>
  <property name="add_permission">cmf.AddPortalContent</property>
- <property name="klass">imio.urbdial.notarydivision.content.NotaryDivision.NotaryDivision</property>
+ <property name="klass">imio.urbdial.notarydivision.content.notarydivision.NotaryDivision</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>
  </property>
- <property name="schema">imio.urbdial.notarydivision.content.NotaryDivision.INotaryDivision</property>
+ <property name="schema">imio.urbdial.notarydivision.content.notarydivision.INotaryDivision</property>
  <property name="schema_policy">dexterity</property>
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="@@edit"/>

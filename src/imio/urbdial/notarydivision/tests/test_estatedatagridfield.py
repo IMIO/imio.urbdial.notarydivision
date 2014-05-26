@@ -16,7 +16,7 @@ class TestEstateDataGridField(NotaryDivisionBrowserTest):
     """
 
     def test_EstateDataGridField_is_widget_of_field_initial_estate(self):
-        from imio.urbdial.notarydivision.content.NotaryDivision_view import EstateDataGridField
+        from imio.urbdial.notarydivision.content.notarydivision_view import EstateDataGridField
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
         initial_estate_widget = view.widgets['initial_estate']
@@ -42,7 +42,7 @@ class TestEstateDataGridField(NotaryDivisionBrowserTest):
             self.assertTrue(label in contents, msg)
 
     def test_EstateDataGridField_is_widget_of_field_created_estate(self):
-        from imio.urbdial.notarydivision.content.NotaryDivision_view import EstateDataGridField
+        from imio.urbdial.notarydivision.content.notarydivision_view import EstateDataGridField
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
         initial_estate_widget = view.widgets['initial_estate']

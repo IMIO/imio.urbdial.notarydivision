@@ -4,7 +4,7 @@ from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.content.NotaryDivision_view import estate_DataGridFieldFactory
+from imio.urbdial.notarydivision.content.notarydivision_view import estate_DataGridFieldFactory
 
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
