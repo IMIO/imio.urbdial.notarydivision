@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="urbdial.divnot">
 
     <!-- Publish static files -->
@@ -16,5 +17,14 @@
      template="templates/redirect_root_view.pt"
      permission="zope2.View"
   />
+
+    <!-- Register custom display template for EstateDataGridField widget-->
+    <z3c:widgetTemplate
+        for="..content.interfaces.INotaryDivision"
+        mode="display"
+        widget=".estate_datagridfield.EstateDataGridField"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="templates/datagrid_estate_display.pt"
+    />
 
 </configure>

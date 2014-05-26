@@ -38,15 +38,6 @@
         permission="zope2.View"
     />
 
-    <!-- Customize display of field 'initial_estate' -->
-    <z3c:widgetTemplate
-        for=".interfaces.INotaryDivision"
-        mode="display"
-        widget=".notarydivision_view.EstateDataGridField"
-        layer="z3c.form.interfaces.IFormLayer"
-        template="templates/datagrid_estate_display.pt"
-    />
-
     <!-- customize checkbox in a datagrid to hide the label -->
     <adapter
       factory=".notarydivision_view.SingleCheckBoxDataGridFieldWidget"
