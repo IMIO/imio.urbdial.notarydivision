@@ -65,3 +65,10 @@ tr.field_row_display{
     height: 1.4em;
     width: 30em;
 }
+
+
+/* Align checkbox to the middle of the datagrid column*/
+.datagridwidget-cell span[id$=widgets-built]{
+    display: block;
+    text-align: center;
+}
