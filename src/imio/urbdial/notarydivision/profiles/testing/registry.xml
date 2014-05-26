@@ -1,7 +1,7 @@
 <registry>
     <record
         field="locality"
-        interface="imio.urbdial.notarydivision.content.interfaces.INotaryDivision"
+        interface="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision"
         name="imio.urbdial.notarydivision.localities">
         <field type="plone.registry.field.Dict">
             <title>Walloon localities</title>

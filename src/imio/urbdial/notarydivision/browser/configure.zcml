@@ -20,11 +20,26 @@
 
     <!-- Register custom display template for EstateDataGridField widget-->
     <z3c:widgetTemplate
-        for="..content.interfaces.INotaryDivision"
+        for="..content.notarydivision.INotaryDivision"
         mode="display"
         widget=".estate_datagridfield.EstateDataGridField"
         layer="z3c.form.interfaces.IFormLayer"
         template="templates/datagrid_estate_display.pt"
+    />
+
+    <!-- Register custom edit and display templates for
+         SingleCheckBoxForDataGrid widget -->
+    <z3c:widgetTemplate
+        mode="display"
+        widget="z3c.form.interfaces.ISingleCheckBoxWidget"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="templates/datagrid_checkbox_display.pt"
+    />
+    <z3c:widgetTemplate
+        mode="input"
+        widget="z3c.form.interfaces.ISingleCheckBoxWidget"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="templates/datagrid_checkbox_input.pt"
     />
 
 </configure>

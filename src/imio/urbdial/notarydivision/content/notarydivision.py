@@ -5,6 +5,7 @@ from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_DataGridFieldFactory
+from imio.urbdial.notarydivision.content.interfaces import IDataGridBool
 
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
@@ -87,10 +88,6 @@ class IInitialEstateRowSchema(zope.interface.Interface):
 
 
 # Created estate's DataGridField schema #
-
-class IDataGridBool(schema.interfaces.IBool):
-    """ """
-
 
 class DataGridBool(schema.Bool):
     """ """

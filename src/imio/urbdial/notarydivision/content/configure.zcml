@@ -24,37 +24,26 @@
     </class>
 
     <browser:page
-        for=".interfaces.INotaryDivision"
+        for=".notarydivision.INotaryDivision"
         name="edit"
         class=".notarydivision_view.NotaryDivisionEditForm"
         permission="cmf.ModifyPortalContent"
     />
 
     <browser:page
-        for=".interfaces.INotaryDivision"
+        for=".notarydivision.INotaryDivision"
         name="view"
         class=".notarydivision_view.NotaryDivisionView"
         template="templates/notarydivision_view.pt"
         permission="zope2.View"
     />
 
-    <!-- customize checkbox in a datagrid to hide the label -->
+    <!-- register SingleCheckBoxForDataGridWidget for the field 'built'
+         (implementing IDataGridBool) -->
     <adapter
-      factory=".notarydivision_view.SingleCheckBoxDataGridFieldWidget"
-      for=".notarydivision.IDataGridBool
+      factory="..browser.singlecheckbox_for_datagrid.SingleCheckBoxForDataGridWidgetFactory"
+      for="..content.notarydivision.IDataGridBool
            plone.app.z3cform.interfaces.IPloneFormLayer"
-    />
-    <z3c:widgetTemplate
-        mode="display"
-        widget="z3c.form.interfaces.ISingleCheckBoxWidget"
-        layer="z3c.form.interfaces.IFormLayer"
-        template="templates/datagrid_checkbox_display.pt"
-    />
-    <z3c:widgetTemplate
-        mode="input"
-        widget="z3c.form.interfaces.ISingleCheckBoxWidget"
-        layer="z3c.form.interfaces.IFormLayer"
-        template="templates/datagrid_checkbox_input.pt"
     />
 
     <!-- Localities Vocabulary -->

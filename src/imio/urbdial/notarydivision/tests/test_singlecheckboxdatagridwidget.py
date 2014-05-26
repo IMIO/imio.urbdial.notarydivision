@@ -8,14 +8,14 @@ from zope.pagetemplate.interfaces import IPageTemplate
 import transaction
 
 
-class TestSingleCheckBoxDataGridWidgetFunctional(NotaryDivisionFunctionalBrowserTest):
+class TestSingleCheckBoxForDataGridWidgetFunctional(NotaryDivisionFunctionalBrowserTest):
     """
-    Test SingleCheckBoxDataGridWidget which customize the display template to render
+    Test SingleCheckBoxForDataGridWidget which customize the display template to render
     the cadastral reference  (divsion, section, radical, exposant, power) in one colum.
     """
 
     def setUp(self):
-        super(TestSingleCheckBoxDataGridWidgetFunctional, self).setUp()
+        super(TestSingleCheckBoxForDataGridWidgetFunctional, self).setUp()
         created_estate_value = {
             'locality': '',
             'division': '',
@@ -39,10 +39,10 @@ class TestSingleCheckBoxDataGridWidgetFunctional(NotaryDivisionFunctionalBrowser
         built_widget = created_estate_widget.subform.widgets['built']
         return built_widget
 
-    def test_SingleCheckBoxDataGridWidget_is_widget_of_field_built(self):
-        from imio.urbdial.notarydivision.content.notarydivision_view import SingleCheckBoxDataGridWidget
+    def test_SingleCheckBoxForDataGridWidget_is_widget_of_field_built(self):
+        from imio.urbdial.notarydivision.browser.singlecheckbox_for_datagrid import SingleCheckBoxForDataGridWidget
         built_widget = self.getBuiltFieldWidget('view')
-        self.assertTrue(isinstance(built_widget, SingleCheckBoxDataGridWidget))
+        self.assertTrue(isinstance(built_widget, SingleCheckBoxForDataGridWidget))
 
     def test_custom_display_template_is_registered_for_built_field(self):
         widget = self.getBuiltFieldWidget('view')

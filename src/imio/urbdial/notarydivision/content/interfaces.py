@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from imio.urbdial.notarydivision.content.notarydivision import INotaryDivision
+from zope import schema
 
-INotaryDivision
+
+class IDataGridBool(schema.interfaces.IBool):
+    """ """

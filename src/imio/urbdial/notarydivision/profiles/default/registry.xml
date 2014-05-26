@@ -1,7 +1,7 @@
 <registry>
     <record
         field="surface_accuracy"
-        interface="imio.urbdial.notarydivision.content.interfaces.INotaryDivision"
+        interface="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision"
         name="imio.urbdial.notarydivision.surface_accuracies">
         <field type="plone.registry.field.Tuple">
             <title>Walloon localities</title>
