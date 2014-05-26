@@ -16,5 +16,11 @@ msgstr ""
 
 
 msgid "Cadastral reference"
-msgstr "Référence cadastrale"
+msgstr ""
+
+msgid "True"
+msgstr ""
+
+msgid "False"
+msgstr ""
 

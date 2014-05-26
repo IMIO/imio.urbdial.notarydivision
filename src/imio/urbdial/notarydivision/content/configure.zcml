@@ -42,9 +42,28 @@
     <z3c:widgetTemplate
         for=".interfaces.INotaryDivision"
         mode="display"
-        widget="imio.urbdial.notarydivision.content.NotaryDivision_view.EstateDataGridField"
-        layer="imio.urbdial.notarydivision.interfaces.IImioUrbdialNotarydivisionLayer"
+        widget=".NotaryDivision_view.EstateDataGridField"
+        layer="z3c.form.interfaces.IFormLayer"
         template="templates/datagrid_estate_display.pt"
+    />
+
+    <!-- customize checkbox in a datagrid to hide the label -->
+    <adapter
+      factory=".NotaryDivision_view.SingleCheckBoxDataGridFieldWidget"
+      for=".NotaryDivision.IDataGridBool
+           plone.app.z3cform.interfaces.IPloneFormLayer"
+    />
+    <z3c:widgetTemplate
+        mode="display"
+        widget="z3c.form.interfaces.ISingleCheckBoxWidget"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="templates/datagrid_checkbox_display.pt"
+    />
+    <z3c:widgetTemplate
+        mode="input"
+        widget="z3c.form.interfaces.ISingleCheckBoxWidget"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="templates/datagrid_checkbox_input.pt"
     />
 
     <!-- Localities Vocabulary -->

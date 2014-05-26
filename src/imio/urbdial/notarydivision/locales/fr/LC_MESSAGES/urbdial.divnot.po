@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-05-23 09:32+0000\n"
+"POT-Creation-Date: 2014-05-26 11:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-#: ../content/NotaryDivision.py:171
+#: ../content/NotaryDivision.py:185
 msgid "Applicants"
 msgstr "Requérant(s)"
 
@@ -23,11 +23,15 @@ msgstr "Requérant(s)"
 msgid "Bis"
 msgstr "Bis"
 
+#: ../content/NotaryDivision.py:155
+msgid "Built"
+msgstr "Bâti"
+
 #. Default: "Référence cadastrale"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
 
-#: ../content/NotaryDivision.py:196
+#: ../content/NotaryDivision.py:210
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
@@ -35,11 +39,11 @@ msgstr "Ensemble immobilier créé"
 msgid "Division"
 msgstr "Division"
 
-#: ../content/NotaryDivision.py:180
+#: ../content/NotaryDivision.py:194
 msgid "Estate actual use"
 msgstr "Affectation actuelle du bien"
 
-#: ../content/NotaryDivision.py:160
+#: ../content/NotaryDivision.py:174
 msgid "Exclude from navigation"
 msgstr ""
 
@@ -47,11 +51,14 @@ msgstr ""
 msgid "Exposant"
 msgstr "Exposant"
 
+msgid "False"
+msgstr "Non"
+
 #: ../content/NotaryDivision.py:26
 msgid "Firstname"
 msgstr "Prénom"
 
-#: ../content/NotaryDivision.py:186
+#: ../content/NotaryDivision.py:200
 msgid "Initial estate"
 msgstr "Ensemble immobilier initial"
 
@@ -84,7 +91,7 @@ msgstr "Puissance"
 msgid "Radical"
 msgstr "Radical"
 
-#: ../content/NotaryDivision.py:165
+#: ../content/NotaryDivision.py:179
 msgid "Reference"
 msgstr "Référence"
 
@@ -100,9 +107,12 @@ msgstr "Droits des parties (indivision ou démembrement)"
 msgid "Surface"
 msgstr "Superficie"
 
-#: ../content/NotaryDivision.py:140
+#: ../content/NotaryDivision.py:149
 msgid "Surface accuracy"
 msgstr "(type)"
+
+msgid "True"
+msgstr "Oui"
 
 #. Default: "urbdial.divnot"
 #: ../setuphandlers.py:114

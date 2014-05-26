@@ -63,8 +63,8 @@ class TestEstateDataGridField(NotaryDivisionBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         datagrid_columns = [
-            'Commune', 'Référence cadastrale', 'Superficie',
-            'Bâti', 'Type d\'acte', 'Destination du lot', 'Droits des parties'
+            'Commune', 'Référence cadastrale', 'Superficie', '(type)',
+            'Bâti', 'Droits des parties'
         ]
         for label in datagrid_columns:
             msg = "Label '{}' does not appear in 'created_estate' datagrid header.".format(label)
@@ -114,6 +114,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'power': '9',
             'surface': '314 ares',
             'surface_accuracy': 'measured',
+            'built': True,
             'specific_rights': 'We called him tortoise because he taught us.',
         }
         self.test_divnot.created_estate = [created_estate_value]
@@ -131,7 +132,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
         self.assertTrue('We called him tortoise because he taught us.' in contents, msg)
 
     def test_empty_values_display(self):
-        initial_estate_value = {
+        created_estate_value = {
             'locality': '',
             'division': None,
             'section': 'A',
@@ -141,9 +142,10 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'power': '66',
             'surface': '',
             'surface_accuracy': None,
+            'built': None,
             'specific_rights': None,
         }
-        self.test_divnot.initial_estate = [initial_estate_value]
+        self.test_divnot.created_estate = [created_estate_value]
         transaction.commit()
 
         self.browser.open(self.test_divnot.absolute_url())

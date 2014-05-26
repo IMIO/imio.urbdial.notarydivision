@@ -202,8 +202,9 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             ('bis', 'Bis'),
             ('exposant', 'Exposant'),
             ('power', 'Puissance'),
-            ('surface_accuracy', 'Superficie'),
-            ('surface', ''),
+            ('surface_accuracy', '(type)'),
+            ('surface', 'Superficie'),
+            ('built', 'Bâti'),
             ('specific_rights', 'Droits des parties (indivision ou démembrement)'),
         ]
         for column_name, translation in datagrid_columns:

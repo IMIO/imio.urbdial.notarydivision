@@ -88,6 +88,15 @@ class IInitialEstateRowSchema(zope.interface.Interface):
 
 # Created estate's DataGridField schema #
 
+class IDataGridBool(schema.interfaces.IBool):
+    """ """
+
+
+class DataGridBool(schema.Bool):
+    """ """
+    implements(IDataGridBool)
+
+
 class ICreatedEstateRowSchema(zope.interface.Interface):
     """
     Schema for DataGridField widget's row of field 'created_estate'
@@ -139,6 +148,11 @@ class ICreatedEstateRowSchema(zope.interface.Interface):
     surface_accuracy = schema.Choice(
         title=_(u'Surface accuracy'),
         vocabulary='imio.urbdial.notarydivision.SurfaceAccuracies',
+        required=False,
+    )
+
+    built = DataGridBool(
+        title=_(u'Built'),
         required=False,
     )
 
