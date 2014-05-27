@@ -248,6 +248,11 @@ class INotaryDivision(model.Schema):
         required=False,
     )
 
+    geometrician = schema.Text(
+        title=_(u'Geometrician'),
+        required=False,
+    )
+
     form.widget('plan_files', MultiFileFieldWidget)
     plan_files = schema.List(
         title=_(u'Plans files'),

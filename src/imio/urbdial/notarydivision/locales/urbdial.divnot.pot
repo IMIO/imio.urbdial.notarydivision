@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-27 12:39+0000\n"
+"POT-Creation-Date: 2014-05-27 12:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,6 +71,10 @@ msgstr ""
 msgid "Firstname"
 msgstr ""
 
+#: ../content/notarydivision.py:252
+msgid "Geometrician"
+msgstr ""
+
 #: ../content/notarydivision.py:214
 msgid "Initial estate"
 msgstr ""
@@ -103,7 +107,7 @@ msgstr ""
 msgid "Plan reference"
 msgstr ""
 
-#: ../content/notarydivision.py:253
+#: ../content/notarydivision.py:258
 msgid "Plans files"
 msgstr ""
 
