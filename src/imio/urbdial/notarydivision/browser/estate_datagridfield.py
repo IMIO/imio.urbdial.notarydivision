@@ -75,8 +75,14 @@ class EstateDataGridField(DataGridField):
         Render HTML cell of cadastral reference value.
         """
         reference_fields = ['division', 'section', 'radical', 'bis', 'exposant', 'power']
-        reference_values = [line[name] for name in reference_fields if line[name] is not None]
-        reference = ' '.join(reference_values)
+        reference = ''
+        for name in reference_fields:
+            val = line[name]
+            if val:
+                if name == 'bis':
+                    reference = '{ref}/{val}'.format(ref=reference, val=val)
+                else:
+                    reference = '{ref} {val}'.format(ref=reference, val=val)
         return reference
 
     def get_display_value(self, field_id, line):
