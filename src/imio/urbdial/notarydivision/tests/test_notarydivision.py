@@ -300,6 +300,25 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         msg = "field 'plan_reference' is not editable"
         self.assertTrue('Référence du plan' in contents, msg)
 
+    def test_plan_date_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'plan_date'))
+
+    def test_plan_date_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+
+        msg = "field 'plan_date' is not displayed"
+        self.assertTrue('form-widgets-plan_date' in contents, msg)
+        msg = "field 'plan_date' is not translated"
+        self.assertTrue('Date du plan' in contents, msg)
+
+    def test_plan_date_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'plan_date' is not editable"
+        self.assertTrue('Date du plan' in contents, msg)
+
     def test_geometrician_attribute(self):
         test_divnot = aq_base(self.test_divnot)
         self.assertTrue(hasattr(test_divnot, 'geometrician'))

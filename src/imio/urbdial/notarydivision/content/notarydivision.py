@@ -248,6 +248,11 @@ class INotaryDivision(model.Schema):
         required=False,
     )
 
+    plan_date = schema.Date(
+        title=_(u'Plan date'),
+        required=False,
+    )
+
     geometrician = schema.Text(
         title=_(u'Geometrician'),
         required=False,
