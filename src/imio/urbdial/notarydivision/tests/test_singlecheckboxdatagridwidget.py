@@ -28,6 +28,7 @@ class TestSingleCheckBoxForDataGridWidgetFunctional(NotaryDivisionFunctionalBrow
             'surface_accuracy': '',
             'built': False,
             'deed_type': '',
+            'destination': '',
             'specific_rights': '',
         }
         self.test_divnot.created_estate = [created_estate_value]

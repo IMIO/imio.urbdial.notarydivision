@@ -29,7 +29,7 @@ Test datagrid fields
     Page should contain  Exposant
     Page should contain  Puissance
     Page should contain  Superficie
-    Page should contain  Droits des parties (indivision ou démembrement)
+    Page should contain  Droits des parties
 
 
 *** Keywords ***

@@ -160,7 +160,7 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             ('exposant', 'Exposant'),
             ('power', 'Puissance'),
             ('surface', 'Superficie'),
-            ('specific_rights', 'Droits des parties (indivision ou démembrement'),
+            ('specific_rights', 'Droits des parties'),
         ]
         for column_name, translation in datagrid_columns:
             msg = "column '{}' of 'initial_estate' field is not editable".format(column_name)
@@ -206,7 +206,8 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             ('surface', 'Superficie'),
             ('built', 'Bâti'),
             ('deed_type', 'Type d\'acte'),
-            ('specific_rights', 'Droits des parties (indivision ou démembrement)'),
+            ('destination', 'Destination du lot'),
+            ('specific_rights', 'Droits des parties'),
         ]
         for column_name, translation in datagrid_columns:
             msg = "column '{}' of 'created_estate' field is not editable".format(column_name)

@@ -116,6 +116,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'surface_accuracy': 'mesuree',
             'built': True,
             'deed_type': 'apport',
+            'destination': 'far away',
             'specific_rights': 'We called him tortoise because he taught us.',
         }
         self.test_divnot.created_estate = [created_estate_value]
@@ -133,6 +134,8 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
         self.assertTrue('mesurée' in contents, msg)
         msg = "Deed type of 'created_estate' field is not displayed"
         self.assertTrue('apport' in contents, msg)
+        msg = "Destination of 'created_estate' field is not displayed"
+        self.assertTrue('far away' in contents, msg)
         msg = "Specific rights value of 'created_estate field' is not displayed"
         self.assertTrue('We called him tortoise because he taught us.' in contents, msg)
 
@@ -149,6 +152,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'surface_accuracy': None,
             'built': None,
             'deed_type': None,
+            'destination': '',
             'specific_rights': None,
         }
         self.test_divnot.created_estate = [created_estate_value]

@@ -82,7 +82,7 @@ class IInitialEstateRowSchema(zope.interface.Interface):
     )
 
     specific_rights = schema.Text(
-        title=_(u'Specific rights (case of undivided or dismembered estate)'),
+        title=_(u'Specific rights'),
         required=False,
     )
 
@@ -160,8 +160,13 @@ class ICreatedEstateRowSchema(zope.interface.Interface):
         required=False,
     )
 
+    destination = schema.Text(
+        title=_(u'Parcel destination'),
+        required=False,
+    )
+
     specific_rights = schema.Text(
-        title=_(u'Specific rights (case of undivided or dismembered estate)'),
+        title=_(u'Specific rights'),
         required=False,
     )
 
