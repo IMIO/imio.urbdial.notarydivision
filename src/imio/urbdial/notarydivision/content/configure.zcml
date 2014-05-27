@@ -40,11 +40,11 @@
         permission="zope2.View"
     />
 
-    <!-- register SingleCheckBoxForDataGridWidget for the field 'built'
+    <!-- register SingleCheckBoxForDataGridWidget for the DataGridBool field 'built'
          (implementing IDataGridBool) -->
     <adapter
       factory="..browser.singlecheckbox_for_datagrid.SingleCheckBoxForDataGridWidgetFactory"
-      for="..content.notarydivision.IDataGridBool
+      for="..browser.interfaces.IDataGridBool
            plone.app.z3cform.interfaces.IPloneFormLayer"
     />
 
