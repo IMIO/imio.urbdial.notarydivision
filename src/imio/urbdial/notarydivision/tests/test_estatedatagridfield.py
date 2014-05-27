@@ -83,7 +83,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'division': 'Beez',
             'section': 'A',
             'radical': '42',
-            'bis': '^2',
+            'bis': '2',
             'exposant': 'E',
             'power': '66',
             'surface': '45 ares',
@@ -97,7 +97,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
         msg = "Locality value of 'initial_estate' field is not displayed"
         self.assertTrue('Namur' in contents, msg)
         msg = "Cadastral reference value of 'initial_estate'field is not correctly displayed"
-        self.assertTrue('Beez A 42 ^2 E 66' in contents, msg)
+        self.assertTrue('Beez A 42/2 E 66' in contents, msg)
         msg = "Surface value of 'initial_estate' field is not displayed"
         self.assertTrue('45 ares' in contents, msg)
         msg = "Specific rights value of 'initial_estate field' is not displayed"
@@ -109,7 +109,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'division': 'Jambes',
             'section': 'C',
             'radical': '666',
-            'bis': '^3',
+            'bis': '3',
             'exposant': 'F',
             'power': '9',
             'surface': '314 ares',
@@ -127,7 +127,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
         msg = "Locality value of 'created_estate' field is not displayed"
         self.assertTrue('Namur' in contents, msg)
         msg = "Cadastral reference value of 'created_estate'field is not correctly displayed"
-        self.assertTrue('Jambes C 666 ^3 F 9' in contents, msg)
+        self.assertTrue('Jambes C 666/3 F 9' in contents, msg)
         msg = "Surface value of 'created_estate' field is not displayed"
         self.assertTrue('314 ares' in contents, msg)
         msg = "Surface accuracy of 'created_estate' field is not displayed"
