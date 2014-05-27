@@ -105,6 +105,7 @@ class ICreatedEstateRowSchema(zope.interface.Interface):
     locality = schema.Choice(
         title=_(u'Locality'),
         vocabulary='imio.urbdial.notarydivision.Localities',
+        required=False,
     )
 
     division = schema.TextLine(
@@ -150,6 +151,12 @@ class ICreatedEstateRowSchema(zope.interface.Interface):
 
     built = DataGridBool(
         title=_(u'Built'),
+        required=False,
+    )
+
+    deed_type = schema.Choice(
+        title=_(u'Deed type'),
+        vocabulary='imio.urbdial.notarydivision.DeedTypes',
         required=False,
     )
 

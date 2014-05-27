@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-05-26 11:26+0000\n"
+"POT-Creation-Date: 2014-05-27 06:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,15 +15,15 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-#: ../content/NotaryDivision.py:185
+#: ../content/notarydivision.py:188
 msgid "Applicants"
 msgstr "Requérant(s)"
 
-#: ../content/NotaryDivision.py:64
+#: ../content/notarydivision.py:65
 msgid "Bis"
 msgstr "Bis"
 
-#: ../content/NotaryDivision.py:155
+#: ../content/notarydivision.py:152
 msgid "Built"
 msgstr "Bâti"
 
@@ -31,42 +31,46 @@ msgstr "Bâti"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
 
-#: ../content/NotaryDivision.py:210
+#: ../content/notarydivision.py:213
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
-#: ../content/NotaryDivision.py:49
+#: ../content/notarydivision.py:157
+msgid "Deed type"
+msgstr "Type d'acte"
+
+#: ../content/notarydivision.py:50
 msgid "Division"
 msgstr "Division"
 
-#: ../content/NotaryDivision.py:194
+#: ../content/notarydivision.py:197
 msgid "Estate actual use"
 msgstr "Affectation actuelle du bien"
 
-#: ../content/NotaryDivision.py:174
+#: ../content/notarydivision.py:177
 msgid "Exclude from navigation"
 msgstr ""
 
-#: ../content/NotaryDivision.py:69
+#: ../content/notarydivision.py:70
 msgid "Exposant"
 msgstr "Exposant"
 
 msgid "False"
 msgstr "Non"
 
-#: ../content/NotaryDivision.py:26
+#: ../content/notarydivision.py:27
 msgid "Firstname"
 msgstr "Prénom"
 
-#: ../content/NotaryDivision.py:200
+#: ../content/notarydivision.py:203
 msgid "Initial estate"
 msgstr "Ensemble immobilier initial"
 
-#: ../content/NotaryDivision.py:44
+#: ../content/notarydivision.py:45
 msgid "Locality"
 msgstr "Commune"
 
-#: ../content/NotaryDivision.py:31
+#: ../content/notarydivision.py:32
 msgid "Name"
 msgstr "Nom"
 
@@ -83,31 +87,31 @@ msgstr "Notaires"
 msgid "NotaryDivision"
 msgstr "Division notariale"
 
-#: ../content/NotaryDivision.py:74
+#: ../content/notarydivision.py:75
 msgid "Power"
 msgstr "Puissance"
 
-#: ../content/NotaryDivision.py:59
+#: ../content/notarydivision.py:60
 msgid "Radical"
 msgstr "Radical"
 
-#: ../content/NotaryDivision.py:179
+#: ../content/notarydivision.py:182
 msgid "Reference"
 msgstr "Référence"
 
-#: ../content/NotaryDivision.py:54
+#: ../content/notarydivision.py:55
 msgid "Section"
 msgstr "Section"
 
-#: ../content/NotaryDivision.py:84
+#: ../content/notarydivision.py:85
 msgid "Specific rights (case of undivided or dismembered estate)"
 msgstr "Droits des parties (indivision ou démembrement)"
 
-#: ../content/NotaryDivision.py:79
+#: ../content/notarydivision.py:80
 msgid "Surface"
 msgstr "Superficie"
 
-#: ../content/NotaryDivision.py:149
+#: ../content/notarydivision.py:146
 msgid "Surface accuracy"
 msgstr "(type)"
 

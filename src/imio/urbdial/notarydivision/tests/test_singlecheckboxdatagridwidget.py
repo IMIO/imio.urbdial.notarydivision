@@ -27,6 +27,7 @@ class TestSingleCheckBoxForDataGridWidgetFunctional(NotaryDivisionFunctionalBrow
             'surface': '',
             'surface_accuracy': '',
             'built': False,
+            'deed_type': '',
             'specific_rights': '',
         }
         self.test_divnot.created_estate = [created_estate_value]
@@ -63,19 +64,8 @@ class TestSingleCheckBoxForDataGridWidgetFunctional(NotaryDivisionFunctionalBrow
         self.assertTrue(template.filename.endswith('datagrid_checkbox_input.pt'))
 
     def test_built_field_display_when_set_to_False(self):
-        created_estate_value = {
-            'locality': '',
-            'division': '',
-            'section': '',
-            'radical': '',
-            'bis': '',
-            'exposant': '',
-            'power': '',
-            'surface': '',
-            'surface_accuracy': '',
-            'built': False,
-            'specific_rights': '',
-        }
+        created_estate_value = self.test_divnot.created_estate[0]
+        created_estate_value['built'] = False
         self.test_divnot.created_estate = [created_estate_value]
         transaction.commit()
 
@@ -86,19 +76,8 @@ class TestSingleCheckBoxForDataGridWidgetFunctional(NotaryDivisionFunctionalBrow
         self.assertTrue('<span class="selected-option">Oui</span>' not in contents, msg)
 
     def test_built_field_display_when_set_to_True(self):
-        created_estate_value = {
-            'locality': '',
-            'division': '',
-            'section': '',
-            'radical': '',
-            'bis': '',
-            'exposant': '',
-            'power': '',
-            'surface': '',
-            'surface_accuracy': '',
-            'built': True,
-            'specific_rights': '',
-        }
+        created_estate_value = self.test_divnot.created_estate[0]
+        created_estate_value['built'] = True
         self.test_divnot.created_estate = [created_estate_value]
         transaction.commit()
 

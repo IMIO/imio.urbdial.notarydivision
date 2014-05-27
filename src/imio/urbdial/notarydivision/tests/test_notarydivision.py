@@ -205,6 +205,7 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             ('surface_accuracy', '(type)'),
             ('surface', 'Superficie'),
             ('built', 'Bâti'),
+            ('deed_type', 'Type d\'acte'),
             ('specific_rights', 'Droits des parties (indivision ou démembrement)'),
         ]
         for column_name, translation in datagrid_columns:
@@ -226,6 +227,13 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         msg = 'Surface accuracy vocabulary not displayed in locality field of created_estate'
         self.assertTrue('created_estate-AA-widgets-surface_accuracy-0" value="cadastrale">' in contents, msg)
         self.assertTrue('created_estate-AA-widgets-surface_accuracy-1" value="mesuree">' in contents, msg)
+
+    def test_deed_type_field_vocabulary_displayed_for_created_estate_field(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'Deed types vocabulary not displayed in locality field of created_estate'
+        self.assertTrue('created_estate-AA-widgets-deed_type-0" value="vente">' in contents, msg)
+        self.assertTrue('created_estate-AA-widgets-deed_type-1" value="partage">' in contents, msg)
 
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):

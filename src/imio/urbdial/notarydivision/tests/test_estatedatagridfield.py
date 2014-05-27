@@ -64,7 +64,7 @@ class TestEstateDataGridField(NotaryDivisionBrowserTest):
         contents = self.browser.contents
         datagrid_columns = [
             'Commune', 'Référence cadastrale', 'Superficie', '(type)',
-            'Bâti', 'Droits des parties'
+            'Bâti', 'Type d\'acte', 'Droits des parties'
         ]
         for label in datagrid_columns:
             msg = "Label '{}' does not appear in 'created_estate' datagrid header.".format(label)
@@ -113,8 +113,9 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'exposant': 'F',
             'power': '9',
             'surface': '314 ares',
-            'surface_accuracy': 'measured',
+            'surface_accuracy': 'mesuree',
             'built': True,
+            'deed_type': 'apport',
             'specific_rights': 'We called him tortoise because he taught us.',
         }
         self.test_divnot.created_estate = [created_estate_value]
@@ -128,6 +129,10 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
         self.assertTrue('Jambes C 666 ^3 F 9' in contents, msg)
         msg = "Surface value of 'created_estate' field is not displayed"
         self.assertTrue('314 ares' in contents, msg)
+        msg = "Surface accuracy of 'created_estate' field is not displayed"
+        self.assertTrue('mesurée' in contents, msg)
+        msg = "Deed type of 'created_estate' field is not displayed"
+        self.assertTrue('apport' in contents, msg)
         msg = "Specific rights value of 'created_estate field' is not displayed"
         self.assertTrue('We called him tortoise because he taught us.' in contents, msg)
 
@@ -143,6 +148,7 @@ class TestEstateDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
             'surface': '',
             'surface_accuracy': None,
             'built': None,
+            'deed_type': None,
             'specific_rights': None,
         }
         self.test_divnot.created_estate = [created_estate_value]
