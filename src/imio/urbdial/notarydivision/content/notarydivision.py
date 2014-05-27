@@ -44,6 +44,7 @@ class IInitialEstateRowSchema(zope.interface.Interface):
     locality = schema.Choice(
         title=_(u'Locality'),
         vocabulary='imio.urbdial.notarydivision.Localities',
+        required=False,
     )
 
     division = schema.TextLine(
