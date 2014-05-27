@@ -281,6 +281,22 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         msg = "field 'article90_detail' is not editable"
         self.assertTrue('Justificatif des motifs d\'exception' in contents, msg)
 
+    def test_plan_files_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'plan_files'))
+
+    def test_plan_files_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "field 'plan_files' is not displayed (or not translated)"
+        self.assertTrue('Fichiers (plan)' in contents, msg)
+
+    def test_plan_files_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'plan_files' is not editable"
+        self.assertTrue('Fichiers (plan)' in contents, msg)
+
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):
     """

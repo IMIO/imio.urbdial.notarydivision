@@ -9,6 +9,8 @@ from imio.urbdial.notarydivision.content.interfaces import IDataGridBool
 
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
+from plone.formwidget.multifile import MultiFileFieldWidget
+from plone.namedfile import field
 from plone.supermodel import model
 
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
@@ -238,6 +240,13 @@ class INotaryDivision(model.Schema):
 
     article90_detail = schema.Text(
         title=_(u'Article 90 exceptions detail'),
+        required=False,
+    )
+
+    form.widget('plan_files', MultiFileFieldWidget)
+    plan_files = schema.List(
+        title=_(u'Plans files'),
+        value_type=field.NamedBlobFile(),
         required=False,
     )
 
