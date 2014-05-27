@@ -4,6 +4,8 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="urbdial.divnot">
 
+    <include file="vocabulary.zcml" />
+
     <!--
         This is how you register custom dexterity AddForm:
         you register a custom AddView where you set the attr 'form' to your
@@ -44,27 +46,6 @@
       factory="..browser.singlecheckbox_for_datagrid.SingleCheckBoxForDataGridWidgetFactory"
       for="..content.notarydivision.IDataGridBool
            plone.app.z3cform.interfaces.IPloneFormLayer"
-    />
-
-    <!-- Localities Vocabulary -->
-    <utility
-        factory=".vocabulary.LocalitiesVocabularyFactory"
-        name="imio.urbdial.notarydivision.Localities"
-        provides="zope.schema.interfaces.IVocabularyFactory"
-    />
-
-    <!-- Surface accuracy Vocabulary -->
-    <utility
-        factory=".vocabulary.SurfaceAccuraciesVocabularyFactory"
-        name="imio.urbdial.notarydivision.SurfaceAccuracies"
-        provides="zope.schema.interfaces.IVocabularyFactory"
-    />
-
-    <!-- Deed types Vocabulary -->
-    <utility
-        factory=".vocabulary.DeedTypesVocabularyFactory"
-        name="imio.urbdial.notarydivision.DeedTypes"
-        provides="zope.schema.interfaces.IVocabularyFactory"
     />
 
 </configure>

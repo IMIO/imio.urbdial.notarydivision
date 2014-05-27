@@ -77,3 +77,16 @@ div[id$=_estate] textarea[name$=destination]{
     display: block;
     text-align: center;
 }
+
+/* Display input chekboxes by line */
+.option{
+    display: block;
+}
+.selected-option{
+    display: inline;
+    clear: both;
+    float: left;
+}
+.option .label{
+    font-weight: normal;
+}

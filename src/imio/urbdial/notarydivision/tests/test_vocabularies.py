@@ -107,3 +107,29 @@ class TestVocabularies(unittest.TestCase):
         """
         factory_name = 'imio.urbdial.notarydivision.DeedTypes'
         self.assertTrue(queryUtility(IVocabularyFactory, factory_name))
+
+    def test_article_90_vocabulary_registration(self):
+        """
+        Reasons for article 90 vocabulary defined in registry.xml
+        should be available in portal_registry after installation.
+        """
+        voc_name = 'imio.urbdial.notarydivision.article_90_reasons'
+        msg = 'Article 90 reaons are not loaded in the registry'
+        self.assertTrue(voc_name in self.registry.records, msg)
+
+    def test_article_90_vocabulary_values(self):
+        """
+        Test some article_90 values.
+        """
+        voc_name = 'imio.urbdial.notarydivision.article_90_reasons'
+        record = self.registry.records.get(voc_name)
+        reasons = record.value
+        self.assertTrue(u"1° : la division résulte d'un ou plusieurs acte(s) de donation" in reasons)
+        self.assertTrue(u"2° : la division résulte d'un ou plusieurs acte(s) involontaire(s)" in reasons)
+
+    def test_article_90_vocabulary_factory_registration(self):
+        """
+        Article 90 reasons voc factory should be registered as a named utility.
+        """
+        factory_name = 'imio.urbdial.notarydivision.Article90Reasons'
+        self.assertTrue(queryUtility(IVocabularyFactory, factory_name))

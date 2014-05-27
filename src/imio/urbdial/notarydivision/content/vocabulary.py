@@ -70,3 +70,23 @@ class DeedTypesVocabularyFactory(object):
 
         vocabulary = SimpleVocabulary(vocabulary_terms)
         return vocabulary
+
+
+class Article90VocabularyFactory(object):
+    """
+    Vocabulary factory for article 90 reasons.
+    """
+
+    def __call__(self, context):
+        registry = api.portal.get_tool('portal_registry')
+        reasons = registry.records.get('imio.urbdial.notarydivision.article_90_reasons')
+
+        vocabulary_terms = []
+        for reason in reasons.value:
+            term_key = normalizeString(reason[:3])
+            vocabulary_terms.append(
+                SimpleTerm(term_key, term_key, _(reason))
+            )
+
+        vocabulary = SimpleVocabulary(vocabulary_terms)
+        return vocabulary

@@ -236,6 +236,32 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         self.assertTrue('created_estate-AA-widgets-deed_type-0" value="vente">' in contents, msg)
         self.assertTrue('created_estate-AA-widgets-deed_type-1" value="partage">' in contents, msg)
 
+    def test_article_90_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'article_90'))
+
+    def test_article_90_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+
+        msg = "field 'article_90' is not displayed"
+        self.assertTrue('form-widgets-article_90' in contents, msg)
+        msg = "field 'article_90' is not translated"
+        self.assertTrue('Motifs d\'exception article 90' in contents, msg)
+
+    def test_article_90_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'article_90' is not editable"
+        self.assertTrue('Motifs d\'exception article 90' in contents, msg)
+
+    def test_article_90_field_vocabulary_is_displayed(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'Article 90 vocabulary not displayed'
+        self.assertTrue('1° : la division résulte d\'un ou plusieurs acte(s) de donation' in contents, msg)
+        self.assertTrue('2° : la division résulte d\'un ou plusieurs acte(s) involontaire(s)' in contents, msg)
+
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):
     """

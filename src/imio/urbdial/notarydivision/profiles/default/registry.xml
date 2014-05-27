@@ -31,4 +31,20 @@
             <element>autre</element>
         </value>
     </record>
+    <record
+        field="article_90"
+        interface="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision"
+        name="imio.urbdial.notarydivision.article_90_reasons">
+        <field type="plone.registry.field.Tuple">
+            <title>Article 90 reasons</title>
+            <value_type type="plone.registry.field.TextLine" />
+        </field>
+        <value>
+            <element>1° : la division résulte d'un ou plusieurs acte(s) de donation</element>
+            <element>2° : la division résulte d'un ou plusieurs acte(s) involontaire(s)</element>
+            <element>3° : la division s'inscrit dans le cadre d'un partage pour sortir d'une indivision d'origine successorale ne créant pas plus de lots que de copartageants</element>
+            <element>4° : la division concerne un bien situé entre deux constructions existantes depuis au moins 5 ans, distantes de moins de 100 mètres et situées à front et du même coté d'une voirie suffisament équipée</element>
+            <element>5° : division intervenant dans le cadre d'un permis d'urbanisme de constructions groupées et répondant aux conditions énoncées par la disposition</element>
+        </value>
+    </record>
 </registry>
