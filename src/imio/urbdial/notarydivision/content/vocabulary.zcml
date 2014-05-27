@@ -1,0 +1,33 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="urbdial.divnot">
+
+    <!-- Localities Vocabulary -->
+    <utility
+        factory=".vocabulary.LocalitiesVocabularyFactory"
+        name="imio.urbdial.notarydivision.Localities"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
+    <!-- Surface accuracy Vocabulary -->
+    <utility
+        factory=".vocabulary.SurfaceAccuraciesVocabularyFactory"
+        name="imio.urbdial.notarydivision.SurfaceAccuracies"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
+    <!-- Deed types Vocabulary -->
+    <utility
+        factory=".vocabulary.DeedTypesVocabularyFactory"
+        name="imio.urbdial.notarydivision.DeedTypes"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
+    <!-- Article 90 reasons Vocabulary -->
+    <utility
+        factory=".vocabulary.Article90VocabularyFactory"
+        name="imio.urbdial.notarydivision.Article90Reasons"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
+</configure>
