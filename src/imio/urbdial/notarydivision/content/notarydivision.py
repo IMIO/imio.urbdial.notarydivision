@@ -236,6 +236,11 @@ class INotaryDivision(model.Schema):
         required=False,
     )
 
+    article90_detail = schema.Text(
+        title=_(u'Article 90 exceptions detail'),
+        required=False,
+    )
+
 
 class NotaryDivision(Container):
     """

@@ -262,6 +262,25 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         self.assertTrue('1° : la division résulte d\'un ou plusieurs acte(s) de donation' in contents, msg)
         self.assertTrue('2° : la division résulte d\'un ou plusieurs acte(s) involontaire(s)' in contents, msg)
 
+    def test_article90_detail_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'article90_detail'))
+
+    def test_article90_detail_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+
+        msg = "field 'article90_detail' is not displayed"
+        self.assertTrue('form-widgets-article90_detail' in contents, msg)
+        msg = "field 'article90_detail' is not translated"
+        self.assertTrue('Justificatif des motifs d\'exception' in contents, msg)
+
+    def test_article90_detail_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'article90_detail' is not editable"
+        self.assertTrue('Justificatif des motifs d\'exception' in contents, msg)
+
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):
     """
