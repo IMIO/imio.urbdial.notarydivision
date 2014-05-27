@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-27 12:27+0000\n"
+"POT-Creation-Date: 2014-05-27 12:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,11 @@ msgstr ""
 msgid "Parcel destination"
 msgstr ""
 
-#: ../content/notarydivision.py:248
+#: ../content/notarydivision.py:247
+msgid "Plan reference"
+msgstr ""
+
+#: ../content/notarydivision.py:253
 msgid "Plans files"
 msgstr ""
 

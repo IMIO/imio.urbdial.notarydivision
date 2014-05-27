@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-05-27 12:27+0000\n"
+"POT-Creation-Date: 2014-05-27 12:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,11 @@ msgstr "Division notariale"
 msgid "Parcel destination"
 msgstr "Destination du lot"
 
-#: ../content/notarydivision.py:248
+#: ../content/notarydivision.py:247
+msgid "Plan reference"
+msgstr "Référence du plan"
+
+#: ../content/notarydivision.py:253
 msgid "Plans files"
 msgstr "Fichiers (plan)"
 

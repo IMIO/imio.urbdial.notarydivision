@@ -243,6 +243,11 @@ class INotaryDivision(model.Schema):
         required=False,
     )
 
+    plan_reference = schema.TextLine(
+        title=_(u'Plan reference'),
+        required=False,
+    )
+
     form.widget('plan_files', MultiFileFieldWidget)
     plan_files = schema.List(
         title=_(u'Plans files'),

@@ -281,6 +281,25 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         msg = "field 'article90_detail' is not editable"
         self.assertTrue('Justificatif des motifs d\'exception' in contents, msg)
 
+    def test_plan_reference_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'plan_reference'))
+
+    def test_plan_reference_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+
+        msg = "field 'plan_reference' is not displayed"
+        self.assertTrue('form-widgets-plan_reference' in contents, msg)
+        msg = "field 'plan_reference' is not translated"
+        self.assertTrue('Référence du plan' in contents, msg)
+
+    def test_plan_reference_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'plan_reference' is not editable"
+        self.assertTrue('Référence du plan' in contents, msg)
+
     def test_plan_files_attribute(self):
         test_divnot = aq_base(self.test_divnot)
         self.assertTrue(hasattr(test_divnot, 'plan_files'))
