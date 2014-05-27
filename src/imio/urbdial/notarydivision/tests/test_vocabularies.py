@@ -81,3 +81,29 @@ class TestVocabularies(unittest.TestCase):
         """
         factory_name = 'imio.urbdial.notarydivision.SurfaceAccuracies'
         self.assertTrue(queryUtility(IVocabularyFactory, factory_name))
+
+    def test_deed_type_vocabulary_registration(self):
+        """
+        Deed types defined in registry.xml should be available in
+        portal_registry after installation.
+        """
+        voc_name = 'imio.urbdial.notarydivision.deed_types'
+        msg = 'Deed types are not loaded in the registry'
+        self.assertTrue(voc_name in self.registry.records, msg)
+
+    def test_deed_type_vocabulary_values(self):
+        """
+        Test some deed_type values.
+        """
+        voc_name = 'imio.urbdial.notarydivision.deed_types'
+        record = self.registry.records.get(voc_name)
+        deed_types = record.value
+        self.assertTrue(u"vente" in deed_types)
+        self.assertTrue(u"droit d'emphytéose" in deed_types)
+
+    def test_deed_type_vocabulary_factory_registration(self):
+        """
+        Deed types voc factory should be registered as a named utility.
+        """
+        factory_name = 'imio.urbdial.notarydivision.DeedTypes'
+        self.assertTrue(queryUtility(IVocabularyFactory, factory_name))

@@ -60,4 +60,11 @@
         provides="zope.schema.interfaces.IVocabularyFactory"
     />
 
+    <!-- Deed types Vocabulary -->
+    <utility
+        factory=".vocabulary.DeedTypesVocabularyFactory"
+        name="imio.urbdial.notarydivision.DeedTypes"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
 </configure>

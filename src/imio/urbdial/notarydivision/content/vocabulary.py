@@ -12,7 +12,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 class LocalitiesVocabularyFactory(object):
     """
-    Vocabulary factory for localities
+    Vocabulary factory for localities.
     """
 
     def __call__(self, context):
@@ -34,7 +34,7 @@ class LocalitiesVocabularyFactory(object):
 
 class SurfaceAccuraciesVocabularyFactory(object):
     """
-    Vocabulary factory for surface accuracy
+    Vocabulary factory for surface accuracy.
     """
 
     def __call__(self, context):
@@ -46,6 +46,26 @@ class SurfaceAccuraciesVocabularyFactory(object):
             term_key = normalizeString(accuracy)
             vocabulary_terms.append(
                 SimpleTerm(term_key, term_key, _(accuracy))
+            )
+
+        vocabulary = SimpleVocabulary(vocabulary_terms)
+        return vocabulary
+
+
+class DeedTypesVocabularyFactory(object):
+    """
+    Vocabulary factory for deed types.
+    """
+
+    def __call__(self, context):
+        registry = api.portal.get_tool('portal_registry')
+        deed_types = registry.records.get('imio.urbdial.notarydivision.deed_types')
+
+        vocabulary_terms = []
+        for deed_type in deed_types.value:
+            term_key = normalizeString(deed_type)
+            vocabulary_terms.append(
+                SimpleTerm(term_key, term_key, _(deed_type))
             )
 
         vocabulary = SimpleVocabulary(vocabulary_terms)

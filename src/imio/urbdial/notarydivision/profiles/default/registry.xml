@@ -12,4 +12,23 @@
             <element>mesurée</element>
         </value>
     </record>
+    <record
+        field="deed_type"
+        interface="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision"
+        name="imio.urbdial.notarydivision.deed_types">
+        <field type="plone.registry.field.Tuple">
+            <title>Deed types</title>
+            <value_type type="plone.registry.field.TextLine" />
+        </field>
+        <value>
+            <element>vente</element>
+            <element>partage</element>
+            <element>apport</element>
+            <element>constitution/cession de droit de superficie</element>
+            <element>droit d'emphytéose</element>
+            <element>droit d'usufruit</element>
+            <element>droit de nue propriété</element>
+            <element>autre</element>
+        </value>
+    </record>
 </registry>
