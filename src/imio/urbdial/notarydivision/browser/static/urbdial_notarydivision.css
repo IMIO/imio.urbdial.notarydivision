@@ -7,9 +7,6 @@ tr.field_row_display > td{
     padding-top: 1em;
     padding-right: 2em;
 }
-tr.field_row_display{
-    border-bottom: 1px solid #EFEFEF;
-}
 #content {
     font-size: 88%;
 }
@@ -70,7 +67,7 @@ div[id$=_estate] textarea[name$=destination]{
     height: 1.4em;
     width: 20em;
 }
-
+div[id$=_estate] table.display th{font-size: 0.9em;}
 
 /* Align checkbox to the middle of the datagrid column*/
 .datagridwidget-cell span[id$=widgets-built]{

@@ -29,9 +29,16 @@
                 <fieldset tal:repeat="group view/groups"
                           tal:attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
                     <legend tal:content="group/label" />
-                    <tal:block tal:repeat="widget group/widgets/values">
-                        <tal:widget tal:replace="structure widget/@@ploneform-render-widget"/>
-                    </tal:block>
+                    <table class="no-style-table">
+                        <tr tal:repeat="widget group/widgets/values" class="field_row_display">
+                            <td style="vertical-align:top"class="table_widget_label">
+                                <label>
+                                    <tal:label content="widget/label">Label</tal:label>:
+                                </label>
+                            </td>
+                            <td class="table_widget_value" tal:content="structure widget/render">Value</td>
+                        </tr>
+                    </table>
                 </fieldset>
 
                 <fieldset id="folder-listing">

@@ -185,6 +185,12 @@ class INotaryDivision(model.Schema):
         default=True,
     )
 
+    model.fieldset(
+        'base',
+        label=_(u"Base"),
+        fields=['reference', 'applicants', 'actual_use']
+    )
+
     reference = schema.TextLine(
         title=_(u'Reference'),
         required=False,
@@ -203,6 +209,12 @@ class INotaryDivision(model.Schema):
     actual_use = textfield.RichText(
         title=_(u'Estate actual use'),
         required=False,
+    )
+
+    model.fieldset(
+        'estate',
+        label=_(u"Estate"),
+        fields=['initial_estate', 'created_estate']
     )
 
     form.widget('initial_estate', estate_DataGridFieldFactory)
@@ -225,6 +237,12 @@ class INotaryDivision(model.Schema):
         ),
     )
 
+    model.fieldset(
+        'article_90',
+        label=_(u"Article 90"),
+        fields=['article_90', 'article90_detail']
+    )
+
     form.widget('article_90', CheckBoxFieldWidget)
     article_90 = schema.Set(
         title=_(u'Article 90 reasons'),
@@ -237,6 +255,12 @@ class INotaryDivision(model.Schema):
     article90_detail = textfield.RichText(
         title=_(u'Article 90 exceptions detail'),
         required=False,
+    )
+
+    model.fieldset(
+        'plan',
+        label=_(u"Plan"),
+        fields=['plan_reference', 'plan_date', 'geometrician', 'plan_files']
     )
 
     plan_reference = schema.TextLine(

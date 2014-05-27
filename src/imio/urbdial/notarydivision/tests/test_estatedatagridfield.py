@@ -19,14 +19,15 @@ class TestEstateDataGridField(NotaryDivisionBrowserTest):
         from imio.urbdial.notarydivision.browser.estate_datagridfield import EstateDataGridField
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
-        initial_estate_widget = view.widgets['initial_estate']
+        initial_estate_widget = view.groups[1].widgets['initial_estate']
         self.assertTrue(isinstance(initial_estate_widget, EstateDataGridField))
 
     def test_custom_display_template_is_registered_for_initial_estate_field(self):
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
-        field = view.fields['initial_estate']
-        widget = view.widgets['initial_estate']
+        group = view.groups[1]
+        field = group.fields['initial_estate']
+        widget = group.widgets['initial_estate']
         template = getMultiAdapter(
             (self.test_divnot, view.request, widget.form, field, widget),
             IPageTemplate, name='display'
@@ -45,14 +46,15 @@ class TestEstateDataGridField(NotaryDivisionBrowserTest):
         from imio.urbdial.notarydivision.browser.estate_datagridfield import EstateDataGridField
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
-        initial_estate_widget = view.widgets['initial_estate']
+        initial_estate_widget = view.groups[1].widgets['initial_estate']
         self.assertTrue(isinstance(initial_estate_widget, EstateDataGridField))
 
     def test_custom_display_template_is_registered_for_created_estate_field(self):
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
-        field = view.fields['created_estate']
-        widget = view.widgets['created_estate']
+        group = view.groups[1]
+        field = group.fields['created_estate']
+        widget = group.widgets['created_estate']
         template = getMultiAdapter(
             (self.test_divnot, view.request, widget.form, field, widget),
             IPageTemplate, name='display'

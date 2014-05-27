@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-05-27 13:05+0000\n"
+"POT-Creation-Date: 2014-05-27 13:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,23 +15,31 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-#: ../content/notarydivision.py:199
+#: ../content/notarydivision.py:201
 msgid "Applicants"
 msgstr "Requérant(s)"
 
 #: ../content/notarydivision.py:242
+msgid "Article 90"
+msgstr "Article 90"
+
+#: ../content/notarydivision.py:256
 msgid "Article 90 exceptions detail"
 msgstr "Justificatif des motifs d'exception"
 
-#: ../content/notarydivision.py:234
+#: ../content/notarydivision.py:248
 msgid "Article 90 reasons"
 msgstr "Motifs d'exception article 90"
 
-#: ../content/notarydivision.py:70
+#: ../content/notarydivision.py:190
+msgid "Base"
+msgstr ""
+
+#: ../content/notarydivision.py:71
 msgid "Bis"
 msgstr "Bis"
 
-#: ../content/notarydivision.py:158
+#: ../content/notarydivision.py:154
 msgid "Built"
 msgstr "Bâti"
 
@@ -39,50 +47,54 @@ msgstr "Bâti"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
 
-#: ../content/notarydivision.py:224
+#: ../content/notarydivision.py:232
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
-#: ../content/notarydivision.py:163
+#: ../content/notarydivision.py:159
 msgid "Deed type"
 msgstr "Type d'acte"
 
-#: ../content/notarydivision.py:55
+#: ../content/notarydivision.py:56
 msgid "Division"
 msgstr "Division"
 
-#: ../content/notarydivision.py:208
+#: ../content/notarydivision.py:216
+msgid "Estate"
+msgstr "Ensemble immobilier"
+
+#: ../content/notarydivision.py:210
 msgid "Estate actual use"
 msgstr "Affectation actuelle du bien"
 
-#: ../content/notarydivision.py:188
+#: ../content/notarydivision.py:184
 msgid "Exclude from navigation"
 msgstr ""
 
-#: ../content/notarydivision.py:75
+#: ../content/notarydivision.py:76
 msgid "Exposant"
 msgstr "Exposant"
 
 msgid "False"
 msgstr "Non"
 
-#: ../content/notarydivision.py:31
+#: ../content/notarydivision.py:32
 msgid "Firstname"
 msgstr "Prénom"
 
-#: ../content/notarydivision.py:257
+#: ../content/notarydivision.py:277
 msgid "Geometrician"
 msgstr "Géomètre"
 
-#: ../content/notarydivision.py:214
+#: ../content/notarydivision.py:222
 msgid "Initial estate"
 msgstr "Ensemble immobilier initial"
 
-#: ../content/notarydivision.py:49
+#: ../content/notarydivision.py:50
 msgid "Locality"
 msgstr "Commune"
 
-#: ../content/notarydivision.py:36
+#: ../content/notarydivision.py:37
 msgid "Name"
 msgstr "Nom"
 
@@ -99,47 +111,51 @@ msgstr "Notaires"
 msgid "NotaryDivision"
 msgstr "Division notariale"
 
-#: ../content/notarydivision.py:169
+#: ../content/notarydivision.py:165
 msgid "Parcel destination"
 msgstr "Destination du lot"
 
-#: ../content/notarydivision.py:252
+#: ../content/notarydivision.py:262
+msgid "Plan"
+msgstr "Plan"
+
+#: ../content/notarydivision.py:272
 msgid "Plan date"
 msgstr "Date du plan"
 
-#: ../content/notarydivision.py:247
+#: ../content/notarydivision.py:267
 msgid "Plan reference"
 msgstr "Référence du plan"
 
-#: ../content/notarydivision.py:263
+#: ../content/notarydivision.py:283
 msgid "Plans files"
 msgstr "Fichiers (plan)"
 
-#: ../content/notarydivision.py:80
+#: ../content/notarydivision.py:81
 msgid "Power"
 msgstr "Puissance"
 
-#: ../content/notarydivision.py:65
+#: ../content/notarydivision.py:66
 msgid "Radical"
 msgstr "Radical"
 
-#: ../content/notarydivision.py:193
+#: ../content/notarydivision.py:195
 msgid "Reference"
 msgstr "Référence"
 
-#: ../content/notarydivision.py:60
+#: ../content/notarydivision.py:61
 msgid "Section"
 msgstr "Section"
 
-#: ../content/notarydivision.py:90
+#: ../content/notarydivision.py:91
 msgid "Specific rights"
 msgstr "Droits des parties"
 
-#: ../content/notarydivision.py:85
+#: ../content/notarydivision.py:86
 msgid "Surface"
 msgstr "Superficie"
 
-#: ../content/notarydivision.py:152
+#: ../content/notarydivision.py:148
 msgid "Surface accuracy"
 msgstr "(type)"
 

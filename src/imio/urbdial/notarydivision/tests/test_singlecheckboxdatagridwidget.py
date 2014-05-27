@@ -37,7 +37,7 @@ class TestSingleCheckBoxForDataGridWidgetFunctional(NotaryDivisionFunctionalBrow
     def getBuiltFieldWidget(self, mode):
         view = self.test_divnot.restrictedTraverse('@@{}'.format(mode))
         view.update()
-        created_estate_widget = view.widgets['created_estate'].widgets[0]
+        created_estate_widget = view.groups[1].widgets['created_estate'].widgets[0]
         built_widget = created_estate_widget.subform.widgets['built']
         return built_widget
 

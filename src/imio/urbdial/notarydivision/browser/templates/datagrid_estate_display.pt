@@ -5,7 +5,7 @@
       i18n:domain="urbdial.divnot"
       tal:omit-tag="">
 
-    <table class="datagridwidget-table-view">
+    <table class="datagridwidget-table-view display">
         <thead>
             <tr>
                 <tal:block repeat="label view/get_header_labels">
