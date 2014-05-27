@@ -7,6 +7,7 @@ from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_DataGridFieldFactory
 from imio.urbdial.notarydivision.content.interfaces import IDataGridBool
 
+from plone.app import textfield
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.formwidget.multifile import MultiFileFieldWidget
@@ -204,7 +205,7 @@ class INotaryDivision(model.Schema):
         ),
     )
 
-    actual_use = schema.Text(
+    actual_use = textfield.RichText(
         title=_(u'Estate actual use'),
         required=False,
     )
@@ -238,7 +239,7 @@ class INotaryDivision(model.Schema):
         required=False,
     )
 
-    article90_detail = schema.Text(
+    article90_detail = textfield.RichText(
         title=_(u'Article 90 exceptions detail'),
         required=False,
     )
