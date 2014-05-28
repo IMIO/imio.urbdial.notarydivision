@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-05-27 13:49+0000\n"
+"POT-Creation-Date: 2014-05-28 09:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,25 +15,21 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-#: ../content/notarydivision.py:201
+#: ../content/notarydivision.py:195
 msgid "Applicants"
 msgstr "Requérant(s)"
 
-#: ../content/notarydivision.py:242
+#: ../content/notarydivision.py:236
 msgid "Article 90"
 msgstr "Article 90"
 
-#: ../content/notarydivision.py:256
+#: ../content/notarydivision.py:250
 msgid "Article 90 exceptions detail"
 msgstr "Justificatif des motifs d'exception"
 
-#: ../content/notarydivision.py:248
+#: ../content/notarydivision.py:242
 msgid "Article 90 reasons"
 msgstr "Motifs d'exception article 90"
-
-#: ../content/notarydivision.py:190
-msgid "Base"
-msgstr ""
 
 #: ../content/notarydivision.py:71
 msgid "Bis"
@@ -47,7 +43,7 @@ msgstr "Bâti"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
 
-#: ../content/notarydivision.py:232
+#: ../content/notarydivision.py:226
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
@@ -59,11 +55,11 @@ msgstr "Type d'acte"
 msgid "Division"
 msgstr "Division"
 
-#: ../content/notarydivision.py:216
+#: ../content/notarydivision.py:210
 msgid "Estate"
 msgstr "Ensemble immobilier"
 
-#: ../content/notarydivision.py:210
+#: ../content/notarydivision.py:204
 msgid "Estate actual use"
 msgstr "Affectation actuelle du bien"
 
@@ -82,11 +78,11 @@ msgstr "Non"
 msgid "Firstname"
 msgstr "Prénom"
 
-#: ../content/notarydivision.py:277
+#: ../content/notarydivision.py:271
 msgid "Geometrician"
 msgstr "Géomètre"
 
-#: ../content/notarydivision.py:222
+#: ../content/notarydivision.py:216
 msgid "Initial estate"
 msgstr "Ensemble immobilier initial"
 
@@ -115,19 +111,19 @@ msgstr "Division notariale"
 msgid "Parcel destination"
 msgstr "Destination du lot"
 
-#: ../content/notarydivision.py:262
+#: ../content/notarydivision.py:256
 msgid "Plan"
 msgstr "Plan"
 
-#: ../content/notarydivision.py:272
+#: ../content/notarydivision.py:266
 msgid "Plan date"
 msgstr "Date du plan"
 
-#: ../content/notarydivision.py:267
+#: ../content/notarydivision.py:261
 msgid "Plan reference"
 msgstr "Référence du plan"
 
-#: ../content/notarydivision.py:283
+#: ../content/notarydivision.py:277
 msgid "Plans files"
 msgstr "Fichiers (plan)"
 
@@ -139,7 +135,7 @@ msgstr "Puissance"
 msgid "Radical"
 msgstr "Radical"
 
-#: ../content/notarydivision.py:195
+#: ../content/notarydivision.py:189
 msgid "Reference"
 msgstr "Référence"
 

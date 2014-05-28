@@ -185,12 +185,6 @@ class INotaryDivision(model.Schema):
         default=True,
     )
 
-    model.fieldset(
-        'base',
-        label=_(u"Base"),
-        fields=['reference', 'applicants', 'actual_use']
-    )
-
     reference = schema.TextLine(
         title=_(u'Reference'),
         required=False,
@@ -214,7 +208,7 @@ class INotaryDivision(model.Schema):
     model.fieldset(
         'estate',
         label=_(u"Estate"),
-        fields=['initial_estate', 'created_estate']
+        fields=['actual_use', 'initial_estate', 'created_estate']
     )
 
     form.widget('initial_estate', estate_DataGridFieldFactory)

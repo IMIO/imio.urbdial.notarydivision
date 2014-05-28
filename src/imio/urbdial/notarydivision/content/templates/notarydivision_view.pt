@@ -26,7 +26,28 @@
                     </tr>
                 </table>
 
-                <fieldset tal:repeat="group view/groups"
+                <dl class="formTabs enableFormTabbing">
+                    <tal:tabs repeat="group view/groups">
+                        <dt class="formTab" attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
+                            <span tal:content="group/label">Tab name</span>
+                        </dt>
+                        <dd>
+                            <table class="no-style-table">
+                                <tr tal:repeat="widget group/widgets/values" class="field_row_display">
+                                    <td style="vertical-align:top"class="table_widget_label">
+                                        <label>
+                                            <tal:label content="widget/label">Label</tal:label>:
+                                        </label>
+                                    </td>
+                                    <td class="table_widget_value" tal:content="structure widget/render">Value</td>
+                                </tr>
+                            </table>
+                        </dd>
+                    </tal:tabs>
+                </dl>
+
+                <!-- code if fieldset needs to be displayed without tabs -->
+                <!--fieldset tal:repeat="group view/groups"
                           tal:attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
                     <legend tal:content="group/label" />
                     <table class="no-style-table">
@@ -39,7 +60,7 @@
                             <td class="table_widget_value" tal:content="structure widget/render">Value</td>
                         </tr>
                     </table>
-                </fieldset>
+                </fieldset-->
 
                 <fieldset id="folder-listing">
                     <legend i18n:translate="" i18n:domain="plone">Contents</legend>
