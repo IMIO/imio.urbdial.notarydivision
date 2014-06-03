@@ -56,3 +56,15 @@ class TestErgonomy(BrowserTest):
         self.browser.open(self.portal.absolute_url() + "/logout")
         self.browser.open(self.portal.absolute_url())
         self.assertTrue(self.browser.url.endswith('/login'))
+
+    def test_dashboard_is_disabled(self):
+        self.browser.open(self.portal.absolute_url())
+        contents = self.browser.contents
+        msg = 'Dashboard is still available'
+        self.assertTrue('Tableau de bord</a>' not in contents, msg)
+
+    def test_personal_preferences_are_disabled(self):
+        self.browser.open(self.portal.absolute_url())
+        contents = self.browser.contents
+        msg = 'Preferences are still available'
+        self.assertTrue('@@personal-preferences">Préférences</a>' not in contents, msg)

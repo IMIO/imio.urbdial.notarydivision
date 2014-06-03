@@ -1,0 +1,14 @@
+<object name="portal_actions" meta_type="Plone Actions Tool">
+    <action-provider name="portal_workflow"/>
+    <action-provider name="portal_types"/>
+    <action-provider name="portal_actions"/>
+    <object name="user" meta_type="CMF Action Category">
+        <property name="title"/>
+        <object name="dashboard" meta_type="CMF Action">
+            <property name="visible">False</property>
+        </object>
+        <object name="preferences" meta_type="CMF Action">
+            <property name="visible">False</property>
+        </object>
+    </object>
+</object>
