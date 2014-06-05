@@ -32,3 +32,6 @@ class TestRolesAndPermissions(unittest.TestCase):
 
     def test_ManageObservation_permission(self):
         self.assertTrue('imio.urbdial.notarydivision: ManageObservation' in self.portal.possible_permissions())
+
+    def test_ViewObservation_permission(self):
+        self.assertTrue('imio.urbdial.notarydivision: ViewObservation' in self.portal.possible_permissions())
