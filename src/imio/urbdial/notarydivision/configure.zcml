@@ -17,5 +17,6 @@
     <include package=".content" />
 
     <include file="profiles.zcml" />
+    <include file="permissions.zcml" />
 
 </configure>
