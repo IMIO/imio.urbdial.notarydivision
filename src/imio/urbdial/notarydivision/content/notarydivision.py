@@ -15,6 +15,7 @@ from plone.namedfile import field
 from plone.supermodel import model
 
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
+from z3c.form.browser.checkbox import SingleCheckBoxFieldWidget
 
 from zope import schema
 from zope.interface import implements
@@ -200,15 +201,21 @@ class INotaryDivision(model.Schema):
         ),
     )
 
-    actual_use = textfield.RichText(
-        title=_(u'Estate actual use'),
-        required=False,
+    form.widget('entrusting', SingleCheckBoxFieldWidget)
+    entrusting = schema.Bool(
+        title=_(u'Entrusting'),
+        required=True,
     )
 
     model.fieldset(
         'estate',
         label=_(u"Estate"),
         fields=['actual_use', 'initial_estate', 'created_estate']
+    )
+
+    actual_use = textfield.RichText(
+        title=_(u'Estate actual use'),
+        required=False,
     )
 
     form.widget('initial_estate', estate_DataGridFieldFactory)

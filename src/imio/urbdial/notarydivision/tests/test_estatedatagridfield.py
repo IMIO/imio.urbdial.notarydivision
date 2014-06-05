@@ -19,13 +19,13 @@ class TestEstateDataGridField(NotaryDivisionBrowserTest):
         from imio.urbdial.notarydivision.browser.estate_datagridfield import EstateDataGridField
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
-        initial_estate_widget = view.groups[1].widgets['initial_estate']
+        initial_estate_widget = view.groups[0].widgets['initial_estate']
         self.assertTrue(isinstance(initial_estate_widget, EstateDataGridField))
 
     def test_custom_display_template_is_registered_for_initial_estate_field(self):
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
-        group = view.groups[1]
+        group = view.groups[0]
         field = group.fields['initial_estate']
         widget = group.widgets['initial_estate']
         template = getMultiAdapter(
@@ -46,13 +46,13 @@ class TestEstateDataGridField(NotaryDivisionBrowserTest):
         from imio.urbdial.notarydivision.browser.estate_datagridfield import EstateDataGridField
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
-        initial_estate_widget = view.groups[1].widgets['initial_estate']
+        initial_estate_widget = view.groups[0].widgets['initial_estate']
         self.assertTrue(isinstance(initial_estate_widget, EstateDataGridField))
 
     def test_custom_display_template_is_registered_for_created_estate_field(self):
         view = self.test_divnot.restrictedTraverse('view')
         view.update()
-        group = view.groups[1]
+        group = view.groups[0]
         field = group.fields['created_estate']
         widget = group.widgets['created_estate']
         template = getMultiAdapter(

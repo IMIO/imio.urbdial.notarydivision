@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-28 09:11+0000\n"
+"POT-Creation-Date: 2014-05-28 09:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "Applicants"
 msgstr ""
 
-#: ../content/notarydivision.py:236
+#: ../content/notarydivision.py:240
 msgid "Article 90"
 msgstr ""
 
-#: ../content/notarydivision.py:250
+#: ../content/notarydivision.py:254
 msgid "Article 90 exceptions detail"
 msgstr ""
 
-#: ../content/notarydivision.py:242
+#: ../content/notarydivision.py:246
 msgid "Article 90 reasons"
 msgstr ""
 
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Cadastral reference"
 msgstr ""
 
-#: ../content/notarydivision.py:226
+#: ../content/notarydivision.py:230
 msgid "Created estate"
 msgstr ""
 
@@ -56,11 +56,15 @@ msgstr ""
 msgid "Division"
 msgstr ""
 
-#: ../content/notarydivision.py:210
+#: ../content/notarydivision.py:204
+msgid "Entrusting"
+msgstr ""
+
+#: ../content/notarydivision.py:209
 msgid "Estate"
 msgstr ""
 
-#: ../content/notarydivision.py:204
+#: ../content/notarydivision.py:214
 msgid "Estate actual use"
 msgstr ""
 
@@ -79,11 +83,11 @@ msgstr ""
 msgid "Firstname"
 msgstr ""
 
-#: ../content/notarydivision.py:271
+#: ../content/notarydivision.py:275
 msgid "Geometrician"
 msgstr ""
 
-#: ../content/notarydivision.py:216
+#: ../content/notarydivision.py:220
 msgid "Initial estate"
 msgstr ""
 
@@ -111,19 +115,19 @@ msgstr ""
 msgid "Parcel destination"
 msgstr ""
 
-#: ../content/notarydivision.py:256
+#: ../content/notarydivision.py:260
 msgid "Plan"
 msgstr ""
 
-#: ../content/notarydivision.py:266
+#: ../content/notarydivision.py:270
 msgid "Plan date"
 msgstr ""
 
-#: ../content/notarydivision.py:261
+#: ../content/notarydivision.py:265
 msgid "Plan reference"
 msgstr ""
 
-#: ../content/notarydivision.py:277
+#: ../content/notarydivision.py:281
 msgid "Plans files"
 msgstr ""
 

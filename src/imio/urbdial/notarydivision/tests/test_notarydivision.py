@@ -354,6 +354,26 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         msg = "field 'plan_files' is not editable"
         self.assertTrue('Fichiers (plan)' in contents, msg)
 
+    def test_entrusting_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'entrusting'))
+
+    def test_entrusting_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "field 'entrusting' displayed and should be hidden"
+        self.assertTrue('Sauf en cas de force majeure' not in contents, msg)
+
+    def test_entrusting_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'entrusting' is not editable"
+        self.assertTrue('Sauf en cas de force majeure' in contents, msg)
+
+    def test_entrusting_field_is_required(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        pass
+
 
 class TestAddNotaryDivision(NotaryDivisionBrowserTest):
     """
