@@ -12,3 +12,6 @@ class CommentView(view.DefaultView):
         return self.request.response.redirect(
             self.context.getNotaryDivision().absolute_url() + '/view#observations'
         )
+
+    def get_comments(self):
+        return self.context.objectValues()
