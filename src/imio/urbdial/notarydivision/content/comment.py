@@ -55,3 +55,16 @@ class Observation(Comment):
     Observation dexterity class.
     """
     implements(IObservation)
+
+
+class IPrecision(IComment):
+    """
+    Precision dexterity schema.
+    """
+
+
+class Precision(Comment):
+    """
+    Precision dexterity class.
+    """
+    implements(IPrecision)

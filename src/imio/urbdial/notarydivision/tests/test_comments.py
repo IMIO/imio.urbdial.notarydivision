@@ -30,6 +30,11 @@ class TestInstall(unittest.TestCase):
         observation_type = portal_types.Observation
         self.assertTrue('Observation' in observation_type.allowed_content_types)
 
+    def test_Precision_portal_type_is_registered(self):
+        portal_types = api.portal.get_tool('portal_types')
+        registered_types = portal_types.listContentTypes()
+        self.assertTrue('Precision' in registered_types)
+
 
 class TestCommentView(CommentBrowserTest):
     """
