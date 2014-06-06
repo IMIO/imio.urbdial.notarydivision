@@ -15,7 +15,7 @@ from zope.interface import implements
 
 class IComment(model.Schema):
     """
-    Comment dexterity schema
+    Comment dexterity schema.
     """
 
     text = textfield.RichText(
@@ -33,8 +33,19 @@ class IComment(model.Schema):
 
 class Comment(Container):
     """
-    Comment dexterity class
+    Comment dexterity class.
     """
     implements(IComment)
 
-    __ac_local_roles_block__ = True
+
+class IObservation(IComment):
+    """
+    Observation dexterity schema.
+    """
+
+
+class Observation(Container):
+    """
+    Observation dexterity class.
+    """
+    implements(IObservation)

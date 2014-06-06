@@ -2,18 +2,24 @@
 
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 
+from plone import api
+
 import unittest
 
 
-class TestCommentFields(unittest.TestCase):
+class TestInstall(unittest.TestCase):
     """
-    Test schema fields declaration.
+    Test portal_types install.
     """
 
     layer = TEST_INSTALL_INTEGRATION
 
-    def test_comment_class(self):
-        try:
-            from imio.urbdial.notarydivision.content.comment import Comment
-        except:
-            self.fail("Comment class is not defined.")
+    def test_Observation_portal_type_is_registered(self):
+        portal_types = api.portal.get_tool('portal_types')
+        registered_types = portal_types.listContentTypes()
+        self.assertTrue('Observation' in registered_types)
+
+    def test_Observation_is_in_Observation_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        observation_type = portal_types.Observation
+        self.assertTrue('Observation' in observation_type.allowed_content_types)

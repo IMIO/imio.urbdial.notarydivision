@@ -12,14 +12,13 @@ from imio.urbdial.notarydivision.testing import NotaryDivisionBrowserTest
 import unittest
 
 
-class TestInstall(unittest.TestCase):
+class TestNotaryDivision(unittest.TestCase):
     """
-    Test installation of imio.urbdial.notarydivision into Plone.
     """
 
     layer = TEST_INSTALL_INTEGRATION
 
-    def test_portal_type_is_registered(self):
+    def test_NotaryDivision_portal_type_is_registered(self):
         portal_types = api.portal.get_tool('portal_types')
         registered_types = portal_types.listContentTypes()
         self.assertTrue('NotaryDivision' in registered_types)
@@ -28,6 +27,11 @@ class TestInstall(unittest.TestCase):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
         self.assertTrue(divnot_type.add_permission == 'cmf.AddPortalContent')
+
+    def test_Observation_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('Observation' in divnot_type.allowed_content_types)
 
 
 class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
