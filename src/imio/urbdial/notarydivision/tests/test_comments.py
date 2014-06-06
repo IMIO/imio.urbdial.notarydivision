@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.testing import CommentBrowserTest
+from imio.urbdial.notarydivision.testing import CommentFunctionalBrowserTest
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 
 from plone import api
+from plone.app.textfield.value import RichTextValue
+
+import transaction
 
 import unittest
 
@@ -46,3 +50,22 @@ class TestCommentView(CommentBrowserTest):
         notary_division_url = self.test_divnot.absolute_url()
         msg = 'Observation view does not redirect to NotaryDivisionView'
         self.assertTrue(self.browser.url == notary_division_url + '/view#observations', msg)
+
+
+class FunctionalTestCommentView(CommentFunctionalBrowserTest):
+    """
+    Functional tests on comment View.
+    """
+
+    def test_Observation_text_display(self):
+        observation_text = "<span>A long time ago in a galaxy far, far away...</span>"
+
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue(observation_text not in contents)
+
+        self.test_observation.text = RichTextValue(observation_text)
+        transaction.commit()
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue(observation_text in contents)

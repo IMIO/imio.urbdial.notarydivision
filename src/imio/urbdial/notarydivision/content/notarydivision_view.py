@@ -31,3 +31,6 @@ class NotaryDivisionView(view.DefaultView):
     """
     NotaryDivision custom View.
     """
+
+    def get_comments(self):
+        return self.context.objectValues()

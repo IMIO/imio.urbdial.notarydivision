@@ -62,10 +62,10 @@
                     </table>
                 </fieldset-->
 
-                <fieldset id="folder-listing">
-                    <legend i18n:translate="" i18n:domain="plone">Contents</legend>
-                    <tal:block define="listing_macro context/folder_listing/macros/listing">
-                        <metal:use_macro use-macro="listing_macro" />
+                <fieldset id="comments">
+                    <legend i18n:translate="" i18n:domain="urbdial.divnot">Observations</legend>
+                    <tal:block define="comments_macro here/@@comments_display/comments">
+                        <metal:use_macro use-macro="comments_macro" />
                     </tal:block>
                 </fieldset>
 

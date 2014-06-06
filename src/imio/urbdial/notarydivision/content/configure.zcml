@@ -40,6 +40,14 @@
         permission="zope2.View"
     />
 
+    <!-- Register comments display macros  -->
+    <browser:page
+        for=".notarydivision.INotaryDivision"
+        name="comments_display"
+        template="templates/comments_display.pt"
+        permission="zope2.View"
+    />
+
     <!-- register SingleCheckBoxForDataGridWidget for the DataGridBool field 'built'
          (implementing IDataGridBool) -->
     <adapter

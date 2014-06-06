@@ -153,7 +153,7 @@ EXAMPLE_DIVISION_FUNCTIONAL = FunctionalTesting(
     name="EXAMPLE_DIVISION_FUNCTIONAL"
 )
 
-TEST_OBSERVATION_ID = 'test_obseravtion'
+TEST_OBSERVATION_ID = 'test_observation'
 
 
 class ExampleCommentLayer(ExampleDivisionLayer):
@@ -250,6 +250,20 @@ class CommentBrowserTest(BrowserTest):
 
     def setUp(self):
         super(CommentBrowserTest, self).setUp()
+        self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
+        self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
+        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
+
+
+class CommentFunctionalBrowserTest(BrowserTest):
+    """
+    Helper class factorizing setUp of all Comment Browser tests.
+    """
+
+    layer = EXAMPLE_COMMENT_FUNCTIONAL
+
+    def setUp(self):
+        super(CommentFunctionalBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
         self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)

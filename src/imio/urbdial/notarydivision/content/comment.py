@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
+from imio.urbdial.notarydivision.utils import translate
 
+from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
@@ -36,6 +38,22 @@ class Comment(Container):
     Comment dexterity class.
     """
     implements(IComment)
+
+    @property
+    def full_title(self):
+        type_ = translate(_(self.portal_type))
+
+        # to update once workflow is defined for Comment
+        author = api.user.get(self.creators[0])
+        author = author.getUserName()
+        date = '(BROUILLON NON PUBLIÉ)'
+
+        title = '{type_} par {author}, publié le {date}:'.format(
+            type_=type_,
+            author=author,
+            date=date
+        )
+        return title
 
     def getNotaryDivision(self):
         level = self
