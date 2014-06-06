@@ -8,6 +8,11 @@
         />
 
     <permission
+        id="imio.urbdial.notarydivision.AddPrecision"
+        title="imio.urbdial.notarydivision: Add Precision"
+        />
+
+    <permission
         id="imio.urbdial.notarydivision.ManageObservation"
         title="imio.urbdial.notarydivision: Manage Observation"
         />
