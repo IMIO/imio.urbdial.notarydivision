@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="imio.urbdial.notarydivision">
+
+    <permission
+        id="imio.urbdial.notarydivision.ManageObservation"
+        title="imio.urbdial.notarydivision: ManageObservation"
+        />
+
+    <permission
+        id="imio.urbdial.notarydivision.ViewObservation"
+        title="imio.urbdial.notarydivision: ViewObservation"
+        />
+
+</configure>
