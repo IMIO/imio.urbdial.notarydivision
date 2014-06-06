@@ -4,6 +4,7 @@
     <role name="NotaryDivision Creator"/>
     <role name="Observation Creator"/>
     <role name="Observation Manager"/>
+    <role name="Observation Reader"/>
  </roles>
  <permissions>
      <permission
@@ -20,6 +21,11 @@
          name="imio.urbdial.notarydivision: Manage Observation"
          acquire="True">
          <role name="Observation Manager" />
+     </permission>
+     <permission
+         name="imio.urbdial.notarydivision: View Observation"
+         acquire="True">
+         <role name="Observation Reader" />
      </permission>
  </permissions>
 </rolemap>
