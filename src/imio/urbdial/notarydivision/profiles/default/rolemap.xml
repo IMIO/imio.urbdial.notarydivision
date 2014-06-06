@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <rolemap>
-  <roles>
+ <roles>
     <role name="NotaryDivision Creator"/>
+    <role name="Observation Creator"/>
  </roles>
  <permissions>
      <permission
