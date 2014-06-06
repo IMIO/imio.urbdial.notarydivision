@@ -20,6 +20,8 @@ from plone.testing.z2 import Browser
 
 import imio.urbdial.notarydivision
 
+import transaction
+
 import unittest
 
 
@@ -59,7 +61,6 @@ class TestInstallUrbdialLayer(NakedPloneLayer):
         login(portal, TEST_USER_NAME)
 
         # Commit so that the test browser sees these objects
-        import transaction
         transaction.commit()
 
 TEST_INSTALL_FIXTURE = TestInstallUrbdialLayer(
@@ -117,6 +118,8 @@ ACCEPTANCE = FunctionalTesting(
     name="ACCEPTANCE"
 )
 
+TEST_NOTARYDIVISION_ID = 'test_notarydivision'
+
 
 class ExampleDivisionLayer(TestInstallUrbdialLayer):
 
@@ -126,7 +129,7 @@ class ExampleDivisionLayer(TestInstallUrbdialLayer):
         # Create some test content
         api.content.create(
             type='NotaryDivision',
-            id='test_notarydivision',
+            id=TEST_NOTARYDIVISION_ID,
             container=portal.notarydivisions,
         )
 
@@ -148,6 +151,41 @@ EXAMPLE_DIVISION_INTEGRATION = IntegrationTesting(
 EXAMPLE_DIVISION_FUNCTIONAL = FunctionalTesting(
     bases=(EXAMPLE_DIVISION_FIXTURE,),
     name="EXAMPLE_DIVISION_FUNCTIONAL"
+)
+
+TEST_OBSERVATION_ID = 'test_obseravtion'
+
+
+class ExampleCommentLayer(ExampleDivisionLayer):
+
+    def setUpPloneSite(self, portal):
+        super(ExampleCommentLayer, self).setUpPloneSite(portal)
+
+        test_divnot = portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
+        # Create some test comments
+        api.content.create(
+            type='Observation',
+            id=TEST_OBSERVATION_ID,
+            container=test_divnot,
+        )
+
+        # Commit so that the test browser sees these objects
+        transaction.commit()
+
+
+EXAMPLE_COMMENT_FIXTURE = ExampleCommentLayer(
+    name="EXAMPLE_COMMENT_FIXTURE"
+)
+
+EXAMPLE_COMMENT_INTEGRATION = IntegrationTesting(
+    bases=(EXAMPLE_COMMENT_FIXTURE,),
+    name="EXAMPLE_COMMENT_INTEGRATION"
+)
+
+
+EXAMPLE_COMMENT_FUNCTIONAL = FunctionalTesting(
+    bases=(EXAMPLE_COMMENT_FIXTURE,),
+    name="EXAMPLE_COMMENT_FUNCTIONAL"
 )
 
 
@@ -186,7 +224,7 @@ class NotaryDivisionBrowserTest(BrowserTest):
 
     def setUp(self):
         super(NotaryDivisionBrowserTest, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.objectValues()[0]
+        self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
         self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
@@ -199,5 +237,19 @@ class NotaryDivisionFunctionalBrowserTest(BrowserTest):
 
     def setUp(self):
         super(NotaryDivisionFunctionalBrowserTest, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.objectValues()[0]
+        self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
+        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
+
+
+class CommentBrowserTest(BrowserTest):
+    """
+    Helper class factorizing setUp of all Comment Browser tests.
+    """
+
+    layer = EXAMPLE_COMMENT_INTEGRATION
+
+    def setUp(self):
+        super(CommentBrowserTest, self).setUp()
+        self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
+        self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
         self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
