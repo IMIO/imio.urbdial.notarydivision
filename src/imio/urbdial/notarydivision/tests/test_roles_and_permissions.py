@@ -96,3 +96,16 @@ class TestRolesAndPermissions(unittest.TestCase):
         role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: Manage Precision')
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('Precision Manager' in role_names)
+
+    def test_PrecisionReader_role_registration(self):
+        portal_roles = self.portal.acl_users.portal_role_manager
+        registered_roles = portal_roles.listRoleIds()
+        self.assertTrue('Precision Reader' in registered_roles)
+
+    def test_view_precision_rolemap(self):
+        """
+        'ViewPrecision' permission should be given to the 'NotaryDivision Reader' role
+        """
+        role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: View Precision')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('Precision Reader' in role_names)
