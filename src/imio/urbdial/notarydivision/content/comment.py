@@ -91,3 +91,16 @@ class Observation(Comment):
     @property
     def base_permission(self):
         return 'imio.urbdial.notarydivision.{permission}Observation'
+
+
+class IPrecision(IComment):
+    """
+    Precision dexterity schema.
+    """
+
+
+class Precision(Comment):
+    """
+    Precision dexterity class.
+    """
+    implements(IPrecision)

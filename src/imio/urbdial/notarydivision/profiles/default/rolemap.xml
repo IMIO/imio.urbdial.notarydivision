@@ -5,6 +5,9 @@
     <role name="Observation Creator"/>
     <role name="Observation Manager"/>
     <role name="Observation Reader"/>
+    <role name="Precision Manager"/>
+    <role name="Precision Reader"/>
+    <role name="Precision Creator"/>
  </roles>
  <permissions>
      <permission
@@ -26,6 +29,21 @@
          name="imio.urbdial.notarydivision: View Observation"
          acquire="True">
          <role name="Observation Reader" />
+     </permission>
+     <permission
+         name="imio.urbdial.notarydivision: Manage Precision"
+         acquire="True">
+         <role name="Precision Manager" />
+     </permission>
+     <permission
+         name="imio.urbdial.notarydivision: View Precision"
+         acquire="True">
+         <role name="Precision Reader" />
+     </permission>
+     <permission
+         name="imio.urbdial.notarydivision: Add Precision"
+         acquire="True">
+         <role name="Precision Creator" />
      </permission>
  </permissions>
 </rolemap>

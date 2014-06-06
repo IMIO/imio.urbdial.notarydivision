@@ -33,10 +33,20 @@ class TestInstall(unittest.TestCase):
         observation_type = portal_types.Observation
         self.assertTrue(observation_type.add_permission == 'imio.urbdial.notarydivision.AddObservation')
 
+    def test_Precision_creation_permission_is_AddPrecision(self):
+        portal_types = api.portal.get_tool('portal_types')
+        precision_type = portal_types.Precision
+        self.assertTrue(precision_type.add_permission == 'imio.urbdial.notarydivision.AddPrecision')
+
     def test_Observation_is_in_Observation_allowed_content_types(self):
         portal_types = api.portal.get_tool('portal_types')
         observation_type = portal_types.Observation
         self.assertTrue('Observation' in observation_type.allowed_content_types)
+
+    def test_Precision_portal_type_is_registered(self):
+        portal_types = api.portal.get_tool('portal_types')
+        registered_types = portal_types.listContentTypes()
+        self.assertTrue('Precision' in registered_types)
 
 
 class TestCommentView(CommentBrowserTest):
