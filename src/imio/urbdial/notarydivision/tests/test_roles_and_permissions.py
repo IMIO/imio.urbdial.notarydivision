@@ -51,3 +51,29 @@ class TestRolesAndPermissions(unittest.TestCase):
         role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: Add Observation')
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('Observation Creator' in role_names)
+
+    def test_ObservationReader_role_registration(self):
+        portal_roles = self.portal.acl_users.portal_role_manager
+        registered_roles = portal_roles.listRoleIds()
+        self.assertTrue('Observation Reader' in registered_roles)
+
+    def test_view_Observation_rolemap(self):
+        """
+        'ViewObservation' permission should be given to the 'NotaryDivision Reader' role
+        """
+        role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: View Observation')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('Observation Reader' in role_names)
+
+    def test_ObservationManager_role_registration(self):
+        portal_roles = self.portal.acl_users.portal_role_manager
+        registered_roles = portal_roles.listRoleIds()
+        self.assertTrue('Observation Manager' in registered_roles)
+
+    def test_manage_Observation_rolemap(self):
+        """
+        'ManageObservation' permission should be given to the 'NotaryDivision Manager' role
+        """
+        role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: Manage Observation')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('Observation Manager' in role_names)
