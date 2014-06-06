@@ -22,4 +22,9 @@
         title="imio.urbdial.notarydivision: View Observation"
         />
 
+    <permission
+        id="imio.urbdial.notarydivision.ViewPrecision"
+        title="imio.urbdial.notarydivision: View Precision"
+        />
+
 </configure>
