@@ -35,3 +35,9 @@ class TestCommentView(CommentBrowserTest):
         from imio.urbdial.notarydivision.content.comment_view import CommentView
         view = self.test_observation.restrictedTraverse('view')
         self.assertTrue(isinstance(view, CommentView))
+
+    def test_Observation_view_redirects_to_NotaryDivisionView(self):
+        self.browser.open(self.test_observation.absolute_url())
+        notary_division_url = self.test_divnot.absolute_url()
+        msg = 'Observation view does not redirect to NotaryDivisionView'
+        self.assertTrue(self.browser.url == notary_division_url + '/view#observations', msg)

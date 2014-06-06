@@ -37,6 +37,12 @@ class Comment(Container):
     """
     implements(IComment)
 
+    def getNotaryDivision(self):
+        level = self
+        while(level.portal_type != 'NotaryDivision'):
+            level = level.aq_parent
+        return level
+
 
 class IObservation(IComment):
     """
@@ -44,7 +50,7 @@ class IObservation(IComment):
     """
 
 
-class Observation(Container):
+class Observation(Comment):
     """
     Observation dexterity class.
     """
