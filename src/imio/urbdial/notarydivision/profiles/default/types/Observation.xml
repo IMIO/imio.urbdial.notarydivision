@@ -20,7 +20,7 @@
   <element value="view"/>
  </property>
  <property name="default_view_fallback">False</property>
- <property name="add_permission">cmf.AddPortalContent</property>
+ <property name="add_permission">imio.urbdial.notarydivision.AddObservation</property>
  <property name="klass">imio.urbdial.notarydivision.content.comment.Observation</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>

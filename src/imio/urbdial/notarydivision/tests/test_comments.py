@@ -20,6 +20,11 @@ class TestInstall(unittest.TestCase):
         registered_types = portal_types.listContentTypes()
         self.assertTrue('Observation' in registered_types)
 
+    def test_Observation_creation_permission_is_AddObservation(self):
+        portal_types = api.portal.get_tool('portal_types')
+        observation_type = portal_types.Observation
+        self.assertTrue(observation_type.add_permission == 'imio.urbdial.notarydivision.AddObservation')
+
     def test_Observation_is_in_Observation_allowed_content_types(self):
         portal_types = api.portal.get_tool('portal_types')
         observation_type = portal_types.Observation
