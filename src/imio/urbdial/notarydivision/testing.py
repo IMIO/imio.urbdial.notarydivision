@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARYDIVISION_ID
+
 from plone import api
 
 from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
@@ -118,8 +120,6 @@ ACCEPTANCE = FunctionalTesting(
     name="ACCEPTANCE"
 )
 
-TEST_NOTARYDIVISION_ID = 'test_notarydivision'
-
 
 class ExampleDivisionLayer(TestInstallUrbdialLayer):
 
@@ -208,7 +208,9 @@ class BrowserTest(BaseTest):
         self.browser = Browser(self.portal)
         self.browser.handleErrors = False
 
-    def browserLogin(self, user, password):
+    def browser_login(self, user, password):
+        login(self.portal, user)
+        self.browser.open(self.portal.absolute_url() + '/logout')
         self.browser.open(self.portal.absolute_url() + "/login_form")
         self.browser.getControl(name='__ac_name').value = user
         self.browser.getControl(name='__ac_password').value = password
@@ -225,7 +227,7 @@ class NotaryDivisionBrowserTest(BrowserTest):
     def setUp(self):
         super(NotaryDivisionBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
+        self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
 class NotaryDivisionFunctionalBrowserTest(BrowserTest):
@@ -238,7 +240,7 @@ class NotaryDivisionFunctionalBrowserTest(BrowserTest):
     def setUp(self):
         super(NotaryDivisionFunctionalBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
+        self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
 class CommentBrowserTest(BrowserTest):
@@ -252,7 +254,7 @@ class CommentBrowserTest(BrowserTest):
         super(CommentBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
+        self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
 class CommentFunctionalBrowserTest(BrowserTest):
@@ -266,4 +268,4 @@ class CommentFunctionalBrowserTest(BrowserTest):
         super(CommentFunctionalBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
+        self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)

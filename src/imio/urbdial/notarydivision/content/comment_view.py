@@ -14,4 +14,6 @@ class CommentView(view.DefaultView):
         )
 
     def get_comments(self):
-        return self.context.objectValues()
+        all_comments = self.context.objectValues()
+        visible_comments = [c for c in all_comments if c.check_View_permission()]
+        return visible_comments

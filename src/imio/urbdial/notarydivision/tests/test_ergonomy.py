@@ -14,7 +14,7 @@ class TestErgonomy(BrowserTest):
 
     def setUp(self):
         super(TestErgonomy, self).setUp()
-        self.browserLogin(TEST_USER_NAME, TEST_USER_PASSWORD)
+        self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
     def test_plone_searchbox_disabled(self):
         self.browser.open(self.portal.absolute_url())

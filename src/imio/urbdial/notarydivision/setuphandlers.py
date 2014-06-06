@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.interfaces import INotaryDivisionFTI
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
 
 from plone import api
@@ -87,14 +91,21 @@ def create_groups(context):
     Create all customs groups
     """
     create_notaries_group(context)
+    create_dgo4_group(context)
 
 
 def create_notaries_group(context):
-    """
-    """
     api.group.create(
         groupname='notaries',
         title=_('Notaries'),
+        roles=['Member'],
+    )
+
+
+def create_dgo4_group(context):
+    api.group.create(
+        groupname='dgo4',
+        title=_('DGO 4'),
         roles=['Member'],
     )
 
@@ -160,6 +171,18 @@ def create_test_users(context):
     """
     Create tests user for the different groups.
     """
-    password = '12345'
-    api.user.create(username="notary", password=password, email='notary@frnb.be')
-    api.group.add_user(username='notary', groupname='notaries')
+    api.user.create(
+        username=TEST_NOTARY_NAME, password=TEST_NOTARY_PASSWORD, email='notary@frnb.be',
+        properties={
+            'fullname': 'Maitre Notaire',
+        }
+    )
+    api.group.add_user(username=TEST_NOTARY_NAME, groupname='notaries')
+
+    api.user.create(
+        username=TEST_FD_NAME, password=TEST_FD_PASSWORD, email='fd@dgo4.be',
+        properties={
+            'fullname': 'Fonctionnaire délégué Dédé',
+        }
+    )
+    api.group.add_user(username=TEST_FD_NAME, groupname='dgo4')

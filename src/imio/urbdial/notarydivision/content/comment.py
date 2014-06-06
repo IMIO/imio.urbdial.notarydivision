@@ -13,6 +13,7 @@ from plone.supermodel import model
 
 from zope import schema
 from zope.interface import implements
+from zope.security import checkPermission
 
 
 class IComment(model.Schema):
@@ -61,6 +62,19 @@ class Comment(Container):
             level = level.aq_parent
         return level
 
+    @property
+    def base_permission(self):
+        """To implements in subclasses with real FTI."""
+
+    def check_permission(self, permission):
+        full_permission = self.base_permission.format(
+            permission=permission
+        )
+        return checkPermission(full_permission, self)
+
+    def check_View_permission(self):
+        return self.check_permission('View')
+
 
 class IObservation(IComment):
     """
@@ -73,3 +87,7 @@ class Observation(Comment):
     Observation dexterity class.
     """
     implements(IObservation)
+
+    @property
+    def base_permission(self):
+        return 'imio.urbdial.notarydivision.{permission}Observation'

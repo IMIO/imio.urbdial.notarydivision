@@ -3,8 +3,12 @@
 from imio.urbdial.notarydivision.testing import CommentBrowserTest
 from imio.urbdial.notarydivision.testing import CommentFunctionalBrowserTest
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_ID
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
 
 from plone import api
+from plone.app.testing import setRoles
 from plone.app.textfield.value import RichTextValue
 
 import transaction
@@ -42,7 +46,7 @@ class TestCommentView(CommentBrowserTest):
 
     def test_CommentView_class_registration(self):
         from imio.urbdial.notarydivision.content.comment_view import CommentView
-        view = self.test_observation.restrictedTraverse('view')
+        view = self.test_observation.restrictedTraverse('comment_view')
         self.assertTrue(isinstance(view, CommentView))
 
     def test_Observation_view_redirects_to_NotaryDivisionView(self):
@@ -54,7 +58,7 @@ class TestCommentView(CommentBrowserTest):
 
 class FunctionalTestCommentView(CommentFunctionalBrowserTest):
     """
-    Functional tests on comment View.
+    Functional tests on Comment View.
     """
 
     def test_Observation_text_display(self):
@@ -66,6 +70,27 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
 
         self.test_observation.text = RichTextValue(observation_text)
         transaction.commit()
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue(observation_text in contents)
+
+    def test_show_Observation_only_if_user_has_View_permission(self):
+
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        observation_text = "<span>A long time ago in a galaxy far, far away...</span>"
+        self.test_observation.text = RichTextValue(observation_text)
+        transaction.commit()
+
+        # Observation should not be visible yet.
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue(observation_text not in contents)
+
+        # Set Observation Reader role to our user.
+        setRoles(self.portal, TEST_FD_ID, ['Observation Reader'])
+        transaction.commit()
+
+        # The observation should now be visible.
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         self.assertTrue(observation_text in contents)
