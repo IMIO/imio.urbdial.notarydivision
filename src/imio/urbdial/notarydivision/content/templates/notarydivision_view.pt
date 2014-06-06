@@ -64,8 +64,7 @@
 
                 <fieldset id="comments">
                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Observations</legend>
-                    <tal:block define="comments_macro here/@@comments_display/comments;
-                                       view python:here.restrictedTraverse('comment_view')">
+                    <tal:block define="comments_macro here/@@comments_display/comments">
                         <metal:use_macro use-macro="comments_macro" />
                     </tal:block>
                 </fieldset>

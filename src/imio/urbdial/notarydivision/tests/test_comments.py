@@ -56,7 +56,7 @@ class TestCommentView(CommentBrowserTest):
 
     def test_CommentView_class_registration(self):
         from imio.urbdial.notarydivision.content.comment_view import CommentView
-        view = self.test_observation.restrictedTraverse('comment_view')
+        view = self.test_observation.restrictedTraverse('view')
         self.assertTrue(isinstance(view, CommentView))
 
     def test_Observation_view_redirects_to_NotaryDivisionView(self):

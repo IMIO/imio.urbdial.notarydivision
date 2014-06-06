@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision.content.comment_view import CommentContainerView
+
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
-from plone.dexterity.browser import view
 
 
 class NotaryDivisionAddForm(add.DefaultAddForm):
@@ -27,10 +28,7 @@ class NotaryDivisionEditForm(edit.DefaultEditForm):
     """
 
 
-class NotaryDivisionView(view.DefaultView):
+class NotaryDivisionView(CommentContainerView):
     """
     NotaryDivision custom View.
     """
-
-    def get_comments(self):
-        return self.context.objectValues()

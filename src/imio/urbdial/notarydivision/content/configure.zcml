@@ -57,20 +57,8 @@
     />
 
     <browser:page
-        for=".notarydivision.INotaryDivision"
-        name="comment_view"
-        class=".comment_view.CommentView"
-        permission="zope2.View"
-    />
-    <browser:page
         for=".comment.IObservation"
         name="view"
-        class=".comment_view.CommentView"
-        permission="zope2.View"
-    />
-    <browser:page
-        for=".comment.IObservation"
-        name="comment_view"
         class=".comment_view.CommentView"
         permission="zope2.View"
     />
