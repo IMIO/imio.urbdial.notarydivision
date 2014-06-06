@@ -30,8 +30,11 @@ class TestRolesAndPermissions(unittest.TestCase):
         roles_of_notaries_group = api.group.get_roles('notaries')
         self.assertTrue('Member' in roles_of_notaries_group)
 
-    def test_ManageObservation_permission(self):
+    def test_AddObservation_permission_registration(self):
+        self.assertTrue('imio.urbdial.notarydivision: AddObservation' in self.portal.possible_permissions())
+
+    def test_ManageObservation_permission_registration(self):
         self.assertTrue('imio.urbdial.notarydivision: ManageObservation' in self.portal.possible_permissions())
 
-    def test_ViewObservation_permission(self):
+    def test_ViewObservation_permission_registration(self):
         self.assertTrue('imio.urbdial.notarydivision: ViewObservation' in self.portal.possible_permissions())

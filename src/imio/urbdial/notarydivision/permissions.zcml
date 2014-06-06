@@ -3,6 +3,11 @@
     i18n_domain="imio.urbdial.notarydivision">
 
     <permission
+        id="imio.urbdial.notarydivision.AddObservation"
+        title="imio.urbdial.notarydivision: AddObservation"
+        />
+
+    <permission
         id="imio.urbdial.notarydivision.ManageObservation"
         title="imio.urbdial.notarydivision: ManageObservation"
         />
