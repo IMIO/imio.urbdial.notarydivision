@@ -31,15 +31,23 @@ class TestRolesAndPermissions(unittest.TestCase):
         self.assertTrue('Member' in roles_of_notaries_group)
 
     def test_AddObservation_permission_registration(self):
-        self.assertTrue('imio.urbdial.notarydivision: AddObservation' in self.portal.possible_permissions())
+        self.assertTrue('imio.urbdial.notarydivision: Add Observation' in self.portal.possible_permissions())
 
     def test_ManageObservation_permission_registration(self):
-        self.assertTrue('imio.urbdial.notarydivision: ManageObservation' in self.portal.possible_permissions())
+        self.assertTrue('imio.urbdial.notarydivision: Manage Observation' in self.portal.possible_permissions())
 
     def test_ViewObservation_permission_registration(self):
-        self.assertTrue('imio.urbdial.notarydivision: ViewObservation' in self.portal.possible_permissions())
+        self.assertTrue('imio.urbdial.notarydivision: View Observation' in self.portal.possible_permissions())
 
     def test_ObservationCreator_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
         registered_roles = portal_roles.listRoleIds()
         self.assertTrue('Observation Creator' in registered_roles)
+
+    def test_add_Observation_rolemap(self):
+        """
+        'AddObservation' permission should be given to the 'NotaryDivision Creator' role
+        """
+        role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: Add Observation')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('Observation Creator' in role_names)

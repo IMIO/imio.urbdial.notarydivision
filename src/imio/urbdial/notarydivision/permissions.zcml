@@ -4,17 +4,17 @@
 
     <permission
         id="imio.urbdial.notarydivision.AddObservation"
-        title="imio.urbdial.notarydivision: AddObservation"
+        title="imio.urbdial.notarydivision: Add Observation"
         />
 
     <permission
         id="imio.urbdial.notarydivision.ManageObservation"
-        title="imio.urbdial.notarydivision: ManageObservation"
+        title="imio.urbdial.notarydivision: Manage Observation"
         />
 
     <permission
         id="imio.urbdial.notarydivision.ViewObservation"
-        title="imio.urbdial.notarydivision: ViewObservation"
+        title="imio.urbdial.notarydivision: View Observation"
         />
 
 </configure>

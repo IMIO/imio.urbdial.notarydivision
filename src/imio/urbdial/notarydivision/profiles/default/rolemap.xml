@@ -10,5 +10,10 @@
          acquire="True">
          <role name="NotaryDivision Creator" />
      </permission>
+     <permission
+         name="imio.urbdial.notarydivision: Add Observation"
+         acquire="True">
+         <role name="Observation Creator" />
+     </permission>
  </permissions>
 </rolemap>
