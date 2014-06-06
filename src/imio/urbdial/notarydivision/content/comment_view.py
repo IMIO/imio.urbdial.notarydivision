@@ -12,6 +12,3 @@ class CommentView(view.DefaultView):
         return self.request.response.redirect(
             self.context.getNotaryDivision().absolute_url() + '/view#observations'
         )
-
-    def render(self):
-        pass
