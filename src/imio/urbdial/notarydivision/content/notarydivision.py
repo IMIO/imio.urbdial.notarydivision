@@ -186,6 +186,12 @@ class INotaryDivision(model.Schema):
         default=True,
     )
 
+    model.fieldset(
+        'general',
+        label=_(u"General informations"),
+        fields=['reference', 'applicants']
+    )
+
     reference = schema.TextLine(
         title=_(u'Reference'),
         required=False,
@@ -201,16 +207,10 @@ class INotaryDivision(model.Schema):
         ),
     )
 
-    form.widget('entrusting', SingleCheckBoxFieldWidget)
-    entrusting = schema.Bool(
-        title=_(u'Entrusting'),
-        required=True,
-    )
-
     model.fieldset(
         'estate',
         label=_(u"Estate"),
-        fields=['actual_use', 'initial_estate', 'created_estate']
+        fields=['actual_use', 'initial_estate', 'created_estate', 'entrusting']
     )
 
     actual_use = textfield.RichText(
@@ -236,6 +236,12 @@ class INotaryDivision(model.Schema):
             schema=ICreatedEstateRowSchema,
             required=False
         ),
+    )
+
+    form.widget('entrusting', SingleCheckBoxFieldWidget)
+    entrusting = schema.Bool(
+        title=_(u'Entrusting'),
+        required=True,
     )
 
     model.fieldset(
@@ -282,6 +288,19 @@ class INotaryDivision(model.Schema):
     form.widget('plan_files', MultiFileFieldWidget)
     plan_files = schema.List(
         title=_(u'Plans files'),
+        value_type=field.NamedBlobFile(),
+        required=False,
+    )
+
+    model.fieldset(
+        'annex',
+        label=_(u"Annex"),
+        fields=['annex_files']
+    )
+
+    form.widget('annex_files', MultiFileFieldWidget)
+    annex_files = schema.List(
+        title=_(u'Annex files'),
         value_type=field.NamedBlobFile(),
         required=False,
     )
