@@ -186,6 +186,12 @@ class INotaryDivision(model.Schema):
         default=True,
     )
 
+    model.fieldset(
+        'general',
+        label=_(u"General informations"),
+        fields=['reference', 'applicants']
+    )
+
     reference = schema.TextLine(
         title=_(u'Reference'),
         required=False,
@@ -199,12 +205,6 @@ class INotaryDivision(model.Schema):
             schema=IApplicantsRowSchema,
             required=False
         ),
-    )
-
-    form.widget('entrusting', SingleCheckBoxFieldWidget)
-    entrusting = schema.Bool(
-        title=_(u'Entrusting'),
-        required=True,
     )
 
     model.fieldset(
@@ -236,6 +236,12 @@ class INotaryDivision(model.Schema):
             schema=ICreatedEstateRowSchema,
             required=False
         ),
+    )
+
+    form.widget('entrusting', SingleCheckBoxFieldWidget)
+    entrusting = schema.Bool(
+        title=_(u'Entrusting'),
+        required=True,
     )
 
     model.fieldset(

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-06-09 20:30+0000\n"
+"POT-Creation-Date: 2014-06-10 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/notarydivision.py:291
+#: ../content/notarydivision.py:297
 msgid "Annex"
 msgstr ""
 
-#: ../content/notarydivision.py:297
+#: ../content/notarydivision.py:303
 msgid "Annex files"
 msgstr ""
 
-#: ../content/notarydivision.py:196
+#: ../content/notarydivision.py:202
 msgid "Applicants"
 msgstr ""
 
-#: ../content/notarydivision.py:243
+#: ../content/notarydivision.py:249
 msgid "Article 90"
 msgstr ""
 
-#: ../content/notarydivision.py:257
+#: ../content/notarydivision.py:263
 msgid "Article 90 exceptions detail"
 msgstr ""
 
-#: ../content/notarydivision.py:249
+#: ../content/notarydivision.py:255
 msgid "Article 90 reasons"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Division"
 msgstr ""
 
-#: ../content/notarydivision.py:206
+#: ../content/notarydivision.py:243
 msgid "Entrusting"
 msgstr ""
 
@@ -99,7 +99,11 @@ msgstr ""
 msgid "Firstname"
 msgstr ""
 
-#: ../content/notarydivision.py:278
+#: ../content/notarydivision.py:191
+msgid "General informations"
+msgstr ""
+
+#: ../content/notarydivision.py:284
 msgid "Geometrician"
 msgstr ""
 
@@ -137,19 +141,19 @@ msgstr ""
 msgid "Parcel destination"
 msgstr ""
 
-#: ../content/notarydivision.py:263
+#: ../content/notarydivision.py:269
 msgid "Plan"
 msgstr ""
 
-#: ../content/notarydivision.py:273
+#: ../content/notarydivision.py:279
 msgid "Plan date"
 msgstr ""
 
-#: ../content/notarydivision.py:268
+#: ../content/notarydivision.py:274
 msgid "Plan reference"
 msgstr ""
 
-#: ../content/notarydivision.py:284
+#: ../content/notarydivision.py:290
 msgid "Plans files"
 msgstr ""
 
@@ -165,7 +169,7 @@ msgstr ""
 msgid "Radical"
 msgstr ""
 
-#: ../content/notarydivision.py:190
+#: ../content/notarydivision.py:196
 msgid "Reference"
 msgstr ""
 

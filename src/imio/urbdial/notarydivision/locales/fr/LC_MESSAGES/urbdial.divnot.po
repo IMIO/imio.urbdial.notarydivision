@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-06-09 20:30+0000\n"
+"POT-Creation-Date: 2014-06-10 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,27 +15,27 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-#: ../content/notarydivision.py:291
+#: ../content/notarydivision.py:297
 msgid "Annex"
 msgstr "Autres annexes"
 
-#: ../content/notarydivision.py:297
+#: ../content/notarydivision.py:303
 msgid "Annex files"
 msgstr "Fichiers des annexes"
 
-#: ../content/notarydivision.py:196
+#: ../content/notarydivision.py:202
 msgid "Applicants"
 msgstr "Requérant(s)"
 
-#: ../content/notarydivision.py:243
+#: ../content/notarydivision.py:249
 msgid "Article 90"
 msgstr "Article 90"
 
-#: ../content/notarydivision.py:257
+#: ../content/notarydivision.py:263
 msgid "Article 90 exceptions detail"
 msgstr "Justificatif des motifs d'exception"
 
-#: ../content/notarydivision.py:249
+#: ../content/notarydivision.py:255
 msgid "Article 90 reasons"
 msgstr "Motifs d'exception article 90"
 
@@ -67,7 +67,7 @@ msgstr "Type d'acte"
 msgid "Division"
 msgstr "Division"
 
-#: ../content/notarydivision.py:206
+#: ../content/notarydivision.py:243
 msgid "Entrusting"
 msgstr "Sauf en cas de force majeure, les parties se sont engagées à maintenir leurs intentions respectives dans un délai raisonnable "
 
@@ -98,7 +98,11 @@ msgstr "Fichiers"
 msgid "Firstname"
 msgstr "Prénom"
 
-#: ../content/notarydivision.py:278
+#: ../content/notarydivision.py:191
+msgid "General informations"
+msgstr "Informations générales"
+
+#: ../content/notarydivision.py:284
 msgid "Geometrician"
 msgstr "Géomètre"
 
@@ -137,19 +141,19 @@ msgstr "Observation"
 msgid "Parcel destination"
 msgstr "Destination du lot"
 
-#: ../content/notarydivision.py:263
+#: ../content/notarydivision.py:269
 msgid "Plan"
 msgstr "Plan"
 
-#: ../content/notarydivision.py:273
+#: ../content/notarydivision.py:279
 msgid "Plan date"
 msgstr "Date du plan"
 
-#: ../content/notarydivision.py:268
+#: ../content/notarydivision.py:274
 msgid "Plan reference"
 msgstr "Référence du plan"
 
-#: ../content/notarydivision.py:284
+#: ../content/notarydivision.py:290
 msgid "Plans files"
 msgstr "Fichiers (plan)"
 
@@ -165,7 +169,7 @@ msgstr "Précision"
 msgid "Radical"
 msgstr "Radical"
 
-#: ../content/notarydivision.py:190
+#: ../content/notarydivision.py:196
 msgid "Reference"
 msgstr "Référence"
 
