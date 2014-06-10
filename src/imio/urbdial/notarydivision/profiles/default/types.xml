@@ -4,5 +4,6 @@
  <object name="NotaryDivision" meta_type="Dexterity FTI"/>
  <object name="Observation" meta_type="Dexterity FTI"/>
  <object name="Precision" meta_type="Dexterity FTI"/>
+ <object name="PrecisionDemand" meta_type="Dexterity FTI"/>
  <!-- -*- extra stuff goes here -*- -->
 </object>
