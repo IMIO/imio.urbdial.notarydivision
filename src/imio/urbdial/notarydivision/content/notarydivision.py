@@ -210,7 +210,7 @@ class INotaryDivision(model.Schema):
     model.fieldset(
         'estate',
         label=_(u"Estate"),
-        fields=['actual_use', 'initial_estate', 'created_estate']
+        fields=['actual_use', 'initial_estate', 'created_estate', 'entrusting']
     )
 
     actual_use = textfield.RichText(
@@ -282,6 +282,19 @@ class INotaryDivision(model.Schema):
     form.widget('plan_files', MultiFileFieldWidget)
     plan_files = schema.List(
         title=_(u'Plans files'),
+        value_type=field.NamedBlobFile(),
+        required=False,
+    )
+
+    model.fieldset(
+        'annex',
+        label=_(u"Annex"),
+        fields=['annex_files']
+    )
+
+    form.widget('annex_files', MultiFileFieldWidget)
+    annex_files = schema.List(
+        title=_(u'Annex files'),
         value_type=field.NamedBlobFile(),
         required=False,
     )
