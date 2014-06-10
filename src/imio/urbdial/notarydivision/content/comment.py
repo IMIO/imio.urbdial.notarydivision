@@ -104,3 +104,16 @@ class Precision(Comment):
     Precision dexterity class.
     """
     implements(IPrecision)
+
+
+class IPrecisionDemand(IObservation):
+    """
+    Precision Demand dexterity schema.
+    """
+
+
+class PrecisionDemand(Observation):
+    """
+    Precision Demand dexterity class.
+    """
+    implements(IObservation)
