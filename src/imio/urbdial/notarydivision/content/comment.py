@@ -108,12 +108,25 @@ class Precision(Comment):
 
 class IPrecisionDemand(IObservation):
     """
-    Precision Demand dexterity schema.
+    Precision demand dexterity schema.
     """
 
 
 class PrecisionDemand(Observation):
     """
-    Precision Demand dexterity class.
+    Precision demand dexterity class.
+    """
+    implements(IObservation)
+
+
+class IInadmissibleFolder(IObservation):
+    """
+    Inadmissible folder dexterity schema.
+    """
+
+
+class InadmissibleFolder(Observation):
+    """
+    Inadmissible folder dexterity class.
     """
     implements(IObservation)
