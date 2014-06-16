@@ -106,7 +106,9 @@ def create_dgo4_group(context):
     api.group.create(
         groupname='dgo4',
         title=_('DGO 4'),
-        roles=['Member'],
+        roles=[
+            'Member',
+        ],
     )
 
 
@@ -130,7 +132,7 @@ def create_notarydivisions_folder(context):
         # this folder will behave as the site root
         alsoProvides(folder, INavigationRoot)
 
-        folder.manage_addLocalRoles('notaries', ['Reader', 'NotaryDivision Creator'])
+        folder.manage_addLocalRoles('notaries', ['NotaryDivision Reader', 'NotaryDivision Creator'])
 
         _set_AllowedTypes_of_folder(folder, 'NotaryDivision')
 
