@@ -12,24 +12,4 @@
         title="imio.urbdial.notarydivision: Add Precision"
         />
 
-    <permission
-        id="imio.urbdial.notarydivision.ManageObservation"
-        title="imio.urbdial.notarydivision: Manage Observation"
-        />
-
-    <permission
-        id="imio.urbdial.notarydivision.ManagePrecision"
-        title="imio.urbdial.notarydivision: Manage Precision"
-        />
-
-    <permission
-        id="imio.urbdial.notarydivision.ViewObservation"
-        title="imio.urbdial.notarydivision: View Observation"
-        />
-
-    <permission
-        id="imio.urbdial.notarydivision.ViewPrecision"
-        title="imio.urbdial.notarydivision: View Precision"
-        />
-
 </configure>

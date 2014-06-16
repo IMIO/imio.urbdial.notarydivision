@@ -16,34 +16,39 @@
          <role name="NotaryDivision Creator" />
      </permission>
      <permission
+         name="Add portal content"
+         acquire="True">
+         <role name="Observation Creator" />
+     </permission>
+     <permission
          name="imio.urbdial.notarydivision: Add Observation"
          acquire="True">
          <role name="Observation Creator" />
      </permission>
      <permission
-         name="imio.urbdial.notarydivision: Manage Observation"
+         name="Modify portal content"
          acquire="True">
          <role name="Observation Manager" />
      </permission>
      <permission
-         name="imio.urbdial.notarydivision: View Observation"
+         name="View"
          acquire="True">
          <role name="Observation Reader" />
-     </permission>
-     <permission
-         name="imio.urbdial.notarydivision: Manage Precision"
-         acquire="True">
-         <role name="Precision Manager" />
-     </permission>
-     <permission
-         name="imio.urbdial.notarydivision: View Precision"
-         acquire="True">
-         <role name="Precision Reader" />
      </permission>
      <permission
          name="imio.urbdial.notarydivision: Add Precision"
          acquire="True">
          <role name="Precision Creator" />
+     </permission>
+     <permission
+         name="Modify portal content"
+         acquire="True">
+         <role name="Precision Manager" />
+     </permission>
+     <permission
+         name="View"
+         acquire="True">
+         <role name="Precision Reader" />
      </permission>
  </permissions>
 </rolemap>
