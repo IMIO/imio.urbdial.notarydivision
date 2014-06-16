@@ -2,6 +2,8 @@
 <rolemap>
  <roles>
     <role name="NotaryDivision Creator"/>
+    <role name="NotaryDivision Manager"/>
+    <role name="NotaryDivision Reader"/>
     <role name="Observation Creator"/>
     <role name="Observation Manager"/>
     <role name="Observation Reader"/>
@@ -14,11 +16,33 @@
          name="Add portal content"
          acquire="True">
          <role name="NotaryDivision Creator" />
+         <role name="Observation Creator" />
      </permission>
      <permission
-         name="Add portal content"
+         name="View"
          acquire="True">
-         <role name="Observation Creator" />
+         <role name="NotaryDivision Reader" />
+         <role name="Observation Reader" />
+         <role name="Precision Reader" />
+     </permission>
+     <permission
+         name="Access contents information"
+         acquire="True">
+         <role name="NotaryDivision Reader" />
+     </permission>
+     <permission
+         name="Modify portal content"
+         acquire="True">
+         <role name="NotaryDivision Manager" />
+         <role name="Observation Manager" />
+         <role name="Precision Manager" />
+     </permission>
+     <permission
+         name="Delete objects"
+         acquire="True">
+         <role name="NotaryDivision Manager" />
+         <role name="Observation Manager" />
+         <role name="Precision Manager" />
      </permission>
      <permission
          name="imio.urbdial.notarydivision: Add Observation"
@@ -26,29 +50,9 @@
          <role name="Observation Creator" />
      </permission>
      <permission
-         name="Modify portal content"
-         acquire="True">
-         <role name="Observation Manager" />
-     </permission>
-     <permission
-         name="View"
-         acquire="True">
-         <role name="Observation Reader" />
-     </permission>
-     <permission
          name="imio.urbdial.notarydivision: Add Precision"
          acquire="True">
          <role name="Precision Creator" />
-     </permission>
-     <permission
-         name="Modify portal content"
-         acquire="True">
-         <role name="Precision Manager" />
-     </permission>
-     <permission
-         name="View"
-         acquire="True">
-         <role name="Precision Reader" />
      </permission>
  </permissions>
 </rolemap>

@@ -128,7 +128,7 @@ class TestSetup(unittest.TestCase):
         """
         divnot_folder = self.portal.notarydivisions
         folder_local_roles = dict(divnot_folder.get_local_roles())
-        self.assertTrue(u'Reader' in folder_local_roles['notaries'])
+        self.assertTrue(u'NotaryDivision Reader' in folder_local_roles['notaries'])
 
     def test_notarydivisions_folder_NotaryDivisionCreator_local_role(self):
         """

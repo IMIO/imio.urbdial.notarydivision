@@ -26,6 +26,42 @@ class TestRolesAndPermissions(unittest.TestCase):
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('NotaryDivision Creator' in role_names)
 
+    def test_NotaryDivisionReader(self):
+        portal_roles = self.portal.acl_users.portal_role_manager
+        registered_roles = portal_roles.listRoleIds()
+        self.assertTrue('NotaryDivision Reader' in registered_roles)
+
+    def test_view_NotaryDivision_rolemap(self):
+        """
+        'zope2.View' and 'zope2.AccessContentsInformation' permission should be given
+        to the 'NotaryDivision Reader' role
+        """
+        role_permissions = self.portal.rolesOfPermission('View')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('NotaryDivision Reader' in role_names)
+
+        role_permissions = self.portal.rolesOfPermission('Access contents information')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('NotaryDivision Reader' in role_names)
+
+    def test_NotaryDivisionManager(self):
+        portal_roles = self.portal.acl_users.portal_role_manager
+        registered_roles = portal_roles.listRoleIds()
+        self.assertTrue('NotaryDivision Manager' in registered_roles)
+
+    def test_manage_NotaryDivision_rolemap(self):
+        """
+        'cmf.ModifyPortalContent' and 'zope2.DeleteObjects' permission should be given
+        to the 'NotaryDivision Manager' role
+        """
+        role_permissions = self.portal.rolesOfPermission('Modify portal content')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('NotaryDivision Manager' in role_names)
+
+        role_permissions = self.portal.rolesOfPermission('Delete objects')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('NotaryDivision Manager' in role_names)
+
     def test_Member_role_is_assigned_to_notaries_group(self):
         roles_of_notaries_group = api.group.get_roles('notaries')
         self.assertTrue('Member' in roles_of_notaries_group)
