@@ -8,15 +8,16 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
+    <include file="profiles.zcml" />
+    <include file="permissions.zcml" />
+
     <include package="collective.ckeditor"/>
     <include package="collective.z3cform.datagridfield"/>
+    <include package="imio.actionspanel"/>
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
 
     <include package=".browser" />
     <include package=".content" />
-
-    <include file="profiles.zcml" />
-    <include file="permissions.zcml" />
 
 </configure>

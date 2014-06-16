@@ -46,9 +46,6 @@ class TestRolesAndPermissions(unittest.TestCase):
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('Observation Creator' in role_names)
 
-    def test_ViewObservation_permission_registration(self):
-        self.assertTrue('imio.urbdial.notarydivision: View Observation' in self.portal.possible_permissions())
-
     def test_ObservationReader_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
         registered_roles = portal_roles.listRoleIds()
@@ -56,14 +53,11 @@ class TestRolesAndPermissions(unittest.TestCase):
 
     def test_view_Observation_rolemap(self):
         """
-        'ViewObservation' permission should be given to the 'NotaryDivision Reader' role
+        'View' permission should be given to the 'Observation Reader' role
         """
-        role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: View Observation')
+        role_permissions = self.portal.rolesOfPermission('View')
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('Observation Reader' in role_names)
-
-    def test_ManageObservation_permission_registration(self):
-        self.assertTrue('imio.urbdial.notarydivision: Manage Observation' in self.portal.possible_permissions())
 
     def test_ObservationManager_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
@@ -72,9 +66,13 @@ class TestRolesAndPermissions(unittest.TestCase):
 
     def test_manage_Observation_rolemap(self):
         """
-        'ManageObservation' permission should be given to the 'NotaryDivision Manager' role
+        'Delete' and 'Edit' permissions should be given to the 'Observation Manager' role
         """
-        role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: Manage Observation')
+        role_permissions = self.portal.rolesOfPermission('Modify portal content')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('Observation Manager' in role_names)
+
+        role_permissions = self.portal.rolesOfPermission('Delete objects')
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('Observation Manager' in role_names)
 
@@ -94,9 +92,6 @@ class TestRolesAndPermissions(unittest.TestCase):
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('Precision Creator' in role_names)
 
-    def test_ViewPrecision_permission_registration(self):
-        self.assertTrue('imio.urbdial.notarydivision: View Precision' in self.portal.possible_permissions())
-
     def test_PrecisionReader_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
         registered_roles = portal_roles.listRoleIds()
@@ -104,14 +99,11 @@ class TestRolesAndPermissions(unittest.TestCase):
 
     def test_view_precision_rolemap(self):
         """
-        'ViewPrecision' permission should be given to the 'Precision Reader' role
+        'View' permission should be given to the 'Precision Reader' role
         """
-        role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: View Precision')
+        role_permissions = self.portal.rolesOfPermission('View')
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('Precision Reader' in role_names)
-
-    def test_ManagePrecision_permission_registration(self):
-        self.assertTrue('imio.urbdial.notarydivision: Manage Precision' in self.portal.possible_permissions())
 
     def test_PrecisionManager_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
@@ -120,8 +112,12 @@ class TestRolesAndPermissions(unittest.TestCase):
 
     def test_manage_precision_rolemap(self):
         """
-        'ManagePrecision' permission should be given to the 'Precision Manager' role
+        'Delete' and 'Edit' permissions should be given to the 'Precision Manager' role
         """
-        role_permissions = self.portal.rolesOfPermission('imio.urbdial.notarydivision: Manage Precision')
+        role_permissions = self.portal.rolesOfPermission('Modify portal content')
+        role_names = [p['name'] for p in role_permissions if p['selected']]
+        self.assertTrue('Precision Manager' in role_names)
+
+        role_permissions = self.portal.rolesOfPermission('Delete objects')
         role_names = [p['name'] for p in role_permissions if p['selected']]
         self.assertTrue('Precision Manager' in role_names)

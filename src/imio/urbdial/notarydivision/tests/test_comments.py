@@ -75,6 +75,14 @@ class TestCommentView(CommentBrowserTest):
         msg = 'Observation view does not redirect to NotaryDivisionView'
         self.assertTrue(self.browser.url == notary_division_url + '/view#observations', msg)
 
+    def test_Observation_actions_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        for action in ['delete', 'edit']:
+            msg = 'action buton "{}" is not visible'.format(action)
+            class_button = 'action_{}'.format(action)
+            contents = self.browser.contents
+            self.assertTrue(class_button in contents, msg)
+
 
 class FunctionalTestCommentView(CommentFunctionalBrowserTest):
     """
@@ -90,12 +98,12 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
 
         self.test_observation.text = RichTextValue(observation_text)
         transaction.commit()
+
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         self.assertTrue(observation_text in contents)
 
     def test_show_Observation_only_if_user_has_View_permission(self):
-
         self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
         observation_text = "<span>A long time ago in a galaxy far, far away...</span>"
         self.test_observation.text = RichTextValue(observation_text)
@@ -114,3 +122,19 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         self.assertTrue(observation_text in contents)
+
+    def test_edit_action(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        self.browser.getLink(url='observation/edit').click()
+        contents = self.browser.contents
+        self.assertTrue('Editer Observation' in contents)
+
+    def test_delete_action(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        self.browser.getLink(url='observation/delete_confirmation').click()
+        contents = self.browser.contents
+        self.assertTrue('Voulez-vous réellement supprimer ce dossier et tout son contenu' in contents)
+
+        self.browser.getControl('Supprimer').click()
+        observations = self.test_divnot.objectValues('Observation')
+        self.assertTrue(len(observations) == 0)

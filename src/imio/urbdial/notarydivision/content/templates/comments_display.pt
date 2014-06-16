@@ -1,12 +1,14 @@
 <metal:observation_macro define-macro="comments">
     <tal:comments repeat="comment view/get_comments">
-        <tal:vars define="view python:comment.restrictedTraverse('view')">
+        <tal:vars define="view python: view.get_view_of(comment)">
 
-            <strong><div tal:content="comment/full_title"></div></strong>
-            <span tal:condition="python: not comment.text" class="discreet">N.C</span>
-            <tal:text tal:condition="python: comment.text">
-                <tal:content replace="structure python: comment.text.raw_encoded" />
-            </tal:text>
+            <strong><span tal:content="comment/full_title"></span></strong>
+
+            <tal:actions content="structure view/display_actions" />
+
+            <tal:text content="structure python: view.display_field('text')" />
+
+            <tal:files content="structure python: view.display_field('files')" />
 
             <table>
                 <tr>

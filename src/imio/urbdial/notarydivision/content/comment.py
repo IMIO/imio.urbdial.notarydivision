@@ -62,18 +62,16 @@ class Comment(Container):
             level = level.aq_parent
         return level
 
-    @property
-    def base_permission(self):
-        """To implements in subclasses with real FTI."""
-
     def check_permission(self, permission):
-        full_permission = self.base_permission.format(
-            permission=permission
+        base_permission = 'imio.urbdial.notarydivision.{permission}{portal_type}'
+        full_permission = base_permission.format(
+            permission=permission,
+            portal_type=self.portal_type,
         )
         return checkPermission(full_permission, self)
 
-    def check_View_permission(self):
-        return self.check_permission('View')
+    def check_creation_permission(self):
+        return self.check_permission('Add')
 
 
 class IObservation(IComment):
@@ -87,10 +85,6 @@ class Observation(Comment):
     Observation dexterity class.
     """
     implements(IObservation)
-
-    @property
-    def base_permission(self):
-        return 'imio.urbdial.notarydivision.{permission}Observation'
 
 
 class IPrecision(IComment):

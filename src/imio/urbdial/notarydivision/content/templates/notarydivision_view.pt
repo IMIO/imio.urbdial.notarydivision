@@ -46,6 +46,7 @@
                     </tal:tabs>
                 </dl>
 
+
                 <fieldset id="comments">
                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Observations</legend>
                     <tal:block define="comments_macro here/@@comments_display/comments">
