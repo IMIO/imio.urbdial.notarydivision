@@ -54,6 +54,16 @@ class TestInstall(unittest.TestCase):
         precisionDemand_type = portal_types.PrecisionDemand
         self.assertTrue(precisionDemand_type.add_permission == 'imio.urbdial.notarydivision.AddObservation')
 
+    def test_InadmissibleFolder_portal_type_is_registered(self):
+        portal_types = api.portal.get_tool('portal_types')
+        registered_types = portal_types.listContentTypes()
+        self.assertTrue('InadmissibleFolder' in registered_types)
+
+    def test_InadmissibleFolder_creation_permission_is_AddObservation(self):
+        portal_types = api.portal.get_tool('portal_types')
+        inadmissibleFolder_type = portal_types.InadmissibleFolder
+        self.assertTrue(inadmissibleFolder_type.add_permission == 'imio.urbdial.notarydivision.AddObservation')
+
 
 class TestCommentView(CommentBrowserTest):
     """
