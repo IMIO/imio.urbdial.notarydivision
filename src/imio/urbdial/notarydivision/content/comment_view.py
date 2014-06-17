@@ -31,7 +31,7 @@ class CommentView(CommentContainerView):
 
     def __call__(self):
         return self.request.response.redirect(
-            self.context.getNotaryDivision().absolute_url() + '/view#observations'
+            self.context.get_notarydivision().absolute_url() + '/view#observations'
         )
 
     def display_field(self, field_id):

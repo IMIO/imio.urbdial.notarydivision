@@ -56,7 +56,7 @@ class Comment(Container):
         )
         return title
 
-    def getNotaryDivision(self):
+    def get_notarydivision(self):
         level = self
         while(level.portal_type != 'NotaryDivision'):
             level = level.aq_parent
