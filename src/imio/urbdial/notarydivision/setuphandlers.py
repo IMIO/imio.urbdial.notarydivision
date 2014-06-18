@@ -106,9 +106,7 @@ def create_dgo4_group(context):
     api.group.create(
         groupname='dgo4',
         title=_('DGO 4'),
-        roles=[
-            'Member',
-        ],
+        roles=['Member'],
     )
 
 
@@ -133,8 +131,9 @@ def create_notarydivisions_folder(context):
         alsoProvides(folder, INavigationRoot)
 
         folder.manage_addLocalRoles('notaries', ['NotaryDivision Reader', 'NotaryDivision Creator'])
+        folder.manage_addLocalRoles('dgo4', ['NotaryDivision Reader'])
 
-        _set_AllowedTypes_of_folder(folder, 'NotaryDivision')
+        set_AllowedTypes_of_folder(folder, 'NotaryDivision')
 
 
 def redirect_root_default_view(context):
@@ -146,7 +145,7 @@ def redirect_root_default_view(context):
     portal.setLayout('redirect_root_view')
 
 
-def _set_AllowedTypes_of_folder(folder, portal_types):
+def set_AllowedTypes_of_folder(folder, portal_types):
     """
     Set allowed content types of given folder.
     """
