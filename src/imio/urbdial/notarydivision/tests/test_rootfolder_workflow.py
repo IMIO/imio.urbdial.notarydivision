@@ -34,7 +34,7 @@ class TestRootFolderWorkflow(unittest.TestCase):
 
     def test_View_permission_roles(self):
         """
-        View should only be given to 'NotaryDivision Reader' and 'Manager' roles.
+        View should be given to 'NotaryDivision Reader' and 'Manager' roles.
         """
         roles_of_permission = self.get_roles_of_permission('View')
         self.assertTrue(len(roles_of_permission) == 2)
@@ -43,7 +43,7 @@ class TestRootFolderWorkflow(unittest.TestCase):
 
     def test_AccessContentsInformation_permission_roles(self):
         """
-        'Access contents information' permission should only be given to
+        'Access contents information' permission should be given to
         'NotaryDivision Reader' and 'Manager' roles.
         """
         roles_of_permission = self.get_roles_of_permission('Access contents information')
@@ -53,7 +53,7 @@ class TestRootFolderWorkflow(unittest.TestCase):
 
     def test_AddPortalContent_permission_roles(self):
         """
-        'Add portal content' permission should only be given to 'NotaryDivision creator' roles.
+        'Add portal content' permission should be given to 'NotaryDivision creator' roles.
         """
         roles_of_permission = self.get_roles_of_permission('Add portal content')
         self.assertTrue(len(roles_of_permission) == 2)
@@ -69,7 +69,7 @@ class TestRootFolderWorkflow(unittest.TestCase):
 
     def test_ModifyPortalContent_permission_roles(self):
         """
-        'Modify portal content' permission should only be given to 'Manager' role.
+        'Modify portal content' permission should be given to 'Manager' role.
         """
         roles_of_permission = self.get_roles_of_permission('Modify portal content')
         self.assertTrue(len(roles_of_permission) == 1)
