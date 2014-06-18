@@ -52,11 +52,6 @@ class TestErgonomy(BrowserTest):
         self.browser.open(self.portal.absolute_url())
         self.assertTrue(self.browser.url == 'http://nohost/plone/notarydivisions')
 
-    def test_anonymous_is_redirected_to_login_page(self):
-        self.browser.open(self.portal.absolute_url() + "/logout")
-        self.browser.open(self.portal.absolute_url())
-        self.assertTrue(self.browser.url.endswith('/login'))
-
     def test_dashboard_is_disabled(self):
         self.browser.open(self.portal.absolute_url())
         contents = self.browser.contents
