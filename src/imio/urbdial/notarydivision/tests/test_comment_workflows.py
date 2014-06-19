@@ -7,7 +7,7 @@ from plone import api
 import unittest
 
 
-class TestObservationWorkflow(unittest.TestCase):
+class TestObservationWorkflowDefinition(unittest.TestCase):
     """
     Test Observation workflow.
     """
@@ -32,7 +32,7 @@ class TestObservationWorkflow(unittest.TestCase):
         roles_of_permission = default_state.permission_roles[permission]
         return roles_of_permission
 
-    def test_states(self):
+    def test_available_states(self):
         available_states = self.observation_wf.states.keys()
 
         expected_states = ['Draft', 'Published']
@@ -51,6 +51,19 @@ class TestObservationWorkflow(unittest.TestCase):
                 default_state.title,
             )
             self.assertTrue(state.permission_roles == default_permission_roles, msg)
+
+    def test_available_transitions(self):
+        available_transitions = self.observation_wf.transitions.keys()
+
+        expected_transitions = ['Publish']
+        for transition in expected_transitions:
+            msg = 'transition {} is not defined in the Observation workflow'.format(transition)
+            self.assertTrue(transition in available_transitions, msg)
+
+    def test_Publication_is_restricted_to_ModifyPortalContent_permission(self):
+        transition = self.observation_wf.transitions['Publish']
+        guard = transition.getGuardSummary()
+        self.assertTrue('Modify portal content' in guard)
 
     def test_View_permission_roles(self):
         """
