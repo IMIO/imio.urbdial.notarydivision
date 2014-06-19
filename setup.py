@@ -43,6 +43,7 @@ setup(
     install_requires=[
         'collective.ckeditor',
         'collective.z3cform.datagridfield',
+        'collective.z3cform.rolefield',
         'imio.actionspanel',
         'plone.api',
         'plone.formwidget.multifile',
