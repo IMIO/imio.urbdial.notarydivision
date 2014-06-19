@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.testing import REAL_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.testing import CommentBrowserTest
 
 from plone import api
+
+from zope.component import queryAdapter
 
 import unittest
 
@@ -110,3 +113,87 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
         self.assertTrue(len(roles_of_permission) == 2)
         self.assertTrue('Observation Manager' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
+
+    def test_observation_workflow_provides_IObservationWorkflow(self):
+        from imio.urbdial.notarydivision.workflows.interfaces import IObservationWorkflow
+
+        wf_tool = api.portal.get_tool('portal_workflow')
+        observation_wf = wf_tool.getWorkflowById('Observation_workflow')
+
+        self.assertTrue(IObservationWorkflow.providedBy(observation_wf))
+
+    def test_state_role_mapping_registration(self):
+        from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
+        from imio.urbdial.notarydivision.workflows import observation_workflow
+
+        wf_tool = api.portal.get_tool('portal_workflow')
+        observation_wf = wf_tool.getWorkflowById('Observation_workflow')
+
+        mapping = queryAdapter(observation_wf, IWorkflowStateRolesMapping)
+        self.assertTrue(isinstance(mapping, observation_workflow.StateRolesMapping))
+
+
+class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest):
+    """
+    Test that local roles are assigned to the right groups when creating a
+    new observation or when triggering workflow transitions.
+    """
+
+    def test_dgo4_group_has_ObservationManager_role_on_draft_state(self):
+        observation = self.test_observation
+        state = 'Draft'
+        group = 'dgo4'
+        expected_role = 'Observation Manager'
+        self.assertTrue(api.content.get_state(observation) == state)
+        local_roles_of_dgo4 = observation.get_local_roles_for_userid(group)
+        msg = "Group '{}' should have the the local role '{}' on Observation with state '{}'".format(
+            group,
+            expected_role,
+            state
+        )
+        self.assertTrue(expected_role in local_roles_of_dgo4, msg)
+
+    def test_dgo4_group_has_ObservationCreator_role_on_published_state(self):
+        observation = self.test_observation
+        state = 'Published'
+        group = 'dgo4'
+        expected_role = 'Observation Creator'
+        api.content.transition(observation, 'Publish')
+        self.assertTrue(api.content.get_state(observation) == state)
+        local_roles_of_dgo4 = observation.get_local_roles_for_userid(group)
+        msg = "Group '{}' should have the the local role '{}' on Observation with state '{}'".format(
+            group,
+            expected_role,
+            state
+        )
+        self.assertTrue(expected_role in local_roles_of_dgo4, msg)
+
+    def test_dgo4_group_has_ObservationReader_role_on_published_state(self):
+        observation = self.test_observation
+        state = 'Published'
+        group = 'dgo4'
+        expected_role = 'Observation Reader'
+        api.content.transition(observation, 'Publish')
+        self.assertTrue(api.content.get_state(observation) == state)
+        local_roles_of_dgo4 = observation.get_local_roles_for_userid(group)
+        msg = "Group '{}' should have the the local role '{}' on Observation with state '{}'".format(
+            group,
+            expected_role,
+            state
+        )
+        self.assertTrue(expected_role in local_roles_of_dgo4, msg)
+
+    def test_notaries_group_has_ObservationReader_role_on_published_state(self):
+        observation = self.test_observation
+        state = 'Published'
+        group = 'notaries'
+        expected_role = 'Observation Reader'
+        api.content.transition(observation, 'Publish')
+        self.assertTrue(api.content.get_state(observation) == state)
+        local_roles_of_notaries = observation.get_local_roles_for_userid(group)
+        msg = "Group '{}' should have the the local role '{}' on Observation with state '{}'".format(
+            group,
+            expected_role,
+            state
+        )
+        self.assertTrue(expected_role in local_roles_of_notaries, msg)
