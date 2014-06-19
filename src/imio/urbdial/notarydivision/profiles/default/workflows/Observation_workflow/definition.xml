@@ -17,6 +17,7 @@
   <permission-map name="Access contents information"
                   acquired="False">
    <permission-role>Observation Reader</permission-role>
+   <permission-role>Observation Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Delete Objects"
@@ -32,6 +33,7 @@
   <permission-map name="View"
                   acquired="False">
    <permission-role>Observation Reader</permission-role>
+   <permission-role>Observation Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Observation"
@@ -46,6 +48,7 @@
   <permission-map name="Access contents information"
                   acquired="False">
    <permission-role>Observation Reader</permission-role>
+   <permission-role>Observation Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Delete Objects"
@@ -61,6 +64,7 @@
   <permission-map name="View"
                   acquired="False">
    <permission-role>Observation Reader</permission-role>
+   <permission-role>Observation Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Observation"

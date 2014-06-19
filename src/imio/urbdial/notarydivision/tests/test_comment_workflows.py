@@ -70,20 +70,23 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
 
     def test_View_permission_roles(self):
         """
-        'View' permission should be given to 'Observation Reader' and 'Manager' roles.
+        'View' permission should be given to 'Observation Reader', 'Observation
+        Manager' and 'Manager' roles.
         """
         roles_of_permission = self.get_roles_of_permission('View')
-        self.assertTrue(len(roles_of_permission) == 2)
+        self.assertTrue(len(roles_of_permission) == 3)
+        self.assertTrue('Observation Manager' in roles_of_permission)
         self.assertTrue('Observation Reader' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
     def test_AccessContentsInformation_permission_roles(self):
         """
         'Access contents information' permission should be given to
-        'Observation Reader' and 'Manager' roles.
+        'Observation Reader', 'Observation Manager' and 'Manager' roles.
         """
         roles_of_permission = self.get_roles_of_permission('Access contents information')
-        self.assertTrue(len(roles_of_permission) == 2)
+        self.assertTrue(len(roles_of_permission) == 3)
+        self.assertTrue('Observation Manager' in roles_of_permission)
         self.assertTrue('Observation Reader' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
