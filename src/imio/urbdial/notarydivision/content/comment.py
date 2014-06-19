@@ -47,9 +47,15 @@ class Comment(Container):
         # to update once workflow is defined for Comment
         author = api.user.get(self.creators[0])
         author = author.getUserName()
-        date = '(BROUILLON NON PUBLIÉ)'
 
-        title = '{type_} par {author}, publié le {date}:'.format(
+        history = self.workflow_history.get('Observation_workflow')[-1]
+        date = '{action} le {date}{warning}'.format(
+            action=history.get('action') == 'Publish' and 'publié' or 'créé',
+            date=history.get('time').strftime('%d/%m/%Y à %H:%M'),
+            warning=history.get('action') == 'Publish' and ' ' or ' (BROUILLON NON PUBLIÉ)',
+        )
+
+        title = '{type_} par {author}, {date}:'.format(
             type_=type_,
             author=author,
             date=date
