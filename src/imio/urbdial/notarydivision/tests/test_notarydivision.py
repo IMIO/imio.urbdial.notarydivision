@@ -476,7 +476,7 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
         msg = 'test NotaryDivision addPrecisionDemand button not appears in view'
         self.assertTrue('Add PrecisionDemand' in contents, msg)
 
-    def test_NotaryDivision_addIndmissibleFolder(self):
+    def test_NotaryDivision_addIndmissibleFolder_buttons(self):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = 'test NotaryDivision addInadmissibleFolder button not appears in view'
