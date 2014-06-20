@@ -11,15 +11,15 @@
       directory="static"
     />
 
-  <browser:page
-     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-     name="redirect_root_view"
-     template="templates/redirect_root_view.pt"
-     permission="zope2.View"
-  />
+   <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="redirect_root_view"
+      template="templates/redirect_root_view.pt"
+      permission="zope2.View"
+   />
 
-    <!-- Register custom display template for EstateDataGridField widget-->
-    <z3c:widgetTemplate
+   <!-- Register custom display template for EstateDataGridField widget-->
+   <z3c:widgetTemplate
         for="..content.notarydivision.INotaryDivision"
         mode="display"
         widget=".estate_datagridfield.EstateDataGridField"

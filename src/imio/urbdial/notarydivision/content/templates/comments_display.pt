@@ -4,7 +4,8 @@
 
             <strong><span tal:content="comment/full_title"></span></strong>
 
-            <tal:actions content="structure view/display_actions" />
+            <!--tal:actions content="structure view/display_actions" /-->
+            <tal:actions content="structure comment/actions_panel/render" />
 
             <tal:text content="structure python: view.display_field('text')" />
 
