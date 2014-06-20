@@ -81,14 +81,6 @@ class TestCommentView(CommentBrowserTest):
         msg = 'Observation view does not redirect to NotaryDivisionView'
         self.assertTrue(self.browser.url == notary_division_url + '/view#observations', msg)
 
-    def test_Observation_actions_display(self):
-        self.browser.open(self.test_divnot.absolute_url())
-        for action in ['delete', 'edit']:
-            msg = 'action buton "{}" is not visible'.format(action)
-            class_button = 'action_{}'.format(action)
-            contents = self.browser.contents
-            self.assertTrue(class_button in contents, msg)
-
 
 class FunctionalTestCommentView(CommentFunctionalBrowserTest):
     """
