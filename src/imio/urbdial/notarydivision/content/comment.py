@@ -47,9 +47,9 @@ class Comment(Container):
         # to update once workflow is defined for Comment
         author = api.user.get(self.creators[0])
         author = author.getUserName()
-        date = '(BROUILLON NON PUBLIÉ)'
+        date = u'(BROUILLON NON PUBLIÉ)'
 
-        title = '{type_} par {author}, publié le {date}:'.format(
+        title = u'{type_} par {author}, publié le {date}:'.format(
             type_=type_,
             author=author,
             date=date

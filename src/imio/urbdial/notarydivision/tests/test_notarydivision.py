@@ -33,6 +33,21 @@ class TestNotaryDivision(unittest.TestCase):
         divnot_type = portal_types.NotaryDivision
         self.assertTrue('Observation' in divnot_type.allowed_content_types)
 
+    def test_Precision_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('Precision' in divnot_type.allowed_content_types)
+
+    def test_PrecisionDemand_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('PrecisionDemand' in divnot_type.allowed_content_types)
+
+    def test_InadmissibleFolder_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('InadmissibleFolder' in divnot_type.allowed_content_types)
+
 
 class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
     """
@@ -442,3 +457,28 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
         msg = 'Last modification link is still visible.'
         self.assertTrue('<span class="documentAuthor">' not in contents, msg)
         self.assertTrue('<span class="documentModified">' not in contents, msg)
+
+    def test_NotaryDivision_addObservation_buttons(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'test NotaryDivision addObservation button not appears in view'
+        self.assertTrue('Add Observation' in contents, msg)
+
+    def test_NotaryDivision_addPrecision_buttons(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'test NotaryDivision AddPrecision button not appears in view'
+        self.assertTrue('Add Precision' in contents, msg)
+
+    def test_NotaryDivision_addPrecisionDemand_buttons(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'test NotaryDivision addPrecisionDemand button not appears in view'
+        self.assertTrue('Add PrecisionDemand' in contents, msg)
+
+    def test_NotaryDivision_addIndmissibleFolder(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'test NotaryDivision addInadmissibleFolder button not appears in view'
+        self.assertTrue('Add InadmissibleFolder' in contents, msg)
+

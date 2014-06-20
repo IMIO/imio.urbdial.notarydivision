@@ -89,6 +89,30 @@ class TestCommentView(CommentBrowserTest):
             contents = self.browser.contents
             self.assertTrue(class_button in contents, msg)
 
+    def test_Comment_addObservation_buttons(self):
+        self.browser.open(self.test_observation.absolute_url())
+        contents = self.browser.contents
+        msg = 'test Comment addObservation button not appears in view'
+        self.assertTrue('Add Observation' in contents, msg)
+
+    def test_Comment_addPrecision_buttons(self):
+        self.browser.open(self.test_addPrecision.absolute_url())
+        contents = self.browser.contents
+        msg = 'test Comment AddPrecision button not appears in view'
+        self.assertTrue('Add Precision' in contents, msg)
+
+    def test_Comment_addPrecisionDemand_buttons(self):
+        self.browser.open(self.test_addPrecisionDemand.absolute_url())
+        contents = self.browser.contents
+        msg = 'test Comment addPrecisionDemand button not appears in view'
+        self.assertTrue('Add PrecisionDemand' in contents, msg)
+
+    def test_Comment_addIndmissibleFolder_buttons(self):
+        self.browser.open(self.test_addInadmissibleFolder.absolute_url())
+        contents = self.browser.contents
+        msg = 'test Comment addInadmissibleFolder button not appears in view'
+        self.assertTrue('Add InadmissibleFolder' in contents, msg)
+
 
 class FunctionalTestCommentView(CommentFunctionalBrowserTest):
     """
