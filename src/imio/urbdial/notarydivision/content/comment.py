@@ -47,16 +47,22 @@ class Comment(Container):
         # to update once workflow is defined for Comment
         author = api.user.get(self.creators[0])
         author = author.getUserName()
-        date = u'(BROUILLON NON PUBLIÉ)'
 
-        title = u'{type_} par {author}, publié le {date}:'.format(
+        history = self.workflow_history.get('Observation_workflow')[-1]
+        date = u'{action} le {date}{warning}'.format(
+            action=history.get('action') == 'Publish' and u'publié' or u'créé',
+            date=history.get('time').strftime('%d/%m/%Y à %H:%M'),
+            warning=history.get('action') == 'Publish' and u' ' or u' (BROUILLON NON PUBLIÉ)',
+        )
+
+        title = u'{type_} par {author}, {date}:'.format(
             type_=type_,
             author=author,
             date=date
         )
         return title
 
-    def getNotaryDivision(self):
+    def get_notarydivision(self):
         level = self
         while(level.portal_type != 'NotaryDivision'):
             level = level.aq_parent

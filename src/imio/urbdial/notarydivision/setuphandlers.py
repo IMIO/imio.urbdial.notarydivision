@@ -6,6 +6,7 @@ from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
+from imio.urbdial.notarydivision.workflows.interfaces import IObservationWorkflow
 
 from plone import api
 
@@ -34,6 +35,9 @@ def post_install(context):
     logger.info('set_NotaryDivision_FTI_marker_interface : starting...')
     set_NotaryDivision_FTI_marker_interface(context)
     logger.info('set_NotaryDivision_FTI_marker_interface : Done')
+    logger.info('set_workflows_marker_interfaces : starting...')
+    set_workflows_marker_interfaces(context)
+    logger.info('set_workflows_marker_interfaces : Done')
     logger.info('delete_plone_root_default_objects : starting...')
     delete_plone_root_default_objects(context)
     logger.info('delete_plone_root_default_objects : Done')
@@ -59,6 +63,18 @@ def set_NotaryDivision_FTI_marker_interface(context):
     site = context.getSite()
     divnot_type = site.portal_types.NotaryDivision
     alsoProvides(divnot_type, INotaryDivisionFTI)
+
+
+def set_workflows_marker_interfaces(context):
+    """
+    Provides custom workflows with marker intreface so we can register role/groups
+    mapping adapter for these interfaces.
+    """
+
+    wf_tool = api.portal.get_tool('portal_workflow')
+
+    observation_wf = wf_tool.getWorkflowById('Observation_workflow')
+    alsoProvides(observation_wf, IObservationWorkflow)
 
 
 def delete_plone_root_default_objects(context):
@@ -106,9 +122,7 @@ def create_dgo4_group(context):
     api.group.create(
         groupname='dgo4',
         title=_('DGO 4'),
-        roles=[
-            'Member',
-        ],
+        roles=['Member'],
     )
 
 
@@ -133,8 +147,9 @@ def create_notarydivisions_folder(context):
         alsoProvides(folder, INavigationRoot)
 
         folder.manage_addLocalRoles('notaries', ['NotaryDivision Reader', 'NotaryDivision Creator'])
+        folder.manage_addLocalRoles('dgo4', ['NotaryDivision Reader'])
 
-        _set_AllowedTypes_of_folder(folder, 'NotaryDivision')
+        set_AllowedTypes_of_folder(folder, 'NotaryDivision')
 
 
 def redirect_root_default_view(context):
@@ -146,7 +161,7 @@ def redirect_root_default_view(context):
     portal.setLayout('redirect_root_view')
 
 
-def _set_AllowedTypes_of_folder(folder, portal_types):
+def set_AllowedTypes_of_folder(folder, portal_types):
     """
     Set allowed content types of given folder.
     """

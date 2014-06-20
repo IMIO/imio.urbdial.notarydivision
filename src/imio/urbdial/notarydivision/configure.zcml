@@ -13,11 +13,14 @@
 
     <include package="collective.ckeditor"/>
     <include package="collective.z3cform.datagridfield"/>
+    <include package="collective.z3cform.rolefield"/>
     <include package="imio.actionspanel"/>
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
 
     <include package=".browser" />
     <include package=".content" />
+    <include package=".events" />
+    <include package=".workflows" />
 
 </configure>

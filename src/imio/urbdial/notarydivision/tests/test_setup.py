@@ -124,11 +124,13 @@ class TestSetup(unittest.TestCase):
 
     def test_notarydivisions_folder_Reader_local_role(self):
         """
-        Members of group 'notaries' should have the local role 'Reader' on that folder
+        Members of group 'notaries' and 'dgo4' should have the local role
+        'NotaryDivision Reader' on that folder
         """
         divnot_folder = self.portal.notarydivisions
         folder_local_roles = dict(divnot_folder.get_local_roles())
         self.assertTrue(u'NotaryDivision Reader' in folder_local_roles['notaries'])
+        self.assertTrue(u'NotaryDivision Reader' in folder_local_roles['dgo4'])
 
     def test_notarydivisions_folder_NotaryDivisionCreator_local_role(self):
         """
