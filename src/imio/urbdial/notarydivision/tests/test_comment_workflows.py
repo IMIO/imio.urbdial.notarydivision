@@ -40,7 +40,7 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
     def test_available_states(self):
         available_states = self.observation_wf.states.keys()
 
-        expected_states = ['Draft', 'Published']
+        expected_states = ['Draft', 'Published', 'Frozen']
         for state in expected_states:
             msg = 'state {} is not defined in the Observation workflow'.format(state)
             self.assertTrue(state in available_states, msg)
@@ -60,7 +60,7 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
     def test_available_transitions(self):
         available_transitions = self.observation_wf.transitions.keys()
 
-        expected_transitions = ['Publish']
+        expected_transitions = ['Publish', 'Freeze']
         for transition in expected_transitions:
             msg = 'transition {} is not defined in the Observation workflow'.format(transition)
             self.assertTrue(transition in available_transitions, msg)
@@ -69,6 +69,11 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
         transition = self.observation_wf.transitions['Publish']
         guard = transition.getGuardSummary()
         self.assertTrue('Modify portal content' in guard)
+
+    def test_Freeze_is_restricted_to_ManagePortal_permission(self):
+        transition = self.observation_wf.transitions['Freeze']
+        guard = transition.getGuardSummary()
+        self.assertTrue('Manage portal' in guard)
 
     def test_View_permission_roles(self):
         """
@@ -205,6 +210,32 @@ class TestObservationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTes
             state='Published',
         )
 
+    def test_fd_user_roles_on_frozen_state(self):
+        observation = self.test_observation
+        api.content.transition(observation, 'Publish')
+        api.content.transition(observation, 'Freeze')
+
+        expected_roles = ('Observation Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=observation,
+            state='Frozen',
+        )
+
+    def test_notary_user_roles_on_frozen_state(self):
+        observation = self.test_observation
+        api.content.transition(observation, 'Publish')
+        api.content.transition(observation, 'Freeze')
+
+        expected_roles = ('Observation Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_NOTARY_NAME,
+            expected_roles=expected_roles,
+            context=observation,
+            state='Frozen',
+        )
+
 
 class TestPrecisionWorkflowDefinition(unittest.TestCase):
     """
@@ -234,7 +265,7 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
     def test_available_states(self):
         available_states = self.precision_wf.states.keys()
 
-        expected_states = ['Draft', 'Published']
+        expected_states = ['Draft', 'Published', 'Frozen']
         for state in expected_states:
             msg = 'state {} is not defined in the Precision workflow'.format(state)
             self.assertTrue(state in available_states, msg)
@@ -254,7 +285,7 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
     def test_available_transitions(self):
         available_transitions = self.precision_wf.transitions.keys()
 
-        expected_transitions = ['Publish']
+        expected_transitions = ['Publish', 'Freeze']
         for transition in expected_transitions:
             msg = 'transition {} is not defined in the Precision workflow'.format(transition)
             self.assertTrue(transition in available_transitions, msg)
@@ -263,6 +294,11 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
         transition = self.precision_wf.transitions['Publish']
         guard = transition.getGuardSummary()
         self.assertTrue('Modify portal content' in guard)
+
+    def test_Freeze_is_restricted_to_ManagePortal_permission(self):
+        transition = self.precision_wf.transitions['Freeze']
+        guard = transition.getGuardSummary()
+        self.assertTrue('Manage portal' in guard)
 
     def test_View_permission_roles(self):
         """
@@ -397,4 +433,30 @@ class TestPrecisionWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest)
             expected_roles=expected_roles,
             context=precision,
             state='Published',
+        )
+
+    def test_fd_user_roles_on_frozen_state(self):
+        precision = self.test_precision
+        api.content.transition(precision, 'Publish')
+        api.content.transition(precision, 'Freeze')
+
+        expected_roles = ('Precision Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=precision,
+            state='Frozen',
+        )
+
+    def test_notary_user_roles_on_frozen_state(self):
+        precision = self.test_precision
+        api.content.transition(precision, 'Publish')
+        api.content.transition(precision, 'Freeze')
+
+        expected_roles = ('Precision Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_NOTARY_NAME,
+            expected_roles=expected_roles,
+            context=precision,
+            state='Frozen',
         )

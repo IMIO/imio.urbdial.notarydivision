@@ -15,4 +15,9 @@ class StateRolesMapping(WorkflowStateRolesMapping):
             'townships': ('Observation Reader', 'Observation Creator'),
             'notaries': ('Observation Reader', 'Precision Creator'),
         },
+        'Frozen': {
+            'dgo4': ('Observation Reader',),
+            'townships': ('Observation Reader',),
+            'notaries': ('Observation Reader',),
+        },
     }

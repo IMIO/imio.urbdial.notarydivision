@@ -19,4 +19,4 @@ class WorkflowStateRolesMapping(object):
         pass
 
     def get_roles_of(self, state):
-        return self.mapping.get(state, ())
+        return self.mapping.get(state, {})
