@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="Observation_workflow"
-             title="Observation_workflow"
+<dc-workflow workflow_id="Precision_workflow"
+             title="Precision_workflow"
              state_variable="review_state"
              initial_state="Draft"
              xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -18,8 +18,8 @@
   <exit-transition transition_id="Publish"/>
   <permission-map name="Access contents information"
                   acquired="False">
-   <permission-role>Observation Reader</permission-role>
-   <permission-role>Observation Manager</permission-role>
+   <permission-role>Precision Reader</permission-role>
+   <permission-role>Precision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Add portal content"
@@ -30,18 +30,18 @@
   </permission-map>
   <permission-map name="Delete Objects"
                   acquired="False">
-   <permission-role>Observation Manager</permission-role>
+   <permission-role>Precision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
                   acquired="False">
-   <permission-role>Observation Manager</permission-role>
+   <permission-role>Precision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="View"
                   acquired="False">
-   <permission-role>Observation Reader</permission-role>
-   <permission-role>Observation Manager</permission-role>
+   <permission-role>Precision Reader</permission-role>
+   <permission-role>Precision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Observation"
@@ -60,8 +60,8 @@
         i18n:attributes="title">
   <permission-map name="Access contents information"
                   acquired="False">
-   <permission-role>Observation Reader</permission-role>
-   <permission-role>Observation Manager</permission-role>
+   <permission-role>Precision Reader</permission-role>
+   <permission-role>Precision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Add portal content"
@@ -72,18 +72,18 @@
   </permission-map>
   <permission-map name="Delete Objects"
                   acquired="False">
-   <permission-role>Observation Manager</permission-role>
+   <permission-role>Precision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
                   acquired="False">
-   <permission-role>Observation Manager</permission-role>
+   <permission-role>Precision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="View"
                   acquired="False">
-   <permission-role>Observation Reader</permission-role>
-   <permission-role>Observation Manager</permission-role>
+   <permission-role>Precision Reader</permission-role>
+   <permission-role>Precision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Observation"

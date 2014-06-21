@@ -14,5 +14,9 @@ class IObservationWorkflow(Interface):
     """Marker interface for Observation workflow."""
 
 
+class IPrecisionWorkflow(Interface):
+    """Marker interface for Precision workflow."""
+
+
 class INotificationWorkflow(Interface):
     """Marker interface for NotaryDivision workflow."""

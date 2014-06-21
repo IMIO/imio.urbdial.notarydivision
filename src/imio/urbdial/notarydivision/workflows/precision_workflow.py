@@ -8,11 +8,11 @@ class StateRolesMapping(WorkflowStateRolesMapping):
 
     mapping = {
         'Draft': {
-            'dgo4': ('Observation Manager',),
+            'notaries': ('Precision Manager',),
         },
         'Published': {
-            'dgo4': ('Observation Reader', 'Observation Creator'),
-            'townships': ('Observation Reader', 'Observation Creator'),
-            'notaries': ('Observation Reader', 'Precision Creator'),
+            'notaries': ('Precision Reader', 'Precision Creator'),
+            'dgo4': ('Precision Reader', 'Observation Creator'),
+            'townships': ('Precision Reader', 'Observation Creator'),
         },
     }

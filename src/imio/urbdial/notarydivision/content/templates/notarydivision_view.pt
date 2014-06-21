@@ -50,12 +50,12 @@
                 <fieldset id="comments">
                   <legend i18n:translate="" i18n:domain="urbdial.divnot">Comments</legend>
                     <div>
-                      <tal:actions content="structure view/display_add_types" />
-                    </div>
-                    <div>
                       <tal:block define="comments_macro here/@@comments_display/comments">
                         <metal:use_macro use-macro="comments_macro" />
                       </tal:block>
+                    </div>
+                    <div>
+                      <tal:actions content="structure view/display_add_types" />
                     </div>
                 </fieldset>
 

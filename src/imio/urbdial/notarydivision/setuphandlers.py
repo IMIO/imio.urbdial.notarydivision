@@ -10,6 +10,7 @@ from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
 from imio.urbdial.notarydivision.workflows.interfaces import INotificationWorkflow
 from imio.urbdial.notarydivision.workflows.interfaces import IObservationWorkflow
+from imio.urbdial.notarydivision.workflows.interfaces import IPrecisionWorkflow
 
 from plone import api
 
@@ -78,8 +79,10 @@ def set_workflows_marker_interfaces(context):
 
     observation_wf = wf_tool.getWorkflowById('Observation_workflow')
     alsoProvides(observation_wf, IObservationWorkflow)
-    observation_wf = wf_tool.getWorkflowById('Notification_workflow')
-    alsoProvides(observation_wf, INotificationWorkflow)
+    precision_wf = wf_tool.getWorkflowById('Precision_workflow')
+    alsoProvides(precision_wf, IPrecisionWorkflow)
+    notification_wf = wf_tool.getWorkflowById('Notification_workflow')
+    alsoProvides(notification_wf, INotificationWorkflow)
 
 
 def delete_plone_root_default_objects(context):

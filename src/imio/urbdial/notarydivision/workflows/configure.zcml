@@ -10,6 +10,12 @@
   />
 
   <adapter
+     for=".interfaces.IPrecisionWorkflow"
+     factory=".precision_workflow.StateRolesMapping"
+     provides=".interfaces.IWorkflowStateRolesMapping"
+  />
+
+  <adapter
      for=".interfaces.INotificationWorkflow"
      factory=".notification_workflow.StateRolesMapping"
      provides=".interfaces.IWorkflowStateRolesMapping"

@@ -155,6 +155,8 @@ EXAMPLE_DIVISION_FUNCTIONAL = FunctionalTesting(
 
 TEST_OBSERVATION_ID = 'test_observation'
 
+TEST_PRECISION_ID = 'test_precision'
+
 
 class ExampleCommentLayer(ExampleDivisionLayer):
 
@@ -166,6 +168,12 @@ class ExampleCommentLayer(ExampleDivisionLayer):
         api.content.create(
             type='Observation',
             id=TEST_OBSERVATION_ID,
+            container=test_divnot,
+        )
+
+        api.content.create(
+            type='Precision',
+            id=TEST_PRECISION_ID,
             container=test_divnot,
         )
 
@@ -255,6 +263,7 @@ class CommentBrowserTest(BrowserTest):
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
         api.content.transition(self.test_divnot, 'Notify')
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
+        self.test_precision = self.test_divnot.get(TEST_PRECISION_ID)
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
@@ -287,7 +296,7 @@ class WorkflowLocaRolesAssignmentTest(CommentBrowserTest):
 
         roles_of_user = user.getRolesInContext(context)
         for expected_role in expected_roles:
-            msg = "Expected user '{}' to have the role '{}' on context '{}' with state '{}'".format(
+            msg = "User '{}' was expected to have the role '{}' on context '{}' with state '{}'".format(
                 username,
                 expected_role,
                 context,

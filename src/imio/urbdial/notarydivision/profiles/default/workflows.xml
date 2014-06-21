@@ -2,6 +2,7 @@
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
  <object name="Notification_workflow" meta_type="Workflow"/>
  <object name="Observation_workflow" meta_type="Workflow"/>
+ <object name="Precision_workflow" meta_type="Workflow"/>
  <object name="Root_folder_workflow" meta_type="Workflow"/>
 <!-- ##code-section workflowobjects -->
 <!-- ##/code-section workflowobjects -->
@@ -14,6 +15,9 @@
   </type>
   <type type_id="Observation">
      <bound-workflow workflow_id="Observation_workflow" />
+  </type>
+  <type type_id="Precision">
+     <bound-workflow workflow_id="Precision_workflow" />
   </type>
 <!-- ##code-section workflowbindings -->
 <!-- ##/code-section workflowbindings -->

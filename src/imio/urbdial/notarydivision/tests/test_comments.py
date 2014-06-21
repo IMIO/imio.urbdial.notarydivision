@@ -114,6 +114,7 @@ class TestCommentView(CommentBrowserTest):
         self.assertTrue('publié le ' not in contents)
 
         api.content.transition(self.test_observation, 'Publish')
+        api.content.transition(self.test_precision, 'Publish')
         transaction.commit()
 
         # Once published, title should be updated with publication date.
