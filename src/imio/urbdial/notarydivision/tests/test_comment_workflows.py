@@ -172,6 +172,15 @@ class TestObservationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTes
             state='Draft',
         )
 
+    def test_notary_user_roles_on_draft_state(self):
+        expected_roles = ()
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_NOTARY_NAME,
+            expected_roles=expected_roles,
+            context=self.test_observation,
+            state='Draft',
+        )
+
     def test_fd_user_roles_on_published_state(self):
         observation = self.test_observation
         api.content.transition(observation, 'Publish')
@@ -352,6 +361,15 @@ class TestPrecisionWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest)
         expected_roles = ('Precision Manager',)
         self._test_roles_of_user_on_stateful_context(
             username=TEST_NOTARY_NAME,
+            expected_roles=expected_roles,
+            context=self.test_precision,
+            state='Draft',
+        )
+
+    def test_fd_user_roles_on_draft_state(self):
+        expected_roles = ()
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
             expected_roles=expected_roles,
             context=self.test_precision,
             state='Draft',
