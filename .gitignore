@@ -2,6 +2,8 @@
 *.mo
 *.pyc
 *.swp
+*.log
+*~
 .coverage
 .installed.cfg
 .mr.developer.cfg
