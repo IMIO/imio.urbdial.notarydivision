@@ -8,41 +8,45 @@ class StateRolesMapping(WorkflowStateRolesMapping):
 
     mapping = {
         'In preparation': {
-            'notaries': ('NotaryDivision Manager',),
+            'notaries': (
+                'NotaryDivision Manager',
+                'Notification Manager',
+            ),
         },
         'In investigation': {
-            'townships': (
-                'NotaryDivision Reader',
-                'Observation Creator',
-            ),
-            'dgo4': (
-                'NotaryDivision Reader',
-                'Observation Creator',
-            ),
             'notaries': (
+                'Notification Manager',
                 'NotaryDivision Reader',
                 'Precision Creator',
             ),
+            'townships': (
+                'NotaryDivision Reader',
+                'Observation Creator',
+            ),
+            'dgo4': (
+                'NotaryDivision Reader',
+                'Observation Creator',
+            ),
         },
         'Passed': {
+            'notaries': (
+                'NotaryDivision Reader',
+            ),
             'townships': (
                 'NotaryDivision Reader',
             ),
             'dgo4': (
-                'NotaryDivision Reader',
-            ),
-            'notaries': (
                 'NotaryDivision Reader',
             ),
         },
         'Cancelled': {
+            'notaries': (
+                'NotaryDivision Reader',
+            ),
             'townships': (
                 'NotaryDivision Reader',
             ),
             'dgo4': (
-                'NotaryDivision Reader',
-            ),
-            'notaries': (
                 'NotaryDivision Reader',
             ),
         },

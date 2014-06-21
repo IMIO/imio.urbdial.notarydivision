@@ -12,6 +12,7 @@
  <permission>Add portal content</permission>
  <permission>imio.urbdial.notarydivision: Add Precision</permission>
  <permission>imio.urbdial.notarydivision: Add Observation</permission>
+ <permission>imio.urbdial.notarydivision: Manage notification</permission>
  <state state_id="Cancelled"
         title="Cancelled"
         i18n:attributes="title">
@@ -52,6 +53,11 @@
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
                   acquired="False">
    <permission-role>Precision Creator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="imio.urbdial.notarydivision: Manage notification"
+                  acquired="False">
+   <permission-role>Notification Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
@@ -98,6 +104,11 @@
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
+  <permission-map name="imio.urbdial.notarydivision: Manage notification"
+                  acquired="False">
+   <permission-role>Notification Manager</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
  </state>
  <state state_id="In preparation"
         title="In preparation"
@@ -139,6 +150,11 @@
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
                   acquired="False">
    <permission-role>Precision Creator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="imio.urbdial.notarydivision: Manage notification"
+                  acquired="False">
+   <permission-role>Notification Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
@@ -184,6 +200,11 @@
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
+  <permission-map name="imio.urbdial.notarydivision: Manage notification"
+                  acquired="False">
+   <permission-role>Notification Manager</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
  </state>
  <transition transition_id="Cancel"
              title="Cancel"
@@ -194,7 +215,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Cancel</action>
   <guard>
-    <guard-permission>Modify portal content</guard-permission>
+    <guard-permission>imio.urbdial.notarydivision: Manage notification</guard-permission>
   </guard>
  </transition>
  <transition transition_id="Notify"
@@ -206,7 +227,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Notify</action>
   <guard>
-    <guard-permission>Modify portal content</guard-permission>
+    <guard-permission>imio.urbdial.notarydivision: Manage notification</guard-permission>
   </guard>
  </transition>
  <transition transition_id="Pass"
@@ -218,7 +239,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Pass</action>
   <guard>
-    <guard-permission>Modify portal content</guard-permission>
+    <guard-permission>imio.urbdial.notarydivision: Manage notification</guard-permission>
   </guard>
  </transition>
  <transition transition_id="Restart"

@@ -73,20 +73,20 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
             msg = 'transition {} is defined in the Notification workflow but was not expected'.format(transition)
             self.assertTrue(transition in expected_transitions, msg)
 
-    def test_Notification_is_restricted_to_ModifyPortalContent_permission(self):
+    def test_Notify_is_restricted_to_ModifyPortalContent_permission(self):
         transition = self.notification_wf.transitions['Notify']
         guard = transition.getGuardSummary()
-        self.assertTrue('Modify portal content' in guard)
+        self.assertTrue('imio.urbdial.notarydivision: Manage notification' in guard)
 
     def test_Pass_is_restricted_to_ModifyPortalContent_permission(self):
         transition = self.notification_wf.transitions['Pass']
         guard = transition.getGuardSummary()
-        self.assertTrue('Modify portal content' in guard)
+        self.assertTrue('imio.urbdial.notarydivision: Manage notification' in guard)
 
     def test_Cancel_is_restricted_to_ModifyPortalContent_permission(self):
         transition = self.notification_wf.transitions['Cancel']
         guard = transition.getGuardSummary()
-        self.assertTrue('Modify portal content' in guard)
+        self.assertTrue('imio.urbdial.notarydivision: Manage notification' in guard)
 
     def test_Restart_is_restricted_to_ModifyPortalContent_permission(self):
         transition = self.notification_wf.transitions['Restart']
@@ -187,7 +187,7 @@ class TestNotificationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTe
     """
 
     def test_notary_user_roles_on_preparation_state(self):
-        expected_roles = ('NotaryDivision Manager',)
+        expected_roles = ('NotaryDivision Manager', 'Notification Manager')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_NOTARY_NAME,
             expected_roles=expected_roles,
@@ -208,7 +208,7 @@ class TestNotificationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTe
         notarydivision = self.test_divnot
         api.content.transition(notarydivision, 'Notify')
 
-        expected_roles = ('NotaryDivision Reader', 'Precision Creator')
+        expected_roles = ('NotaryDivision Reader', 'Notification Manager', 'Precision Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_NOTARY_NAME,
             expected_roles=expected_roles,
