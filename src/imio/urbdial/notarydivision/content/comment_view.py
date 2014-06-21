@@ -42,7 +42,7 @@ class CommentView(CommentContainerView):
         type_ = translate(_(comment.portal_type))
 
         author = api.user.get(comment.creators[0])
-        author = author.getUserName()
+        author = author.getProperty('fullname')
         history = comment.workflow_history.values()[0][-1]
         action = history.get('action') == 'Publish' and 'publié' or 'créé'
         date = history.get('time').strftime('%d/%m/%Y à %H:%M')
