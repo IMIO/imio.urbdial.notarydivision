@@ -145,7 +145,7 @@
  <state state_id="Passed"
         title="Passed"
         i18n:attributes="title">
-  <exit-transition transition_id="Retsart"/>
+  <exit-transition transition_id="Restart"/>
   <permission-map name="Access contents information"
                   acquired="False">
    <permission-role>NotaryDivision Reader</permission-role>
@@ -229,18 +229,6 @@
              after_script=""
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Restart</action>
-  <guard>
-    <guard-permission>Manage portal</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="Retsart"
-             title="Retsart"
-             new_state="In preparation"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Retsart</action>
   <guard>
     <guard-permission>Manage portal</guard-permission>
   </guard>
