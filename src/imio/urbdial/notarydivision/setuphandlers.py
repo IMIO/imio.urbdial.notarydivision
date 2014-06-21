@@ -5,7 +5,10 @@ from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
+from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
+from imio.urbdial.notarydivision.workflows.interfaces import INotificationWorkflow
 from imio.urbdial.notarydivision.workflows.interfaces import IObservationWorkflow
 
 from plone import api
@@ -75,6 +78,8 @@ def set_workflows_marker_interfaces(context):
 
     observation_wf = wf_tool.getWorkflowById('Observation_workflow')
     alsoProvides(observation_wf, IObservationWorkflow)
+    observation_wf = wf_tool.getWorkflowById('Notification_workflow')
+    alsoProvides(observation_wf, INotificationWorkflow)
 
 
 def delete_plone_root_default_objects(context):
@@ -106,22 +111,21 @@ def create_groups(context):
     """
     Create all customs groups
     """
-    create_notaries_group(context)
-    create_dgo4_group(context)
-
-
-def create_notaries_group(context):
     api.group.create(
         groupname='notaries',
         title=_('Notaries'),
         roles=['Member'],
     )
 
-
-def create_dgo4_group(context):
     api.group.create(
         groupname='dgo4',
         title=_('DGO 4'),
+        roles=['Member'],
+    )
+
+    api.group.create(
+        groupname='townships',
+        title=_('Townships'),
         roles=['Member'],
     )
 
@@ -191,7 +195,7 @@ def create_test_users(context):
     api.user.create(
         username=TEST_NOTARY_NAME, password=TEST_NOTARY_PASSWORD, email='notary@frnb.be',
         properties={
-            'fullname': 'Maitre Notaire',
+            'fullname': 'Maitre Nono',
         }
     )
     api.group.add_user(username=TEST_NOTARY_NAME, groupname='notaries')
@@ -203,3 +207,11 @@ def create_test_users(context):
         }
     )
     api.group.add_user(username=TEST_FD_NAME, groupname='dgo4')
+
+    api.user.create(
+        username=TEST_TOWNSHIP_NAME, password=TEST_TOWNSHIP_PASSWORD, email='coco@commune.be',
+        properties={
+            'fullname': 'Agent communal Coco',
+        }
+    )
+    api.group.add_user(username=TEST_TOWNSHIP_NAME, groupname='townships')

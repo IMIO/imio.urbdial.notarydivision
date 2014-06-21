@@ -253,6 +253,7 @@ class CommentBrowserTest(BrowserTest):
     def setUp(self):
         super(CommentBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
+        api.content.transition(self.test_divnot, 'Notify')
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
@@ -269,3 +270,36 @@ class CommentFunctionalBrowserTest(BrowserTest):
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
+
+
+class WorkflowLocaRolesAssignmentTest(CommentBrowserTest):
+    """
+    Base class with helpers methods to tests each workflow's state role/group mapping.
+    """
+
+    def _test_roles_of_user_on_stateful_context(self, username, expected_roles, context, state):
+
+        user = api.user.get(username)
+        base_roles = ['Member', 'Authenticated']
+
+        msg = "Context '{}' was expected to be on state '{}'".format(context, state)
+        self.assertTrue(api.content.get_state(context) == state, msg)
+
+        roles_of_user = user.getRolesInContext(context)
+        for expected_role in expected_roles:
+            msg = "Expected user '{}' to have the role '{}' on context '{}' with state '{}'".format(
+                username,
+                expected_role,
+                context,
+                state,
+            )
+            self.assertTrue(expected_role in roles_of_user, msg)
+
+        for role in roles_of_user:
+            msg = "User '{}' have an unexpected role '{}' on context '{}' with state '{}'".format(
+                username,
+                role,
+                context,
+                state,
+            )
+            self.assertTrue(role in expected_roles or role in base_roles, msg)

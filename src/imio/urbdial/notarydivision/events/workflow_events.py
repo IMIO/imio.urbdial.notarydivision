@@ -15,7 +15,7 @@ def update_local_roles(obj, event):
     object's workflow.
     """
 
-    # get workflow for which the transition was triggered
+    # get workflow role/group mapping for which the transition was triggered
     workflow = event.workflow
     mapping = queryAdapter(workflow, IWorkflowStateRolesMapping)
 
@@ -26,6 +26,7 @@ def update_local_roles(obj, event):
     # mapping for the old state
     old_state = event.old_state.title
     old_state_local_roles = mapping.get_roles_of(old_state)
+
     for group, roles in old_state_local_roles.iteritems():
         remove_local_roles_from_principals(obj, [group], roles)
 
@@ -33,5 +34,6 @@ def update_local_roles(obj, event):
     # mapping for the new state
     new_state = event.new_state.title
     new_state_local_roles = mapping.get_roles_of(new_state)
+
     for group, roles in new_state_local_roles.iteritems():
         add_local_roles_to_principals(obj, [group], roles)

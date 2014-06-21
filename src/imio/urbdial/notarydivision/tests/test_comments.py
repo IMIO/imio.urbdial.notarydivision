@@ -79,7 +79,49 @@ class TestCommentView(CommentBrowserTest):
         self.browser.open(self.test_observation.absolute_url())
         notary_division_url = self.test_divnot.absolute_url()
         msg = 'Observation view does not redirect to NotaryDivisionView'
-        self.assertTrue(self.browser.url == notary_division_url + '/view#observations', msg)
+        self.assertTrue(self.browser.url == notary_division_url + '/view#comments', msg)
+
+    def test_Comment_addObservation_buttons(self):
+        self.browser.open(self.test_observation.absolute_url())
+        contents = self.browser.contents
+        msg = 'test Comment addObservation button not appears in view'
+        self.assertTrue('Add Observation' in contents, msg)
+
+    def test_Comment_addPrecision_buttons(self):
+        self.browser.open(self.test_observation.absolute_url())
+        contents = self.browser.contents
+        msg = 'test Comment AddPrecision button not appears in view'
+        self.assertTrue('Add Precision' in contents, msg)
+
+    def test_Comment_addPrecisionDemand_buttons(self):
+        self.browser.open(self.test_observation.absolute_url())
+        contents = self.browser.contents
+        msg = 'test Comment addPrecisionDemand button not appears in view'
+        self.assertTrue('Add PrecisionDemand' in contents, msg)
+
+    def test_Comment_addIndmissibleFolder_buttons(self):
+        self.browser.open(self.test_observation.absolute_url())
+        contents = self.browser.contents
+        msg = 'test Comment addInadmissibleFolder button not appears in view'
+        self.assertTrue('Add InadmissibleFolder' in contents, msg)
+
+    def test_title_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+
+        # In draft, no publication date is displayed.
+        contents = self.browser.contents
+        self.assertTrue('BROUILLON' in contents)
+        self.assertTrue('publié le ' not in contents)
+
+        api.content.transition(self.test_observation, 'Publish')
+        transaction.commit()
+
+        # Once published, title should be updated with publication date.
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'Publication date of Observation should de displayed in title'
+        self.assertTrue('BROUILLON' not in contents)
+        self.assertTrue('publié le ' in contents, msg)
 
 
 class FunctionalTestCommentView(CommentFunctionalBrowserTest):
@@ -100,24 +142,6 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         self.assertTrue(observation_text in contents)
-
-    def test_title_display(self):
-        self.browser.open(self.test_divnot.absolute_url())
-
-        # In draft, no publication date is displayed.
-        contents = self.browser.contents
-        self.assertTrue('BROUILLON' in contents)
-        self.assertTrue('publié le ' not in contents)
-
-        api.content.transition(self.test_observation, 'Publish')
-        transaction.commit()
-
-        # Once published, title should be updated with publication date.
-        self.browser.open(self.test_divnot.absolute_url())
-        contents = self.browser.contents
-        msg = 'Publication date of Observation should de displayed in title'
-        self.assertTrue('BROUILLON' not in contents)
-        self.assertTrue('publié le ' in contents, msg)
 
     def test_edit_action(self):
         self.browser.open(self.test_divnot.absolute_url())

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-06-10 13:44+0000\n"
+"POT-Creation-Date: 2014-06-17 07:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,10 @@ msgstr "Bâti"
 #. Default: "Référence cadastrale"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
+
+#: ../content/templates/notarydivision_view.pt:51
+msgid "Comments"
+msgstr "Commentaires"
 
 #: ../content/notarydivision.py:233
 msgid "Created estate"
@@ -106,6 +110,10 @@ msgstr "Informations générales"
 msgid "Geometrician"
 msgstr "Géomètre"
 
+#: ../profiles/default/types/InadmissibleFolder.xml
+msgid "InadmissibleFolder"
+msgstr ""
+
 #: ../content/notarydivision.py:223
 msgid "Initial estate"
 msgstr "Ensemble immobilier initial"
@@ -118,9 +126,9 @@ msgstr "Commune"
 msgid "Name"
 msgstr "Nom"
 
+#: ../profiles/default/types/InadmissibleFolder.xml
 #: ../profiles/default/types/NotaryDivision.xml
 #: ../profiles/default/types/Observation.xml
-#: ../profiles/default/types/Precision.xml
 msgid "None"
 msgstr ""
 
@@ -165,6 +173,10 @@ msgstr "Puissance"
 msgid "Precision"
 msgstr "Précision"
 
+#: ../profiles/default/types/PrecisionDemand.xml
+msgid "PrecisionDemand"
+msgstr ""
+
 #: ../content/notarydivision.py:67
 msgid "Radical"
 msgstr "Radical"
@@ -197,7 +209,7 @@ msgid "True"
 msgstr "Oui"
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:125
+#: ../setuphandlers.py:127
 msgid "notarydivisions_folder_title"
 msgstr "Divisions notariales"
 

@@ -9,4 +9,10 @@
      provides=".interfaces.IWorkflowStateRolesMapping"
   />
 
+  <adapter
+     for=".interfaces.INotificationWorkflow"
+     factory=".notification_workflow.StateRolesMapping"
+     provides=".interfaces.IWorkflowStateRolesMapping"
+  />
+
 </configure>

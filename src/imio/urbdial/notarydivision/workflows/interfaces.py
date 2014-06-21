@@ -12,3 +12,7 @@ class IWorkflowStateRolesMapping(Interface):
 
 class IObservationWorkflow(Interface):
     """Marker interface for Observation workflow."""
+
+
+class INotificationWorkflow(Interface):
+    """Marker interface for NotaryDivision workflow."""

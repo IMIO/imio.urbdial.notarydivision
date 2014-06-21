@@ -15,3 +15,9 @@ class TestGroups(unittest.TestCase):
 
     def test_notaries_group_creation(self):
         self.assertTrue(api.group.get('notaries'))
+
+    def test_dgo4_group_creation(self):
+        self.assertTrue(api.group.get('dgo4'))
+
+    def test_townships_group_creation(self):
+        self.assertTrue(api.group.get('townships'))

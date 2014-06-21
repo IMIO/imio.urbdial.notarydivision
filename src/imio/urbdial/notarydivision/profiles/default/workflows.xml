@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
+ <object name="Notification_workflow" meta_type="Workflow"/>
  <object name="Observation_workflow" meta_type="Workflow"/>
  <object name="Root_folder_workflow" meta_type="Workflow"/>
 <!-- ##code-section workflowobjects -->
@@ -7,6 +8,9 @@
  <bindings>
   <type type_id="Folder">
      <bound-workflow workflow_id="Root_folder_workflow" />
+  </type>
+  <type type_id="NotaryDivision">
+     <bound-workflow workflow_id="Notification_workflow" />
   </type>
   <type type_id="Observation">
      <bound-workflow workflow_id="Observation_workflow" />

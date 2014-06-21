@@ -13,7 +13,6 @@ from plone.supermodel import model
 
 from zope import schema
 from zope.interface import implements
-from zope.security import checkPermission
 
 
 class IComment(model.Schema):
@@ -40,25 +39,29 @@ class Comment(Container):
     """
     implements(IComment)
 
+    __ac_local_roles_block__ = True
+
     @property
     def full_title(self):
         type_ = translate(_(self.portal_type))
 
-        # to update once workflow is defined for Comment
         author = api.user.get(self.creators[0])
         author = author.getUserName()
-
         history = self.workflow_history.get('Observation_workflow')[-1]
-        date = '{action} le {date}{warning}'.format(
-            action=history.get('action') == 'Publish' and 'publié' or 'créé',
-            date=history.get('time').strftime('%d/%m/%Y à %H:%M'),
-            warning=history.get('action') == 'Publish' and ' ' or ' (BROUILLON NON PUBLIÉ)',
+        action = history.get('action') == 'Publish' and 'publié' or 'créé'
+        date = history.get('time').strftime('%d/%m/%Y à %H:%M')
+        warning = history.get('action') == 'Publish' and ' ' or ' (BROUILLON NON PUBLIÉ)'
+
+        publication = '{action} le {date}{warning}'.format(
+            action=action,
+            date=date,
+            warning=warning,
         )
 
-        title = '{type_} par {author}, {date}:'.format(
+        title = '{type_} par {author}, {publication}:'.format(
             type_=type_,
             author=author,
-            date=date
+            publication=publication,
         )
         return title
 
@@ -67,17 +70,6 @@ class Comment(Container):
         while(level.portal_type != 'NotaryDivision'):
             level = level.aq_parent
         return level
-
-    def check_permission(self, permission):
-        base_permission = 'imio.urbdial.notarydivision.{permission}{portal_type}'
-        full_permission = base_permission.format(
-            permission=permission,
-            portal_type=self.portal_type,
-        )
-        return checkPermission(full_permission, self)
-
-    def check_creation_permission(self):
-        return self.check_permission('Add')
 
 
 class IObservation(IComment):
