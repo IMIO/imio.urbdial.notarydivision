@@ -2,10 +2,9 @@
     <tal:comments repeat="comment view/get_comments">
         <tal:vars define="view python: view.get_view_of(comment)">
 
-            <strong><span tal:content="comment/full_title"></span></strong>
+            <strong><span tal:content="view/display_title"></span></strong>
 
-            <!--tal:actions content="structure view/display_actions" /-->
-            <tal:actions content="structure comment/actions_panel/render" />
+            <tal:actions content="structure comment/actions_panel/render" /><br />
 
             <tal:text content="structure python: view.display_field('text')" />
 
@@ -13,11 +12,12 @@
 
             <table>
                 <tr>
+                    <tal:addTypes content="structure view/display_add_types" />
+                </tr>
+                <tr><td><br /></td></tr>
+                <tr>
                     <td width="10px"></td>
                     <td><metal:observation use-macro="here/@@comments_display/comments" /></td>
-                </tr>
-                <tr>
-                    <tal:addTypes content="structure view/display_add_types" />
                 </tr>
             </table>
 

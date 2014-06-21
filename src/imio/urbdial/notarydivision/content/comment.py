@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.utils import translate
 
-from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
@@ -40,30 +38,6 @@ class Comment(Container):
     implements(IComment)
 
     __ac_local_roles_block__ = True
-
-    @property
-    def full_title(self):
-        type_ = translate(_(self.portal_type))
-
-        author = api.user.get(self.creators[0])
-        author = author.getUserName()
-        history = self.workflow_history.get('Observation_workflow')[-1]
-        action = history.get('action') == 'Publish' and 'publié' or 'créé'
-        date = history.get('time').strftime('%d/%m/%Y à %H:%M')
-        warning = history.get('action') == 'Publish' and ' ' or ' (BROUILLON NON PUBLIÉ)'
-
-        publication = '{action} le {date}{warning}'.format(
-            action=action,
-            date=date,
-            warning=warning,
-        )
-
-        title = '{type_} par {author}, {publication}:'.format(
-            type_=type_,
-            author=author,
-            publication=publication,
-        )
-        return title
 
     def get_notarydivision(self):
         level = self
