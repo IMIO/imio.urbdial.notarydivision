@@ -10,6 +10,9 @@ tr.field_row_display > td{
 #content {
     font-size: 88%;
 }
+.divnot-actions{
+    align: left;
+}
 
 
 /* Remove gray background and border of all datagrids , align cell widgets to the top*/
