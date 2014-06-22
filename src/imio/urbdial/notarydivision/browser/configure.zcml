@@ -42,4 +42,16 @@
         template="templates/datagrid_checkbox_input.pt"
     />
 
+    <configure package="imio.actionspanel">
+      <browser:page
+          for="*"
+          name="actions"
+          class="imio.urbdial.notarydivision.browser.actions_view.UrbdialActionsPanelView"
+          layer="imio.actionspanel.interfaces.IActionsPanelLayer"
+          template="browser/actions_panel.pt"
+          allowed_attributes="render"
+         permission="zope2.View"
+      />
+    </configure>
+
 </configure>
