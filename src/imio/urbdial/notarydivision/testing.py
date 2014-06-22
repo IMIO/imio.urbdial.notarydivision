@@ -282,7 +282,7 @@ class CommentFunctionalBrowserTest(BrowserTest):
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
-class WorkflowLocaRolesAssignmentTest(CommentBrowserTest):
+class WorkflowLocaRolesAssignmentTest(CommentFunctionalBrowserTest):
     """
     Base class with helpers methods to tests each workflow's state role/group mapping.
     """

@@ -3,6 +3,10 @@
 from imio.urbdial.notarydivision.testing import CommentBrowserTest
 from imio.urbdial.notarydivision.testing import CommentFunctionalBrowserTest
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
 
 from plone import api
 from plone.app.textfield.value import RichTextValue
@@ -105,7 +109,13 @@ class TestCommentView(CommentBrowserTest):
         msg = 'test Comment addInadmissibleFolder button not appears in view'
         self.assertTrue('Add InadmissibleFolder' in contents, msg)
 
-    def test_title_display(self):
+
+class FunctionalTestCommentView(CommentFunctionalBrowserTest):
+    """
+    Functional tests on Comment View.
+    """
+
+    def test_title_display_on_draft_comment(self):
         self.browser.open(self.test_divnot.absolute_url())
 
         # In draft, no publication date is displayed.
@@ -113,6 +123,7 @@ class TestCommentView(CommentBrowserTest):
         self.assertTrue('BROUILLON' in contents)
         self.assertTrue('publié le ' not in contents)
 
+    def test_title_display_on_published_comment(self):
         api.content.transition(self.test_observation, 'Publish')
         api.content.transition(self.test_precision, 'Publish')
         transaction.commit()
@@ -131,12 +142,6 @@ class TestCommentView(CommentBrowserTest):
         self.assertTrue('BROUILLON' not in contents)
         self.assertTrue('publié le ' in contents, msg)
 
-
-class FunctionalTestCommentView(CommentFunctionalBrowserTest):
-    """
-    Functional tests on Comment View.
-    """
-
     def test_Observation_text_display(self):
         observation_text = "<span>A long time ago in a galaxy far, far away...</span>"
 
@@ -153,76 +158,19 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
 
     def test_comments_cannot_be_added_on_frozen_comment(self):
         """
+        Once a comment is Frozen, no subcomments can be added on it.
         """
         notarydivision = self.test_divnot
-        observation = self.test_observation
-        precision = self.test_precision
 
+        # freeze comments
         api.content.transition(notarydivision, 'Notify')
-        api.content.transition(observation, 'Publish')
-        api.content.transition(precision, 'Publish')
-        transaction.commit()
-
-        # so far we can still add Precision and Observation on existing published comments
-        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
-        self.browser.open(notarydivision.absolute_url())
-        contents = self.browser.contents
-        self.assertTrue('Add Observation' in contents)
-        self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
-        self.browser.open(notarydivision.absolute_url())
-        contents = self.browser.contents
-        self.assertTrue('Add Precision' in contents)
-
-        # 'Pass' notarydivision
         api.content.transition(notarydivision, 'Pass')
-        transaction.commit()
-
-        # Comments should be in Frozen states and cannot be replied anymore
-        msg = "Comments should be in state 'Frozen'"
         for comment in notarydivision.objectValues():
-            self.assertTrue(api.content.get_state(comment) == 'Frozen', msg)
-
-        msg = "Creating new comments should not be allowed anymore when notarydivision is in state 'Passed'"
-        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
-        self.browser.open(notarydivision.absolute_url())
-        contents = self.browser.contents
-        self.assertTrue('Add Observation' not in contents, msg)
-        self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
-        self.browser.open(notarydivision.absolute_url())
-        contents = self.browser.contents
-        self.assertTrue('Add Precision' not in contents, msg)
-
-    def test_published_comments_are_frozen_when_notarydivision_is_Cancelled(self):
-        """
-        """
-        notarydivision = self.test_divnot
-        observation = self.test_observation
-        precision = self.test_precision
-
-        api.content.transition(notarydivision, 'Notify')
-        api.content.transition(observation, 'Publish')
-        api.content.transition(precision, 'Publish')
+            api.content.transition(comment, 'Publish')
+            api.content.transition(comment, 'Freeze')
         transaction.commit()
 
-        # so far we can still add Precision and Observation on existing published comments
-        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
-        self.browser.open(notarydivision.absolute_url())
-        contents = self.browser.contents
-        self.assertTrue('Add Observation' in contents)
-        self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
-        self.browser.open(notarydivision.absolute_url())
-        contents = self.browser.contents
-        self.assertTrue('Add Precision' in contents)
-
-        # 'Pass' notarydivision
-        api.content.transition(notarydivision, 'Pass')
-        transaction.commit()
-
-        # Comments should be in Frozen states and cannot be replied anymore
-        msg = "Comments should be in state 'Frozen'"
-        for comment in notarydivision.objectValues():
-            self.assertTrue(api.content.get_state(comment) == 'Frozen', msg)
-
+        # subcomments cannot be created anymore
         msg = "Creating new comments should not be allowed anymore when notarydivision is in state 'Passed'"
         self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
         self.browser.open(notarydivision.absolute_url())
