@@ -492,8 +492,6 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
     """
 
     def test_published_comments_are_frozen_when_notarydivision_is_passed(self):
-        """
-        """
         notarydivision = self.test_divnot
         api.content.transition(notarydivision, 'Notify')
 
@@ -515,8 +513,6 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
             self.assertTrue(comment_state == 'Frozen', msg)
 
     def test_published_comments_are_frozen_when_notarydivision_is_cancelled(self):
-        """
-        """
         notarydivision = self.test_divnot
         api.content.transition(notarydivision, 'Notify')
 
@@ -527,7 +523,7 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
             comment_state = api.content.get_state(comment)
             self.assertTrue(comment_state == 'Published')
 
-        # 'Pass' notarydivision
+        # 'Cancel' notarydivision
         login(self.portal, TEST_NOTARY_NAME)
         api.content.transition(notarydivision, 'Cancel')
 

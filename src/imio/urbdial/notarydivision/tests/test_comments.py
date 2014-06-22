@@ -157,9 +157,6 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         self.assertTrue(observation_text in contents)
 
     def test_comments_cannot_be_added_on_frozen_comment(self):
-        """
-        Once a comment is Frozen, no subcomments can be added on it.
-        """
         notarydivision = self.test_divnot
 
         # freeze comments
