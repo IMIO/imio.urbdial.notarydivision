@@ -3,7 +3,10 @@
 from collective.z3cform.rolefield.utils import add_local_roles_to_principals
 from collective.z3cform.rolefield.utils import remove_local_roles_from_principals
 
+from imio.urbdial.notarydivision.utils import call_with_super_user
 from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
+
+from plone import api
 
 from zope.component import queryAdapter
 
@@ -37,3 +40,23 @@ def update_local_roles(obj, event):
 
     for group, roles in new_state_local_roles.iteritems():
         add_local_roles_to_principals(obj, [group], roles)
+
+
+def freeze_comments(notarydivision, event):
+    """
+    Freeze all published comments of a NotaryDivision when its passed or cancelled.
+    """
+    # only trigger this event for NotaryDivision cancelled or passed
+    if not event.new_state.title in ['Cancelled', 'Passed']:
+        return
+
+    def recursive_freeze_comments(container):
+        for comment in container.objectValues():
+            if api.content.get_state(comment) == 'Published':
+                api.content.transition(comment, 'Freeze')
+                recursive_freeze_comments(comment)
+
+    # we have to execute recursive_freeze_comments with a super user because
+    # notary user dont have the permission to trigger 'Freeze' transition on
+    # comments
+    call_with_super_user(recursive_freeze_comments, container=notarydivision)

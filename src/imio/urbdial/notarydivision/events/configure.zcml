@@ -7,4 +7,12 @@
                    Products.DCWorkflow.interfaces.IAfterTransitionEvent"
               handler=".workflow_events.update_local_roles" />
 
+  <subscriber for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
+                   Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+              handler=".workflow_events.freeze_comments" />
+
+  <subscriber for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement
+                   zope.lifecycleevent.interfaces.IObjectAddedEvent"
+              handler=".notarydivision_events.remove_owner_role" />
+
 </configure>

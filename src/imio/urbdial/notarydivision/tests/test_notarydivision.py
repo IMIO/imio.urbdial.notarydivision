@@ -4,10 +4,13 @@
 from Acquisition import aq_base
 
 from plone import api
+from plone.app.testing import login
 
+from imio.urbdial.notarydivision.testing import CommentBrowserTest
 from imio.urbdial.notarydivision.testing import EXAMPLE_DIVISION_INTEGRATION
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 from imio.urbdial.notarydivision.testing import NotaryDivisionBrowserTest
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 
 import unittest
 
@@ -476,9 +479,60 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
         msg = 'test NotaryDivision addPrecisionDemand button not appears in view'
         self.assertTrue('Add PrecisionDemand' in contents, msg)
 
-    def test_NotaryDivision_addIndmissibleFolder_buttons(self):
+    def test_NotaryDivision_addInadmissibleFolder_buttons(self):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = 'test NotaryDivision addInadmissibleFolder button not appears in view'
         self.assertTrue('Add InadmissibleFolder' in contents, msg)
 
+
+class TestNotaryDivisionIntegration(CommentBrowserTest):
+    """
+    Integration tests of NotaryDivision
+    """
+
+    def test_published_comments_are_frozen_when_notarydivision_is_passed(self):
+        """
+        """
+        notarydivision = self.test_divnot
+        api.content.transition(notarydivision, 'Notify')
+
+        for comment in notarydivision.objectValues():
+            api.content.transition(comment, 'Publish')
+
+        for comment in notarydivision.objectValues():
+            comment_state = api.content.get_state(comment)
+            self.assertTrue(comment_state == 'Published')
+
+        # 'Pass' notarydivision
+        login(self.portal, TEST_NOTARY_NAME)
+        api.content.transition(notarydivision, 'Pass')
+
+        # Comments should be in Frozen states
+        for comment in notarydivision.objectValues():
+            comment_state = api.content.get_state(comment)
+            msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
+            self.assertTrue(comment_state == 'Frozen', msg)
+
+    def test_published_comments_are_frozen_when_notarydivision_is_cancelled(self):
+        """
+        """
+        notarydivision = self.test_divnot
+        api.content.transition(notarydivision, 'Notify')
+
+        for comment in notarydivision.objectValues():
+            api.content.transition(comment, 'Publish')
+
+        for comment in notarydivision.objectValues():
+            comment_state = api.content.get_state(comment)
+            self.assertTrue(comment_state == 'Published')
+
+        # 'Pass' notarydivision
+        login(self.portal, TEST_NOTARY_NAME)
+        api.content.transition(notarydivision, 'Cancel')
+
+        # Comments should be in Frozen states
+        for comment in notarydivision.objectValues():
+            comment_state = api.content.get_state(comment)
+            msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
+            self.assertTrue(comment_state == 'Frozen', msg)

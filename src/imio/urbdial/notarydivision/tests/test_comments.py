@@ -124,6 +124,13 @@ class TestCommentView(CommentBrowserTest):
         self.assertTrue('BROUILLON' not in contents)
         self.assertTrue('publié le ' in contents, msg)
 
+        # Once frozen, title should stay the same.
+        api.content.transition(self.test_observation, 'Freeze')
+        api.content.transition(self.test_precision, 'Freeze')
+        transaction.commit()
+        self.assertTrue('BROUILLON' not in contents)
+        self.assertTrue('publié le ' in contents, msg)
+
 
 class FunctionalTestCommentView(CommentFunctionalBrowserTest):
     """
@@ -144,18 +151,84 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         contents = self.browser.contents
         self.assertTrue(observation_text in contents)
 
-    def test_edit_action(self):
-        self.browser.open(self.test_divnot.absolute_url())
-        self.browser.getLink(url='observation/edit').click()
-        contents = self.browser.contents
-        self.assertTrue('Editer Observation' in contents)
+    def test_comments_cannot_be_added_on_frozen_comment(self):
+        """
+        """
+        notarydivision = self.test_divnot
+        observation = self.test_observation
+        precision = self.test_precision
 
-    def test_delete_action(self):
-        self.browser.open(self.test_divnot.absolute_url())
-        self.browser.getLink(url='observation/delete_confirmation').click()
-        contents = self.browser.contents
-        self.assertTrue('Voulez-vous réellement supprimer ce dossier et tout son contenu' in contents)
+        api.content.transition(notarydivision, 'Notify')
+        api.content.transition(observation, 'Publish')
+        api.content.transition(precision, 'Publish')
+        transaction.commit()
 
-        self.browser.getControl('Supprimer').click()
-        observations = self.test_divnot.objectValues('Observation')
-        self.assertTrue(len(observations) == 0)
+        # so far we can still add Precision and Observation on existing published comments
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        self.browser.open(notarydivision.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('Add Observation' in contents)
+        self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
+        self.browser.open(notarydivision.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('Add Precision' in contents)
+
+        # 'Pass' notarydivision
+        api.content.transition(notarydivision, 'Pass')
+        transaction.commit()
+
+        # Comments should be in Frozen states and cannot be replied anymore
+        msg = "Comments should be in state 'Frozen'"
+        for comment in notarydivision.objectValues():
+            self.assertTrue(api.content.get_state(comment) == 'Frozen', msg)
+
+        msg = "Creating new comments should not be allowed anymore when notarydivision is in state 'Passed'"
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        self.browser.open(notarydivision.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('Add Observation' not in contents, msg)
+        self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
+        self.browser.open(notarydivision.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('Add Precision' not in contents, msg)
+
+    def test_published_comments_are_frozen_when_notarydivision_is_Cancelled(self):
+        """
+        """
+        notarydivision = self.test_divnot
+        observation = self.test_observation
+        precision = self.test_precision
+
+        api.content.transition(notarydivision, 'Notify')
+        api.content.transition(observation, 'Publish')
+        api.content.transition(precision, 'Publish')
+        transaction.commit()
+
+        # so far we can still add Precision and Observation on existing published comments
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        self.browser.open(notarydivision.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('Add Observation' in contents)
+        self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
+        self.browser.open(notarydivision.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('Add Precision' in contents)
+
+        # 'Pass' notarydivision
+        api.content.transition(notarydivision, 'Pass')
+        transaction.commit()
+
+        # Comments should be in Frozen states and cannot be replied anymore
+        msg = "Comments should be in state 'Frozen'"
+        for comment in notarydivision.objectValues():
+            self.assertTrue(api.content.get_state(comment) == 'Frozen', msg)
+
+        msg = "Creating new comments should not be allowed anymore when notarydivision is in state 'Passed'"
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        self.browser.open(notarydivision.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('Add Observation' not in contents, msg)
+        self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
+        self.browser.open(notarydivision.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('Add Precision' not in contents, msg)

@@ -278,6 +278,7 @@ class CommentFunctionalBrowserTest(BrowserTest):
         super(CommentFunctionalBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
+        self.test_precision = self.test_divnot.get(TEST_PRECISION_ID)
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
