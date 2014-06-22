@@ -6,6 +6,7 @@ from collective.z3cform.datagridfield import DictRow
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_DataGridFieldFactory
 from imio.urbdial.notarydivision.browser.field import DataGridBool
+from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 
 from plone.app import textfield
 from plone.autoform import directives as form
@@ -175,7 +176,7 @@ class ICreatedEstateRowSchema(zope.interface.Interface):
 
 # NotaryDivision schema #
 
-class INotaryDivision(model.Schema):
+class INotaryDivision(model.Schema, INotaryDivisionElement):
     """
     NotaryDivision dexterity schema
     """

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
+from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 
+from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
@@ -13,7 +15,7 @@ from zope import schema
 from zope.interface import implements
 
 
-class IComment(model.Schema):
+class IComment(model.Schema, INotaryDivisionElement):
     """
     Comment dexterity schema.
     """
@@ -44,6 +46,20 @@ class Comment(Container):
         while(level.portal_type != 'NotaryDivision'):
             level = level.aq_parent
         return level
+
+    def is_published(self):
+        is_published = api.content.get_state(self) in ['Published', 'Frozen']
+        return is_published
+
+    def get_publication_date(self):
+        history = self.workflow_history.values()[0]
+        for action in history:
+            if action.get('action') == 'Publish':
+                return action.get('time')
+
+    def get_creation_date(self):
+        creation_action = self.workflow_history.values()[0][0]
+        return creation_action.get('time')
 
 
 class IObservation(IComment):

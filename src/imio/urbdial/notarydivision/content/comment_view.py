@@ -43,10 +43,15 @@ class CommentView(CommentContainerView):
 
         author = api.user.get(comment.creators[0])
         author = author.getProperty('fullname')
-        history = comment.workflow_history.values()[0][-1]
-        action = history.get('action') == 'Publish' and 'publié' or 'créé'
-        date = history.get('time').strftime('%d/%m/%Y à %H:%M')
-        warning = history.get('action') == 'Publish' and ' ' or ' (BROUILLON NON PUBLIÉ)'
+        if comment.is_published():
+            action = 'publié'
+            warning = ' '
+            date = comment.get_publication_date()
+        else:
+            action = 'créé'
+            warning = ' (BROUILLON NON PUBLIÉ)'
+            date = comment.get_creation_date()
+        date = date.strftime('%d/%m/%Y à %H:%M')
 
         publication = '{action} le {date}{warning}'.format(
             action=action,
