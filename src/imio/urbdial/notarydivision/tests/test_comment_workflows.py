@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.testing import REAL_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.testing import CommentBrowserTest
 from imio.urbdial.notarydivision.testing import WorkflowLocaRolesAssignmentTest
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 
 from plone import api
 
-from zope.component import queryAdapter
+from zope.component import queryMultiAdapter
 
 import unittest
 
@@ -151,6 +152,13 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
 
         self.assertTrue(IObservationWorkflow.providedBy(observation_wf))
 
+
+class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):
+    """
+    Test that local roles are assigned to the right groups when creating a
+    new observation or when triggering workflow transitions.
+    """
+
     def test_state_role_mapping_registration(self):
         from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
         from imio.urbdial.notarydivision.workflows import observation_workflow
@@ -158,15 +166,8 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
         wf_tool = api.portal.get_tool('portal_workflow')
         observation_wf = wf_tool.getWorkflowById('Observation_workflow')
 
-        mapping = queryAdapter(observation_wf, IWorkflowStateRolesMapping)
+        mapping = queryMultiAdapter((self.test_observation, observation_wf), IWorkflowStateRolesMapping)
         self.assertTrue(isinstance(mapping, observation_workflow.StateRolesMapping))
-
-
-class TestObservationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest):
-    """
-    Test that local roles are assigned to the right groups when creating a
-    new observation or when triggering workflow transitions.
-    """
 
     def test_fd_user_roles_on_draft_state(self):
         expected_roles = ('Observation Manager',)
@@ -376,6 +377,13 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
 
         self.assertTrue(IPrecisionWorkflow.providedBy(precision_wf))
 
+
+class TestPrecisionWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):
+    """
+    Test that local roles are assigned to the right groups when creating a
+    new precision or when triggering workflow transitions.
+    """
+
     def test_state_role_mapping_registration(self):
         from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
         from imio.urbdial.notarydivision.workflows import precision_workflow
@@ -383,15 +391,8 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
         wf_tool = api.portal.get_tool('portal_workflow')
         precision_wf = wf_tool.getWorkflowById('Precision_workflow')
 
-        mapping = queryAdapter(precision_wf, IWorkflowStateRolesMapping)
+        mapping = queryMultiAdapter((self.test_precision, precision_wf), IWorkflowStateRolesMapping)
         self.assertTrue(isinstance(mapping, precision_workflow.StateRolesMapping))
-
-
-class TestPrecisionWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest):
-    """
-    Test that local roles are assigned to the right groups when creating a
-    new precision or when triggering workflow transitions.
-    """
 
     def test_notary_user_roles_on_draft_state(self):
         expected_roles = ('Precision Manager',)

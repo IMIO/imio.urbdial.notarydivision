@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.interfaces import INotaryDivisionFTI
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
+from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
@@ -155,6 +157,7 @@ def create_notarydivisions_folder(context):
 
         folder.manage_addLocalRoles('notaries', ['NotaryDivision Reader', 'NotaryDivision Creator'])
         folder.manage_addLocalRoles('dgo4', ['NotaryDivision Reader'])
+        folder.manage_addLocalRoles('townships', ['NotaryDivision Reader'])
 
         set_AllowedTypes_of_folder(folder, 'NotaryDivision')
 
@@ -209,7 +212,12 @@ def create_test_users(context):
             'fullname': 'Fonctionnaire délégué Dédé',
         }
     )
-    api.group.add_user(username=TEST_FD_NAME, groupname='dgo4')
+    dgo4_localgroup = api.group.create(
+        groupname=TEST_FD_LOCALGROUP,
+        title=_(TEST_FD_LOCALGROUP),
+    )
+    api.group.add_user(user=dgo4_localgroup, groupname='dgo4')
+    api.group.add_user(username=TEST_FD_NAME, groupname=TEST_FD_LOCALGROUP)
 
     api.user.create(
         username=TEST_TOWNSHIP_NAME, password=TEST_TOWNSHIP_PASSWORD, email='coco@commune.be',
@@ -217,4 +225,9 @@ def create_test_users(context):
             'fullname': 'Agent communal Coco',
         }
     )
-    api.group.add_user(username=TEST_TOWNSHIP_NAME, groupname='townships')
+    township_localgroup = api.group.create(
+        groupname=TEST_TOWNSHIP_LOCALGROUP,
+        title=_(TEST_TOWNSHIP_LOCALGROUP),
+    )
+    api.group.add_user(user=township_localgroup, groupname='townships')
+    api.group.add_user(username=TEST_TOWNSHIP_NAME, groupname=TEST_TOWNSHIP_LOCALGROUP)

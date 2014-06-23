@@ -23,18 +23,10 @@ def call_with_super_user(callable_obj, *args, **named_args):
     then fall back to the original security manager.
     """
 
-    class SuperUser(OmnipotentUser):
-        """
-        Omnipotent.  Heritates from Products.CMFCore's OmnipotentUser
-        but add a missing 'has_role' method...
-        """
-        def has_role(self, roles, obj=None):
-            return True
-
     oldsm = getSecurityManager()
     # login as an omnipotent user
     portal = api.portal.getSite()
-    newSecurityManager(None, SuperUser().__of__(portal.aq_inner.aq_parent.acl_users))
+    newSecurityManager(None, OmnipotentUser().__of__(portal.aq_inner.aq_parent.acl_users))
     try:
         callable_obj(*args, **named_args)
     except Exception, exc:

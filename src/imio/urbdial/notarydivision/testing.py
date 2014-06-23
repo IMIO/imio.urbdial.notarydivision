@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARYDIVISION_ID
 
 from plone import api
@@ -164,13 +166,17 @@ class ExampleCommentLayer(ExampleDivisionLayer):
         super(ExampleCommentLayer, self).setUpPloneSite(portal)
 
         test_divnot = portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
+        api.content.transition(test_divnot, 'Notify')
+
         # Create some test comments
+        login(portal, TEST_FD_NAME)
         api.content.create(
             type='Observation',
             id=TEST_OBSERVATION_ID,
             container=test_divnot,
         )
 
+        login(portal, TEST_NOTARY_NAME)
         api.content.create(
             type='Precision',
             id=TEST_PRECISION_ID,
@@ -261,7 +267,6 @@ class CommentBrowserTest(BrowserTest):
     def setUp(self):
         super(CommentBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
-        api.content.transition(self.test_divnot, 'Notify')
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
         self.test_precision = self.test_divnot.get(TEST_PRECISION_ID)
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
@@ -282,7 +287,7 @@ class CommentFunctionalBrowserTest(BrowserTest):
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
-class WorkflowLocaRolesAssignmentTest(CommentFunctionalBrowserTest):
+class WorkflowLocaRolesAssignmentTest(object):
     """
     Base class with helpers methods to tests each workflow's state role/group mapping.
     """

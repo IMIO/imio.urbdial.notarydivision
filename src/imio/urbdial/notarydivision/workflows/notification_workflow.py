@@ -1,53 +1,46 @@
 # -*- coding: utf-8 -*-
 
-from imio.urbdial.notarydivision.workflows.state_roles_mapping import WorkflowStateRolesMapping
+from imio.urbdial.notarydivision.workflows.state_roles_mapping import UrbdialWorkflowStateRolesMapping
 
 
-class StateRolesMapping(WorkflowStateRolesMapping):
+class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
     """ """
 
     mapping = {
         'In preparation': {
-            'notaries': (
+            'notary_office': (
                 'NotaryDivision Manager',
                 'Notification Manager',
             ),
         },
+
         'In investigation': {
-            'notaries': (
+            'notary_office': (
                 'Notification Manager',
                 'NotaryDivision Reader',
                 'Precision Creator',
             ),
-            'townships': (
+            'local_township': (
                 'NotaryDivision Reader',
                 'Observation Creator',
             ),
-            'dgo4': (
+            'local_dgo4': (
                 'NotaryDivision Reader',
                 'Observation Creator',
             ),
+            'notaries': ('NotaryDivision Reader',),
+            'dgo4': ('NotaryDivision Reader',),
         },
+
         'Passed': {
-            'notaries': (
-                'NotaryDivision Reader',
-            ),
-            'townships': (
-                'NotaryDivision Reader',
-            ),
-            'dgo4': (
-                'NotaryDivision Reader',
-            ),
+            'notaries': ('NotaryDivision Reader',),
+            'local_township': ('NotaryDivision Reader',),
+            'dgo4': ('NotaryDivision Reader',),
         },
+
         'Cancelled': {
-            'notaries': (
-                'NotaryDivision Reader',
-            ),
-            'townships': (
-                'NotaryDivision Reader',
-            ),
-            'dgo4': (
-                'NotaryDivision Reader',
-            ),
+            'notaries': ('NotaryDivision Reader',),
+            'local_township': ('NotaryDivision Reader',),
+            'dgo4': ('NotaryDivision Reader',),
         },
     }

@@ -12,6 +12,7 @@
             <metal:body define-macro="body_macro">
 
                 <div tal:replace="structure provider:plone.abovecontenttitle" />
+
                 <h1 class="documentFirstHeading">
                     <span tal:replace="here/Title" tal:omit-tag="">Title</span>
                 </h1>
@@ -27,6 +28,10 @@
                 </table>
 
                 <dl class="formTabs enableFormTabbing">
+                <div class="divnot_actions">
+                    <tal:actions content="structure here/actions/render" />
+                </div>
+
                     <tal:tabs repeat="group view/groups">
                         <dt class="formTab" attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
                             <span tal:content="group/label">Tab name</span>
@@ -46,9 +51,8 @@
                     </tal:tabs>
                 </dl>
 
-
                 <fieldset id="comments">
-                  <legend i18n:translate="" i18n:domain="urbdial.divnot">Comments</legend>
+                    <legend i18n:translate="" i18n:domain="urbdial.divnot">Comments</legend>
                     <div>
                       <tal:actions content="structure view/display_add_types" />
                     </div>

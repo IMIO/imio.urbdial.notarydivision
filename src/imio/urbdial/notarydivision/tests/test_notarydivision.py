@@ -492,10 +492,7 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
     """
 
     def test_published_comments_are_frozen_when_notarydivision_is_passed(self):
-        """
-        """
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
 
         for comment in notarydivision.objectValues():
             api.content.transition(comment, 'Publish')
@@ -515,10 +512,7 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
             self.assertTrue(comment_state == 'Frozen', msg)
 
     def test_published_comments_are_frozen_when_notarydivision_is_cancelled(self):
-        """
-        """
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
 
         for comment in notarydivision.objectValues():
             api.content.transition(comment, 'Publish')
@@ -527,7 +521,7 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
             comment_state = api.content.get_state(comment)
             self.assertTrue(comment_state == 'Published')
 
-        # 'Pass' notarydivision
+        # 'Cancel' notarydivision
         login(self.portal, TEST_NOTARY_NAME)
         api.content.transition(notarydivision, 'Cancel')
 
@@ -536,3 +530,27 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
             comment_state = api.content.get_state(comment)
             msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
             self.assertTrue(comment_state == 'Frozen', msg)
+
+    def test_draft_comments_are_deleted_when_notarydivision_is_passed(self):
+        notarydivision = self.test_divnot
+
+        for comment in notarydivision.objectValues():
+            comment_state = api.content.get_state(comment)
+            self.assertTrue(comment_state == 'Draft')
+
+        login(self.portal, TEST_NOTARY_NAME)
+        api.content.transition(notarydivision, 'Pass')
+        msg = "Some draft comments are not deleted"
+        self.assertTrue(len(notarydivision.objectValues()) == 0, msg)
+
+    def test_draft_comments_are_deleted_when_notarydivision_is_cancelled(self):
+        notarydivision = self.test_divnot
+
+        for comment in notarydivision.objectValues():
+            comment_state = api.content.get_state(comment)
+            self.assertTrue(comment_state == 'Draft')
+
+        login(self.portal, TEST_NOTARY_NAME)
+        api.content.transition(notarydivision, 'Cancel')
+        msg = "Some draft comments are not deleted"
+        self.assertTrue(len(notarydivision.objectValues()) == 0, msg)
