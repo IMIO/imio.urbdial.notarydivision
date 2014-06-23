@@ -60,3 +60,23 @@ def freeze_comments(notarydivision, event):
     # notary user dont have the permission to trigger 'Freeze' transition on
     # comments
     call_with_super_user(recursive_freeze_comments, container=notarydivision)
+
+
+def delete_dratf_comments(notarydivision, event):
+    """
+    Delete all draft comments of a NotaryDivision when its passed or cancelled.
+    """
+    # only trigger this event for NotaryDivision cancelled or passed
+    if not event.new_state.title in ['Cancelled', 'Passed']:
+        return
+
+    def recursive_delete_draft_comments(container):
+        for comment in container.objectValues():
+            if api.content.get_state(comment) == 'Draft':
+                api.content.delete(comment)
+                recursive_delete_draft_comments(comment)
+
+    # we have to execute recursive_delete_draft_comments with a super user because
+    # notary user dont have the permission to trigger 'Freeze' transition on
+    # comments
+    call_with_super_user(recursive_delete_draft_comments, container=notarydivision)
