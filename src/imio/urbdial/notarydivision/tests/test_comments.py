@@ -9,6 +9,7 @@ from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
+from imio.urbdial.notarydivision.utils import translate
 
 from plone import api
 from plone.app.textfield.value import RichTextValue
@@ -91,25 +92,41 @@ class TestCommentView(CommentBrowserTest):
         self.browser.open(self.test_observation.absolute_url())
         contents = self.browser.contents
         msg = 'test Comment addObservation button not appears in view'
-        self.assertTrue('Add Observation' in contents, msg)
+        addObservation = ''.format(
+            translate(u'Add'),
+            translate(u'Observation').encode('utf-8')
+        )
+        self.assertTrue(addObservation in contents, msg)
 
     def test_Comment_addPrecision_buttons(self):
         self.browser.open(self.test_observation.absolute_url())
         contents = self.browser.contents
         msg = 'test Comment AddPrecision button not appears in view'
-        self.assertTrue('Add Precision' in contents, msg)
+        addPrecision = ''.format(
+            translate(u'Add'),
+            translate(u'Precision').encode('utf-8')
+        )
+        self.assertTrue(addPrecision in contents, msg)
 
     def test_Comment_addPrecisionDemand_buttons(self):
         self.browser.open(self.test_observation.absolute_url())
         contents = self.browser.contents
         msg = 'test Comment addPrecisionDemand button not appears in view'
-        self.assertTrue('Add PrecisionDemand' in contents, msg)
+        addPrecisionDemand = ''.format(
+            translate(u'Add'),
+            translate(u'PrecisionDemand').encode('utf-8')
+        )
+        self.assertTrue(addPrecisionDemand in contents, msg)
 
     def test_Comment_addIndmissibleFolder_buttons(self):
         self.browser.open(self.test_observation.absolute_url())
         contents = self.browser.contents
         msg = 'test Comment addInadmissibleFolder button not appears in view'
-        self.assertTrue('Add InadmissibleFolder' in contents, msg)
+        addInadmissibleFolder = ''.format(
+            translate(u'Add'),
+            translate(u'InadmissibleFolder').encode('utf-8')
+        )
+        self.assertTrue(addInadmissibleFolder in contents, msg)
 
 
 class FunctionalTestCommentView(CommentFunctionalBrowserTest):

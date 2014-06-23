@@ -11,6 +11,7 @@ from imio.urbdial.notarydivision.testing import EXAMPLE_DIVISION_INTEGRATION
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 from imio.urbdial.notarydivision.testing import NotaryDivisionBrowserTest
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
+from imio.urbdial.notarydivision.utils import translate
 
 import unittest
 
@@ -465,25 +466,41 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = 'test NotaryDivision addObservation button not appears in view'
-        self.assertTrue('Add Observation' in contents, msg)
+        addObservation = ''.format(
+            translate(u'Add'),
+            translate(u'Observation').encode('utf-8')
+        )
+        self.assertTrue(addObservation in contents, msg)
 
     def test_NotaryDivision_addPrecision_buttons(self):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = 'test NotaryDivision AddPrecision button not appears in view'
-        self.assertTrue('Add Precision' in contents, msg)
+        addPrecision = ''.format(
+            translate(u'Add'),
+            translate(u'Precision').encode('utf-8')
+        )
+        self.assertTrue(addPrecision in contents, msg)
 
     def test_NotaryDivision_addPrecisionDemand_buttons(self):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = 'test NotaryDivision addPrecisionDemand button not appears in view'
-        self.assertTrue('Add PrecisionDemand' in contents, msg)
+        addPrecisionDemand = ''.format(
+            translate(u'Add'),
+            translate(u'PrecisionDemand').encode('utf-8')
+        )
+        self.assertTrue(addPrecisionDemand in contents, msg)
 
     def test_NotaryDivision_addInadmissibleFolder_buttons(self):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = 'test NotaryDivision addInadmissibleFolder button not appears in view'
-        self.assertTrue('Add InadmissibleFolder' in contents, msg)
+        addInadmissibleFolder = ''.format(
+            translate(u'Add'),
+            translate(u'InadmissibleFolder').encode('utf-8')
+        )
+        self.assertTrue(addInadmissibleFolder in contents, msg)
 
 
 class TestNotaryDivisionIntegration(CommentBrowserTest):
