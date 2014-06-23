@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.content.comment_view import CommentContainerView
+from imio.urbdial.notarydivision.utils import translate
 
 from plone import api
 
@@ -8,6 +10,7 @@ from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
 
 from zope.security import checkPermission
+
 
 class NotaryDivisionAddForm(add.DefaultAddForm):
     """
@@ -40,6 +43,7 @@ class NotaryDivisionView(CommentContainerView):
         """Return actions"""
 
         actions = []
+        add = translate(u'Add')
 
         types_tool = api.portal.get_tool('portal_types')
         portal_type = types_tool.get(self.context.portal_type)
@@ -52,13 +56,15 @@ class NotaryDivisionView(CommentContainerView):
                     self.context.absolute_url(),
                     content_type
                 )
-                action = '<a name=add_{} href={} class={} >\
-                    Add {}\
+                action = '<a name={}_{} href={} class={} >\
+                    {} {}\
                     </a>'.format(
+                        add,
                         content_type,
                         url,
                         "apButton apButtonAction",
-                        content_type
+                        add,
+                        translate(content_type).encode('utf-8')
                     )
                 actions.append(action)
         actions = ''.join(actions)

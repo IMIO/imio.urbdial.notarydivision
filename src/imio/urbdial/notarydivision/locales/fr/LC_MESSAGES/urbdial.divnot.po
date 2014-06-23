@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-06-22 12:45+0000\n"
+"POT-Creation-Date: 2014-06-23 09:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,6 +14,9 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
+
+msgid "Add"
+msgstr "Ajouter"
 
 #: ../content/notarydivision.py:298
 msgid "Annex"
@@ -50,6 +53,10 @@ msgstr "Bâti"
 #. Default: "Référence cadastrale"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
+
+#: ../content/templates/notarydivision_view.pt:51
+msgid "Comments"
+msgstr "Commentaires"
 
 #: ../content/notarydivision.py:234
 msgid "Created estate"
@@ -108,7 +115,7 @@ msgstr "Géomètre"
 
 #: ../profiles/default/types/InadmissibleFolder.xml
 msgid "InadmissibleFolder"
-msgstr ""
+msgstr "Dossier irrecevable"
 
 #: ../content/notarydivision.py:224
 msgid "Initial estate"
@@ -171,7 +178,7 @@ msgstr "Précision"
 
 #: ../profiles/default/types/PrecisionDemand.xml
 msgid "PrecisionDemand"
-msgstr ""
+msgstr "Demande de Précision"
 
 #: ../content/notarydivision.py:68
 msgid "Radical"

@@ -79,6 +79,7 @@ class CommentView(CommentContainerView):
         """Return actions add types"""
 
         actions = []
+        add = translate(u'Add')
 
         types_tool = api.portal.get_tool('portal_types')
         portal_type = types_tool.get(self.context.portal_type)
@@ -91,11 +92,13 @@ class CommentView(CommentContainerView):
                     self.context.absolute_url(),
                     content_type
                 )
-                action = '<a name=add_{} href={} class={} >Add {}</a>'.format(
+                action = '<a name={}_{} href={} class={} >{} {}</a>'.format(
+                    add,
                     content_type,
                     url,
                     "apButton apButtonAction",
-                    content_type
+                    add,
+                    translate(content_type).encode('utf-8')
                 )
                 actions.append(action)
         actions = ''.join(actions)

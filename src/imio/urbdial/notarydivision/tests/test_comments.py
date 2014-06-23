@@ -7,6 +7,8 @@ from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
+from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
 
 from plone import api
 from plone.app.textfield.value import RichTextValue
@@ -155,6 +157,35 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         self.assertTrue(observation_text in contents)
+
+    def test_draft_observation_created_by_dgo4_is_hidden_for_township(self):
+        observation_text = "<span>A long time ago in a galaxy far, far away...</span>"
+        self.test_observation.text = RichTextValue(observation_text)
+        transaction.commit()
+
+        self.browser_login(TEST_TOWNSHIP_NAME, TEST_TOWNSHIP_PASSWORD)
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "Draft Observation created by dgo4 sould not be visible to township"
+        self.assertTrue(observation_text not in contents, msg)
+
+    def test_draft_observation_created_by_township_is_hidden_for_dgo4(self):
+        notarydivision = self.test_divnot
+        self.browser_login(TEST_TOWNSHIP_NAME, TEST_TOWNSHIP_PASSWORD)
+        observation = api.content.create(
+            type='Observation',
+            id='observation_2',
+            container=notarydivision,
+        )
+        observation_text = "<span>A long time ago in a galaxy far, far away...</span>"
+        observation.text = RichTextValue(observation_text)
+        transaction.commit()
+
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "Draft Observation created by township sould not be visible to dgo4"
+        self.assertTrue(observation_text not in contents, msg)
 
     def test_comments_cannot_be_added_on_frozen_comment(self):
         notarydivision = self.test_divnot
