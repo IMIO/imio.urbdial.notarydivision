@@ -20,6 +20,12 @@
      <bound-workflow workflow_id="Precision_workflow" />
   </type>
 <!-- ##code-section workflowbindings -->
+  <type type_id="InadmissibleFolder">
+     <bound-workflow workflow_id="Observation_workflow" />
+  </type>
+  <type type_id="PrecisionDemand">
+     <bound-workflow workflow_id="Observation_workflow" />
+  </type>
 <!-- ##/code-section workflowbindings -->
  </bindings>
 </object>

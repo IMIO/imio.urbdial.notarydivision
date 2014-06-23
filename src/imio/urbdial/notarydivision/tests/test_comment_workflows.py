@@ -29,8 +29,16 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
         available_workflows = self.wf_tool.listWorkflows()
         self.assertTrue('Observation_workflow' in available_workflows)
 
-    def test_observation_workflow_is_bound_to_Folder_type(self):
+    def test_observation_workflow_is_bound_to_Observation(self):
         Folder_worklows = self.wf_tool.getChainForPortalType('Observation')
+        self.assertTrue('Observation_workflow' in Folder_worklows)
+
+    def test_observation_workflow_is_bound_to_InadmissibleFolder(self):
+        Folder_worklows = self.wf_tool.getChainForPortalType('InadmissibleFolder')
+        self.assertTrue('Observation_workflow' in Folder_worklows)
+
+    def test_observation_workflow_is_bound_to_PrecisionDemand(self):
+        Folder_worklows = self.wf_tool.getChainForPortalType('PrecisionDemand')
         self.assertTrue('Observation_workflow' in Folder_worklows)
 
     def get_roles_of_permission(self, permission, state='Draft'):
