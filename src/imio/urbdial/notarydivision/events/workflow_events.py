@@ -42,13 +42,19 @@ def update_local_roles(obj, event):
         add_local_roles_to_principals(obj, [group], roles)
 
 
-def freeze_comments(notarydivision, event):
+def close_comments(notarydivision, event):
     """
+    Delete all draft comments of a NotaryDivision when its passed or cancelled.
     Freeze all published comments of a NotaryDivision when its passed or cancelled.
     """
-    # only trigger this event for NotaryDivision cancelled or passed
     if not event.new_state.title in ['Cancelled', 'Passed']:
         return
+
+    delete_dratf_comments(notarydivision)
+    freeze_comments(notarydivision)
+
+
+def freeze_comments(notarydivision):
 
     def recursive_freeze_comments(container):
         for comment in container.objectValues():
@@ -56,19 +62,13 @@ def freeze_comments(notarydivision, event):
                 api.content.transition(comment, 'Freeze')
                 recursive_freeze_comments(comment)
 
-    # we have to execute recursive_freeze_comments with a super user because
+    # We have to execute recursive_freeze_comments with a super user because
     # notary user dont have the permission to trigger 'Freeze' transition on
     # comments.
     call_with_super_user(recursive_freeze_comments, container=notarydivision)
 
 
-def delete_dratf_comments(notarydivision, event):
-    """
-    Delete all draft comments of a NotaryDivision when its passed or cancelled.
-    """
-    # only trigger this event for NotaryDivision cancelled or passed
-    if not event.new_state.title in ['Cancelled', 'Passed']:
-        return
+def delete_dratf_comments(notarydivision):
 
     def recursive_delete_draft_comments(container):
         for comment in container.objectValues():
@@ -76,6 +76,6 @@ def delete_dratf_comments(notarydivision, event):
                 api.content.delete(comment)
                 recursive_delete_draft_comments(comment)
 
-    # we have to execute recursive_delete_draft_comments with a super user because
+    # We have to execute recursive_delete_draft_comments with a super user because
     # notary user dont have the permission to delete comments.
     call_with_super_user(recursive_delete_draft_comments, container=notarydivision)

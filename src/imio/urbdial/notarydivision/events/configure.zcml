@@ -9,11 +9,7 @@
 
   <subscriber for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
                    Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-              handler=".workflow_events.freeze_comments" />
-
-  <subscriber for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
-                   Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-              handler=".workflow_events.delete_dratf_comments" />
+              handler=".workflow_events.close_comments" />
 
   <subscriber for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement
                    zope.lifecycleevent.interfaces.IObjectAddedEvent"
