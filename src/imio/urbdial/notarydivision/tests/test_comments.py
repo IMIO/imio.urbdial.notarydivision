@@ -161,10 +161,10 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
 
         # freeze comments
         api.content.transition(notarydivision, 'Notify')
-        api.content.transition(notarydivision, 'Pass')
         for comment in notarydivision.objectValues():
             api.content.transition(comment, 'Publish')
             api.content.transition(comment, 'Freeze')
+        api.content.transition(notarydivision, 'Pass')
         transaction.commit()
 
         # subcomments cannot be created anymore
