@@ -13,6 +13,7 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
                 'Notification Manager',
             ),
         },
+
         'In investigation': {
             'notary_office': (
                 'Notification Manager',
@@ -30,11 +31,13 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
             'notaries': ('NotaryDivision Reader',),
             'dgo4': ('NotaryDivision Reader',),
         },
+
         'Passed': {
             'notaries': ('NotaryDivision Reader',),
             'local_township': ('NotaryDivision Reader',),
             'dgo4': ('NotaryDivision Reader',),
         },
+
         'Cancelled': {
             'notaries': ('NotaryDivision Reader',),
             'local_township': ('NotaryDivision Reader',),
