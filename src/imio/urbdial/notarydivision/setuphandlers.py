@@ -231,4 +231,3 @@ def create_test_users(context):
     )
     api.group.add_user(user=township_localgroup, groupname='townships')
     api.group.add_user(username=TEST_TOWNSHIP_NAME, groupname=TEST_TOWNSHIP_LOCALGROUP)
-    api.group.add_user(username=TEST_TOWNSHIP_NAME, groupname='ac_sambreville')

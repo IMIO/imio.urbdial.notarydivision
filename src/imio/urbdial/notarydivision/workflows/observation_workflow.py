@@ -12,9 +12,18 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
             'local_dgo4_or_township': ('Observation Manager',),
         },
         'Published': {
-            'local_dgo4': ('Observation Reader', 'Observation Creator'),
-            'local_township': ('Observation Reader', 'Observation Creator'),
-            'notary_office': ('Observation Reader', 'Precision Creator'),
+            'local_dgo4': (
+                'Observation Reader',
+                'Observation Creator'
+            ),
+            'local_township': (
+                'Observation Reader',
+                'Observation Creator'
+            ),
+            'notary_office': (
+                'Observation Reader',
+                'Precision Creator'
+            ),
             'dgo4': ('Observation Reader',),
             'notaries': ('Observation Reader'),
         },
