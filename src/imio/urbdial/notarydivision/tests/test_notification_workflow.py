@@ -29,7 +29,7 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
         available_workflows = self.wf_tool.listWorkflows()
         self.assertTrue('Notification_workflow' in available_workflows)
 
-    def test_notification_workflow_is_bound_to_Folder_type(self):
+    def test_notification_workflow_is_bound_to_NotaryDivision_type(self):
         Folder_worklows = self.wf_tool.getChainForPortalType('NotaryDivision')
         self.assertTrue('Notification_workflow' in Folder_worklows)
 
