@@ -58,7 +58,7 @@ def freeze_comments(notarydivision, event):
 
     # we have to execute recursive_freeze_comments with a super user because
     # notary user dont have the permission to trigger 'Freeze' transition on
-    # comments
+    # comments.
     call_with_super_user(recursive_freeze_comments, container=notarydivision)
 
 
@@ -77,6 +77,5 @@ def delete_dratf_comments(notarydivision, event):
                 recursive_delete_draft_comments(comment)
 
     # we have to execute recursive_delete_draft_comments with a super user because
-    # notary user dont have the permission to trigger 'Freeze' transition on
-    # comments
+    # notary user dont have the permission to delete comments.
     call_with_super_user(recursive_delete_draft_comments, container=notarydivision)
