@@ -8,7 +8,7 @@ from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRoles
 
 from plone import api
 
-from zope.component import queryAdapter
+from zope.component import queryMultiAdapter
 
 
 def update_local_roles(obj, event):
@@ -20,7 +20,7 @@ def update_local_roles(obj, event):
 
     # get workflow role/group mapping for which the transition was triggered
     workflow = event.workflow
-    mapping = queryAdapter(workflow, IWorkflowStateRolesMapping)
+    mapping = queryMultiAdapter((obj, workflow), IWorkflowStateRolesMapping)
 
     if not mapping:
         return
@@ -28,7 +28,7 @@ def update_local_roles(obj, event):
     # update objects local roles by removing each local role found on the
     # mapping for the old state
     old_state = event.old_state.title
-    old_state_local_roles = mapping.get_roles_of(old_state)
+    old_state_local_roles = mapping.get_group_roles_mapping_of(old_state)
 
     for group, roles in old_state_local_roles.iteritems():
         remove_local_roles_from_principals(obj, [group], roles)
@@ -36,7 +36,7 @@ def update_local_roles(obj, event):
     # update objects local roles by adding each local role found on the
     # mapping for the new state
     new_state = event.new_state.title
-    new_state_local_roles = mapping.get_roles_of(new_state)
+    new_state_local_roles = mapping.get_group_roles_mapping_of(new_state)
 
     for group, roles in new_state_local_roles.iteritems():
         add_local_roles_to_principals(obj, [group], roles)

@@ -4,19 +4,22 @@
            i18n_domain="urbdial.divnot">
 
   <adapter
-     for=".interfaces.IObservationWorkflow"
+     for="..content.comment.IObservation
+          .interfaces.IObservationWorkflow"
      factory=".observation_workflow.StateRolesMapping"
      provides=".interfaces.IWorkflowStateRolesMapping"
   />
 
   <adapter
-     for=".interfaces.IPrecisionWorkflow"
+     for="..content.comment.IPrecision
+          .interfaces.IPrecisionWorkflow"
      factory=".precision_workflow.StateRolesMapping"
      provides=".interfaces.IWorkflowStateRolesMapping"
   />
 
   <adapter
-     for=".interfaces.INotificationWorkflow"
+     for="..content.notarydivision.INotaryDivision
+          .interfaces.INotificationWorkflow"
      factory=".notification_workflow.StateRolesMapping"
      provides=".interfaces.IWorkflowStateRolesMapping"
   />

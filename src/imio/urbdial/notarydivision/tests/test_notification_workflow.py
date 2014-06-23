@@ -7,7 +7,7 @@ from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 
 from plone import api
 
-from zope.component import queryAdapter
+from zope.component import queryMultiAdapter
 
 import unittest
 
@@ -169,6 +169,13 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
 
         self.assertTrue(INotificationWorkflow.providedBy(notification_wf))
 
+
+class TestNotificationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest):
+    """
+    Test that local roles are assigned to the right groups when creating a
+    new notarydivision or when triggering workflow transitions.
+    """
+
     def test_state_role_mapping_registration(self):
         from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
         from imio.urbdial.notarydivision.workflows import notification_workflow
@@ -176,15 +183,8 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
         wf_tool = api.portal.get_tool('portal_workflow')
         notification_wf = wf_tool.getWorkflowById('Notification_workflow')
 
-        mapping = queryAdapter(notification_wf, IWorkflowStateRolesMapping)
+        mapping = queryMultiAdapter((self.test_divnot, notification_wf), IWorkflowStateRolesMapping)
         self.assertTrue(isinstance(mapping, notification_workflow.StateRolesMapping))
-
-
-class TestNotificationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest):
-    """
-    Test that local roles are assigned to the right groups when creating a
-    new notarydivision or when triggering workflow transitions.
-    """
 
     def test_notary_user_roles_on_preparation_state(self):
         expected_roles = ('NotaryDivision Manager', 'Notification Manager')
