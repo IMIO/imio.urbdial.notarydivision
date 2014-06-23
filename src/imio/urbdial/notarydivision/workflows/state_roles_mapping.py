@@ -48,3 +48,23 @@ class WorkflowStateRolesMapping(object):
         else:
             value = value_name
         return value
+
+
+class UrbdialWorkflowStateRolesMapping(WorkflowStateRolesMapping):
+    """
+    """
+
+    def notary_office(self):
+        """
+        """
+        return 'notaries'
+
+    def local_dgo4(self):
+        """
+        """
+        return 'dgo4_namur'
+
+    def local_township(self):
+        """
+        """
+        return 'ac_sambreville'

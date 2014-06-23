@@ -160,7 +160,6 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         notarydivision = self.test_divnot
 
         # freeze comments
-        api.content.transition(notarydivision, 'Notify')
         for comment in notarydivision.objectValues():
             api.content.transition(comment, 'Publish')
             api.content.transition(comment, 'Freeze')

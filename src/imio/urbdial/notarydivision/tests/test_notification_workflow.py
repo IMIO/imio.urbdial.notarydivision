@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.testing import REAL_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.testing import NotaryDivisionBrowserTest
 from imio.urbdial.notarydivision.testing import WorkflowLocaRolesAssignmentTest
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
@@ -170,7 +171,7 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
         self.assertTrue(INotificationWorkflow.providedBy(notification_wf))
 
 
-class TestNotificationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest):
+class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, WorkflowLocaRolesAssignmentTest):
     """
     Test that local roles are assigned to the right groups when creating a
     new notarydivision or when triggering workflow transitions.

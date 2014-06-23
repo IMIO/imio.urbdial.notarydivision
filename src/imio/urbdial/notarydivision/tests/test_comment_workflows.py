@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.testing import REAL_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.testing import CommentBrowserTest
 from imio.urbdial.notarydivision.testing import WorkflowLocaRolesAssignmentTest
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
@@ -152,7 +153,7 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
         self.assertTrue(IObservationWorkflow.providedBy(observation_wf))
 
 
-class TestObservationWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest):
+class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):
     """
     Test that local roles are assigned to the right groups when creating a
     new observation or when triggering workflow transitions.
@@ -377,7 +378,7 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
         self.assertTrue(IPrecisionWorkflow.providedBy(precision_wf))
 
 
-class TestPrecisionWorkflowLocalRolesAssignment(WorkflowLocaRolesAssignmentTest):
+class TestPrecisionWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):
     """
     Test that local roles are assigned to the right groups when creating a
     new precision or when triggering workflow transitions.

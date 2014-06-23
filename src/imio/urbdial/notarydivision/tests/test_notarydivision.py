@@ -493,7 +493,6 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
 
     def test_published_comments_are_frozen_when_notarydivision_is_passed(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
 
         for comment in notarydivision.objectValues():
             api.content.transition(comment, 'Publish')
@@ -514,7 +513,6 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
 
     def test_published_comments_are_frozen_when_notarydivision_is_cancelled(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
 
         for comment in notarydivision.objectValues():
             api.content.transition(comment, 'Publish')
@@ -535,7 +533,6 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
 
     def test_draft_comments_are_deleted_when_notarydivision_is_passed(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
 
         for comment in notarydivision.objectValues():
             comment_state = api.content.get_state(comment)
@@ -548,7 +545,6 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
 
     def test_draft_comments_are_deleted_when_notarydivision_is_cancelled(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
 
         for comment in notarydivision.objectValues():
             comment_state = api.content.get_state(comment)
