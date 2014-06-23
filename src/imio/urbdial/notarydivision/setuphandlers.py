@@ -155,6 +155,7 @@ def create_notarydivisions_folder(context):
 
         folder.manage_addLocalRoles('notaries', ['NotaryDivision Reader', 'NotaryDivision Creator'])
         folder.manage_addLocalRoles('dgo4', ['NotaryDivision Reader'])
+        folder.manage_addLocalRoles('townships', ['NotaryDivision Reader'])
 
         set_AllowedTypes_of_folder(folder, 'NotaryDivision')
 
