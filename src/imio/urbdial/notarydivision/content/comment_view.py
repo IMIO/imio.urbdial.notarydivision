@@ -40,8 +40,21 @@ class CommentView(CommentContainerView):
     def display_title(self):
         comment = self.context
         type_ = translate(_(comment.portal_type))
+        action, author, warning, date = self.get_last_action_infos(comment)
 
-        author = api.user.get(comment.creators[0])
+        publication = '{action} le {date}{warning}'.format(
+            action=action,
+            date=date,
+            warning=warning,
+        )
+        title = '{type_} par {author}, {publication}:'.format(
+            type_=type_.encode('utf-8'),
+            author=author,
+            publication=publication,
+        )
+        return title
+
+    def get_last_action_infos(self, comment):
         if comment.is_published():
             action = 'publié'
             author = comment.get_publicator()
@@ -55,18 +68,7 @@ class CommentView(CommentContainerView):
         date = date.strftime('%d/%m/%Y à %H:%M')
         author = api.user.get(author).getProperty('fullname')
 
-        publication = '{action} le {date}{warning}'.format(
-            action=action,
-            date=date,
-            warning=warning,
-        )
-
-        title = '{type_} par {author}, {publication}:'.format(
-            type_=type_.encode('utf-8'),
-            author=author,
-            publication=publication,
-        )
-        return title
+        return action, author, warning, date
 
     def display_field(self, field_id):
         val = getattr(self.context, field_id)
