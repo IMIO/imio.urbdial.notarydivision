@@ -60,7 +60,7 @@ class WorkflowStateRolesMapping(object):
         group_value = self.compute_value(group_name)
         if not api.group.get(group_value):
             if hasattr(self, group_name):
-                msg = "Group '{}' does not exist.".format(group_value)
+                msg = "Group '{}' computed by '{}' method does not exist.".format(group_value, group_name)
             else:
                 msg = "'{}' is neither an existing group nor a method on mapping object {}.".format(
                     group_name,
@@ -77,7 +77,7 @@ class WorkflowStateRolesMapping(object):
         registered_roles = portal_roles.listRoleIds()
         if role_value not in registered_roles:
             if hasattr(self, role_name):
-                msg = "Role '{}' does not exist.".format(role_value)
+                msg = "Role '{}' computed by '{}' method does not exist.".format(role_value, role_name)
             else:
                 msg = "'{}' is neither an existing role nor a method on mapping object {}.".format(
                     role_name,
