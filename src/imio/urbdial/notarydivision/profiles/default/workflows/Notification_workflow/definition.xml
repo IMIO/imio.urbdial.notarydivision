@@ -7,7 +7,7 @@
              i18n:domain="plone">
  <permission>View</permission>
  <permission>Access contents information</permission>
- <permission>Delete Objects</permission>
+ <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>Add portal content</permission>
  <permission>imio.urbdial.notarydivision: Add Precision</permission>
@@ -29,7 +29,7 @@
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="Delete Objects"
+  <permission-map name="Delete objects"
                   acquired="False">
    <permission-role>NotaryDivision Manager</permission-role>
    <permission-role>Manager</permission-role>
@@ -78,7 +78,7 @@
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="Delete Objects"
+  <permission-map name="Delete objects"
                   acquired="False">
    <permission-role>NotaryDivision Manager</permission-role>
    <permission-role>Manager</permission-role>
@@ -126,7 +126,7 @@
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="Delete Objects"
+  <permission-map name="Delete objects"
                   acquired="False">
    <permission-role>NotaryDivision Manager</permission-role>
    <permission-role>Manager</permission-role>
@@ -174,7 +174,7 @@
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="Delete Objects"
+  <permission-map name="Delete objects"
                   acquired="False">
    <permission-role>NotaryDivision Manager</permission-role>
    <permission-role>Manager</permission-role>

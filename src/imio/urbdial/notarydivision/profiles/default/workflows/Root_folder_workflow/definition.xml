@@ -8,7 +8,7 @@
  <permission>View</permission>
  <permission>Access contents information</permission>
  <permission>Add portal content</permission>
- <permission>Delete Objects</permission>
+ <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <state state_id="Default"
         title="Default"
@@ -23,7 +23,7 @@
    <permission-role>NotaryDivision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="Delete Objects"
+  <permission-map name="Delete objects"
                   acquired="False">
   </permission-map>
   <permission-map name="Modify portal content"

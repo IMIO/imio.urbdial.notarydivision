@@ -62,9 +62,9 @@ class TestRootFolderWorkflow(unittest.TestCase):
 
     def test_DeleteObjects_permission_roles(self):
         """
-        'Delete Objects' permission should be given to no one.
+        'Delete objects' permission should be given to no one.
         """
-        roles_of_permission = self.get_roles_of_permission('Delete Objects')
+        roles_of_permission = self.get_roles_of_permission('Delete objects')
         self.assertTrue(len(roles_of_permission) == 0)
 
     def test_ModifyPortalContent_permission_roles(self):

@@ -49,7 +49,6 @@
           class="imio.urbdial.notarydivision.browser.actions_view.UrbdialActionsPanelView"
           layer="imio.actionspanel.interfaces.IActionsPanelLayer"
           template="browser/actions_panel.pt"
-          allowed_attributes="render"
          permission="zope2.View"
       />
     </configure>

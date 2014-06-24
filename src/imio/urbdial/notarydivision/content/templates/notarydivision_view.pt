@@ -29,7 +29,7 @@
 
                 <dl class="formTabs enableFormTabbing">
                 <div class="divnot_actions">
-                    <tal:actions content="structure here/actions/render" />
+                    <tal:actions content="structure here/actions" />
                 </div>
 
                     <tal:tabs repeat="group view/groups">

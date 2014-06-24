@@ -137,9 +137,9 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
 
     def test_DeleteObjects_permission_roles(self):
         """
-        'Delete Objects' permission should be given to 'Observation Manager'.
+        'Delete objects' permission should be given to 'Observation Manager'.
         """
-        roles_of_permission = self.get_roles_of_permission('Delete Objects')
+        roles_of_permission = self.get_roles_of_permission('Delete objects')
         self.assertTrue(len(roles_of_permission) == 2)
         self.assertTrue('Observation Manager' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
@@ -397,9 +397,9 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
 
     def test_DeleteObjects_permission_roles(self):
         """
-        'Delete Objects' permission should be given to 'Precision Manager'.
+        'Delete objects' permission should be given to 'Precision Manager'.
         """
-        roles_of_permission = self.get_roles_of_permission('Delete Objects')
+        roles_of_permission = self.get_roles_of_permission('Delete objects')
         self.assertTrue(len(roles_of_permission) == 2)
         self.assertTrue('Precision Manager' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)

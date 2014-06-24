@@ -10,5 +10,8 @@ class UrbdialActionsPanelView(ActionsPanelView):
     def __init__(self, context, request):
         super(UrbdialActionsPanelView, self).__init__(context, request)
 
-        # Only keep 'delete' action.
-        self.ACCEPTABLE_ACTIONS = ('delete',)
+        self.SECTIONS_TO_RENDER = (
+            'renderTransitions',
+            'renderEdit',
+            'renderOwnDelete',
+        )

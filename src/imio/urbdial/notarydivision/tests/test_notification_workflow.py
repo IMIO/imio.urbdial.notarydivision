@@ -146,9 +146,9 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
 
     def test_DeleteObjects_permission_roles(self):
         """
-        'Delete Objects' permission should be given to 'NotaryDivision Manager'.
+        'Delete objects' permission should be given to 'NotaryDivision Manager'.
         """
-        roles_of_permission = self.get_roles_of_permission('Delete Objects')
+        roles_of_permission = self.get_roles_of_permission('Delete objects')
         self.assertTrue(len(roles_of_permission) == 2)
         self.assertTrue('NotaryDivision Manager' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
