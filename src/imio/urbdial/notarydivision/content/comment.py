@@ -51,6 +51,12 @@ class Comment(Container):
         is_published = api.content.get_state(self) in ['Published', 'Frozen']
         return is_published
 
+    def get_publicator(self):
+        history = self.workflow_history.values()[0]
+        for action in history:
+            if action.get('action') == 'Publish':
+                return action.get('actor')
+
     def get_publication_date(self):
         history = self.workflow_history.values()[0]
         for action in history:

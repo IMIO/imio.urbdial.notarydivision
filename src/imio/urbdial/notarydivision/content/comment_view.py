@@ -42,16 +42,18 @@ class CommentView(CommentContainerView):
         type_ = translate(_(comment.portal_type))
 
         author = api.user.get(comment.creators[0])
-        author = author.getProperty('fullname')
         if comment.is_published():
             action = 'publié'
+            author = comment.get_publicator()
             warning = ' '
             date = comment.get_publication_date()
         else:
             action = 'créé'
+            author = comment.creators[0]
             warning = ' (BROUILLON NON PUBLIÉ)'
             date = comment.get_creation_date()
         date = date.strftime('%d/%m/%Y à %H:%M')
+        author = api.user.get(author).getProperty('fullname')
 
         publication = '{action} le {date}{warning}'.format(
             action=action,
