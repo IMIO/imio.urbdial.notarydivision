@@ -9,34 +9,31 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
 
     mapping = {
         'Draft': {
-            'local_dgo4_or_township': ('Observation Manager',),
+            'get_local_dgo4_or_township': ('Observation Manager',),
         },
 
         'Published': {
-            'local_dgo4': (
+            'get_local_dgo4_or_township': (
+                'Observation Creator',
                 'Observation Reader',
-                'Observation Creator'
             ),
-            'local_township': (
-                'Observation Reader',
-                'Observation Creator'
-            ),
-            'notary_office': (
+            'get_notary_office': (
                 'Observation Reader',
                 'Precision Creator'
             ),
             'dgo4': ('Observation Reader',),
-            'notaries': ('Observation Reader'),
+            'get_local_township': ('Observation Reader',),
+            'notaries': ('Observation Reader',),
         },
 
         'Frozen': {
             'dgo4': ('Observation Reader',),
-            'local_township': ('Observation Reader',),
+            'get_local_township': ('Observation Reader',),
             'notaries': ('Observation Reader',),
         },
     }
 
-    def local_dgo4_or_township(self):
+    def get_local_dgo4_or_township(self):
         """
         Return the local group of comment's creator (dgo4 or township).
         """
@@ -45,7 +42,7 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
 
         for group in creator_groups:
             group_id = group.id
-            if group_id == self.local_dgo4():
-                return self.local_dgo4()
-            if group_id == self.local_township():
-                return self.local_township()
+            if group_id == self.get_local_dgo4():
+                return self.get_local_dgo4()
+            if group_id == self.get_local_township():
+                return self.get_local_township()

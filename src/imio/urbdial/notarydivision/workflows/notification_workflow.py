@@ -8,23 +8,23 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
 
     mapping = {
         'In preparation': {
-            'notary_office': (
+            'get_notary_office': (
                 'NotaryDivision Manager',
                 'Notification Manager',
             ),
         },
 
         'In investigation': {
-            'notary_office': (
+            'get_notary_office': (
                 'Notification Manager',
                 'NotaryDivision Reader',
                 'Precision Creator',
             ),
-            'local_township': (
+            'get_local_township': (
                 'NotaryDivision Reader',
                 'Observation Creator',
             ),
-            'local_dgo4': (
+            'get_local_dgo4': (
                 'NotaryDivision Reader',
                 'Observation Creator',
             ),
@@ -34,13 +34,13 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
 
         'Passed': {
             'notaries': ('NotaryDivision Reader',),
-            'local_township': ('NotaryDivision Reader',),
+            'get_local_township': ('NotaryDivision Reader',),
             'dgo4': ('NotaryDivision Reader',),
         },
 
         'Cancelled': {
             'notaries': ('NotaryDivision Reader',),
-            'local_township': ('NotaryDivision Reader',),
+            'get_local_township': ('NotaryDivision Reader',),
             'dgo4': ('NotaryDivision Reader',),
         },
     }

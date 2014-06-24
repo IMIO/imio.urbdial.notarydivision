@@ -8,19 +8,19 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
 
     mapping = {
         'Draft': {
-            'notary_office': ('Precision Manager',),
+            'get_notary_office': ('Precision Manager',),
         },
 
         'Published': {
-            'notary_office': (
+            'get_notary_office': (
                 'Precision Reader',
                 'Precision Creator'
             ),
-            'local_dgo4': (
+            'get_local_dgo4': (
                 'Precision Reader',
                 'Observation Creator'
             ),
-            'local_township': (
+            'get_local_township': (
                 'Precision Reader',
                 'Observation Creator'
             ),
@@ -31,6 +31,6 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
         'Frozen': {
             'notaries': ('Precision Reader',),
             'dgo4': ('Precision Reader',),
-            'local_township': ('Precision Reader',),
+            'get_local_township': ('Precision Reader',),
         },
     }

@@ -5,6 +5,7 @@ from imio.urbdial.notarydivision.testing import CommentBrowserTest
 from imio.urbdial.notarydivision.testing import WorkflowLocaRolesAssignmentTest
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 
 from plone import api
 
@@ -186,6 +187,16 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
             state='Draft',
         )
 
+    def test_township_user_roles_on_draft_state(self):
+        # no roles expected because it's not the observation's creator
+        expected_roles = ()
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_TOWNSHIP_NAME,
+            expected_roles=expected_roles,
+            context=self.test_observation,
+            state='Draft',
+        )
+
     def test_notary_user_roles_on_draft_state(self):
         expected_roles = ()
         self._test_roles_of_user_on_stateful_context(
@@ -204,6 +215,18 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
             username=TEST_FD_NAME,
             expected_roles=expected_roles,
             context=observation,
+            state='Published',
+        )
+
+    def test_township_user_roles_on_published_state(self):
+        observation = self.test_observation
+        api.content.transition(observation, 'Publish')
+        # only reader role expected because it's not the observation's creator
+        expected_roles = ('Observation Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_TOWNSHIP_NAME,
+            expected_roles=expected_roles,
+            context=self.test_observation,
             state='Published',
         )
 
@@ -227,6 +250,19 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
         expected_roles = ('Observation Reader',)
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=observation,
+            state='Frozen',
+        )
+
+    def test_township_user_roles_on_frozen_state(self):
+        observation = self.test_observation
+        api.content.transition(observation, 'Publish')
+        api.content.transition(observation, 'Freeze')
+
+        expected_roles = ('Observation Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_TOWNSHIP_NAME,
             expected_roles=expected_roles,
             context=observation,
             state='Frozen',
