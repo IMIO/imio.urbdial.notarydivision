@@ -6,3 +6,4 @@ omit =
     bin/test
     buildout-cache/eggs/*
     parts/*
+    devel/*
