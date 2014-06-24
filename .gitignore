@@ -12,6 +12,7 @@
 .settings/
 bin/
 buildout-cache/
+devel/
 develop-eggs/
 htmlcov/
 include/
