@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
+
 from imio.urbdial.notarydivision.interfaces import INotaryDivisionFTI
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
@@ -53,6 +55,9 @@ def post_install(context):
     logger.info('create_groups : starting...')
     create_groups(context)
     logger.info('create_groups : Done')
+    logger.info('create_pod_templates_folder : starting...')
+    create_pod_templates_folder(context)
+    logger.info('create_pod_templates_folder : Done')
     logger.info('create_notarydivisions_folder : starting...')
     create_notarydivisions_folder(context)
     logger.info('create_notarydivisions_folder : Done')
@@ -149,7 +154,7 @@ def create_notarydivisions_folder(context):
     portal = context.getSite()
 
     folder_id = 'notarydivisions'
-    if 'notarydivisions' not in portal.objectIds():
+    if folder_id not in portal.objectIds():
         portal.invokeFactory(
             'Folder',
             id=folder_id,
@@ -166,6 +171,28 @@ def create_notarydivisions_folder(context):
         folder.manage_addLocalRoles('townships', ['NotaryDivision Reader'])
 
         set_AllowedTypes_of_folder(folder, 'NotaryDivision')
+
+
+def create_pod_templates_folder(context):
+    """
+     Create a folder which will contain all our PODTemplate objects.
+    """
+
+    portal = context.getSite()
+
+    folder_id = 'pod_templates'
+    if folder_id not in portal.objectIds():
+        portal.invokeFactory(
+            'ConfigFolder',
+            id=folder_id,
+            title=_('pod_templates_folder_title'),
+        )
+
+        folder = getattr(portal, folder_id)
+        folder.manage_addLocalRoles('notaries_admin', ['Config Manager'])
+        # need this to be able to call allowedConteTypes methods
+        behaviour = ISelectableConstrainTypes(folder)
+        # set_AllowedTypes_of_folder(behaviour, 'PODTemplate')
 
 
 def redirect_root_default_view(context):

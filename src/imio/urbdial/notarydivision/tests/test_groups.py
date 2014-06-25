@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-"""groups tests for this package."""
 
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 from plone import api
@@ -15,6 +14,9 @@ class TestGroups(unittest.TestCase):
 
     def test_notaries_group_creation(self):
         self.assertTrue(api.group.get('notaries'))
+
+    def test_notaries_admin_group_creation(self):
+        self.assertTrue(api.group.get('notaries_admin'))
 
     def test_dgo4_group_creation(self):
         self.assertTrue(api.group.get('dgo4'))

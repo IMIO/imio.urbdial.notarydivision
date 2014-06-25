@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-06-23 09:26+0000\n"
+"POT-Creation-Date: 2014-06-25 12:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,9 +14,6 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
-
-msgid "Add"
-msgstr "Ajouter"
 
 #: ../content/notarydivision.py:298
 msgid "Annex"
@@ -54,17 +51,17 @@ msgstr "Bâti"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
 
-#: ../content/templates/notarydivision_view.pt:51
-msgid "Comments"
-msgstr "Commentaires"
+#: ../profiles/default/types/ConfigFolder.xml
+msgid "ConfigFolder"
+msgstr "Dossier de configuration"
 
 #: ../content/notarydivision.py:234
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
-#: ../setuphandlers.py:125
+#: ../setuphandlers.py:140
 msgid "DGO 4"
-msgstr ""
+msgstr "DGO 4"
 
 #: ../content/notarydivision.py:161
 msgid "Deed type"
@@ -129,16 +126,20 @@ msgstr "Commune"
 msgid "Name"
 msgstr "Nom"
 
+#: ../profiles/default/types/ConfigFolder.xml
 #: ../profiles/default/types/InadmissibleFolder.xml
 #: ../profiles/default/types/NotaryDivision.xml
-#: ../profiles/default/types/Observation.xml
 msgid "None"
 msgstr ""
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:119
+#: ../setuphandlers.py:128
 msgid "Notaries"
 msgstr "Notaires"
+
+#: ../setuphandlers.py:134
+msgid "Notaries admin"
+msgstr "Administrateur FRNB"
 
 #: ../profiles/default/types/NotaryDivision.xml
 msgid "NotaryDivision"
@@ -208,15 +209,19 @@ msgstr "(type)"
 msgid "Text"
 msgstr "Texte"
 
-#: ../setuphandlers.py:131
+#: ../setuphandlers.py:146
 msgid "Townships"
-msgstr ""
+msgstr "Communes"
 
 msgid "True"
 msgstr "Oui"
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:148
+#: ../setuphandlers.py:163
 msgid "notarydivisions_folder_title"
 msgstr "Divisions notariales"
+
+#: ../setuphandlers.py:190
+msgid "pod_templates_folder_title"
+msgstr "Modèles de documents"
 

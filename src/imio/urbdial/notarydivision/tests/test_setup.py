@@ -106,16 +106,40 @@ class TestSetup(unittest.TestCase):
         self.assertTrue('front-page' not in root_object_ids)
         self.assertTrue('Members' not in root_object_ids)
 
+    def test_pod_templates_folder_created(self):
+        self.assertTrue('pod_templates' in self.portal.objectIds())
+        divnot_folder = self.portal.notarydivisions
+        self.assertTrue(divnot_folder.portal_type == 'Folder')
+
+    def test_pod_templates_folder_translation(self):
+        templates_folder = self.portal.pod_templates
+        self.assertTrue(templates_folder.Title() == 'Modèles de documents')
+
+    def test_pod_templates_folder_allowed_types(self):
+        """
+        The pod_templates folder should only contains PODTemplates.
+        """
+        portal_types = api.portal.get_tool('portal_types')
+        podtemplate_folder = self.portal.pod_templates
+        allowed_types = podtemplate_folder.allowedContentTypes()
+        self.assertTrue(len(allowed_types) == 1)
+        self.assertTrue(portal_types.PODTemplate in allowed_types)
+
+    def test_pod_templates_folder_ConfigManager_local_role(self):
+        """
+        Members of group 'notaries_admin' should have the local role
+        'Config Manager' on that folder.
+        """
+        templates_folder = self.portal.pod_templates
+        folder_local_roles = dict(templates_folder.get_local_roles())
+        self.assertTrue(u'Config Manager' in folder_local_roles['notaries_admin'])
+
     def test_notarydivisions_folder_created(self):
-        """
-        """
         self.assertTrue('notarydivisions' in self.portal.objectIds())
         divnot_folder = self.portal.notarydivisions
         self.assertTrue(divnot_folder.portal_type == 'Folder')
 
     def test_notarydivisions_folder_translation(self):
-        """
-        """
         divnot_folder = self.portal.notarydivisions
         self.assertTrue(divnot_folder.Title() == 'Divisions notariales')
 
@@ -124,11 +148,10 @@ class TestSetup(unittest.TestCase):
         The notarydivisions folder should only contains NotaryDivision objects.
         """
         portal_types = api.portal.get_tool('portal_types')
-        divnot_type = portal_types.NotaryDivision
         divnot_folder = self.portal.notarydivisions
         allowed_types = divnot_folder.allowedContentTypes()
         self.assertTrue(len(allowed_types) == 1)
-        self.assertTrue(divnot_type in allowed_types)
+        self.assertTrue(portal_types.NotaryDivision in allowed_types)
 
     def test_notarydivisions_folder_Reader_local_role(self):
         """

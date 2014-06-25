@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-06-23 09:23+0000\n"
+"POT-Creation-Date: 2014-06-25 12:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,6 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
-
-msgid "Add"
-msgstr ""
 
 #: ../content/notarydivision.py:298
 msgid "Annex"
@@ -55,15 +52,15 @@ msgstr ""
 msgid "Cadastral reference"
 msgstr ""
 
-#: ../content/templates/notarydivision_view.pt:51
-msgid "Comments"
+#: ../profiles/default/types/ConfigFolder.xml
+msgid "ConfigFolder"
 msgstr ""
 
 #: ../content/notarydivision.py:234
 msgid "Created estate"
 msgstr ""
 
-#: ../setuphandlers.py:125
+#: ../setuphandlers.py:140
 msgid "DGO 4"
 msgstr ""
 
@@ -130,14 +127,18 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: ../profiles/default/types/ConfigFolder.xml
 #: ../profiles/default/types/InadmissibleFolder.xml
 #: ../profiles/default/types/NotaryDivision.xml
-#: ../profiles/default/types/Observation.xml
 msgid "None"
 msgstr ""
 
-#: ../setuphandlers.py:119
+#: ../setuphandlers.py:128
 msgid "Notaries"
+msgstr ""
+
+#: ../setuphandlers.py:134
+msgid "Notaries admin"
 msgstr ""
 
 #: ../profiles/default/types/NotaryDivision.xml
@@ -208,14 +209,18 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: ../setuphandlers.py:131
+#: ../setuphandlers.py:146
 msgid "Townships"
 msgstr ""
 
 msgid "True"
 msgstr ""
 
-#: ../setuphandlers.py:148
+#: ../setuphandlers.py:163
 msgid "notarydivisions_folder_title"
+msgstr ""
+
+#: ../setuphandlers.py:190
+msgid "pod_templates_folder_title"
 msgstr ""
 

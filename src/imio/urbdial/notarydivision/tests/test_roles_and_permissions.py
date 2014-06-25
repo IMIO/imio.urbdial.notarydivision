@@ -17,6 +17,10 @@ class TestRolesAndPermissions(unittest.TestCase):
         roles_of_notaries_group = api.group.get_roles('notaries')
         self.assertTrue('Member' in roles_of_notaries_group)
 
+    def test_Member_role_is_assigned_to_notaries_admin_group(self):
+        roles_of_notaries_group = api.group.get_roles('notaries_admin')
+        self.assertTrue('Member' in roles_of_notaries_group)
+
     def test_Member_role_is_assigned_to_dgo4_group(self):
         roles_of_notaries_group = api.group.get_roles('notaries')
         self.assertTrue('Member' in roles_of_notaries_group)
@@ -24,6 +28,11 @@ class TestRolesAndPermissions(unittest.TestCase):
     def test_Member_role_is_assigned_to_townships_group(self):
         roles_of_notaries_group = api.group.get_roles('notaries')
         self.assertTrue('Member' in roles_of_notaries_group)
+
+    def test_ConfigManager_role_registration(self):
+        portal_roles = self.portal.acl_users.portal_role_manager
+        registered_roles = portal_roles.listRoleIds()
+        self.assertTrue('Config Manager' in registered_roles)
 
     def test_ManageNotification_permission_registration(self):
         self.assertTrue('imio.urbdial.notarydivision: Manage notification' in self.portal.possible_permissions())
