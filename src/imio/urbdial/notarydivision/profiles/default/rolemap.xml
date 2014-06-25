@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <rolemap>
  <roles>
+    <role name="Config Manager"/>
     <role name="Notification Manager"/>
     <role name="NotaryDivision Creator"/>
     <role name="NotaryDivision Manager"/>
