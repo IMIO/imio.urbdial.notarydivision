@@ -123,6 +123,12 @@ def create_groups(context):
     )
 
     api.group.create(
+        groupname='notaries_admin',
+        title=_('Notaries admin'),
+        roles=['Member'],
+    )
+
+    api.group.create(
         groupname='dgo4',
         title=_('DGO 4'),
         roles=['Member'],
