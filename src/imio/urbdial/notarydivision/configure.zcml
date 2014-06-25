@@ -12,6 +12,7 @@
     <include file="permissions.zcml" />
 
     <include package="collective.ckeditor"/>
+    <include package="collective.documentgenerator"/>
     <include package="collective.z3cform.datagridfield"/>
     <include package="collective.z3cform.rolefield"/>
     <include package="imio.actionspanel"/>

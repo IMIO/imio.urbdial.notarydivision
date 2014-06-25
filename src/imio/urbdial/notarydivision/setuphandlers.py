@@ -192,7 +192,7 @@ def create_pod_templates_folder(context):
         folder.manage_addLocalRoles('notaries_admin', ['Config Manager'])
         # need this to be able to call allowedConteTypes methods
         behaviour = ISelectableConstrainTypes(folder)
-        # set_AllowedTypes_of_folder(behaviour, 'PODTemplate')
+        set_AllowedTypes_of_folder(behaviour, 'PODTemplate')
 
 
 def redirect_root_default_view(context):

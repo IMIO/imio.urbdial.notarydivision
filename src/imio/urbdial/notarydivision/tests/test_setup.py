@@ -28,6 +28,14 @@ class TestInstallDependencies(unittest.TestCase):
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
         self.assertTrue(self.installer.isProductInstalled('plone.app.dexterity'))
 
+    def test_documentgenerator_is_dependency_of_urbdial(self):
+        """
+        collective.documentgenerator should be installed when we install urbdial
+        """
+        self.assertTrue(not self.installer.isProductInstalled('collective.documentgenerator'))
+        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
+        self.assertTrue(self.installer.isProductInstalled('collective.documentgenerator'))
+
     def test_actionspanel_is_dependency_of_urbdial(self):
         """
         imio.actionspanel should be installed when we install urbdial

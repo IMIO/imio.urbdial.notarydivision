@@ -2,6 +2,7 @@
 <metadata>
    <dependencies>
     <dependency>profile-collective.ckeditor:default</dependency>
+    <dependency>profile-collective.documentgenerator:default</dependency>
     <dependency>profile-collective.z3cform.datagridfield:default</dependency>
     <dependency>profile-imio.actionspanel:default</dependency>
     <dependency>profile-plone.app.dexterity:default</dependency>
