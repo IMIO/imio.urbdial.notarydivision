@@ -3,7 +3,7 @@
 from collective.z3cform.rolefield.utils import add_local_roles_to_principals
 from collective.z3cform.rolefield.utils import remove_local_roles_from_principals
 
-from imio.urbdial.notarydivision.utils import call_with_super_user
+from imio.helpers.security import call_as_super_user
 from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
 
 from plone import api
@@ -65,7 +65,7 @@ def freeze_comments(notarydivision):
     # We have to execute recursive_freeze_comments with a super user because
     # notary user dont have the permission to trigger 'Freeze' transition on
     # comments.
-    call_with_super_user(recursive_freeze_comments, container=notarydivision)
+    call_as_super_user(recursive_freeze_comments, container=notarydivision)
 
 
 def delete_dratf_comments(notarydivision):
@@ -78,4 +78,4 @@ def delete_dratf_comments(notarydivision):
 
     # We have to execute recursive_delete_draft_comments with a super user because
     # notary user dont have the permission to delete comments.
-    call_with_super_user(recursive_delete_draft_comments, container=notarydivision)
+    call_as_super_user(recursive_delete_draft_comments, container=notarydivision)

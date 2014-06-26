@@ -7,7 +7,6 @@ from plone import api
 from plone.app.testing import login
 
 from imio.urbdial.notarydivision.testing import CommentBrowserTest
-from imio.urbdial.notarydivision.testing import EXAMPLE_DIVISION_INTEGRATION
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 from imio.urbdial.notarydivision.testing import NotaryDivisionBrowserTest
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
@@ -57,8 +56,6 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
     """
     Test schema fields declaration.
     """
-
-    layer = EXAMPLE_DIVISION_INTEGRATION
 
     def test_class_registration(self):
         from imio.urbdial.notarydivision.content.notarydivision import NotaryDivision

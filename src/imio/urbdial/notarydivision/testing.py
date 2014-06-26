@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
+from imio.helpers.test_helpers import BrowserTest
+
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARYDIVISION_ID
@@ -20,13 +22,10 @@ from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_PASSWORD
 
 from plone.testing import z2
-from plone.testing.z2 import Browser
 
 import imio.urbdial.notarydivision
 
 import transaction
-
-import unittest
 
 
 class NakedPloneLayer(PloneSandboxLayer):
@@ -201,34 +200,6 @@ EXAMPLE_COMMENT_FUNCTIONAL = FunctionalTesting(
     bases=(EXAMPLE_COMMENT_FIXTURE,),
     name="EXAMPLE_COMMENT_FUNCTIONAL"
 )
-
-
-class BaseTest(unittest.TestCase):
-    """
-    Helper class for tests.
-    """
-
-    def setUp(self):
-        self.portal = self.layer['portal']
-
-
-class BrowserTest(BaseTest):
-    """
-    Helper class for Browser tests.
-    """
-
-    def setUp(self):
-        super(BrowserTest, self).setUp()
-        self.browser = Browser(self.portal)
-        self.browser.handleErrors = False
-
-    def browser_login(self, user, password):
-        login(self.portal, user)
-        self.browser.open(self.portal.absolute_url() + '/logout')
-        self.browser.open(self.portal.absolute_url() + "/login_form")
-        self.browser.getControl(name='__ac_name').value = user
-        self.browser.getControl(name='__ac_password').value = password
-        self.browser.getControl(name='submit').click()
 
 
 class NotaryDivisionBrowserTest(BrowserTest):
