@@ -60,7 +60,7 @@ def freeze_comments(notarydivision):
         for comment in container.objectValues():
             if api.content.get_state(comment) == 'Published':
                 api.content.transition(comment, 'Freeze')
-                recursive_freeze_comments(comment)
+            recursive_freeze_comments(comment)
 
     # We have to execute recursive_freeze_comments with a super user because
     # notary user dont have the permission to trigger 'Freeze' transition on
@@ -74,6 +74,7 @@ def delete_dratf_comments(notarydivision):
         for comment in container.objectValues():
             if api.content.get_state(comment) == 'Draft':
                 api.content.delete(comment)
+            else:
                 recursive_delete_draft_comments(comment)
 
     # We have to execute recursive_delete_draft_comments with a super user because
