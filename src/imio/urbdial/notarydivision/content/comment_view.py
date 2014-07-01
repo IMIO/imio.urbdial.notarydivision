@@ -75,33 +75,3 @@ class CommentView(CommentContainerView):
             widget = self.widgets[field_id]
             display_value = widget.render()
         return display_value
-
-    def display_add_types(self):
-        """Return actions add types"""
-
-        actions = []
-        add = translate(u'Add')
-
-        types_tool = api.portal.get_tool('portal_types')
-        portal_type = types_tool.get(self.context.portal_type)
-        allowed_content_types = portal_type.allowed_content_types
-        for content_type in allowed_content_types:
-            portal_type = types_tool.get(content_type)
-            add_permission = portal_type.add_permission
-            if checkPermission(add_permission, self.context):
-                url = '{}/++add++{}'.format(
-                    self.context.absolute_url(),
-                    content_type
-                )
-                action = '<a name={}_{} href={} class={} >{} {}</a>'.format(
-                    add,
-                    content_type,
-                    url,
-                    "apButton apButtonAction",
-                    add,
-                    translate(content_type).encode('utf-8')
-                )
-                actions.append(action)
-        actions = ''.join(actions)
-        actions = '<span>{}</span>'.format(actions)
-        return actions
