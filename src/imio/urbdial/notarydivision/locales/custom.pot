@@ -15,6 +15,9 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 
 
+msgid "Answer"
+msgstr ""
+
 msgid "Cadastral reference"
 msgstr ""
 
@@ -23,4 +26,3 @@ msgstr ""
 
 msgid "False"
 msgstr ""
-

@@ -28,9 +28,12 @@
                 </table>
 
                 <dl class="formTabs enableFormTabbing">
-                <div class="divnot_actions">
-                    <tal:actions content="structure here/actions" />
-                </div>
+                    <div class="divnot_actions">
+                        <tal:actions content="structure here/actions" />
+                    </div>
+                    <!--div class="docment_actions">
+                        <tal:actions content="structure here/actions" />
+                    </div-->
 
                     <tal:tabs repeat="group view/groups">
                         <dt class="formTab" attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
@@ -51,15 +54,17 @@
                     </tal:tabs>
                 </dl>
 
-                <div>
-                    <tal:actions content="structure view/display_add_types" />
-                </div>
                 <fieldset id="comments">
                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Comments</legend>
                     <div>
-                      <tal:block define="comments_macro here/@@comments_display/comments">
-                        <metal:use_macro use-macro="comments_macro" />
-                      </tal:block>
+                        <tal:block define="comments_macro here/@@comments_display/comments">
+                            <metal:use_macro use-macro="comments_macro" />
+                        </tal:block>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <tal:actions content="structure here/addcontent_actions" />
                     </div>
                 </fieldset>
 

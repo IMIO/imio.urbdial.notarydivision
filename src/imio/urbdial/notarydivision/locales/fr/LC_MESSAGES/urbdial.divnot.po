@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-06-25 12:38+0000\n"
+"POT-Creation-Date: 2014-07-01 11:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,9 @@ msgstr "Autres annexes"
 #: ../content/notarydivision.py:304
 msgid "Annex files"
 msgstr "Fichiers des annexes"
+
+msgid "Answer"
+msgstr "Répondre"
 
 #: ../content/notarydivision.py:203
 msgid "Applicants"
@@ -59,7 +62,7 @@ msgstr "Dossier de configuration"
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
-#: ../setuphandlers.py:140
+#: ../setuphandlers.py:138
 msgid "DGO 4"
 msgstr "DGO 4"
 
@@ -133,11 +136,11 @@ msgid "None"
 msgstr ""
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:128
+#: ../setuphandlers.py:126
 msgid "Notaries"
 msgstr "Notaires"
 
-#: ../setuphandlers.py:134
+#: ../setuphandlers.py:132
 msgid "Notaries admin"
 msgstr "Administrateur FRNB"
 
@@ -209,7 +212,7 @@ msgstr "(type)"
 msgid "Text"
 msgstr "Texte"
 
-#: ../setuphandlers.py:146
+#: ../setuphandlers.py:144
 msgid "Townships"
 msgstr "Communes"
 
@@ -217,11 +220,11 @@ msgid "True"
 msgstr "Oui"
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:163
+#: ../setuphandlers.py:161
 msgid "notarydivisions_folder_title"
 msgstr "Divisions notariales"
 
-#: ../setuphandlers.py:190
+#: ../setuphandlers.py:188
 msgid "pod_templates_folder_title"
 msgstr "Modèles de documents"
 

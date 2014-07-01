@@ -53,4 +53,23 @@
       />
     </configure>
 
+    <configure package="imio.actionspanel">
+      <browser:page
+          for="*"
+          name="addcontent_actions"
+          class="imio.urbdial.notarydivision.browser.actions_view.UrbdialAddContentPanelView"
+          layer="imio.actionspanel.interfaces.IActionsPanelLayer"
+          template="browser/actions_panel.pt"
+         permission="zope2.View"
+      />
+    </configure>
+
+    <!--adapter
+        for="Products.CMFCore.interfaces.IFolderish
+             zope.publisher.interfaces.browser.IDefaultBrowserLayer
+             imio.urbdial.notarydivision.interfaces.INotaryDivisionFTI"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        factory=".notarydivision_view.NotaryDivisionAddView"
+    /-->
+
 </configure>
