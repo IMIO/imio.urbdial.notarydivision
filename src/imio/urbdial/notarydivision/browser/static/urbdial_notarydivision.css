@@ -90,3 +90,10 @@ div[id$=_estate] table.display th{font-size: 0.9em;}
 .option .label{
     font-weight: normal;
 }
+
+/* Align document generationa actions to the right*/
+.documents_action{
+    display: inline;
+    clear: both;
+    float: right;
+}

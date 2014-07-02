@@ -3,6 +3,7 @@
 
 from plone.dexterity.interfaces import IDexterityFTI
 
+from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
@@ -12,3 +13,13 @@ class IImioUrbdialNotarydivisionLayer(IDefaultBrowserLayer):
 
 class INotaryDivisionFTI(IDexterityFTI):
     """Marker interface for NotaryDivision FTI."""
+
+
+class IAvailableDocumentsForGeneration(Interface):
+    """Adapt a context and a request to provide a list of PODTemplate."""
+
+    def get_available_templates(self):
+        """
+        Return a list of PODTemplate UIDs which can be generated on the
+        adapted context.
+        """

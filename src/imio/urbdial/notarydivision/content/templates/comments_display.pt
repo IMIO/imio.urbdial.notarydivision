@@ -5,7 +5,11 @@
             <br />
             <strong><span tal:content="view/display_title"></span></strong>
 
-            <tal:actions content="structure comment/actions" /><br />
+            <div class="documents_action">
+               <tal:actions content="structure comment/actions" />
+               <tal:actions content="structure comment/documents_action" />
+            </div>
+
 
             <tal:text content="structure python: view.display_field('text')" />
 

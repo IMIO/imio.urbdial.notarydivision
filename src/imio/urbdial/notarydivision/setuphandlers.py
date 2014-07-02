@@ -12,6 +12,7 @@ from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
+from imio.urbdial.notarydivision.utils import get_pod_templates_folder
 from imio.urbdial.notarydivision.workflows.interfaces import INotificationWorkflow
 from imio.urbdial.notarydivision.workflows.interfaces import IObservationWorkflow
 from imio.urbdial.notarydivision.workflows.interfaces import IPrecisionWorkflow
@@ -19,6 +20,8 @@ from imio.urbdial.notarydivision.workflows.interfaces import IPrecisionWorkflow
 from plone import api
 
 from plone.app.layout.navigation.interfaces import INavigationRoot
+
+from plone.namedfile.file import NamedBlobFile
 
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
@@ -58,6 +61,9 @@ def post_install(context):
     logger.info('create_pod_templates_folder : starting...')
     create_pod_templates_folder(context)
     logger.info('create_pod_templates_folder : Done')
+    logger.info('create_pod_templates : starting...')
+    create_pod_templates(context)
+    logger.info('create_pod_templates : Done')
     logger.info('create_notarydivisions_folder : starting...')
     create_notarydivisions_folder(context)
     logger.info('create_notarydivisions_folder : Done')
@@ -193,6 +199,33 @@ def create_pod_templates_folder(context):
         # need this to be able to call allowedConteTypes methods
         behaviour = ISelectableConstrainTypes(folder)
         set_AllowedTypes_of_folder(behaviour, 'PODTemplate')
+
+
+def create_pod_templates(context):
+    pod_template_folder = get_pod_templates_folder()
+    pod_templates = {
+        'precision': u'Précision',
+        'notification': u'Notification',
+        'information-acte-passe': u'Information d\'acte passé',
+    }
+
+    for template_id, template_title in pod_templates.iteritems():
+        templates_path = '%s/pod_templates/%s.odt' % (context._profile_path, template_id)
+        odt_file = file(templates_path, 'rb').read()
+        blob_file = NamedBlobFile(
+            data=odt_file,
+            contentType='applications/odt',
+            filename=template_title,
+        )
+
+        pod_template = api.content.create(
+            type='PODTemplate',
+            id=template_id,
+            title=template_title,
+            container=pod_template_folder,
+            odt_file=blob_file,
+        )
+        api.content.transition(obj=pod_template, transition='publish')
 
 
 def redirect_root_default_view(context):

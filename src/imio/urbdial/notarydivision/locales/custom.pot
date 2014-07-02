@@ -21,6 +21,9 @@ msgstr ""
 msgid "Cadastral reference"
 msgstr ""
 
+msgid "Generate documents"
+msgstr ""
+
 msgid "True"
 msgstr ""
 

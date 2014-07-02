@@ -31,9 +31,9 @@
                     <div class="divnot_actions">
                         <tal:actions content="structure here/actions" />
                     </div>
-                    <!--div class="docment_actions">
-                        <tal:actions content="structure here/actions" />
-                    </div-->
+                    <div class="documents_action">
+                        <tal:actions content="structure here/documents_action" />
+                    </div>
 
                     <tal:tabs repeat="group view/groups">
                         <dt class="formTab" attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">

@@ -219,8 +219,8 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
         self.browser.open(notarydivision.absolute_url())
         contents = self.browser.contents
-        self.assertTrue('Add Observation' not in contents, msg)
+        self.assertTrue('Répondre' not in contents, msg)
         self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
         self.browser.open(notarydivision.absolute_url())
         contents = self.browser.contents
-        self.assertTrue('Add Precision' not in contents, msg)
+        self.assertTrue('Répondre' not in contents, msg)

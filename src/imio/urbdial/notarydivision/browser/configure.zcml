@@ -7,19 +7,19 @@
 
     <!-- Publish static files -->
     <browser:resourceDirectory
-      name="imio.urbdial.notarydivision"
-      directory="static"
+        name="imio.urbdial.notarydivision"
+        directory="static"
     />
 
-   <browser:page
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      name="redirect_root_view"
-      template="templates/redirect_root_view.pt"
-      permission="zope2.View"
-   />
+    <browser:page
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        name="redirect_root_view"
+        template="templates/redirect_root_view.pt"
+        permission="zope2.View"
+    />
 
-   <!-- Register custom display template for EstateDataGridField widget-->
-   <z3c:widgetTemplate
+    <!-- Register custom display template for EstateDataGridField widget-->
+    <z3c:widgetTemplate
         for="..content.notarydivision.INotaryDivision"
         mode="display"
         widget=".estate_datagridfield.EstateDataGridField"
@@ -64,12 +64,26 @@
       />
     </configure>
 
-    <!--adapter
-        for="Products.CMFCore.interfaces.IFolderish
-             zope.publisher.interfaces.browser.IDefaultBrowserLayer
-             imio.urbdial.notarydivision.interfaces.INotaryDivisionFTI"
-        provides="zope.publisher.interfaces.browser.IBrowserPage"
-        factory=".notarydivision_view.NotaryDivisionAddView"
-    /-->
+    <browser:page
+        for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement"
+        name="documents_action"
+        class="imio.urbdial.notarydivision.browser.documents_action_view.DocumentsActionView"
+        template="templates/documents_action.pt"
+        permission="zope2.View"
+    />
+
+    <adapter
+        for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides="imio.urbdial.notarydivision.interfaces.IAvailableDocumentsForGeneration"
+        factory=".documents_action_view.DocumentsOfNotaryDivision"
+    />
+
+    <adapter
+        for="imio.urbdial.notarydivision.content.comment.IPrecision
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides="imio.urbdial.notarydivision.interfaces.IAvailableDocumentsForGeneration"
+        factory=".documents_action_view.DocumentsOfPrecision"
+    />
 
 </configure>

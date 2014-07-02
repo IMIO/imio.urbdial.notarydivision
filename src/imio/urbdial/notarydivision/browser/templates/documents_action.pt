@@ -1,0 +1,14 @@
+<tal:display define="documents view/get_documents"
+             condition="documents">
+    <table align="right">
+        <tr>
+            <td>
+                <tal:i18n i18n:domain="urbdial.divnot" i18n:translate="">Generate documents</tal:i18n>:
+            </td>
+            <td tal:repeat="doc view/get_documents">
+                <img src="pdf.png">
+                <a tal:content="doc/title" tal:attributes="href python: view.get_generation_link(doc)"></a>
+            </td>
+        </tr>
+    </table>
+</tal:display>
