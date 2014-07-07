@@ -67,6 +67,17 @@ class Comment(Container):
         creation_action = self.workflow_history.values()[0][0]
         return creation_action.get('time')
 
+    def is_dgo4_or_township(self):
+        author_groups = api.group.get_groups(self.get_publicator())
+
+        dgo4_group = api.group.get('dgo4')
+        if dgo4_group in author_groups:
+            return 'dgo4'
+
+        township_group = api.group.get('townships')
+        if township_group in author_groups:
+            return 'townships'
+
 
 class IObservation(IComment):
     """

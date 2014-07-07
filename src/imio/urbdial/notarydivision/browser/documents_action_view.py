@@ -18,29 +18,31 @@ class DocumentsActionView(BrowserView):
         return ViewPageTemplateFile("templates/documents_action.pt")(self)
 
     def get_documents(self):
-        document_finder = queryMultiAdapter(
+        templates_finder = queryMultiAdapter(
             (self.context, self.request),
             IAvailableDocumentsForGeneration,
         )
-        if not document_finder:
+        if not templates_finder:
             return []
         else:
-            return document_finder.get_available_templates()
+            return templates_finder.get_available_templates()
 
     def get_generation_link(self, document):
         base_url = self.context.absolute_url()
+        output_format = 'pdf'
         call = 'document-generation'
-        link = '{base_url}/{call}?doc_uid={uid}&output_format=pdf'.format(
+        link = '{base_url}/{call}?doc_uid={uid}&output_format={mimetype}'.format(
             base_url=base_url,
             call=call,
             uid=document.UID(),
+            mimetype=output_format,
         )
         return link
 
 
 class AvailableDocumentsForGeneration(object):
     """
-    Adapts a context and a request and returns a list of PODTemplate UIDs
+    Adapts a context and a request and returns a list of PODTemplates.
     """
     implements(IAvailableDocumentsForGeneration)
 
@@ -56,24 +58,8 @@ class AvailableDocumentsForGeneration(object):
         Filter the list of PODTemplate on their TAL condition.
         """
         pod_templates = self.get_pod_templates()
-        TAL_context = self.get_TAL_context()
-        available_pod_templates = []
-        for pod_template in pod_templates:
-            if pod_template.can_be_generated(self.context, TAL_context):
-                available_pod_templates.append(pod_template)
-        return available_pod_templates
-
-    def get_TAL_context(self):
-        """
-        Return a dict used as context to evaluate the PODTemplate TAL expression.
-        """
-        TAL_context = {
-            'context': self.context,
-            'here': self.context,
-            'object': self.context,
-            'request': self.request,
-        }
-        return TAL_context
+        available_templates = [t for t in pod_templates if t.can_be_generated(self.context)]
+        return available_templates
 
     def get_pod_templates(self):
         """
@@ -91,7 +77,8 @@ class DocumentsOfNotaryDivision(AvailableDocumentsForGeneration):
         templates_folder = get_pod_templates_folder()
         pod_templates = [
             getattr(templates_folder, 'notification'),
-            getattr(templates_folder, 'information-acte-passe'),
+            getattr(templates_folder, 'information-acte-passe-ac'),
+            getattr(templates_folder, 'information-acte-passe-fd'),
         ]
         return pod_templates
 
@@ -104,6 +91,7 @@ class DocumentsOfPrecision(AvailableDocumentsForGeneration):
     def get_pod_templates(self):
         templates_folder = get_pod_templates_folder()
         pod_templates = [
-            getattr(templates_folder, 'precision'),
+            getattr(templates_folder, 'precision-ac'),
+            getattr(templates_folder, 'precision-fd'),
         ]
         return pod_templates

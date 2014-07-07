@@ -8,6 +8,7 @@ from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_Data
 from imio.urbdial.notarydivision.browser.field import DataGridBool
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 
+from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
@@ -314,3 +315,19 @@ class NotaryDivision(Container):
     implements(INotaryDivision)
 
     __ac_local_roles_block__ = True
+
+    def get_notification_date(self):
+        history = self.workflow_history.values()[0]
+        for action in history:
+            if action.get('action') == 'Notify':
+                return action.get('time')
+
+    def is_passed(self):
+        is_passed = api.content.get_state(self) == 'Passed'
+        return is_passed
+
+    def get_passed_date(self):
+        history = self.workflow_history.values()[0]
+        for action in history:
+            if action.get('action') == 'Pass':
+                return action.get('time')

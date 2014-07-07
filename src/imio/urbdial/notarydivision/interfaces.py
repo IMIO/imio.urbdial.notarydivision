@@ -20,6 +20,6 @@ class IAvailableDocumentsForGeneration(Interface):
 
     def get_available_templates(self):
         """
-        Return a list of PODTemplate UIDs which can be generated on the
+        Return a list of PODTemplate which can be generated on the
         adapted context.
         """

@@ -86,4 +86,12 @@
         factory=".documents_action_view.DocumentsOfPrecision"
     />
 
+    <adapter
+        for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides="zope.interface.Interface"
+        factory=".documents_helpers_view.DocumentGenerationHelperView"
+        name="document-generation-methods"
+    />
+
 </configure>

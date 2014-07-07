@@ -203,27 +203,51 @@ def create_pod_templates_folder(context):
 
 def create_pod_templates(context):
     pod_template_folder = get_pod_templates_folder()
-    pod_templates = {
-        'precision': u'Précision',
-        'notification': u'Notification',
-        'information-acte-passe': u'Information d\'acte passé',
-    }
+    pod_templates = (
+        {
+            'id': 'precision-fd',
+            'title': u'Précision',
+            'pod_permission': 'imio.urbdial.notarydivision: Add Precision',
+            'pod_expression': 'python: parent.portal_type != "NotaryDivision" and parent.is_dgo4_or_township() == "dgo4"',
+        },
+        {
+            'id': 'precision-ac',
+            'title': u'Précision',
+            'pod_permission': 'imio.urbdial.notarydivision: Add Precision',
+            'pod_expression': 'python: parent.portal_type != "NotaryDivision" and parent.is_dgo4_or_township() == "townships"',
+        },
+        {
+            'id': 'notification',
+            'title': u'Notification',
+            'pod_permission': 'imio.urbdial.notarydivision: Add Precision',
+            'pod_expression': 'python: False',
+        },
+        {
+            'id': 'information-acte-passe-fd',
+            'title': u'Information d\'acte passé (FD)',
+            'pod_expression': 'python: notarydivision.is_passed()',
+        },
+        {
+            'id': 'information-acte-passe-ac',
+            'title': u'Information d\'acte passé (AC)',
+            'pod_expression': 'python: notarydivision.is_passed()',
+        },
+    )
 
-    for template_id, template_title in pod_templates.iteritems():
-        templates_path = '%s/pod_templates/%s.odt' % (context._profile_path, template_id)
+    for template_info in pod_templates:
+        templates_path = '%s/pod_templates/%s.odt' % (context._profile_path, template_info['id'])
         odt_file = file(templates_path, 'rb').read()
         blob_file = NamedBlobFile(
             data=odt_file,
             contentType='applications/odt',
-            filename=template_title,
+            filename=template_info['title'],
         )
+        template_info['odt_file'] = blob_file
 
         pod_template = api.content.create(
             type='PODTemplate',
-            id=template_id,
-            title=template_title,
             container=pod_template_folder,
-            odt_file=blob_file,
+            **template_info
         )
         api.content.transition(obj=pod_template, transition='publish')
 
