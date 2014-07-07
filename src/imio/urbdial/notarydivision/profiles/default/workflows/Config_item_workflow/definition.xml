@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="Config_folder_workflow"
-             title="Config_folder_workflow"
+<dc-workflow workflow_id="Config_item_workflow"
+             title="Config_item_workflow"
              state_variable="review_state"
              initial_state="Default"
              xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -30,6 +30,7 @@
   </permission-map>
   <permission-map name="Modify portal content"
                   acquired="False">
+   <permission-role>Config Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="View"

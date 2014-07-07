@@ -244,12 +244,16 @@ def create_pod_templates(context):
         )
         template_info['odt_file'] = blob_file
 
-        pod_template = api.content.create(
-            type='PODTemplate',
-            container=pod_template_folder,
-            **template_info
-        )
-        api.content.transition(obj=pod_template, transition='publish')
+        template_id = template_info['id']
+        if template_id not in pod_template_folder.objectIds():
+            api.content.create(
+                type='PODTemplate',
+                container=pod_template_folder,
+                **template_info
+            )
+            logger.info('create_pod_templates: created template {}'.format(template_id))
+        else:
+            logger.info('create_pod_templates: template {} already exists'.format(template_id))
 
 
 def redirect_root_default_view(context):
