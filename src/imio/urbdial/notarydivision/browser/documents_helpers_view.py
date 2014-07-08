@@ -22,9 +22,6 @@ class DocumentGenerationHelperView(BrowserView):
     def date(self, date):
         return date.strftime('%d/%m/%Y')
 
-    def verbose_date(self, date):
-        return date.strftime('%d %B %Y')
-
     def fullname(self, username):
         return api.user.get(username).getProperty('fullname')
 
@@ -32,9 +29,11 @@ class DocumentGenerationHelperView(BrowserView):
         voc_factory = queryUtility(IVocabularyFactory, "imio.urbdial.notarydivision.Localities")
         localies_voc = voc_factory(self.notarydivision)
 
-        localities = set()
+        localities = []
         for row in self.notarydivision.initial_estate:
-            localities.add(localies_voc.getTerm(row['locality']).title)
+            locality = localies_voc.getTerm(row['locality']).title
+            if locality not in localities:
+                localities.append(locality)
 
         return ', '.join(list(localities))
 
