@@ -5,7 +5,9 @@ from collective.documentgenerator.content.condition import IPODTemplateCondition
 from imio.urbdial.notarydivision.testing import CommentBrowserTest
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 
 from imio.urbdial.notarydivision.utils import get_pod_templates_folder
@@ -247,3 +249,33 @@ class TestDocumentConditions(CommentBrowserTest):
         condition_obj = self.get_template_condition(template_id, context=precision)
         msg = "Precision ac document should available only if previous comment author is from townships."
         self.assertTrue(condition_obj.evaluate() is False, msg)
+
+
+class TestDocumentActions(CommentBrowserTest):
+    """
+    Test iconified document generation actions.
+    """
+
+    def test_document_action_display_on_notarydivision(self):
+        """
+        When the condition of a PODTemplate is matched, the link to generate the
+        document should appears on the notarydivision view.
+        """
+        template_id = 'notification-fd'
+        templates_folder = get_pod_templates_folder()
+        template = getattr(templates_folder, template_id)
+        notarydivision = self.test_divnot
+        self.browser_login(TEST_NOTARY_NAME, TEST_NOTARY_PASSWORD)
+
+        # If the template can be generated, the generation action should be visible.
+        self.assertTrue(template.can_be_generated(notarydivision))
+        self.browser.open(notarydivision.absolute_url())
+        msg = "Document generation action for notification (FD) document should be visible."
+        self.assertTrue('Notification (FD)</a>' in self.browser.contents, msg)
+
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        # If the template cannot be generated, the generation action should not be there.
+        self.assertTrue(not template.can_be_generated(notarydivision))
+        self.browser.open(notarydivision.absolute_url())
+        msg = "Document generation action for notification (FD) document should not be visible."
+        self.assertTrue('Notification (FD)</a>' not in self.browser.contents, msg)

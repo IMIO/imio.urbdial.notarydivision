@@ -216,12 +216,12 @@ def create_pod_templates(context):
         },
         {
             'id': 'notification-fd',
-            'title': u'Notification',
+            'title': u'Notification (FD)',
             'condition_adapter': 'notification-generation-condition',
         },
         {
             'id': 'notification-ac',
-            'title': u'Notification',
+            'title': u'Notification (AC)',
             'condition_adapter': 'notification-generation-condition',
         },
         {
