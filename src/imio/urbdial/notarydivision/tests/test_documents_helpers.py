@@ -96,7 +96,7 @@ class GenerationHelperMethods(CommentBrowserTest):
                 'section': 'A',
                 'surface': None,
                 'specific_rights': None,
-                'bis': None,
+                'bis': '2',
                 'exposant': 'G'
             },
             {
@@ -112,7 +112,7 @@ class GenerationHelperMethods(CommentBrowserTest):
             }
         ]
         cadastral_refs = view.initial_estate_cadastral_ref()
-        expected_display = ' Beez A 42 G 66,  Yolo B 999 H 42'
+        expected_display = ' Beez A 42/2 G 66,  Yolo B 999 H 42'
         msg = "Refrences display should have be '{}' but is '{}'.".format(
             expected_display,
             cadastral_refs,
