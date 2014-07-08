@@ -14,7 +14,6 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
 
         'Published': {
             'get_local_dgo4_or_township': (
-                'Observation Creator',
                 'Observation Reader',
             ),
             'get_notary_office': (

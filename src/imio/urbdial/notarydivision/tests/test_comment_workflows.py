@@ -210,7 +210,7 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
         observation = self.test_observation
         api.content.transition(observation, 'Publish')
 
-        expected_roles = ('Observation Reader', 'Observation Creator')
+        expected_roles = ('Observation Reader',)
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
             expected_roles=expected_roles,
