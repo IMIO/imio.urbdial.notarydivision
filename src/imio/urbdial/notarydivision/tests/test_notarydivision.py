@@ -3,6 +3,8 @@
 
 from Acquisition import aq_base
 
+from DateTime import DateTime
+
 from plone import api
 from plone.app.testing import login
 
@@ -498,6 +500,56 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
             translate(u'InadmissibleFolder').encode('utf-8')
         )
         self.assertTrue(addInadmissibleFolder in contents, msg)
+
+
+class TestNotaryDivisionMethods(NotaryDivisionBrowserTest):
+    """
+    Test NotaryDivision methods.
+    """
+
+    def test_get_notification_date(self):
+        notarydivision = self.test_divnot
+
+        # So far, no notification date.
+        self.assertTrue(api.content.get_state(notarydivision) == 'In preparation')
+        self.assertTrue(notarydivision.get_notification_date() is None)
+
+        # Notify
+        api.content.transition(notarydivision, 'Notify')
+        now = DateTime()
+        notification_date = notarydivision.get_notification_date()
+        msg = "Notification date should exists."
+        self.assertTrue(notification_date, msg)
+        msg = "Delta bewteen now and notification_date should be < to 1 sec"
+        self.assertTrue(now - notification_date < 1, msg)
+
+    def test_is_passed(self):
+        notarydivision = self.test_divnot
+        self.assertTrue(api.content.get_state(notarydivision) == 'In preparation')
+        self.assertTrue(not notarydivision.is_passed())
+
+        api.content.transition(notarydivision, 'Notify')
+        api.content.transition(notarydivision, 'Pass')
+
+        self.assertTrue(notarydivision.is_passed())
+
+    def test_get_passed_date(self):
+        notarydivision = self.test_divnot
+
+        # So far, no passed date.
+        self.assertTrue(api.content.get_state(notarydivision) == 'In preparation')
+        self.assertTrue(notarydivision.get_notification_date() is None)
+
+        # Pass the notarydivision
+        api.content.transition(notarydivision, 'Notify')
+        api.content.transition(notarydivision, 'Pass')
+
+        now = DateTime()
+        passed_date = notarydivision.get_passed_date()
+        msg = "Passed date should exists."
+        self.assertTrue(passed_date, msg)
+        msg = "Delta bewteen now and passed_date should be < to 1 sec"
+        self.assertTrue(now - passed_date < 1, msg)
 
 
 class TestNotaryDivisionIntegration(CommentBrowserTest):
