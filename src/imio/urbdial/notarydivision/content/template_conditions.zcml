@@ -1,0 +1,33 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="urbdial.divnot">
+
+    <adapter
+      for="collective.documentgenerator.content.pod_template.IPODTemplate
+           zope.interface.Interface"
+      factory=".template_conditions.NotificationDocumentCondition"
+      name="notification-generation-condition"
+    />
+
+    <adapter
+      for="collective.documentgenerator.content.pod_template.IPODTemplate
+           zope.interface.Interface"
+      factory=".template_conditions.PassedDocumentCondition"
+      name="passed-generation-condition"
+    />
+
+    <adapter
+      for="collective.documentgenerator.content.pod_template.IPODTemplate
+           zope.interface.Interface"
+      factory=".template_conditions.PrecisionFDDocumentCondition"
+      name="precision-fd-generation-condition"
+    />
+
+    <adapter
+      for="collective.documentgenerator.content.pod_template.IPODTemplate
+           zope.interface.Interface"
+      factory=".template_conditions.PrecisionACDocumentCondition"
+      name="precision-ac-generation-condition"
+    />
+
+</configure>

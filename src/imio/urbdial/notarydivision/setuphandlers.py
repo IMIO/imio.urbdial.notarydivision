@@ -207,30 +207,32 @@ def create_pod_templates(context):
         {
             'id': 'precision-fd',
             'title': u'Précision',
-            'pod_permission': 'imio.urbdial.notarydivision: Add Precision',
-            'pod_expression': 'python: parent.portal_type != "NotaryDivision" and parent.is_dgo4_or_township() == "dgo4"',
+            'condition_adapter': 'precision-fd-generation-condition',
         },
         {
             'id': 'precision-ac',
             'title': u'Précision',
-            'pod_permission': 'imio.urbdial.notarydivision: Add Precision',
-            'pod_expression': 'python: parent.portal_type != "NotaryDivision" and parent.is_dgo4_or_township() == "townships"',
+            'condition_adapter': 'precision-ac-generation-condition',
         },
         {
-            'id': 'notification',
+            'id': 'notification-fd',
             'title': u'Notification',
-            'pod_permission': 'imio.urbdial.notarydivision: Add Precision',
-            'pod_expression': 'python: False',
+            'condition_adapter': 'notification-generation-condition',
         },
         {
-            'id': 'information-acte-passe-fd',
+            'id': 'notification-ac',
+            'title': u'Notification',
+            'condition_adapter': 'notification-generation-condition',
+        },
+        {
+            'id': 'acte-passe-fd',
             'title': u'Information d\'acte passé (FD)',
-            'pod_expression': 'python: notarydivision.is_passed()',
+            'condition_adapter': 'passed-generation-condition',
         },
         {
-            'id': 'information-acte-passe-ac',
+            'id': 'acte-passe-ac',
             'title': u'Information d\'acte passé (AC)',
-            'pod_expression': 'python: notarydivision.is_passed()',
+            'condition_adapter': 'passed-generation-condition',
         },
     )
 

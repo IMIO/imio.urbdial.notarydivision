@@ -76,9 +76,10 @@ class DocumentsOfNotaryDivision(AvailableDocumentsForGeneration):
     def get_pod_templates(self):
         templates_folder = get_pod_templates_folder()
         pod_templates = [
-            getattr(templates_folder, 'notification'),
-            getattr(templates_folder, 'information-acte-passe-ac'),
-            getattr(templates_folder, 'information-acte-passe-fd'),
+            getattr(templates_folder, 'notification-ac'),
+            getattr(templates_folder, 'notification-fd'),
+            getattr(templates_folder, 'acte-passe-ac'),
+            getattr(templates_folder, 'acte-passe-fd'),
         ]
         return pod_templates
 
