@@ -50,9 +50,6 @@ class AvailableDocumentsForGeneration(object):
         self.context = context
         self.request = request
 
-    def __call__(self):
-        return self.get_available_templates()
-
     def get_available_templates(self):
         """
         Filter the list of PODTemplate on their TAL condition.

@@ -10,6 +10,7 @@ from zope.schema.interfaces import IVocabularyFactory
 
 class DocumentGenerationHelperView(BrowserView):
     """
+    View containing helper methods for document generation.
     """
 
     def __init__(self, context, request):
