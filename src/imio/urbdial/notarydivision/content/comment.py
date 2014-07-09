@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
+from imio.urbdial.notarydivision.content.container import BaseContainer
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 
 from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
-from plone.dexterity.content import Container
 from plone.formwidget.multifile import MultiFileFieldWidget
 from plone.namedfile import field
 from plone.supermodel import model
@@ -33,7 +33,7 @@ class IComment(model.Schema, INotaryDivisionElement):
     )
 
 
-class Comment(Container):
+class Comment(BaseContainer):
     """
     Comment dexterity class.
     """
@@ -47,9 +47,15 @@ class Comment(Container):
             level = level.aq_parent
         return level
 
+    def is_in_draft(self):
+        return self.get_state() == 'Draft'
+
+    def get_creation_date(self):
+        creation_action = self.workflow_history.values()[0][0]
+        return creation_action.get('time')
+
     def is_published(self):
-        is_published = api.content.get_state(self) in ['Published', 'Frozen']
-        return is_published
+        return self.get_state() == 'Published'
 
     def get_publicator(self):
         history = self.workflow_history.values()[0]
@@ -63,9 +69,8 @@ class Comment(Container):
             if action.get('action') == 'Publish':
                 return action.get('time')
 
-    def get_creation_date(self):
-        creation_action = self.workflow_history.values()[0][0]
-        return creation_action.get('time')
+    def is_frozen(self):
+        return self.get_state() == 'Frozen'
 
     def is_dgo4_or_township(self):
         author_groups = api.group.get_groups(self.get_publicator())

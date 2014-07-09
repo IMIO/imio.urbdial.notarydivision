@@ -38,10 +38,7 @@ class NotificationDocumentCondition(NotaryDocumentsCondition):
 
     def condition(self):
         notarydivision = self.context
-        # Notarydivision is at least in state 'In preparation'.
-        if api.content.get_state(notarydivision) == 'In preparation':
-            return False
-        return True
+        return not notarydivision.is_in_draft()
 
 
 class PassedDocumentCondition(NotaryDocumentsCondition):
@@ -52,10 +49,7 @@ class PassedDocumentCondition(NotaryDocumentsCondition):
 
     def condition(self):
         notarydivision = self.context
-        # Notarydivision is in state 'Passed'.
-        if api.content.get_state(notarydivision) == 'Passed':
-            return True
-        return False
+        return notarydivision.is_passed()
 
 
 class PrecisionFDDocumentCondition(NotificationDocumentCondition):
@@ -68,7 +62,7 @@ class PrecisionFDDocumentCondition(NotificationDocumentCondition):
     def condition(self):
         precision = self.context
         # Precision should at least be in state 'published'.
-        if api.content.get_state(precision) == 'Draft':
+        if precision.is_in_draft():
             return False
 
         container = precision.aq_parent
@@ -93,7 +87,7 @@ class PrecisionACDocumentCondition(NotificationDocumentCondition):
     def condition(self):
         precision = self.context
         # Precision should at least be in state 'published'.
-        if api.content.get_state(precision) == 'Draft':
+        if precision.is_in_draft():
             return False
 
         container = precision.aq_parent

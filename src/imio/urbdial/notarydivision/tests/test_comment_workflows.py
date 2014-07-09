@@ -208,7 +208,7 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
 
     def test_fd_user_roles_on_published_state(self):
         observation = self.test_observation
-        api.content.transition(observation, 'Publish')
+        observation.transition('Publish')
 
         expected_roles = ('Observation Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -220,7 +220,7 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
 
     def test_township_user_roles_on_published_state(self):
         observation = self.test_observation
-        api.content.transition(observation, 'Publish')
+        observation.transition('Publish')
         # only reader role expected because it's not the observation's creator
         expected_roles = ('Observation Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -232,7 +232,7 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
 
     def test_notary_user_roles_on_published_state(self):
         observation = self.test_observation
-        api.content.transition(observation, 'Publish')
+        observation.transition('Publish')
 
         expected_roles = ('Observation Reader', 'Precision Creator')
         self._test_roles_of_user_on_stateful_context(
@@ -244,8 +244,8 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
 
     def test_fd_user_roles_on_frozen_state(self):
         observation = self.test_observation
-        api.content.transition(observation, 'Publish')
-        api.content.transition(observation, 'Freeze')
+        observation.transition('Publish')
+        observation.transition('Freeze')
 
         expected_roles = ('Observation Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -257,8 +257,8 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
 
     def test_township_user_roles_on_frozen_state(self):
         observation = self.test_observation
-        api.content.transition(observation, 'Publish')
-        api.content.transition(observation, 'Freeze')
+        observation.transition('Publish')
+        observation.transition('Freeze')
 
         expected_roles = ('Observation Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -270,8 +270,8 @@ class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLo
 
     def test_notary_user_roles_on_frozen_state(self):
         observation = self.test_observation
-        api.content.transition(observation, 'Publish')
-        api.content.transition(observation, 'Freeze')
+        observation.transition('Publish')
+        observation.transition('Freeze')
 
         expected_roles = ('Observation Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -458,7 +458,7 @@ class TestPrecisionWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLoca
 
     def test_notary_user_roles_on_published_state(self):
         precision = self.test_precision
-        api.content.transition(precision, 'Publish')
+        precision.transition('Publish')
 
         expected_roles = ('Precision Reader', 'Precision Creator')
         self._test_roles_of_user_on_stateful_context(
@@ -470,7 +470,7 @@ class TestPrecisionWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLoca
 
     def test_fd_user_roles_on_published_state(self):
         precision = self.test_precision
-        api.content.transition(precision, 'Publish')
+        precision.transition('Publish')
 
         expected_roles = ('Precision Reader', 'Observation Creator')
         self._test_roles_of_user_on_stateful_context(
@@ -482,8 +482,8 @@ class TestPrecisionWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLoca
 
     def test_fd_user_roles_on_frozen_state(self):
         precision = self.test_precision
-        api.content.transition(precision, 'Publish')
-        api.content.transition(precision, 'Freeze')
+        precision.transition('Publish')
+        precision.transition('Freeze')
 
         expected_roles = ('Precision Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -495,8 +495,8 @@ class TestPrecisionWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLoca
 
     def test_notary_user_roles_on_frozen_state(self):
         precision = self.test_precision
-        api.content.transition(precision, 'Publish')
-        api.content.transition(precision, 'Freeze')
+        precision.transition('Publish')
+        precision.transition('Freeze')
 
         expected_roles = ('Precision Reader',)
         self._test_roles_of_user_on_stateful_context(

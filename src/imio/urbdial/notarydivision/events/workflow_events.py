@@ -42,6 +42,13 @@ def update_local_roles(obj, event):
         add_local_roles_to_principals(obj, [group], roles)
 
 
+def restrict_observation_creation(comment, event):
+    """
+    As long there is a draft observation on the notarydivision, remove
+    'Observation Creator' role from the notarydivision and any Precision.
+    """
+
+
 def close_comments(notarydivision, event):
     """
     Delete all draft comments of a NotaryDivision when its passed or cancelled.
@@ -58,8 +65,8 @@ def freeze_comments(notarydivision):
 
     def recursive_freeze_comments(container):
         for comment in container.objectValues():
-            if api.content.get_state(comment) == 'Published':
-                api.content.transition(comment, 'Freeze')
+            if comment.is_published():
+                comment.transition('Freeze')
             recursive_freeze_comments(comment)
 
     # We have to execute recursive_freeze_comments with a super user because
@@ -72,7 +79,7 @@ def delete_dratf_comments(notarydivision):
 
     def recursive_delete_draft_comments(container):
         for comment in container.objectValues():
-            if api.content.get_state(comment) == 'Draft':
+            if comment.is_in_draft():
                 api.content.delete(comment)
             else:
                 recursive_delete_draft_comments(comment)

@@ -9,6 +9,7 @@ from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
+from imio.urbdial.notarydivision.testing import WorkflowLocaRolesAssignmentTest
 from imio.urbdial.notarydivision.utils import translate
 
 from plone import api
@@ -143,8 +144,8 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         self.assertTrue('publié le ' not in contents)
 
     def test_title_display_on_published_comment(self):
-        api.content.transition(self.test_observation, 'Publish')
-        api.content.transition(self.test_precision, 'Publish')
+        self.test_observation.transition('Publish')
+        self.test_precision.transition('Publish')
         transaction.commit()
 
         # Once published, title should be updated with publication date.
@@ -155,8 +156,8 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         self.assertTrue('publié le ' in contents, msg)
 
         # Once frozen, title should stay the same.
-        api.content.transition(self.test_observation, 'Freeze')
-        api.content.transition(self.test_precision, 'Freeze')
+        self.test_observation.transition('Freeze')
+        self.test_precision.transition('Freeze')
         transaction.commit()
         self.assertTrue('BROUILLON' not in contents)
         self.assertTrue('publié le ' in contents, msg)
@@ -209,9 +210,9 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
 
         # freeze comments
         for comment in notarydivision.objectValues():
-            api.content.transition(comment, 'Publish')
-            api.content.transition(comment, 'Freeze')
-        api.content.transition(notarydivision, 'Pass')
+            comment.transition('Publish')
+            comment.transition('Freeze')
+        notarydivision.transition('Pass')
         transaction.commit()
 
         # subcomments cannot be created anymore
@@ -224,3 +225,16 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         self.browser.open(notarydivision.absolute_url())
         contents = self.browser.contents
         self.assertTrue('Répondre' not in contents, msg)
+
+
+class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):
+    """
+    Observation Creator role should be active for dgo4/township only when there's no draft
+    dgo4/township observation on the notary division or a comment.
+    """
+
+    def test_observation_creator_role_enabled_on_notary_division(self):
+        """
+        Test Observation Creator role on a notarydivision.
+        """
+        self.assertTrue(True)

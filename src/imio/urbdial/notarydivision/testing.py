@@ -165,7 +165,7 @@ class ExampleCommentLayer(ExampleDivisionLayer):
         super(ExampleCommentLayer, self).setUpPloneSite(portal)
 
         test_divnot = portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
-        api.content.transition(test_divnot, 'Notify')
+        test_divnot.transition('Notify')
 
         # Create some test comments
         login(portal, TEST_FD_NAME)

@@ -207,7 +207,7 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
 
     def test_notary_user_roles_on_investigation_state(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
+        notarydivision.transition('Notify')
 
         expected_roles = ('NotaryDivision Reader', 'Notification Manager', 'Precision Creator')
         self._test_roles_of_user_on_stateful_context(
@@ -219,7 +219,7 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
 
     def test_fd_user_roles_on_investigation_state(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
+        notarydivision.transition('Notify')
 
         expected_roles = ('NotaryDivision Reader', 'Observation Creator')
         self._test_roles_of_user_on_stateful_context(
@@ -231,8 +231,8 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
 
     def test_notary_user_roles_on_passed_state(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
-        api.content.transition(notarydivision, 'Pass')
+        notarydivision.transition('Notify')
+        notarydivision.transition('Pass')
 
         expected_roles = ('NotaryDivision Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -244,8 +244,8 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
 
     def test_fd_user_roles_on_passed_state(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
-        api.content.transition(notarydivision, 'Pass')
+        notarydivision.transition('Notify')
+        notarydivision.transition('Pass')
 
         expected_roles = ('NotaryDivision Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -257,8 +257,8 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
 
     def test_notary_user_roles_on_cancelled_state(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
-        api.content.transition(notarydivision, 'Cancel')
+        notarydivision.transition('Notify')
+        notarydivision.transition('Cancel')
 
         expected_roles = ('NotaryDivision Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -270,8 +270,8 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
 
     def test_fd_user_roles_on_cancelled_state(self):
         notarydivision = self.test_divnot
-        api.content.transition(notarydivision, 'Notify')
-        api.content.transition(notarydivision, 'Cancel')
+        notarydivision.transition('Notify')
+        notarydivision.transition('Cancel')
 
         expected_roles = ('NotaryDivision Reader',)
         self._test_roles_of_user_on_stateful_context(

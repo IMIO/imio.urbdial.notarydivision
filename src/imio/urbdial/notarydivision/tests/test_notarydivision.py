@@ -511,11 +511,11 @@ class TestNotaryDivisionMethods(NotaryDivisionBrowserTest):
         notarydivision = self.test_divnot
 
         # So far, no notification date.
-        self.assertTrue(api.content.get_state(notarydivision) == 'In preparation')
+        self.assertTrue(notarydivision.is_in_draft())
         self.assertTrue(notarydivision.get_notification_date() is None)
 
         # Notify
-        api.content.transition(notarydivision, 'Notify')
+        notarydivision.transition('Notify')
         now = DateTime()
         notification_date = notarydivision.get_notification_date()
         msg = "Notification date should exists."
@@ -525,11 +525,10 @@ class TestNotaryDivisionMethods(NotaryDivisionBrowserTest):
 
     def test_is_passed(self):
         notarydivision = self.test_divnot
-        self.assertTrue(api.content.get_state(notarydivision) == 'In preparation')
         self.assertTrue(not notarydivision.is_passed())
 
-        api.content.transition(notarydivision, 'Notify')
-        api.content.transition(notarydivision, 'Pass')
+        notarydivision.transition('Notify')
+        notarydivision.transition('Pass')
 
         self.assertTrue(notarydivision.is_passed())
 
@@ -537,12 +536,12 @@ class TestNotaryDivisionMethods(NotaryDivisionBrowserTest):
         notarydivision = self.test_divnot
 
         # So far, no passed date.
-        self.assertTrue(api.content.get_state(notarydivision) == 'In preparation')
+        self.assertTrue(notarydivision.is_in_draft())
         self.assertTrue(notarydivision.get_notification_date() is None)
 
         # Pass the notarydivision
-        api.content.transition(notarydivision, 'Notify')
-        api.content.transition(notarydivision, 'Pass')
+        notarydivision.transition('Notify')
+        notarydivision.transition('Pass')
 
         now = DateTime()
         passed_date = notarydivision.get_passed_date()
@@ -561,51 +560,40 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
         notarydivision = self.test_divnot
 
         for comment in notarydivision.objectValues():
-            api.content.transition(comment, 'Publish')
-
-        for comment in notarydivision.objectValues():
-            comment_state = api.content.get_state(comment)
-            self.assertTrue(comment_state == 'Published')
+            comment.transition('Publish')
 
         # 'Pass' notarydivision
         login(self.portal, TEST_NOTARY_NAME)
-        api.content.transition(notarydivision, 'Pass')
+        notarydivision.transition('Pass')
 
         # Comments should be in Frozen states
         for comment in notarydivision.objectValues():
-            comment_state = api.content.get_state(comment)
             msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
-            self.assertTrue(comment_state == 'Frozen', msg)
+            self.assertTrue(comment.is_frozen(), msg)
 
     def test_published_comments_are_frozen_when_notarydivision_is_cancelled(self):
         notarydivision = self.test_divnot
 
         for comment in notarydivision.objectValues():
-            api.content.transition(comment, 'Publish')
-
-        for comment in notarydivision.objectValues():
-            comment_state = api.content.get_state(comment)
-            self.assertTrue(comment_state == 'Published')
+            comment.transition('Publish')
 
         # 'Cancel' notarydivision
         login(self.portal, TEST_NOTARY_NAME)
-        api.content.transition(notarydivision, 'Cancel')
+        notarydivision.transition('Cancel')
 
         # Comments should be in Frozen states
         for comment in notarydivision.objectValues():
-            comment_state = api.content.get_state(comment)
             msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
-            self.assertTrue(comment_state == 'Frozen', msg)
+            self.assertTrue(comment.is_frozen(), msg)
 
     def test_draft_comments_are_deleted_when_notarydivision_is_passed(self):
         notarydivision = self.test_divnot
 
         for comment in notarydivision.objectValues():
-            comment_state = api.content.get_state(comment)
-            self.assertTrue(comment_state == 'Draft')
+            self.assertTrue(comment.is_in_draft())
 
         login(self.portal, TEST_NOTARY_NAME)
-        api.content.transition(notarydivision, 'Pass')
+        notarydivision.transition('Pass')
         msg = "Some draft comments are not deleted"
         self.assertTrue(len(notarydivision.objectValues()) == 0, msg)
 
@@ -613,10 +601,9 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
         notarydivision = self.test_divnot
 
         for comment in notarydivision.objectValues():
-            comment_state = api.content.get_state(comment)
-            self.assertTrue(comment_state == 'Draft')
+            self.assertTrue(comment.is_in_draft())
 
         login(self.portal, TEST_NOTARY_NAME)
-        api.content.transition(notarydivision, 'Cancel')
+        notarydivision.transition('Cancel')
         msg = "Some draft comments are not deleted"
         self.assertTrue(len(notarydivision.objectValues()) == 0, msg)

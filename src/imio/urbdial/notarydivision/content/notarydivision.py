@@ -6,12 +6,11 @@ from collective.z3cform.datagridfield import DictRow
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_DataGridFieldFactory
 from imio.urbdial.notarydivision.browser.field import DataGridBool
+from imio.urbdial.notarydivision.content.container import BaseContainer
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 
-from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
-from plone.dexterity.content import Container
 from plone.formwidget.multifile import MultiFileFieldWidget
 from plone.namedfile import field
 from plone.supermodel import model
@@ -308,13 +307,19 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     )
 
 
-class NotaryDivision(Container):
+class NotaryDivision(BaseContainer):
     """
     NotaryDivision dexterity class
     """
     implements(INotaryDivision)
 
     __ac_local_roles_block__ = True
+
+    def is_in_draft(self):
+        return self.get_state() == 'In preparation'
+
+    def is_notified(self):
+        return self.get_state() == 'In investigation'
 
     def get_notification_date(self):
         history = self.workflow_history.values()[0]
@@ -323,8 +328,7 @@ class NotaryDivision(Container):
                 return action.get('time')
 
     def is_passed(self):
-        is_passed = api.content.get_state(self) == 'Passed'
-        return is_passed
+        return self.get_state() == 'Passed'
 
     def get_passed_date(self):
         history = self.workflow_history.values()[0]

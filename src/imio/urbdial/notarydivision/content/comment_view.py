@@ -52,16 +52,16 @@ class CommentView(CommentContainerView):
         return title
 
     def get_last_action_infos(self, comment):
-        if comment.is_published():
-            action = 'publié'
-            author = comment.get_publicator()
-            warning = ''
-            date = comment.get_publication_date()
-        else:
+        if comment.is_in_draft():
             action = 'créé'
             author = comment.creators[0]
             warning = '(BROUILLON NON PUBLIÉ)'
             date = comment.get_creation_date()
+        else:
+            action = 'publié'
+            author = comment.get_publicator()
+            warning = ''
+            date = comment.get_publication_date()
         date = date.strftime('%d/%m/%Y à %H:%M')
         author = api.user.get(author).getProperty('fullname')
 

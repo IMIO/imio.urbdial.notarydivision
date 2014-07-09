@@ -14,3 +14,9 @@ def translate(msgid, domain='urbdial.divnot'):
 def get_pod_templates_folder():
     portal = api.portal.getSite()
     return portal.pod_templates
+
+
+def get_notarydivision(context):
+    if context.portal_type == 'NotaryDivision':
+        return context
+    return context.get_notarydivision()

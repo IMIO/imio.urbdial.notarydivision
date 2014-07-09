@@ -84,9 +84,9 @@ class TestDocumentConditions(CommentBrowserTest):
 
         # put the notarydivision in preparation state and login with a notary
         # user. The condition should be False.
-        api.content.transition(notarydivision, 'Pass')
-        api.content.transition(notarydivision, 'Restart')
-        self.assertTrue(api.content.get_state(notarydivision) == 'In preparation')
+        notarydivision.transition('Pass')
+        notarydivision.transition('Restart')
+        self.assertTrue(notarydivision.is_in_draft())
         login(self.portal, TEST_NOTARY_NAME)
 
         condition_obj = self.get_template_condition(template_id)
@@ -95,7 +95,7 @@ class TestDocumentConditions(CommentBrowserTest):
 
         # put the notarydivision in investigation state. Stay with notary user.
         # The condition should be True.
-        api.content.transition(notarydivision, 'Notify')
+        notarydivision.transition('Notify')
 
         condition_obj = self.get_template_condition(template_id)
         msg = "Notification document should be available for generation"
@@ -140,7 +140,7 @@ class TestDocumentConditions(CommentBrowserTest):
 
         # put the notarydivision in passed state. Stay with notary user.
         # The condition should be True.
-        api.content.transition(notarydivision, 'Pass')
+        notarydivision.transition('Pass')
         condition_obj = self.get_template_condition(template_id)
         msg = "Act passed document should be available for generation"
         self.assertTrue(condition_obj.evaluate() is True, msg)
@@ -171,7 +171,7 @@ class TestDocumentConditions(CommentBrowserTest):
         observation = self.test_observation
         # publish the FD observation and create a precision on it.
         login(self.portal, TEST_FD_NAME)
-        api.content.transition(observation, 'Publish')
+        observation.transition('Publish')
         login(self.portal, TEST_NOTARY_NAME)
         precision = api.content.create(type='Precision', id='precision', container=observation)
 
@@ -181,7 +181,7 @@ class TestDocumentConditions(CommentBrowserTest):
         self.assertTrue(condition_obj.evaluate() is False, msg)
 
         # Publish the precision, The condition should be True.
-        api.content.transition(precision, 'Publish')
+        precision.transition('Publish')
         condition_obj = self.get_template_condition(template_id, context=precision)
         msg = "Precision document generation should be available."
         self.assertTrue(condition_obj.evaluate() is True, msg)
@@ -221,7 +221,7 @@ class TestDocumentConditions(CommentBrowserTest):
         # create and publish a township observation then create a precision on it.
         login(self.portal, TEST_TOWNSHIP_NAME)
         observation = api.content.create(type='Observation', id='obs', container=self.test_divnot)
-        api.content.transition(observation, 'Publish')
+        observation.transition('Publish')
         login(self.portal, TEST_NOTARY_NAME)
         precision = api.content.create(type='Precision', id='precision', container=observation)
 
@@ -231,7 +231,7 @@ class TestDocumentConditions(CommentBrowserTest):
         self.assertTrue(condition_obj.evaluate() is False, msg)
 
         # Publish the precision, The condition should be True.
-        api.content.transition(precision, 'Publish')
+        precision.transition('Publish')
         condition_obj = self.get_template_condition(template_id, context=precision)
         msg = "Precision document generation should be available."
         self.assertTrue(condition_obj.evaluate() is True, msg)
