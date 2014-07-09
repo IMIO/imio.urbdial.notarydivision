@@ -103,6 +103,11 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         msg = 'field local_dgo4 should be hidden in edit'
         self.assertTrue('Direction(s) provinciale concernée(s)' not in contents, msg)
 
+        self.browser.open(self.portal.absolute_url() + '/notarydivisions/++add++NotaryDivision')
+        contents = self.browser.contents
+        msg = 'field local_dgo4 should be hidden in add form'
+        self.assertTrue('Direction(s) provinciale concernée(s)' not in contents, msg)
+
     def test_local_township_attribute(self):
         test_divnot = aq_base(self.test_divnot)
         self.assertTrue(hasattr(test_divnot, 'local_township'))
@@ -117,6 +122,11 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         self.browser.open(self.test_divnot.absolute_url() + '/edit')
         contents = self.browser.contents
         msg = 'field local_township should be hidden in edit'
+        self.assertTrue('Commune(s) concernée(s)' not in contents, msg)
+
+        self.browser.open(self.portal.absolute_url() + '/notarydivisions/++add++NotaryDivision')
+        contents = self.browser.contents
+        msg = 'field local_township should be hidden in add form'
         self.assertTrue('Commune(s) concernée(s)' not in contents, msg)
 
     def test_reference_attribute(self):
