@@ -318,9 +318,6 @@ class NotaryDivision(BaseContainer):
     def is_in_draft(self):
         return self.get_state() == 'In preparation'
 
-    def is_notified(self):
-        return self.get_state() == 'In investigation'
-
     def get_notification_date(self):
         history = self.workflow_history.values()[0]
         for action in history:
