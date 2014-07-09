@@ -50,7 +50,7 @@ def close_comments(notarydivision, event):
     if not event.new_state.title in ['Cancelled', 'Passed']:
         return
 
-    delete_dratf_comments(notarydivision)
+    delete_draft_comments(notarydivision)
     freeze_comments(notarydivision)
 
 
@@ -71,7 +71,7 @@ def freeze_comments(notarydivision):
     call_as_super_user(recursive_freeze_comments, container=notarydivision)
 
 
-def delete_dratf_comments(notarydivision):
+def delete_draft_comments(notarydivision):
     """
     Delete draft comments of a NotaryDivision.
     """
