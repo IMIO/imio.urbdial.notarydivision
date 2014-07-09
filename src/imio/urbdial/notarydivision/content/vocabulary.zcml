@@ -2,6 +2,13 @@
     xmlns="http://namespaces.zope.org/zope"
     i18n_domain="urbdial.divnot">
 
+    <!-- Dgo4s Vocabulary -->
+    <utility
+        factory=".vocabulary.DGO4VocabularyFactory"
+        name="imio.urbdial.notarydivision.dgo4s"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
     <!-- Localities Vocabulary -->
     <utility
         factory=".vocabulary.LocalitiesVocabularyFactory"

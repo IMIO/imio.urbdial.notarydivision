@@ -18,6 +18,24 @@ class TestVocabularies(unittest.TestCase):
         self.portal = self.layer['portal']
         self.registry = api.portal.get_tool('portal_registry')
 
+    def test_dgo4s_vocabulary_registration(self):
+        """
+        Dgo4s defined in registry.xml should be available in
+        portal_registry after installation.
+        """
+        voc_name = 'imio.urbdial.notarydivision.dgo4s'
+        msg = 'Dgo4s are not loaded in the registry'
+        self.assertTrue(voc_name in self.registry.records, msg)
+
+    def test_dgo4s_vocabulary_values(self):
+        """
+        Test some dgo4s values.
+        """
+        voc_name = 'imio.urbdial.notarydivision.dgo4s'
+        record = self.registry.records.get(voc_name)
+        dgo4s = record.value.values()
+        self.assertTrue(u'Namur' in dgo4s)
+
     def test_localities_vocabulary_registration(self):
         """
         Localities defined in registry.xml should be available in

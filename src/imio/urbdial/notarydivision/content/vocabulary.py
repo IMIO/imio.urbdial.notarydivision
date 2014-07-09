@@ -10,6 +10,23 @@ from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
+class DGO4VocabularyFactory(object):
+    """
+    Vocabulary for the DGO4's.
+    """
+
+    def __call__(self, context):
+        registry = api.portal.get_tool('portal_registry')
+        dgo4s = registry.records.get('imio.urbdial.notarydivision.dgo4s')
+
+        vocabulary_terms = []
+        for dgo4_id, title in dgo4s.value.iteritems():
+            vocabulary_terms.append(SimpleTerm(dgo4_id, dgo4_id, title.encode('utf-8')))
+
+        vocabulary = SimpleVocabulary(vocabulary_terms)
+        return vocabulary
+
+
 class LocalitiesVocabularyFactory(object):
     """
     Vocabulary factory for localities.
