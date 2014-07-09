@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-07-02 09:36+0000\n"
+"POT-Creation-Date: 2014-07-09 12:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-#: ../content/notarydivision.py:298
+#: ../content/notarydivision.py:314
 msgid "Annex"
 msgstr "Autres annexes"
 
-#: ../content/notarydivision.py:304
+#: ../content/notarydivision.py:320
 msgid "Annex files"
 msgstr "Fichiers des annexes"
 
@@ -31,15 +31,15 @@ msgstr "Répondre"
 msgid "Applicants"
 msgstr "Requérant(s)"
 
-#: ../content/notarydivision.py:250
+#: ../content/notarydivision.py:266
 msgid "Article 90"
 msgstr "Article 90"
 
-#: ../content/notarydivision.py:264
+#: ../content/notarydivision.py:280
 msgid "Article 90 exceptions detail"
 msgstr "Justificatif des motifs d'exception"
 
-#: ../content/notarydivision.py:256
+#: ../content/notarydivision.py:272
 msgid "Article 90 reasons"
 msgstr "Motifs d'exception article 90"
 
@@ -59,11 +59,11 @@ msgstr "Référence cadastrale"
 msgid "ConfigFolder"
 msgstr "Dossier de configuration"
 
-#: ../content/notarydivision.py:234
+#: ../content/notarydivision.py:250
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
-#: ../setuphandlers.py:138
+#: ../setuphandlers.py:149
 msgid "DGO 4"
 msgstr "DGO 4"
 
@@ -75,15 +75,15 @@ msgstr "Type d'acte"
 msgid "Division"
 msgstr "Division"
 
-#: ../content/notarydivision.py:244
+#: ../content/notarydivision.py:260
 msgid "Entrusting"
 msgstr "Sauf en cas de force majeure, les parties se sont engagées à maintenir leurs intentions respectives dans un délai raisonnable "
 
-#: ../content/notarydivision.py:213
+#: ../content/notarydivision.py:229
 msgid "Estate"
 msgstr "Ensemble immobilier"
 
-#: ../content/notarydivision.py:218
+#: ../content/notarydivision.py:234
 msgid "Estate actual use"
 msgstr "Affectation actuelle du bien"
 
@@ -110,10 +110,11 @@ msgstr "Prénom"
 msgid "General informations"
 msgstr "Informations générales"
 
+#: ../browser/templates/documents_action.pt:4
 msgid "Generate documents"
 msgstr "Documents à générer"
 
-#: ../content/notarydivision.py:285
+#: ../content/notarydivision.py:301
 msgid "Geometrician"
 msgstr "Géomètre"
 
@@ -121,9 +122,17 @@ msgstr "Géomètre"
 msgid "InadmissibleFolder"
 msgstr "Dossier irrecevable"
 
-#: ../content/notarydivision.py:224
+#: ../content/notarydivision.py:240
 msgid "Initial estate"
 msgstr "Ensemble immobilier initial"
+
+#: ../content/notarydivision.py:212
+msgid "Local DGO4"
+msgstr "Direction(s) provinciale concernée(s)"
+
+#: ../content/notarydivision.py:220
+msgid "Local township"
+msgstr "Commune(s) concernée(s)"
 
 #: ../content/notarydivision.py:52
 msgid "Locality"
@@ -140,11 +149,11 @@ msgid "None"
 msgstr ""
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:126
+#: ../setuphandlers.py:137
 msgid "Notaries"
 msgstr "Notaires"
 
-#: ../setuphandlers.py:132
+#: ../setuphandlers.py:143
 msgid "Notaries admin"
 msgstr "Administrateur FRNB"
 
@@ -160,19 +169,19 @@ msgstr "Observation"
 msgid "Parcel destination"
 msgstr "Destination du lot"
 
-#: ../content/notarydivision.py:270
+#: ../content/notarydivision.py:286
 msgid "Plan"
 msgstr "Plan"
 
-#: ../content/notarydivision.py:280
+#: ../content/notarydivision.py:296
 msgid "Plan date"
 msgstr "Date du plan"
 
-#: ../content/notarydivision.py:275
+#: ../content/notarydivision.py:291
 msgid "Plan reference"
 msgstr "Référence du plan"
 
-#: ../content/notarydivision.py:291
+#: ../content/notarydivision.py:307
 msgid "Plans files"
 msgstr "Fichiers (plan)"
 
@@ -216,7 +225,7 @@ msgstr "(type)"
 msgid "Text"
 msgstr "Texte"
 
-#: ../setuphandlers.py:144
+#: ../setuphandlers.py:155
 msgid "Townships"
 msgstr "Communes"
 
@@ -224,11 +233,11 @@ msgid "True"
 msgstr "Oui"
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:161
+#: ../setuphandlers.py:187
 msgid "notarydivisions_folder_title"
 msgstr "Divisions notariales"
 
-#: ../setuphandlers.py:188
+#: ../setuphandlers.py:214
 msgid "pod_templates_folder_title"
 msgstr "Modèles de documents"
 

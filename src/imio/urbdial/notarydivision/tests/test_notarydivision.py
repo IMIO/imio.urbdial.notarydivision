@@ -87,6 +87,38 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
     def test_exclude_from_navigation_field_default_value_is_True(self):
         self.assertTrue(self.test_divnot.exclude_from_nav)
 
+    def test_local_dgo4_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'local_dgo4'))
+
+    def test_local_dgo4_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'field local_dgo4 should be visible in Display View'
+        self.assertTrue('Direction(s) provinciale concernée(s)' in contents, msg)
+
+    def test_local_dgo4_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'field local_dgo4 should be hidden in edit'
+        self.assertTrue('Direction(s) provinciale concernée(s)' not in contents, msg)
+
+    def test_local_township_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'local_township'))
+
+    def test_local_township_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'field local_township should be visible in Display View'
+        self.assertTrue('Commune(s) concernée(s)' in contents, msg)
+
+    def test_local_township_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'field local_township should be hidden in edit'
+        self.assertTrue('Commune(s) concernée(s)' not in contents, msg)
+
     def test_reference_attribute(self):
         test_divnot = aq_base(self.test_divnot)
         self.assertTrue(hasattr(test_divnot, 'reference'))

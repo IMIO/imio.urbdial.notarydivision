@@ -190,7 +190,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     model.fieldset(
         'general',
         label=_(u"General informations"),
-        fields=['reference', 'applicants']
+        fields=['reference', 'applicants', 'local_dgo4', 'local_township']
     )
 
     reference = schema.TextLine(
@@ -206,6 +206,22 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
             schema=IApplicantsRowSchema,
             required=False
         ),
+    )
+
+    local_dgo4 = schema.Set(
+        title=_(u'Local DGO4'),
+        value_type=schema.Choice(
+            vocabulary='imio.urbdial.notarydivision.dgo4s'
+        ),
+        required=False,
+    )
+
+    local_township = schema.Set(
+        title=_(u'Local township'),
+        value_type=schema.Choice(
+            vocabulary='imio.urbdial.notarydivision.townships'
+        ),
+        required=False,
     )
 
     model.fieldset(
