@@ -23,18 +23,4 @@
             <element key="4260">Braives</element>
         </value>
     </record>
-    <record
-        field="dgo4s"
-        interface="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision"
-        name="imio.urbdial.notarydivision.dgo4s">
-        <field type="plone.registry.field.Dict">
-            <title>Walloon provincial directions</title>
-            <key_type type="plone.registry.field.TextLine" />
-            <value_type type="plone.registry.field.TextLine" />
-        </field>
-        <value>
-            <element key="unknown">Non déterminé</element>
-            <element key="dgo4_namur">Namur</element>
-        </value>
-    </record>
 </registry>

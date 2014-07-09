@@ -9,6 +9,13 @@
         provides="zope.schema.interfaces.IVocabularyFactory"
     />
 
+    <!-- Townships Vocabulary -->
+    <utility
+        factory=".vocabulary.TownshipVocabularyFactory"
+        name="imio.urbdial.notarydivision.townships"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
     <!-- Localities Vocabulary -->
     <utility
         factory=".vocabulary.LocalitiesVocabularyFactory"

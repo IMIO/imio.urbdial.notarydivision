@@ -13,6 +13,8 @@ from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
 from imio.urbdial.notarydivision.utils import get_pod_templates_folder
+from imio.urbdial.notarydivision.vars import DGO4_LOCAL_GROUPS
+from imio.urbdial.notarydivision.vars import TOWNSHIPS_LOCAL_GROUPS
 from imio.urbdial.notarydivision.workflows.interfaces import INotificationWorkflow
 from imio.urbdial.notarydivision.workflows.interfaces import IObservationWorkflow
 from imio.urbdial.notarydivision.workflows.interfaces import IPrecisionWorkflow
@@ -58,6 +60,9 @@ def post_install(context):
     logger.info('create_groups : starting...')
     create_groups(context)
     logger.info('create_groups : Done')
+    logger.info('create_local_groups : starting...')
+    create_local_groups(context)
+    logger.info('create_local_groups : Done')
     logger.info('create_pod_templates_folder : starting...')
     create_pod_templates_folder(context)
     logger.info('create_pod_templates_folder : Done')
@@ -150,6 +155,21 @@ def create_groups(context):
         title=_('Townships'),
         roles=['Member'],
     )
+
+
+def create_local_groups(context):
+    """
+    Create local sub groups for dgo4, townships and notaries.
+    """
+    _create_subgroups(container='dgo4', subgroups=DGO4_LOCAL_GROUPS)
+    _create_subgroups(container='townships', subgroups=TOWNSHIPS_LOCAL_GROUPS)
+
+
+def _create_subgroups(container, subgroups):
+
+    for group_infos in subgroups:
+        local_group = api.group.create(**group_infos)
+        api.group.add_user(user=local_group, groupname=container)
 
 
 def create_notarydivisions_folder(context):
@@ -308,11 +328,6 @@ def create_test_users(context):
             'fullname': 'Fonctionnaire délégué Dédé',
         }
     )
-    dgo4_localgroup = api.group.create(
-        groupname=TEST_FD_LOCALGROUP,
-        title=_(TEST_FD_LOCALGROUP),
-    )
-    api.group.add_user(user=dgo4_localgroup, groupname='dgo4')
     api.group.add_user(username=TEST_FD_NAME, groupname=TEST_FD_LOCALGROUP)
 
     api.user.create(
@@ -321,9 +336,4 @@ def create_test_users(context):
             'fullname': 'Agent communal Coco',
         }
     )
-    township_localgroup = api.group.create(
-        groupname=TEST_TOWNSHIP_LOCALGROUP,
-        title=_(TEST_TOWNSHIP_LOCALGROUP),
-    )
-    api.group.add_user(user=township_localgroup, groupname='townships')
     api.group.add_user(username=TEST_TOWNSHIP_NAME, groupname=TEST_TOWNSHIP_LOCALGROUP)

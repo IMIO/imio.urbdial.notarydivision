@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
+from imio.urbdial.notarydivision.vars import DGO4_LOCAL_GROUPS
+from imio.urbdial.notarydivision.vars import TOWNSHIPS_LOCAL_GROUPS
 
 from plone import api
 
@@ -18,23 +20,45 @@ class TestVocabularies(unittest.TestCase):
         self.portal = self.layer['portal']
         self.registry = api.portal.get_tool('portal_registry')
 
-    def test_dgo4s_vocabulary_registration(self):
+    def test_dgo4s_vocabulary_factory_registration(self):
         """
-        Dgo4s defined in registry.xml should be available in
-        portal_registry after installation.
+        dgo4s voc factory should be registered as a named utility.
         """
-        voc_name = 'imio.urbdial.notarydivision.dgo4s'
-        msg = 'Dgo4s are not loaded in the registry'
-        self.assertTrue(voc_name in self.registry.records, msg)
+        factory_name = 'imio.urbdial.notarydivision.dgo4s'
+        self.assertTrue(queryUtility(IVocabularyFactory, factory_name))
 
     def test_dgo4s_vocabulary_values(self):
         """
-        Test some dgo4s values.
+        dgo4s should be sorted on title.
         """
-        voc_name = 'imio.urbdial.notarydivision.dgo4s'
-        record = self.registry.records.get(voc_name)
-        dgo4s = record.value.values()
-        self.assertTrue(u'Namur' in dgo4s)
+        factory_name = 'imio.urbdial.notarydivision.dgo4s'
+        dgo4s_voc_factory = queryUtility(IVocabularyFactory, factory_name)
+
+        dgo4s = dgo4s_voc_factory(self.portal)
+        dgo4s_titles = [term.title for term in dgo4s]
+        expected_titles = [group['title'] for group in DGO4_LOCAL_GROUPS]
+        msg = "some dgo4 local groups are not found in dgo4s vocabulary"
+        self.assertTrue(set(expected_titles) == set(dgo4s_titles), msg)
+
+    def test_townships_vocabulary_factory_registration(self):
+        """
+        townships voc factory should be registered as a named utility.
+        """
+        factory_name = 'imio.urbdial.notarydivision.townships'
+        self.assertTrue(queryUtility(IVocabularyFactory, factory_name))
+
+    def test_townships_vocabulary_values(self):
+        """
+        townships should be sorted on title.
+        """
+        factory_name = 'imio.urbdial.notarydivision.townships'
+        townships_voc_factory = queryUtility(IVocabularyFactory, factory_name)
+
+        townships = townships_voc_factory(self.portal)
+        townships_titles = [term.title for term in townships]
+        expected_titles = [group['title'] for group in TOWNSHIPS_LOCAL_GROUPS]
+        msg = "some township local groups are not found in townships vocabulary"
+        self.assertTrue(set(expected_titles) == set(townships_titles), msg)
 
     def test_localities_vocabulary_registration(self):
         """

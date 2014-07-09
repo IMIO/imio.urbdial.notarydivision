@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from Products.PlonePAS.tools.groupdata import GroupData
+
 from Products.CMFPlone.utils import normalizeString
 
 from imio.urbdial.notarydivision.utils import translate as _
@@ -12,16 +14,39 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 class DGO4VocabularyFactory(object):
     """
-    Vocabulary for the DGO4's.
+    Vocabulary for the DGO4's: all subgroups of dgo4 group.
     """
 
     def __call__(self, context):
-        registry = api.portal.get_tool('portal_registry')
-        dgo4s = registry.records.get('imio.urbdial.notarydivision.dgo4s')
+        dgo4_group = api.group.get('dgo4')
+        # get all subgroups of dgo4 group
+        local_dgo4_groups = [g for g in dgo4_group.getAllGroupMembers() if isinstance(g, GroupData)]
 
         vocabulary_terms = []
-        for dgo4_id, title in dgo4s.value.iteritems():
-            vocabulary_terms.append(SimpleTerm(dgo4_id, dgo4_id, title.encode('utf-8')))
+        for group in local_dgo4_groups:
+            vocabulary_terms.append(
+                SimpleTerm(group.id, group.id, group.getProperty('title'))
+            )
+
+        vocabulary = SimpleVocabulary(vocabulary_terms)
+        return vocabulary
+
+
+class TownshipVocabularyFactory(object):
+    """
+    Vocabulary for the townships: all subgroups of townships group.
+    """
+
+    def __call__(self, context):
+        townships_group = api.group.get('townships')
+        # get all subgroups of townships group
+        local_township_groups = [g for g in townships_group.getAllGroupMembers() if isinstance(g, GroupData)]
+
+        vocabulary_terms = []
+        for group in local_township_groups:
+            vocabulary_terms.append(
+                SimpleTerm(group.id, group.id, group.getProperty('title'))
+            )
 
         vocabulary = SimpleVocabulary(vocabulary_terms)
         return vocabulary
