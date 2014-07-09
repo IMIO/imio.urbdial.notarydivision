@@ -153,14 +153,6 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
         self.assertTrue('Observation Manager' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
-    def test_observation_workflow_provides_IObservationWorkflow(self):
-        from imio.urbdial.notarydivision.workflows.interfaces import IObservationWorkflow
-
-        wf_tool = api.portal.get_tool('portal_workflow')
-        observation_wf = wf_tool.getWorkflowById('Observation_workflow')
-
-        self.assertTrue(IObservationWorkflow.providedBy(observation_wf))
-
 
 class TestObservationWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):
     """
@@ -412,14 +404,6 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
         self.assertTrue(len(roles_of_permission) == 2)
         self.assertTrue('Precision Manager' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
-
-    def test_precision_workflow_provides_IPrecisionWorkflow(self):
-        from imio.urbdial.notarydivision.workflows.interfaces import IPrecisionWorkflow
-
-        wf_tool = api.portal.get_tool('portal_workflow')
-        precision_wf = wf_tool.getWorkflowById('Precision_workflow')
-
-        self.assertTrue(IPrecisionWorkflow.providedBy(precision_wf))
 
 
 class TestPrecisionWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):

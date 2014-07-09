@@ -5,21 +5,21 @@
 
   <adapter
      for="..content.comment.IObservation
-          .interfaces.IObservationWorkflow"
+          Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
      factory=".observation_workflow.StateRolesMapping"
      provides=".interfaces.IWorkflowStateRolesMapping"
   />
 
   <adapter
      for="..content.comment.IPrecision
-          .interfaces.IPrecisionWorkflow"
+          Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
      factory=".precision_workflow.StateRolesMapping"
      provides=".interfaces.IWorkflowStateRolesMapping"
   />
 
   <adapter
      for="..content.notarydivision.INotaryDivision
-          .interfaces.INotificationWorkflow"
+          Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
      factory=".notification_workflow.StateRolesMapping"
      provides=".interfaces.IWorkflowStateRolesMapping"
   />

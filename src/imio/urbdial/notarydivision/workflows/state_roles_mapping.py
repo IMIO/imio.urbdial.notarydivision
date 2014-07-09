@@ -96,11 +96,11 @@ class WorkflowStateRolesMapping(object):
 
 class UrbdialWorkflowStateRolesMapping(WorkflowStateRolesMapping):
     """
+    Helper class to store urbdial workflows local roles/groups mapping with methods
+    to dynamically compute groups such as local_dgo4 or local_township.
     """
 
     def get_notary_office(self):
-        """
-        """
         return ['notaries']
 
     def get_local_dgo4(self):

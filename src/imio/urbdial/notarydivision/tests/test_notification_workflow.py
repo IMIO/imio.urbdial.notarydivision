@@ -162,14 +162,6 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
         self.assertTrue('NotaryDivision Manager' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
-    def test_notification_workflow_provides_INotificationWorkflow(self):
-        from imio.urbdial.notarydivision.workflows.interfaces import INotificationWorkflow
-
-        wf_tool = api.portal.get_tool('portal_workflow')
-        notification_wf = wf_tool.getWorkflowById('Notification_workflow')
-
-        self.assertTrue(INotificationWorkflow.providedBy(notification_wf))
-
 
 class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, WorkflowLocaRolesAssignmentTest):
     """

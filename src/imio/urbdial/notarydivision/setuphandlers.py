@@ -15,9 +15,6 @@ from imio.urbdial.notarydivision.utils import translate as _
 from imio.urbdial.notarydivision.utils import get_pod_templates_folder
 from imio.urbdial.notarydivision.vars import DGO4_LOCAL_GROUPS
 from imio.urbdial.notarydivision.vars import TOWNSHIPS_LOCAL_GROUPS
-from imio.urbdial.notarydivision.workflows.interfaces import INotificationWorkflow
-from imio.urbdial.notarydivision.workflows.interfaces import IObservationWorkflow
-from imio.urbdial.notarydivision.workflows.interfaces import IPrecisionWorkflow
 
 from plone import api
 
@@ -48,9 +45,6 @@ def post_install(context):
     logger.info('set_NotaryDivision_FTI_marker_interface : starting...')
     set_NotaryDivision_FTI_marker_interface(context)
     logger.info('set_NotaryDivision_FTI_marker_interface : Done')
-    logger.info('set_workflows_marker_interfaces : starting...')
-    set_workflows_marker_interfaces(context)
-    logger.info('set_workflows_marker_interfaces : Done')
     logger.info('delete_plone_root_default_objects : starting...')
     delete_plone_root_default_objects(context)
     logger.info('delete_plone_root_default_objects : Done')
@@ -85,22 +79,6 @@ def set_NotaryDivision_FTI_marker_interface(context):
     site = context.getSite()
     divnot_type = site.portal_types.NotaryDivision
     alsoProvides(divnot_type, INotaryDivisionFTI)
-
-
-def set_workflows_marker_interfaces(context):
-    """
-    Provides custom workflows with marker intreface so we can register role/groups
-    mapping adapter for these interfaces.
-    """
-
-    wf_tool = api.portal.get_tool('portal_workflow')
-
-    observation_wf = wf_tool.getWorkflowById('Observation_workflow')
-    alsoProvides(observation_wf, IObservationWorkflow)
-    precision_wf = wf_tool.getWorkflowById('Precision_workflow')
-    alsoProvides(precision_wf, IPrecisionWorkflow)
-    notification_wf = wf_tool.getWorkflowById('Notification_workflow')
-    alsoProvides(notification_wf, INotificationWorkflow)
 
 
 def delete_plone_root_default_objects(context):
