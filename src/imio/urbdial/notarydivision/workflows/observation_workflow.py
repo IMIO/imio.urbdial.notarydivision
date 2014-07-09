@@ -41,7 +41,7 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
 
         for group in creator_groups:
             group_id = group.id
-            if group_id == self.get_local_dgo4():
-                return self.get_local_dgo4()
-            if group_id == self.get_local_township():
-                return self.get_local_township()
+            if group_id in self.get_local_dgo4():
+                return [group_id]
+            if group_id in self.get_local_township():
+                return [group_id]

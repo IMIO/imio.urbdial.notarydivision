@@ -2,6 +2,8 @@
 
 from Products.Five import BrowserView
 
+from imio.urbdial.notarydivision.utils import get_notarydivision
+
 from plone import api
 
 from zope.component import queryUtility
@@ -17,7 +19,7 @@ class DocumentGenerationHelperView(BrowserView):
         super(DocumentGenerationHelperView, self).__init__(context, request)
         self.context = context
         self.request = request
-        self.notarydivision = context.portal_type == 'NotaryDivision' and context or context.get_notarydivision()
+        self.notarydivision = get_notarydivision(context)
 
     def date(self, date):
         return date.strftime('%d/%m/%Y')

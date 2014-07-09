@@ -8,6 +8,8 @@ from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_Data
 from imio.urbdial.notarydivision.browser.field import DataGridBool
 from imio.urbdial.notarydivision.content.container import BaseContainer
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
+from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
+from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
 
 from plone.app import textfield
 from plone.autoform import directives as form
@@ -213,6 +215,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
         value_type=schema.Choice(
             vocabulary='imio.urbdial.notarydivision.dgo4s'
         ),
+        default=set([TEST_FD_LOCALGROUP]),
         required=False,
     )
 
@@ -221,6 +224,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
         value_type=schema.Choice(
             vocabulary='imio.urbdial.notarydivision.townships'
         ),
+        default=set([TEST_TOWNSHIP_LOCALGROUP]),
         required=False,
     )
 

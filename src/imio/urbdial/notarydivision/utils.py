@@ -14,3 +14,10 @@ def translate(msgid, domain='urbdial.divnot'):
 def get_pod_templates_folder():
     portal = api.portal.getSite()
     return portal.pod_templates
+
+
+def get_notarydivision(obj):
+    if obj.portal_type == 'NotaryDivision':
+        return obj
+    if hasattr(obj, 'get_notarydivision'):
+        return obj.get_notarydivision()
