@@ -15,4 +15,16 @@
                    zope.lifecycleevent.interfaces.IObjectAddedEvent"
               handler=".notarydivision_events.remove_owner_role" />
 
+  <subscriber for="imio.urbdial.notarydivision.content.comment.IObservation
+                   zope.lifecycleevent.interfaces.IObjectAddedEvent"
+              handler=".observation_events.restrict_observation_creation_role" />
+
+  <subscriber for="imio.urbdial.notarydivision.content.comment.IObservation
+                   Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+              handler=".observation_events.restore_observation_creation_role" />
+
+  <subscriber for="imio.urbdial.notarydivision.content.comment.IObservation
+                   OFS.interfaces.IObjectWillBeRemovedEvent "
+              handler=".observation_events.restore_observation_creation_role" />
+
 </configure>

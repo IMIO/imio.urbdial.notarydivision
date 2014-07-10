@@ -456,7 +456,7 @@ class TestPrecisionWorkflowLocalRolesAssignment(CommentBrowserTest, WorkflowLoca
         precision = self.test_precision
         precision.transition('Publish')
 
-        expected_roles = ('Precision Reader', 'Observation Creator')
+        expected_roles = ('Precision Reader',)
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
             expected_roles=expected_roles,

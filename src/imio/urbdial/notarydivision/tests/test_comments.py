@@ -13,6 +13,7 @@ from imio.urbdial.notarydivision.testing import WorkflowLocaRolesAssignmentTest
 from imio.urbdial.notarydivision.utils import translate
 
 from plone import api
+from plone.app.testing import login
 from plone.app.textfield.value import RichTextValue
 
 import transaction
@@ -233,8 +234,181 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
     dgo4/township observation on the notary division or a comment.
     """
 
-    def test_observation_creator_role_enabled_on_notary_division(self):
+    def test_observation_creator_role_disabled_on_notary_division(self):
         """
         Test Observation Creator role on a notarydivision.
         """
-        self.assertTrue(True)
+        notarydivision = self.test_divnot
+
+        # When a draft observation exists on the notary division...
+        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        self.assertTrue(draft_observations)
+
+        # ... FD should not have 'Observation Creator' role on notarydivision.
+        expected_roles = ('NotaryDivision Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=notarydivision,
+            state='In investigation',
+        )
+
+    def test_observation_creator_role_disabled_on_precision(self):
+        """
+        Test Observation Creator disabled role on a notarydivision.
+        """
+        notarydivision = self.test_divnot
+        precision = self.test_precision
+        precision.transition('Publish')
+
+        # When a draft observation by FD exists on the notary division...
+        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'dgo4']
+        self.assertTrue(draft_observations)
+
+        # ... FD should not have 'Observation Creator' role on published precision.
+        expected_roles = ('Precision Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=precision,
+            state='Published',
+        )
+
+    def test_observation_creator_role_enabled_on_notary_division(self):
+        """
+        Test Observation Creator role disabled on a precision.
+        """
+        notarydivision = self.test_divnot
+
+        # When no draft observation by Township agent exists on the notary division...
+        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'townships']
+        self.assertTrue(not draft_observations)
+
+        # ... Township agent should have 'Observation Creator' role on notarydivision.
+        expected_roles = ('NotaryDivision Reader', 'Observation Creator')
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_TOWNSHIP_NAME,
+            expected_roles=expected_roles,
+            context=notarydivision,
+            state='In investigation',
+        )
+
+    def test_observation_creator_role_enabled_on_precision(self):
+        """
+        Test Observation Creator role enabled on a notarydivision.
+        """
+        notarydivision = self.test_divnot
+        precision = self.test_precision
+        precision.transition('Publish')
+
+        # When a draft observation by Township agent exists on the notary division...
+        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'townships']
+        self.assertTrue(not draft_observations)
+
+        # ... Township agent should have 'Observation Creator' role on notarydivision.
+        expected_roles = ('Precision Reader', 'Observation Creator')
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_TOWNSHIP_NAME,
+            expected_roles=expected_roles,
+            context=precision,
+            state='Published',
+        )
+
+    def test_observation_creator_role_restored_on_notary_division(self):
+        """
+        Test Observation Creator role on a notarydivision.
+        """
+        notarydivision = self.test_divnot
+
+        # publish the observation as FD user
+        login(self.portal, TEST_FD_NAME)
+        self.test_observation.transition('Publish')
+
+        # When no draft observation by FD exists on the notary division...
+        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'dgo4']
+        self.assertTrue(not draft_observations)
+
+        # ... FD should have 'Observation Creator' role on notarydivision.
+        expected_roles = ('NotaryDivision Reader', 'Observation Creator')
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=notarydivision,
+            state='In investigation',
+        )
+
+    def test_observation_creator_role_restored_on_precision(self):
+        """
+        Test Observation Creator restored role on a notarydivision.
+        """
+        notarydivision = self.test_divnot
+        precision = self.test_precision
+        precision.transition('Publish')
+
+        # publish the observation as FD user
+        login(self.portal, TEST_FD_NAME)
+        self.test_observation.transition('Publish')
+
+        # When no draft observation by FD exists on the notary division...
+        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'dgo4']
+        self.assertTrue(not draft_observations)
+
+        # ... FD should have 'Observation Creator' role on published precision.
+        expected_roles = ('Precision Reader', 'Observation Creator')
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=precision,
+            state='Published',
+        )
+
+    def test_observation_creator_role_restored_on_notary_division_on_delete(self):
+        """
+        Test Observation Creator role on a notarydivision.
+        """
+        notarydivision = self.test_divnot
+
+        # delete draft observation
+        api.content.delete(self.test_observation)
+
+        # When no draft observation by FD exists on the notary division...
+        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        self.assertTrue(not draft_observations)
+
+        # ... FD should have 'Observation Creator' role on notarydivision.
+        expected_roles = ('NotaryDivision Reader', 'Observation Creator')
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=notarydivision,
+            state='In investigation',
+        )
+
+    def test_observation_creator_role_restored_on_precision_on_delete(self):
+        """
+        Test Observation Creator restored role on a notarydivision.
+        """
+        notarydivision = self.test_divnot
+        precision = self.test_precision
+        precision.transition('Publish')
+
+        # delete draft observation
+        api.content.delete(self.test_observation)
+
+        # When no draft observation by FD exists on the notary division...
+        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        self.assertTrue(not draft_observations)
+
+        # ... FD should have 'Observation Creator' role on published precision.
+        expected_roles = ('Precision Reader', 'Observation Creator')
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=precision,
+            state='Published',
+        )
