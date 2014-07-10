@@ -5,7 +5,6 @@ from collective.z3cform.rolefield.utils import remove_local_roles_from_principal
 
 from imio.helpers.security import call_as_super_user
 
-from imio.urbdial.notarydivision.content.comment import IComment
 from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
 
 from plone import api
@@ -66,17 +65,8 @@ def freeze_comments(notarydivision):
     """
     Freeze published comments of a NotaryDivision.
     """
-    catalog = api.portal.get_tool('portal_catalog')
-    location = '/'.join(notarydivision.getPhysicalPath())
-
-    comment_brains = catalog(
-        object_provides=IComment.__identifier__,
-        review_state='Published',
-        path={'query': location},
-    )
-
-    for brain in comment_brains:
-        comment = brain.getObject()
+    comments = notarydivision.get_comments(state='Published')
+    for comment in comments:
         comment.transition('Freeze')
 
 
@@ -84,15 +74,6 @@ def delete_draft_comments(notarydivision):
     """
     Delete draft comments of a NotaryDivision.
     """
-    catalog = api.portal.get_tool('portal_catalog')
-    location = '/'.join(notarydivision.getPhysicalPath())
-
-    comment_brains = catalog(
-        object_provides=IComment.__identifier__,
-        review_state='Draft',
-        path={'query': location},
-    )
-
-    for brain in comment_brains:
-        comment = brain.getObject()
+    comments = notarydivision.get_comments(state='Draft')
+    for comment in comments:
         api.content.delete(comment)

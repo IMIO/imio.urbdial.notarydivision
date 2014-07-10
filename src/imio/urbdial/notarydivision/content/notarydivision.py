@@ -6,11 +6,13 @@ from collective.z3cform.datagridfield import DictRow
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_DataGridFieldFactory
 from imio.urbdial.notarydivision.browser.field import DataGridBool
+from imio.urbdial.notarydivision.content.comment import IComment
 from imio.urbdial.notarydivision.content.container import BaseContainer
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
 
+from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
 from plone.formwidget.multifile import MultiFileFieldWidget
@@ -352,3 +354,24 @@ class NotaryDivision(BaseContainer):
         for action in history:
             if action.get('action') == 'Pass':
                 return action.get('time')
+
+    def get_comments(self, state=None, portal_type=''):
+        """
+        Query all comments of the current NotaryDivision.
+        """
+        catalog = api.portal.get_tool('portal_catalog')
+
+        query = {}
+        if state:
+            query['review_state'] = state
+        if portal_type:
+            query['portal_type'] = portal_type
+
+        comment_brains = catalog(
+            object_provides=IComment.__identifier__,
+            path={'query': '/'.join(self.getPhysicalPath())},
+            **query
+        )
+        comments = [brain.getObject() for brain in comment_brains]
+
+        return comments
