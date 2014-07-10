@@ -4,6 +4,8 @@ from collective.z3cform.rolefield.utils import add_local_roles_to_principals
 from collective.z3cform.rolefield.utils import remove_local_roles_from_principals
 
 from imio.helpers.security import call_as_super_user
+
+from imio.urbdial.notarydivision.content.comment import IComment
 from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
 
 from plone import api
@@ -50,39 +52,47 @@ def close_comments(notarydivision, event):
     if not event.new_state.title in ['Cancelled', 'Passed']:
         return
 
-    delete_draft_comments(notarydivision)
-    freeze_comments(notarydivision)
+    # We have to execute delete_draft_comments with a super user because
+    # notary user dont have the permission to delete comments.
+    call_as_super_user(delete_draft_comments, notarydivision)
+
+    # We have to execute freeze_comments with a super user because
+    # notary user dont have the permission to trigger 'Freeze' transition on
+    # comments.
+    call_as_super_user(freeze_comments, notarydivision)
 
 
 def freeze_comments(notarydivision):
     """
     Freeze published comments of a NotaryDivision.
     """
+    catalog = api.portal.get_tool('portal_catalog')
+    location = '/'.join(notarydivision.getPhysicalPath())
 
-    def recursive_freeze_comments(container):
-        for comment in container.objectValues():
-            if comment.is_published():
-                comment.transition('Freeze')
-            recursive_freeze_comments(comment)
+    comment_brains = catalog(
+        object_provides=IComment.__identifier__,
+        review_state='Published',
+        path={'query': location},
+    )
 
-    # We have to execute recursive_freeze_comments with a super user because
-    # notary user dont have the permission to trigger 'Freeze' transition on
-    # comments.
-    call_as_super_user(recursive_freeze_comments, container=notarydivision)
+    for brain in comment_brains:
+        comment = brain.getObject()
+        comment.transition('Freeze')
 
 
 def delete_draft_comments(notarydivision):
     """
     Delete draft comments of a NotaryDivision.
     """
+    catalog = api.portal.get_tool('portal_catalog')
+    location = '/'.join(notarydivision.getPhysicalPath())
 
-    def recursive_delete_draft_comments(container):
-        for comment in container.objectValues():
-            if comment.is_in_draft():
-                api.content.delete(comment)
-            else:
-                recursive_delete_draft_comments(comment)
+    comment_brains = catalog(
+        object_provides=IComment.__identifier__,
+        review_state='Draft',
+        path={'query': location},
+    )
 
-    # We have to execute recursive_delete_draft_comments with a super user because
-    # notary user dont have the permission to delete comments.
-    call_as_super_user(recursive_delete_draft_comments, container=notarydivision)
+    for brain in comment_brains:
+        comment = brain.getObject()
+        api.content.delete(comment)
