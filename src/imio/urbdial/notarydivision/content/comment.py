@@ -54,9 +54,6 @@ class Comment(BaseContainer):
         creation_action = self.workflow_history.values()[0][0]
         return creation_action.get('time')
 
-    def is_published(self):
-        return self.get_state() == 'Published'
-
     def get_publicator(self):
         history = self.workflow_history.values()[0]
         for action in history:
