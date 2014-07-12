@@ -8,8 +8,13 @@
         />
 
     <permission
-        id="imio.urbdial.notarydivision.AddObservation"
-        title="imio.urbdial.notarydivision: Add Observation"
+        id="imio.urbdial.notarydivision.AddFDObservation"
+        title="imio.urbdial.notarydivision: Add FD Observation"
+        />
+
+    <permission
+        id="imio.urbdial.notarydivision.AddTownshipObservation"
+        title="imio.urbdial.notarydivision: Add Township Observation"
         />
 
     <permission

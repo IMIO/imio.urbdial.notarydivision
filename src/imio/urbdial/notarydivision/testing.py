@@ -170,7 +170,7 @@ class ExampleCommentLayer(ExampleDivisionLayer):
         # Create some test comments
         login(portal, TEST_FD_NAME)
         api.content.create(
-            type='Observation',
+            type='FDObservation',
             id=TEST_OBSERVATION_ID,
             container=test_divnot,
         )

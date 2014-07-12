@@ -3,8 +3,8 @@
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.content.container import BaseContainer
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
+from imio.urbdial.notarydivision.content.interfaces import IObservation
 
-from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
 from plone.formwidget.multifile import MultiFileFieldWidget
@@ -47,6 +47,12 @@ class Comment(BaseContainer):
             level = level.aq_parent
         return level
 
+    def get_local_group(self):
+        """To implement."""
+
+    def get_creation_role(self):
+        """To implement."""
+
     def is_in_draft(self):
         return self.get_state() == 'Draft'
 
@@ -69,30 +75,6 @@ class Comment(BaseContainer):
     def is_frozen(self):
         return self.get_state() == 'Frozen'
 
-    def is_dgo4_or_township(self):
-        author_groups = api.group.get_groups(self.get_publicator())
-
-        dgo4_group = api.group.get('dgo4')
-        if dgo4_group in author_groups:
-            return 'dgo4'
-
-        township_group = api.group.get('townships')
-        if township_group in author_groups:
-            return 'townships'
-
-
-class IObservation(IComment):
-    """
-    Observation dexterity schema.
-    """
-
-
-class Observation(Comment):
-    """
-    Observation dexterity class.
-    """
-    implements(IObservation)
-
 
 class IPrecision(IComment):
     """
@@ -107,27 +89,95 @@ class Precision(Comment):
     implements(IPrecision)
 
 
-class IPrecisionDemand(IObservation):
+class IFDObservation(IComment, IObservation):
     """
-    Precision demand dexterity schema.
-    """
-
-
-class PrecisionDemand(Observation):
-    """
-    Precision demand dexterity class.
-    """
-    implements(IObservation)
-
-
-class IInadmissibleFolder(IObservation):
-    """
-    Inadmissible folder dexterity schema.
+    FD Observation dexterity schema.
     """
 
 
-class InadmissibleFolder(Observation):
+class FDObservation(Comment):
     """
-    Inadmissible folder dexterity class.
+    FD Observation dexterity class.
     """
-    implements(IObservation)
+    implements(IFDObservation)
+
+    def get_local_group(self):
+        notarydivision = self.get_notarydivision()
+        local_dgo4 = notarydivision.local_dgo4
+        return local_dgo4
+
+    def get_creation_role(self):
+        return 'FD Observation Creator'
+
+
+class IFDPrecisionDemand(IFDObservation):
+    """
+    FD Precision demand dexterity schema.
+    """
+
+
+class FDPrecisionDemand(FDObservation):
+    """
+    FD Precision demand dexterity class.
+    """
+    implements(IFDPrecisionDemand)
+
+
+class IFDInadmissibleFolder(IFDObservation):
+    """
+    FD Inadmissible folder dexterity schema.
+    """
+
+
+class FDInadmissibleFolder(FDObservation):
+    """
+    FD Inadmissible folder dexterity class.
+    """
+    implements(IFDInadmissibleFolder)
+
+
+class ITownshipObservation(IComment, IObservation):
+    """
+    Township Observation dexterity schema.
+    """
+
+
+class TownshipObservation(Comment):
+    """
+    Township Observation dexterity class.
+    """
+    implements(ITownshipObservation)
+
+    def get_local_group(self):
+        notarydivision = self.get_notarydivision()
+        local_township = notarydivision.local_township
+        return local_township
+
+    def get_creation_role(self):
+        return 'Township Observation Creator'
+
+
+class ITownshipPrecisionDemand(ITownshipObservation):
+    """
+    Township Precision demand dexterity schema.
+    """
+
+
+class TownshipPrecisionDemand(TownshipObservation):
+    """
+    Township Precision demand dexterity class.
+    """
+    implements(ITownshipPrecisionDemand)
+
+
+class ITownshipInadmissibleFolder(ITownshipObservation):
+    """
+    Township Inadmissible folder dexterity schema.
+    """
+
+
+class TownshipInadmissibleFolder(TownshipObservation):
+    """
+    Township Inadmissible folder dexterity class.
+    """
+    implements(ITownshipInadmissibleFolder)

@@ -1,24 +1,18 @@
 <?xml version="1.0"?>
-<object name="Precision" meta_type="Dexterity FTI" i18n:domain="urbdial.divnot"
+<object name="FDObservation" meta_type="Dexterity FTI" i18n:domain="urbdial.divnot"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Precision</property>
+ <property name="title" i18n:translate="">FDObservation</property>
  <property name="description" i18n:translate="">None</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
- <property name="factory">Precision</property>
+ <property name="factory">FDObservation</property>
  <property
-    name="add_view_expr">string:${folder_url}/++add++Precision</property>
+    name="add_view_expr">string:${folder_url}/++add++FDObservation</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types">
   <element value="Precision"/>
-  <element value="FDObservation"/>
-  <element value="FDPrecisionDemand"/>
-  <element value="FDInadmissibleFolder"/>
-  <element value="TownshipObservation"/>
-  <element value="TownshipPrecisionDemand"/>
-  <element value="TownshipInadmissibleFolder"/>
  </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">view</property>
@@ -26,17 +20,16 @@
   <element value="view"/>
  </property>
  <property name="default_view_fallback">False</property>
- <property name="add_permission">imio.urbdial.notarydivision.AddPrecision</property>
- <property name="klass">imio.urbdial.notarydivision.content.comment.Precision</property>
+ <property name="add_permission">imio.urbdial.notarydivision.AddFDObservation</property>
+ <property name="klass">imio.urbdial.notarydivision.content.comment.FDObservation</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>
  </property>
- <property name="schema">imio.urbdial.notarydivision.content.comment.IPrecision</property>
+ <property name="schema">imio.urbdial.notarydivision.content.comment.IFDObservation</property>
  <property name="schema_policy">dexterity</property>
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="@@edit"/>
  <alias from="sharing" to="@@sharing"/>
- <alias from="view" to="(selected layout)"/>
  <action title="View" action_id="view" category="object" condition_expr=""
     description="" icon_expr="" link_target="" url_expr="string:${object_url}"
     visible="True">

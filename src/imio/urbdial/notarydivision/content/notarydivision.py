@@ -355,20 +355,21 @@ class NotaryDivision(BaseContainer):
             if action.get('action') == 'Pass':
                 return action.get('time')
 
-    def get_comments(self, state=None, portal_type=''):
+    def get_comments(self, state=None, portal_type='', interface=None):
         """
         Query all comments of the current NotaryDivision.
         """
         catalog = api.portal.get_tool('portal_catalog')
 
-        query = {}
+        query = {'object_provides': IComment.__identifier__}
         if state:
             query['review_state'] = state
         if portal_type:
             query['portal_type'] = portal_type
+        if interface:
+            query['object_provides'] = interface.__identifier__
 
         comment_brains = catalog(
-            object_provides=IComment.__identifier__,
             path={'query': '/'.join(self.getPhysicalPath())},
             **query
         )

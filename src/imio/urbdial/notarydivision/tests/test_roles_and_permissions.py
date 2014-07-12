@@ -42,23 +42,31 @@ class TestRolesAndPermissions(unittest.TestCase):
         registered_roles = portal_roles.listRoleIds()
         self.assertTrue('NotaryDivision Creator' in registered_roles)
 
-    def test_NotaryDivisionReader_role_regsitration(self):
+    def test_NotaryDivisionReader_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
         registered_roles = portal_roles.listRoleIds()
         self.assertTrue('NotaryDivision Reader' in registered_roles)
 
-    def test_NotaryDivisionManager_role_regsitration(self):
+    def test_NotaryDivisionManager_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
         registered_roles = portal_roles.listRoleIds()
         self.assertTrue('NotaryDivision Manager' in registered_roles)
 
-    def test_AddObservation_permission_registration(self):
-        self.assertTrue('imio.urbdial.notarydivision: Add Observation' in self.portal.possible_permissions())
+    def test_AddFDObservation_permission_registration(self):
+        self.assertTrue('imio.urbdial.notarydivision: Add FD Observation' in self.portal.possible_permissions())
 
-    def test_ObservationCreator_role_registration(self):
+    def test_FDObservationCreator_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager
         registered_roles = portal_roles.listRoleIds()
-        self.assertTrue('Observation Creator' in registered_roles)
+        self.assertTrue('FD Observation Creator' in registered_roles)
+
+    def test_AddTownshipObservation_permission_registration(self):
+        self.assertTrue('imio.urbdial.notarydivision: Add Township Observation' in self.portal.possible_permissions())
+
+    def test_TownshipObservationCreator_role_registration(self):
+        portal_roles = self.portal.acl_users.portal_role_manager
+        registered_roles = portal_roles.listRoleIds()
+        self.assertTrue('Township Observation Creator' in registered_roles)
 
     def test_ObservationReader_role_registration(self):
         portal_roles = self.portal.acl_users.portal_role_manager

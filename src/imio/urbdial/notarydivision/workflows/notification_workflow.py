@@ -22,11 +22,11 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
             ),
             'get_local_township': (
                 'NotaryDivision Reader',
-                'Observation Creator',
+                'Township Observation Creator',
             ),
             'get_local_dgo4': (
                 'NotaryDivision Reader',
-                'Observation Creator',
+                'FD Observation Creator',
             ),
             'notaries': ('NotaryDivision Reader',),
             'dgo4': ('NotaryDivision Reader',),

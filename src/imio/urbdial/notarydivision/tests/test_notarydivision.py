@@ -33,25 +33,40 @@ class TestNotaryDivision(unittest.TestCase):
         divnot_type = portal_types.NotaryDivision
         self.assertTrue(divnot_type.add_permission == 'cmf.AddPortalContent')
 
-    def test_Observation_is_in_NotaryDivision_allowed_content_types(self):
-        portal_types = api.portal.get_tool('portal_types')
-        divnot_type = portal_types.NotaryDivision
-        self.assertTrue('Observation' in divnot_type.allowed_content_types)
-
     def test_Precision_is_in_NotaryDivision_allowed_content_types(self):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
         self.assertTrue('Precision' in divnot_type.allowed_content_types)
 
-    def test_PrecisionDemand_is_in_NotaryDivision_allowed_content_types(self):
+    def test_FDObservation_is_in_NotaryDivision_allowed_content_types(self):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
-        self.assertTrue('PrecisionDemand' in divnot_type.allowed_content_types)
+        self.assertTrue('FDObservation' in divnot_type.allowed_content_types)
 
-    def test_InadmissibleFolder_is_in_NotaryDivision_allowed_content_types(self):
+    def test_TownshipObservation_is_in_NotaryDivision_allowed_content_types(self):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
-        self.assertTrue('InadmissibleFolder' in divnot_type.allowed_content_types)
+        self.assertTrue('TownshipObservation' in divnot_type.allowed_content_types)
+
+    def test_FDPrecisionDemand_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('FDPrecisionDemand' in divnot_type.allowed_content_types)
+
+    def test_FDInadmissibleFolder_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('FDInadmissibleFolder' in divnot_type.allowed_content_types)
+
+    def test_TownshipPrecisionDemand_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('TownshipPrecisionDemand' in divnot_type.allowed_content_types)
+
+    def test_TownshipInadmissibleFolder_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('TownshipInadmissibleFolder' in divnot_type.allowed_content_types)
 
 
 class TestNotaryDivisionFields(NotaryDivisionBrowserTest):

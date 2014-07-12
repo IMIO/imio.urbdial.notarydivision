@@ -10,7 +10,6 @@
  <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
  <permission>Add portal content</permission>
- <permission>imio.urbdial.notarydivision: Add Observation</permission>
  <permission>imio.urbdial.notarydivision: Add Precision</permission>
  <state state_id="Draft"
         title="Draft"
@@ -24,7 +23,6 @@
   </permission-map>
   <permission-map name="Add portal content"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -42,11 +40,6 @@
                   acquired="False">
    <permission-role>Observation Reader</permission-role>
    <permission-role>Observation Manager</permission-role>
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Observation"
-                  acquired="False">
-   <permission-role>Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
@@ -66,7 +59,6 @@
   </permission-map>
   <permission-map name="Add portal content"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -84,11 +76,6 @@
                   acquired="False">
    <permission-role>Observation Reader</permission-role>
    <permission-role>Observation Manager</permission-role>
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Observation"
-                  acquired="False">
-   <permission-role>Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
@@ -109,7 +96,6 @@
   </permission-map>
   <permission-map name="Add portal content"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -127,11 +113,6 @@
                   acquired="False">
    <permission-role>Observation Reader</permission-role>
    <permission-role>Observation Manager</permission-role>
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Observation"
-                  acquired="False">
-   <permission-role>Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"

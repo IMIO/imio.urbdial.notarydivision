@@ -30,17 +30,29 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
         available_workflows = self.wf_tool.listWorkflows()
         self.assertTrue('Observation_workflow' in available_workflows)
 
-    def test_observation_workflow_is_bound_to_Observation_type(self):
-        Folder_worklows = self.wf_tool.getChainForPortalType('Observation')
-        self.assertTrue('Observation_workflow' in Folder_worklows)
+    def test_observation_workflow_is_bound_to_FDObservation_type(self):
+        observation_worklows = self.wf_tool.getChainForPortalType('FDObservation')
+        self.assertTrue('Observation_workflow' in observation_worklows)
 
-    def test_observation_workflow_is_bound_to_InadmissibleFolder_type(self):
-        Folder_worklows = self.wf_tool.getChainForPortalType('InadmissibleFolder')
-        self.assertTrue('Observation_workflow' in Folder_worklows)
+    def test_observation_workflow_is_bound_to_FDInadmissibleFolder_type(self):
+        observation_worklows = self.wf_tool.getChainForPortalType('FDInadmissibleFolder')
+        self.assertTrue('Observation_workflow' in observation_worklows)
 
-    def test_observation_workflow_is_bound_to_PrecisionDemand_type(self):
-        Folder_worklows = self.wf_tool.getChainForPortalType('PrecisionDemand')
-        self.assertTrue('Observation_workflow' in Folder_worklows)
+    def test_observation_workflow_is_bound_to_FDPrecisionDemand_type(self):
+        observation_worklows = self.wf_tool.getChainForPortalType('FDPrecisionDemand')
+        self.assertTrue('Observation_workflow' in observation_worklows)
+
+    def test_observation_workflow_is_bound_to_TownshipObservation_type(self):
+        observation_worklows = self.wf_tool.getChainForPortalType('TownshipObservation')
+        self.assertTrue('Observation_workflow' in observation_worklows)
+
+    def test_observation_workflow_is_bound_to_TownshipInadmissibleFolder_type(self):
+        observation_worklows = self.wf_tool.getChainForPortalType('TownshipInadmissibleFolder')
+        self.assertTrue('Observation_workflow' in observation_worklows)
+
+    def test_observation_workflow_is_bound_to_TownshipPrecisionDemand_type(self):
+        observation_worklows = self.wf_tool.getChainForPortalType('TownshipPrecisionDemand')
+        self.assertTrue('Observation_workflow' in observation_worklows)
 
     def get_roles_of_permission(self, permission, state='Draft'):
         default_state = self.observation_wf.states[state]
@@ -109,12 +121,11 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
 
     def test_AddPortalContent_permission_roles(self):
         """
-        'Add Precision' permission should be given to 'Precision Creator' role.
+        'Add portal content' permission should be given to 'Precision Creator' role.
         """
         roles_of_permission = self.get_roles_of_permission('Add portal content')
-        self.assertTrue(len(roles_of_permission) == 3)
+        self.assertTrue(len(roles_of_permission) == 2)
         self.assertTrue('Precision Creator' in roles_of_permission)
-        self.assertTrue('Observation Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
     def test_AddPrecision_permission_roles(self):
@@ -124,15 +135,6 @@ class TestObservationWorkflowDefinition(unittest.TestCase):
         roles_of_permission = self.get_roles_of_permission('imio.urbdial.notarydivision: Add Precision')
         self.assertTrue(len(roles_of_permission) == 2)
         self.assertTrue('Precision Creator' in roles_of_permission)
-        self.assertTrue('Manager' in roles_of_permission)
-
-    def test_AddObservation_permission_roles(self):
-        """
-        'Add Observation' permission should be given to 'Observation Creator' role.
-        """
-        roles_of_permission = self.get_roles_of_permission('imio.urbdial.notarydivision: Add Observation')
-        self.assertTrue(len(roles_of_permission) == 2)
-        self.assertTrue('Observation Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
     def test_DeleteObjects_permission_roles(self):
@@ -361,12 +363,13 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
 
     def test_AddPortalContent_permission_roles(self):
         """
-        'Add Precision' permission should be given to 'Precision Creator' role.
+        'Add Precision' permission should be given to each 'XXX Creator' role.
         """
         roles_of_permission = self.get_roles_of_permission('Add portal content')
-        self.assertTrue(len(roles_of_permission) == 3)
+        self.assertTrue(len(roles_of_permission) == 4)
         self.assertTrue('Precision Creator' in roles_of_permission)
-        self.assertTrue('Observation Creator' in roles_of_permission)
+        self.assertTrue('FD Observation Creator' in roles_of_permission)
+        self.assertTrue('Township Observation Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
     def test_AddPrecision_permission_roles(self):
@@ -378,13 +381,22 @@ class TestPrecisionWorkflowDefinition(unittest.TestCase):
         self.assertTrue('Precision Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
-    def test_AddObservation_permission_roles(self):
+    def test_AddFDObservation_permission_roles(self):
         """
-        'Add Observation' permission should be given to 'Observation Creator' role.
+        'Add FD Observation' permission should be given to 'FD Observation Creator' role.
         """
-        roles_of_permission = self.get_roles_of_permission('imio.urbdial.notarydivision: Add Observation')
+        roles_of_permission = self.get_roles_of_permission('imio.urbdial.notarydivision: Add FD Observation')
         self.assertTrue(len(roles_of_permission) == 2)
-        self.assertTrue('Observation Creator' in roles_of_permission)
+        self.assertTrue('FD Observation Creator' in roles_of_permission)
+        self.assertTrue('Manager' in roles_of_permission)
+
+    def test_AddTownshipObservation_permission_roles(self):
+        """
+        'Add Township Observation' permission should be given to 'Township Observation Creator' role.
+        """
+        roles_of_permission = self.get_roles_of_permission('imio.urbdial.notarydivision: Add Township Observation')
+        self.assertTrue(len(roles_of_permission) == 2)
+        self.assertTrue('Township Observation Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
     def test_DeleteObjects_permission_roles(self):

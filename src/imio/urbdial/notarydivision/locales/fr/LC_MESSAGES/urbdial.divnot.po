@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-07-09 12:57+0000\n"
+"POT-Creation-Date: 2014-07-12 07:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-#: ../content/notarydivision.py:314
+#: ../content/notarydivision.py:320
 msgid "Annex"
 msgstr "Autres annexes"
 
-#: ../content/notarydivision.py:320
+#: ../content/notarydivision.py:326
 msgid "Annex files"
 msgstr "Fichiers des annexes"
 
@@ -27,27 +27,27 @@ msgstr "Fichiers des annexes"
 msgid "Answer"
 msgstr "Répondre"
 
-#: ../content/notarydivision.py:203
+#: ../content/notarydivision.py:207
 msgid "Applicants"
 msgstr "Requérant(s)"
 
-#: ../content/notarydivision.py:266
+#: ../content/notarydivision.py:272
 msgid "Article 90"
 msgstr "Article 90"
 
-#: ../content/notarydivision.py:280
+#: ../content/notarydivision.py:286
 msgid "Article 90 exceptions detail"
 msgstr "Justificatif des motifs d'exception"
 
-#: ../content/notarydivision.py:272
+#: ../content/notarydivision.py:278
 msgid "Article 90 reasons"
 msgstr "Motifs d'exception article 90"
 
-#: ../content/notarydivision.py:73
+#: ../content/notarydivision.py:77
 msgid "Bis"
 msgstr "Bis"
 
-#: ../content/notarydivision.py:156
+#: ../content/notarydivision.py:160
 msgid "Built"
 msgstr "Bâti"
 
@@ -59,41 +59,53 @@ msgstr "Référence cadastrale"
 msgid "ConfigFolder"
 msgstr "Dossier de configuration"
 
-#: ../content/notarydivision.py:250
+#: ../content/notarydivision.py:256
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
-#: ../setuphandlers.py:149
+#: ../setuphandlers.py:127
 msgid "DGO 4"
 msgstr "DGO 4"
 
-#: ../content/notarydivision.py:161
+#: ../content/notarydivision.py:165
 msgid "Deed type"
 msgstr "Type d'acte"
 
-#: ../content/notarydivision.py:58
+#: ../content/notarydivision.py:62
 msgid "Division"
 msgstr "Division"
 
-#: ../content/notarydivision.py:260
+#: ../content/notarydivision.py:266
 msgid "Entrusting"
 msgstr "Sauf en cas de force majeure, les parties se sont engagées à maintenir leurs intentions respectives dans un délai raisonnable "
 
-#: ../content/notarydivision.py:229
+#: ../content/notarydivision.py:235
 msgid "Estate"
 msgstr "Ensemble immobilier"
 
-#: ../content/notarydivision.py:234
+#: ../content/notarydivision.py:240
 msgid "Estate actual use"
 msgstr "Affectation actuelle du bien"
 
-#: ../content/notarydivision.py:186
+#: ../content/notarydivision.py:190
 msgid "Exclude from navigation"
 msgstr ""
 
-#: ../content/notarydivision.py:78
+#: ../content/notarydivision.py:82
 msgid "Exposant"
 msgstr "Exposant"
+
+#: ../profiles/default/types/FDInadmissibleFolder.xml
+msgid "FDInadmissibleFolder"
+msgstr "Dossier irrecevable"
+
+#: ../profiles/default/types/FDObservation.xml
+msgid "FDObservation"
+msgstr "Observation"
+
+#: ../profiles/default/types/FDPrecisionDemand.xml
+msgid "FDPrecisionDemand"
+msgstr "Demande de précision"
 
 msgid "False"
 msgstr "Non"
@@ -102,11 +114,11 @@ msgstr "Non"
 msgid "Files"
 msgstr "Fichiers"
 
-#: ../content/notarydivision.py:34
+#: ../content/notarydivision.py:38
 msgid "Firstname"
 msgstr "Prénom"
 
-#: ../content/notarydivision.py:192
+#: ../content/notarydivision.py:196
 msgid "General informations"
 msgstr "Informations générales"
 
@@ -114,46 +126,42 @@ msgstr "Informations générales"
 msgid "Generate documents"
 msgstr "Documents à générer"
 
-#: ../content/notarydivision.py:301
+#: ../content/notarydivision.py:307
 msgid "Geometrician"
 msgstr "Géomètre"
 
-#: ../profiles/default/types/InadmissibleFolder.xml
-msgid "InadmissibleFolder"
-msgstr "Dossier irrecevable"
-
-#: ../content/notarydivision.py:240
+#: ../content/notarydivision.py:246
 msgid "Initial estate"
 msgstr "Ensemble immobilier initial"
 
-#: ../content/notarydivision.py:212
+#: ../content/notarydivision.py:216
 msgid "Local DGO4"
 msgstr "Direction(s) provinciale concernée(s)"
 
-#: ../content/notarydivision.py:220
+#: ../content/notarydivision.py:225
 msgid "Local township"
 msgstr "Commune(s) concernée(s)"
 
-#: ../content/notarydivision.py:52
+#: ../content/notarydivision.py:56
 msgid "Locality"
 msgstr "Commune"
 
-#: ../content/notarydivision.py:39
+#: ../content/notarydivision.py:43
 msgid "Name"
 msgstr "Nom"
 
 #: ../profiles/default/types/ConfigFolder.xml
-#: ../profiles/default/types/InadmissibleFolder.xml
-#: ../profiles/default/types/NotaryDivision.xml
+#: ../profiles/default/types/FDInadmissibleFolder.xml
+#: ../profiles/default/types/FDObservation.xml
 msgid "None"
 msgstr ""
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:137
+#: ../setuphandlers.py:115
 msgid "Notaries"
 msgstr "Notaires"
 
-#: ../setuphandlers.py:143
+#: ../setuphandlers.py:121
 msgid "Notaries admin"
 msgstr "Administrateur FRNB"
 
@@ -161,31 +169,27 @@ msgstr "Administrateur FRNB"
 msgid "NotaryDivision"
 msgstr "Division notariale"
 
-#: ../profiles/default/types/Observation.xml
-msgid "Observation"
-msgstr "Observation"
-
-#: ../content/notarydivision.py:167
+#: ../content/notarydivision.py:171
 msgid "Parcel destination"
 msgstr "Destination du lot"
 
-#: ../content/notarydivision.py:286
+#: ../content/notarydivision.py:292
 msgid "Plan"
 msgstr "Plan"
 
-#: ../content/notarydivision.py:296
+#: ../content/notarydivision.py:302
 msgid "Plan date"
 msgstr "Date du plan"
 
-#: ../content/notarydivision.py:291
+#: ../content/notarydivision.py:297
 msgid "Plan reference"
 msgstr "Référence du plan"
 
-#: ../content/notarydivision.py:307
+#: ../content/notarydivision.py:313
 msgid "Plans files"
 msgstr "Fichiers (plan)"
 
-#: ../content/notarydivision.py:83
+#: ../content/notarydivision.py:87
 msgid "Power"
 msgstr "Puissance"
 
@@ -193,31 +197,27 @@ msgstr "Puissance"
 msgid "Precision"
 msgstr "Précision"
 
-#: ../profiles/default/types/PrecisionDemand.xml
-msgid "PrecisionDemand"
-msgstr "Demande de Précision"
-
-#: ../content/notarydivision.py:68
+#: ../content/notarydivision.py:72
 msgid "Radical"
 msgstr "Radical"
 
-#: ../content/notarydivision.py:197
+#: ../content/notarydivision.py:201
 msgid "Reference"
 msgstr "Référence"
 
-#: ../content/notarydivision.py:63
+#: ../content/notarydivision.py:67
 msgid "Section"
 msgstr "Section"
 
-#: ../content/notarydivision.py:93
+#: ../content/notarydivision.py:97
 msgid "Specific rights"
 msgstr "Droits des parties"
 
-#: ../content/notarydivision.py:88
+#: ../content/notarydivision.py:92
 msgid "Surface"
 msgstr "Superficie"
 
-#: ../content/notarydivision.py:150
+#: ../content/notarydivision.py:154
 msgid "Surface accuracy"
 msgstr "(type)"
 
@@ -225,7 +225,19 @@ msgstr "(type)"
 msgid "Text"
 msgstr "Texte"
 
-#: ../setuphandlers.py:155
+#: ../profiles/default/types/TownshipInadmissibleFolder.xml
+msgid "TownshipInadmissibleFolder"
+msgstr "Dossier irrecevable"
+
+#: ../profiles/default/types/TownshipObservation.xml
+msgid "TownshipObservation"
+msgstr "Observation"
+
+#: ../profiles/default/types/TownshipPrecisionDemand.xml
+msgid "TownshipPrecisionDemand"
+msgstr "Demande de précision"
+
+#: ../setuphandlers.py:133
 msgid "Townships"
 msgstr "Communes"
 
@@ -233,11 +245,11 @@ msgid "True"
 msgstr "Oui"
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:187
+#: ../setuphandlers.py:165
 msgid "notarydivisions_folder_title"
 msgstr "Divisions notariales"
 
-#: ../setuphandlers.py:214
+#: ../setuphandlers.py:192
 msgid "pod_templates_folder_title"
 msgstr "Modèles de documents"
 

@@ -11,7 +11,8 @@
  <permission>Modify portal content</permission>
  <permission>Add portal content</permission>
  <permission>imio.urbdial.notarydivision: Add Precision</permission>
- <permission>imio.urbdial.notarydivision: Add Observation</permission>
+ <permission>imio.urbdial.notarydivision: Add FD Observation</permission>
+ <permission>imio.urbdial.notarydivision: Add Township Observation</permission>
  <permission>imio.urbdial.notarydivision: Manage notification</permission>
  <state state_id="Cancelled"
         title="Cancelled"
@@ -25,7 +26,8 @@
   </permission-map>
   <permission-map name="Add portal content"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
+   <permission-role>FD Observation Creator</permission-role>
+   <permission-role>Township Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -45,14 +47,19 @@
    <permission-role>NotaryDivision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Observation"
+  <permission-map name="imio.urbdial.notarydivision: Add FD Observation"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
+   <permission-role>FD Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
                   acquired="False">
    <permission-role>Precision Creator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="imio.urbdial.notarydivision: Add Township Observation"
+                  acquired="False">
+   <permission-role>Township Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Manage notification"
@@ -74,7 +81,8 @@
   </permission-map>
   <permission-map name="Add portal content"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
+   <permission-role>FD Observation Creator</permission-role>
+   <permission-role>Township Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -94,14 +102,19 @@
    <permission-role>NotaryDivision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Observation"
+  <permission-map name="imio.urbdial.notarydivision: Add FD Observation"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
+   <permission-role>FD Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
                   acquired="False">
    <permission-role>Precision Creator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="imio.urbdial.notarydivision: Add Township Observation"
+                  acquired="False">
+   <permission-role>Township Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Manage notification"
@@ -122,7 +135,8 @@
   </permission-map>
   <permission-map name="Add portal content"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
+   <permission-role>FD Observation Creator</permission-role>
+   <permission-role>Township Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -142,14 +156,19 @@
    <permission-role>NotaryDivision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Observation"
+  <permission-map name="imio.urbdial.notarydivision: Add FD Observation"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
+   <permission-role>FD Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
                   acquired="False">
    <permission-role>Precision Creator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="imio.urbdial.notarydivision: Add Township Observation"
+                  acquired="False">
+   <permission-role>Township Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Manage notification"
@@ -170,7 +189,8 @@
   </permission-map>
   <permission-map name="Add portal content"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
+   <permission-role>FD Observation Creator</permission-role>
+   <permission-role>Township Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -190,14 +210,19 @@
    <permission-role>NotaryDivision Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Observation"
+  <permission-map name="imio.urbdial.notarydivision: Add FD Observation"
                   acquired="False">
-   <permission-role>Observation Creator</permission-role>
+   <permission-role>FD Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
                   acquired="False">
    <permission-role>Precision Creator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="imio.urbdial.notarydivision: Add Township Observation"
+                  acquired="False">
+   <permission-role>Township Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Manage notification"

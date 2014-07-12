@@ -192,14 +192,6 @@ class TestDocumentConditions(CommentBrowserTest):
         msg = "No document generation should be available for a non notary user."
         self.assertTrue(condition_obj.evaluate() is False, msg)
 
-        # If the author of the answered comment is not a FD , condition should
-        # be False
-        login(self.portal, TEST_NOTARY_NAME)
-        observation.is_dgo4_or_township = lambda: 'townships'
-        condition_obj = self.get_template_condition(template_id, context=precision)
-        msg = "Precision fd document should available only if previous comment author is FD."
-        self.assertTrue(condition_obj.evaluate() is False, msg)
-
     def test_ac_precision_condition_registration(self):
         from imio.urbdial.notarydivision.content.template_conditions import PrecisionACDocumentCondition
 
@@ -217,10 +209,9 @@ class TestDocumentConditions(CommentBrowserTest):
         """
 
         template_id = 'precision-ac'
-        observation = self.test_observation
         # create and publish a township observation then create a precision on it.
         login(self.portal, TEST_TOWNSHIP_NAME)
-        observation = api.content.create(type='Observation', id='obs', container=self.test_divnot)
+        observation = api.content.create(type='TownshipObservation', id='obs', container=self.test_divnot)
         observation.transition('Publish')
         login(self.portal, TEST_NOTARY_NAME)
         precision = api.content.create(type='Precision', id='precision', container=observation)
@@ -240,14 +231,6 @@ class TestDocumentConditions(CommentBrowserTest):
         login(self.portal, TEST_FD_NAME)
         condition_obj = self.get_template_condition(template_id, context=precision)
         msg = "No document generation should be available for a non notary user."
-        self.assertTrue(condition_obj.evaluate() is False, msg)
-
-        # If the author of the answered comment is not from townships, condition should
-        # be False
-        login(self.portal, TEST_NOTARY_NAME)
-        observation.is_dgo4_or_township = lambda: 'dgo4'
-        condition_obj = self.get_template_condition(template_id, context=precision)
-        msg = "Precision ac document should available only if previous comment author is from townships."
         self.assertTrue(condition_obj.evaluate() is False, msg)
 
 

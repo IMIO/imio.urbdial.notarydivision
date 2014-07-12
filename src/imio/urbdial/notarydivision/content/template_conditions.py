@@ -2,6 +2,9 @@
 
 from collective.documentgenerator.content.condition import PODTemplateCondition
 
+from imio.urbdial.notarydivision.content.comment import IFDObservation
+from imio.urbdial.notarydivision.content.comment import ITownshipObservation
+
 from plone import api
 
 
@@ -64,16 +67,9 @@ class PrecisionFDDocumentCondition(NotificationDocumentCondition):
         # Precision should at least be in state 'published'.
         if precision.is_in_draft():
             return False
-
-        container = precision.aq_parent
-        # Precision should be an answer to an observation.
-        if container.portal_type not in ['Observation', 'InadmissibleFolder', 'PrecisionDemand']:
+        # Precisison should be an answer to an FD Observation.
+        if not IFDObservation.providedBy(precision.aq_parent):
             return False
-
-        # The answered comment should be written by a FD.
-        if not container.is_dgo4_or_township() == 'dgo4':
-            return False
-
         return True
 
 
@@ -89,14 +85,7 @@ class PrecisionACDocumentCondition(NotificationDocumentCondition):
         # Precision should at least be in state 'published'.
         if precision.is_in_draft():
             return False
-
-        container = precision.aq_parent
-        # Precision should be an answer to an observation.
-        if container.portal_type not in ['Observation', 'InadmissibleFolder', 'PrecisionDemand']:
+        # Precisison should be an answer to a Township Observation.
+        if not ITownshipObservation.providedBy(precision.aq_parent):
             return False
-
-        # The answered comment should be written by a AC.
-        if not container.is_dgo4_or_township() == 'townships':
-            return False
-
         return True

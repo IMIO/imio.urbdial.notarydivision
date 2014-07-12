@@ -6,7 +6,8 @@
     <role name="NotaryDivision Creator"/>
     <role name="NotaryDivision Manager"/>
     <role name="NotaryDivision Reader"/>
-    <role name="Observation Creator"/>
+    <role name="FD Observation Creator"/>
+    <role name="Township Observation Creator"/>
     <role name="Observation Manager"/>
     <role name="Observation Reader"/>
     <role name="Precision Manager"/>

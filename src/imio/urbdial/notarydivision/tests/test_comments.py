@@ -28,21 +28,6 @@ class TestInstall(unittest.TestCase):
 
     layer = TEST_INSTALL_INTEGRATION
 
-    def test_Observation_portal_type_is_registered(self):
-        portal_types = api.portal.get_tool('portal_types')
-        registered_types = portal_types.listContentTypes()
-        self.assertTrue('Observation' in registered_types)
-
-    def test_Observation_creation_permission_is_AddObservation(self):
-        portal_types = api.portal.get_tool('portal_types')
-        observation_type = portal_types.Observation
-        self.assertTrue(observation_type.add_permission == 'imio.urbdial.notarydivision.AddObservation')
-
-    def test_Observation_is_in_Observation_allowed_content_types(self):
-        portal_types = api.portal.get_tool('portal_types')
-        observation_type = portal_types.Observation
-        self.assertTrue('Observation' in observation_type.allowed_content_types)
-
     def test_Precision_portal_type_is_registered(self):
         portal_types = api.portal.get_tool('portal_types')
         registered_types = portal_types.listContentTypes()
@@ -53,25 +38,95 @@ class TestInstall(unittest.TestCase):
         precision_type = portal_types.Precision
         self.assertTrue(precision_type.add_permission == 'imio.urbdial.notarydivision.AddPrecision')
 
-    def test_PrecisionDemand_portal_type_is_registered(self):
+    def test_FDObservation_portal_type_is_registered(self):
         portal_types = api.portal.get_tool('portal_types')
         registered_types = portal_types.listContentTypes()
-        self.assertTrue('PrecisionDemand' in registered_types)
+        self.assertTrue('FDObservation' in registered_types)
 
-    def test_PrecisionDemand_creation_permission_is_AddObservation(self):
+    def test_FDObservation_creation_permission_is_AddFDObservation(self):
         portal_types = api.portal.get_tool('portal_types')
-        precisionDemand_type = portal_types.PrecisionDemand
-        self.assertTrue(precisionDemand_type.add_permission == 'imio.urbdial.notarydivision.AddObservation')
+        observation_type = portal_types.FDObservation
+        self.assertTrue(observation_type.add_permission == 'imio.urbdial.notarydivision.AddFDObservation')
 
-    def test_InadmissibleFolder_portal_type_is_registered(self):
+    def test_FDObservation_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        observation_type = portal_types.FDObservation
+        self.assertTrue(('Precision',) == observation_type.allowed_content_types)
+
+    def test_TownshipObservation_portal_type_is_registered(self):
         portal_types = api.portal.get_tool('portal_types')
         registered_types = portal_types.listContentTypes()
-        self.assertTrue('InadmissibleFolder' in registered_types)
+        self.assertTrue('TownshipObservation' in registered_types)
 
-    def test_InadmissibleFolder_creation_permission_is_AddObservation(self):
+    def test_TownshipObservation_creation_permission_is_AddTownshipObservation(self):
         portal_types = api.portal.get_tool('portal_types')
-        inadmissibleFolder_type = portal_types.InadmissibleFolder
-        self.assertTrue(inadmissibleFolder_type.add_permission == 'imio.urbdial.notarydivision.AddObservation')
+        observation_type = portal_types.TownshipObservation
+        self.assertTrue(observation_type.add_permission == 'imio.urbdial.notarydivision.AddTownshipObservation')
+
+    def test_TownshipObservation_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        observation_type = portal_types.TownshipObservation
+        self.assertTrue(('Precision',) == observation_type.allowed_content_types)
+
+    def test_FDPrecisionDemand_portal_type_is_registered(self):
+        portal_types = api.portal.get_tool('portal_types')
+        registered_types = portal_types.listContentTypes()
+        self.assertTrue('FDPrecisionDemand' in registered_types)
+
+    def test_FDPrecisionDemand_creation_permission_is_AddFDObservation(self):
+        portal_types = api.portal.get_tool('portal_types')
+        precisionDemand_type = portal_types.FDPrecisionDemand
+        self.assertTrue(precisionDemand_type.add_permission == 'imio.urbdial.notarydivision.AddFDObservation')
+
+    def test_FDPrecisionDemand_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        observation_type = portal_types.FDPrecisionDemand
+        self.assertTrue(('Precision',) == observation_type.allowed_content_types)
+
+    def test_FDInadmissibleFolder_portal_type_is_registered(self):
+        portal_types = api.portal.get_tool('portal_types')
+        registered_types = portal_types.listContentTypes()
+        self.assertTrue('FDInadmissibleFolder' in registered_types)
+
+    def test_FDInadmissibleFolder_creation_permission_is_AddFDObservation(self):
+        portal_types = api.portal.get_tool('portal_types')
+        inadmissibleFolder_type = portal_types.FDInadmissibleFolder
+        self.assertTrue(inadmissibleFolder_type.add_permission == 'imio.urbdial.notarydivision.AddFDObservation')
+
+    def test_FDInadmissibleFolder_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        observation_type = portal_types.FDInadmissibleFolder
+        self.assertTrue(('Precision',) == observation_type.allowed_content_types)
+
+    def test_TownshipPrecisionDemand_portal_type_is_registered(self):
+        portal_types = api.portal.get_tool('portal_types')
+        registered_types = portal_types.listContentTypes()
+        self.assertTrue('TownshipPrecisionDemand' in registered_types)
+
+    def test_TownshipPrecisionDemand_creation_permission_is_AddTownshipObservation(self):
+        portal_types = api.portal.get_tool('portal_types')
+        precisionDemand_type = portal_types.TownshipPrecisionDemand
+        self.assertTrue(precisionDemand_type.add_permission == 'imio.urbdial.notarydivision.AddTownshipObservation')
+
+    def test_TownshipPrecisionDemand_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        observation_type = portal_types.TownshipPrecisionDemand
+        self.assertTrue(('Precision',) == observation_type.allowed_content_types)
+
+    def test_TownshipInadmissibleFolder_portal_type_is_registered(self):
+        portal_types = api.portal.get_tool('portal_types')
+        registered_types = portal_types.listContentTypes()
+        self.assertTrue('TownshipInadmissibleFolder' in registered_types)
+
+    def test_TownshipInadmissibleFolder_creation_permission_is_AddTownshipObservation(self):
+        portal_types = api.portal.get_tool('portal_types')
+        inadmissibleFolder_type = portal_types.TownshipInadmissibleFolder
+        self.assertTrue(inadmissibleFolder_type.add_permission == 'imio.urbdial.notarydivision.AddTownshipObservation')
+
+    def test_TownshipInadmissibleFolder_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        observation_type = portal_types.TownshipInadmissibleFolder
+        self.assertTrue(('Precision',) == observation_type.allowed_content_types)
 
 
 class TestCommentView(CommentBrowserTest):
@@ -192,7 +247,7 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         notarydivision = self.test_divnot
         self.browser_login(TEST_TOWNSHIP_NAME, TEST_TOWNSHIP_PASSWORD)
         observation = api.content.create(
-            type='Observation',
+            type='TownshipObservation',
             id='observation_2',
             container=notarydivision,
         )
@@ -230,7 +285,7 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
 
 class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):
     """
-    Observation Creator role should be active for dgo4/township only when there's no draft
+    FD Observation Creator role should be active for dgo4/township only when there's no draft
     dgo4/township observation on the notary division or a comment.
     """
 
@@ -241,10 +296,10 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
         notarydivision = self.test_divnot
 
         # When a draft observation exists on the notary division...
-        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        draft_observations = notarydivision.get_comments(portal_type='FDObservation', state='Draft')
         self.assertTrue(draft_observations)
 
-        # ... FD should not have 'Observation Creator' role on notarydivision.
+        # ... FD should not have 'FD Observation Creator' role on notarydivision.
         expected_roles = ('NotaryDivision Reader',)
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
@@ -262,11 +317,10 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
         precision.transition('Publish')
 
         # When a draft observation by FD exists on the notary division...
-        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
-        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'dgo4']
+        draft_observations = notarydivision.get_comments(portal_type='FDObservation', state='Draft')
         self.assertTrue(draft_observations)
 
-        # ... FD should not have 'Observation Creator' role on published precision.
+        # ... FD should not have 'FD Observation Creator' role on published precision.
         expected_roles = ('Precision Reader',)
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
@@ -282,12 +336,11 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
         notarydivision = self.test_divnot
 
         # When no draft observation by Township agent exists on the notary division...
-        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
-        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'townships']
+        draft_observations = notarydivision.get_comments(portal_type='TownshipObservation', state='Draft')
         self.assertTrue(not draft_observations)
 
         # ... Township agent should have 'Observation Creator' role on notarydivision.
-        expected_roles = ('NotaryDivision Reader', 'Observation Creator')
+        expected_roles = ('NotaryDivision Reader', 'Township Observation Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_TOWNSHIP_NAME,
             expected_roles=expected_roles,
@@ -304,12 +357,11 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
         precision.transition('Publish')
 
         # When a draft observation by Township agent exists on the notary division...
-        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
-        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'townships']
+        draft_observations = notarydivision.get_comments(portal_type='TownshipObservation', state='Draft')
         self.assertTrue(not draft_observations)
 
         # ... Township agent should have 'Observation Creator' role on notarydivision.
-        expected_roles = ('Precision Reader', 'Observation Creator')
+        expected_roles = ('Precision Reader', 'Township Observation Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_TOWNSHIP_NAME,
             expected_roles=expected_roles,
@@ -328,12 +380,11 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
         self.test_observation.transition('Publish')
 
         # When no draft observation by FD exists on the notary division...
-        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
-        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'dgo4']
+        draft_observations = notarydivision.get_comments(portal_type='FDObservation', state='Draft')
         self.assertTrue(not draft_observations)
 
-        # ... FD should have 'Observation Creator' role on notarydivision.
-        expected_roles = ('NotaryDivision Reader', 'Observation Creator')
+        # ... FD should have 'FD Observation Creator' role on notarydivision.
+        expected_roles = ('NotaryDivision Reader', 'FD Observation Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
             expected_roles=expected_roles,
@@ -354,12 +405,11 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
         self.test_observation.transition('Publish')
 
         # When no draft observation by FD exists on the notary division...
-        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
-        draft_observations = [obs for obs in draft_observations if obs.is_dgo4_or_township() == 'dgo4']
+        draft_observations = notarydivision.get_comments(portal_type='FDObservation', state='Draft')
         self.assertTrue(not draft_observations)
 
-        # ... FD should have 'Observation Creator' role on published precision.
-        expected_roles = ('Precision Reader', 'Observation Creator')
+        # ... FD should have 'FD Observation Creator' role on published precision.
+        expected_roles = ('Precision Reader', 'FD Observation Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
             expected_roles=expected_roles,
@@ -377,11 +427,11 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
         api.content.delete(self.test_observation)
 
         # When no draft observation by FD exists on the notary division...
-        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        draft_observations = notarydivision.get_comments(portal_type='FDObservation', state='Draft')
         self.assertTrue(not draft_observations)
 
-        # ... FD should have 'Observation Creator' role on notarydivision.
-        expected_roles = ('NotaryDivision Reader', 'Observation Creator')
+        # ... FD should have 'FD Observation Creator' role on notarydivision.
+        expected_roles = ('NotaryDivision Reader', 'FD Observation Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
             expected_roles=expected_roles,
@@ -401,11 +451,11 @@ class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRoles
         api.content.delete(self.test_observation)
 
         # When no draft observation by FD exists on the notary division...
-        draft_observations = notarydivision.get_comments(portal_type='Observation', state='Draft')
+        draft_observations = notarydivision.get_comments(portal_type='FDObservation', state='Draft')
         self.assertTrue(not draft_observations)
 
-        # ... FD should have 'Observation Creator' role on published precision.
-        expected_roles = ('Precision Reader', 'Observation Creator')
+        # ... FD should have 'FD Observation Creator' role on published precision.
+        expected_roles = ('Precision Reader', 'FD Observation Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
             expected_roles=expected_roles,

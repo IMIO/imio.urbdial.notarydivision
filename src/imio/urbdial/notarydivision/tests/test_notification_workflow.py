@@ -5,6 +5,7 @@ from imio.urbdial.notarydivision.testing import NotaryDivisionBrowserTest
 from imio.urbdial.notarydivision.testing import WorkflowLocaRolesAssignmentTest
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 
 from plone import api
 
@@ -118,12 +119,13 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
 
     def test_AddPortalContent_permission_roles(self):
         """
-        'Add Precision' permission should be given to 'Precision Creator' role.
+        'Add portal content' permission should be given to each 'XXX Creator' role.
         """
         roles_of_permission = self.get_roles_of_permission('Add portal content')
-        self.assertTrue(len(roles_of_permission) == 3)
+        self.assertTrue(len(roles_of_permission) == 4)
         self.assertTrue('Precision Creator' in roles_of_permission)
-        self.assertTrue('Observation Creator' in roles_of_permission)
+        self.assertTrue('FD Observation Creator' in roles_of_permission)
+        self.assertTrue('Township Observation Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
     def test_AddPrecision_permission_roles(self):
@@ -135,13 +137,22 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
         self.assertTrue('Precision Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
-    def test_AddObservation_permission_roles(self):
+    def test_AddFDObservation_permission_roles(self):
         """
-        'Add Observation' permission should be given to 'Observation Creator' role.
+        'Add FD Observation' permission should be given to 'Observation Creator' role.
         """
-        roles_of_permission = self.get_roles_of_permission('imio.urbdial.notarydivision: Add Observation')
+        roles_of_permission = self.get_roles_of_permission('imio.urbdial.notarydivision: Add FD Observation')
         self.assertTrue(len(roles_of_permission) == 2)
-        self.assertTrue('Observation Creator' in roles_of_permission)
+        self.assertTrue('FD Observation Creator' in roles_of_permission)
+        self.assertTrue('Manager' in roles_of_permission)
+
+    def test_AddTownshipObservation_permission_roles(self):
+        """
+        'Add Township Observation' permission should be given to 'Observation Creator' role.
+        """
+        roles_of_permission = self.get_roles_of_permission('imio.urbdial.notarydivision: Add Township Observation')
+        self.assertTrue(len(roles_of_permission) == 2)
+        self.assertTrue('Township Observation Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
     def test_DeleteObjects_permission_roles(self):
@@ -197,6 +208,15 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
             state='In preparation',
         )
 
+    def test_township_user_roles_on_preparation_state(self):
+        expected_roles = ()
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_TOWNSHIP_NAME,
+            expected_roles=expected_roles,
+            context=self.test_divnot,
+            state='In preparation',
+        )
+
     def test_notary_user_roles_on_investigation_state(self):
         notarydivision = self.test_divnot
         notarydivision.transition('Notify')
@@ -213,9 +233,21 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
         notarydivision = self.test_divnot
         notarydivision.transition('Notify')
 
-        expected_roles = ('NotaryDivision Reader', 'Observation Creator')
+        expected_roles = ('NotaryDivision Reader', 'FD Observation Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=notarydivision,
+            state='In investigation',
+        )
+
+    def test_township_user_roles_on_investigation_state(self):
+        notarydivision = self.test_divnot
+        notarydivision.transition('Notify')
+
+        expected_roles = ('NotaryDivision Reader', 'Township Observation Creator')
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_TOWNSHIP_NAME,
             expected_roles=expected_roles,
             context=notarydivision,
             state='In investigation',
@@ -247,6 +279,19 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
             state='Passed',
         )
 
+    def test_township_user_roles_on_passed_state(self):
+        notarydivision = self.test_divnot
+        notarydivision.transition('Notify')
+        notarydivision.transition('Pass')
+
+        expected_roles = ('NotaryDivision Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_TOWNSHIP_NAME,
+            expected_roles=expected_roles,
+            context=notarydivision,
+            state='Passed',
+        )
+
     def test_notary_user_roles_on_cancelled_state(self):
         notarydivision = self.test_divnot
         notarydivision.transition('Notify')
@@ -261,6 +306,19 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
         )
 
     def test_fd_user_roles_on_cancelled_state(self):
+        notarydivision = self.test_divnot
+        notarydivision.transition('Notify')
+        notarydivision.transition('Cancel')
+
+        expected_roles = ('NotaryDivision Reader',)
+        self._test_roles_of_user_on_stateful_context(
+            username=TEST_FD_NAME,
+            expected_roles=expected_roles,
+            context=notarydivision,
+            state='Cancelled',
+        )
+
+    def test_township_user_roles_on_cancelled_state(self):
         notarydivision = self.test_divnot
         notarydivision.transition('Notify')
         notarydivision.transition('Cancel')

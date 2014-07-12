@@ -12,10 +12,13 @@
  <property name="global_allow">True</property>
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types">
-  <element value="Observation"/>
   <element value="Precision"/>
-  <element value="PrecisionDemand"/>
-  <element value="InadmissibleFolder"/>
+  <element value="FDObservation"/>
+  <element value="FDPrecisionDemand"/>
+  <element value="FDInadmissibleFolder"/>
+  <element value="TownshipObservation"/>
+  <element value="TownshipPrecisionDemand"/>
+  <element value="TownshipInadmissibleFolder"/>
  </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">view</property>

@@ -3,9 +3,12 @@
  <property name="title">Controls the available content types in your portal</property>
  <object name="ConfigFolder" meta_type="Dexterity FTI"/>
  <object name="NotaryDivision" meta_type="Dexterity FTI"/>
- <object name="Observation" meta_type="Dexterity FTI"/>
  <object name="Precision" meta_type="Dexterity FTI"/>
- <object name="PrecisionDemand" meta_type="Dexterity FTI"/>
- <object name="InadmissibleFolder" meta_type="Dexterity FTI"/>
+ <object name="FDObservation" meta_type="Dexterity FTI"/>
+ <object name="FDPrecisionDemand" meta_type="Dexterity FTI"/>
+ <object name="FDInadmissibleFolder" meta_type="Dexterity FTI"/>
+ <object name="TownshipObservation" meta_type="Dexterity FTI"/>
+ <object name="TownshipPrecisionDemand" meta_type="Dexterity FTI"/>
+ <object name="TownshipInadmissibleFolder" meta_type="Dexterity FTI"/>
  <!-- -*- extra stuff goes here -*- -->
 </object>
