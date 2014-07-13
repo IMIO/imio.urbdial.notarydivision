@@ -1,13 +1,13 @@
 <tal:display define="documents view/get_documents"
              condition="documents">
-    <span>
+    <div style="white-space: nowrap">
         <tal:i18n i18n:domain="urbdial.divnot" i18n:translate="">Generate documents</tal:i18n>:&nbsp
-    </span>
+    </div>
     <tal:loop repeat="doc view/get_documents">
-        <span>
+        <div>
             <img src="pdf.png">
             <a tal:content="doc/title" tal:attributes="href python: view.get_generation_link(doc)"></a>
         ,&nbsp
-        </span>
+        </div>
     </tal:loop>
 </tal:display>
