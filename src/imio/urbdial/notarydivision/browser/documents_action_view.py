@@ -75,8 +75,6 @@ class DocumentsOfNotaryDivision(AvailableDocumentsForGeneration):
         pod_templates = [
             getattr(templates_folder, 'notification-ac'),
             getattr(templates_folder, 'notification-fd'),
-            getattr(templates_folder, 'acte-passe-ac'),
-            getattr(templates_folder, 'acte-passe-fd'),
         ]
         return pod_templates
 

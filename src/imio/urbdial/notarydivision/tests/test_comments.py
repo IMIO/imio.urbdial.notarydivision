@@ -307,7 +307,7 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
 
         self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
         # create a new sub sub comment and go on its add form.
-        self.browser.open(sub_comment.absolute_url() + '/++add++Precision')
+        self.browser.open(sub_comment.absolute_url() + '/++add++FDObservation')
         contents = self.browser.contents
         msg = 'Text of top comment should be displayed on add form of the sub sub comment'
         self.assertTrue('Hello' in contents, msg)

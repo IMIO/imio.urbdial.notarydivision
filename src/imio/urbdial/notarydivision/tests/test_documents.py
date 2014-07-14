@@ -32,7 +32,6 @@ class TestInstall(unittest.TestCase):
             (
                 'notification-fd', 'notification-ac',
                 'precision-fd', 'precision-ac',
-                'acte-passe-fd', 'acte-passe-ac',
             )
         )
         templates_folder = get_pod_templates_folder()
@@ -104,49 +103,6 @@ class TestDocumentConditions(CommentBrowserTest):
         # Switch to a non notary user. The condition should be False.
         login(self.portal, TEST_FD_NAME)
 
-        condition_obj = self.get_template_condition(template_id)
-        msg = "No notification document generation should be available for non notary user."
-        self.assertTrue(condition_obj.evaluate() is False, msg)
-
-    def test_act_passed_condition_registration(self):
-        from imio.urbdial.notarydivision.content.template_conditions import PassedDocumentCondition
-
-        template_id = 'acte-passe-fd'
-        condition_obj = self.get_template_condition(template_id)
-
-        msg = "Condition of template {} should be an instance of PassedDocumentCondition".format(template_id)
-        self.assertTrue(isinstance(condition_obj, PassedDocumentCondition), msg)
-
-        template_id = 'acte-passe-ac'
-        condition_obj = self.get_template_condition(template_id)
-
-        msg = "Condition of template {} should be an instance of PassedDocumentCondition".format(template_id)
-        self.assertTrue(isinstance(condition_obj, PassedDocumentCondition), msg)
-
-    def test_act_passed_condition(self):
-        """
-        Notification document condition should be True when:
-        -The notarydivision is in passed state.
-        """
-
-        notarydivision = self.test_divnot
-        template_id = 'acte-passe-fd'
-
-        # The notarydivision is not in passed state. The condition should be False.
-        login(self.portal, TEST_NOTARY_NAME)
-        condition_obj = self.get_template_condition(template_id)
-        msg = "No act passed document generation should be available when notarydivision is not in passed state."
-        self.assertTrue(condition_obj.evaluate() is False, msg)
-
-        # put the notarydivision in passed state. Stay with notary user.
-        # The condition should be True.
-        notarydivision.transition('Pass')
-        condition_obj = self.get_template_condition(template_id)
-        msg = "Act passed document should be available for generation"
-        self.assertTrue(condition_obj.evaluate() is True, msg)
-
-        # Switch to a non notary user. The condition should be False.
-        login(self.portal, TEST_FD_NAME)
         condition_obj = self.get_template_condition(template_id)
         msg = "No notification document generation should be available for non notary user."
         self.assertTrue(condition_obj.evaluate() is False, msg)

@@ -12,13 +12,6 @@
     <adapter
       for="collective.documentgenerator.content.pod_template.IPODTemplate
            zope.interface.Interface"
-      factory=".template_conditions.PassedDocumentCondition"
-      name="passed-generation-condition"
-    />
-
-    <adapter
-      for="collective.documentgenerator.content.pod_template.IPODTemplate
-           zope.interface.Interface"
       factory=".template_conditions.PrecisionFDDocumentCondition"
       name="precision-fd-generation-condition"
     />

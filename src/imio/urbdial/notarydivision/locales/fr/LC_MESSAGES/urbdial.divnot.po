@@ -61,7 +61,7 @@ msgstr "Dossier de configuration"
 
 #: ../content/notarydivision.py:256
 msgid "Created estate"
-msgstr "Ensemble immobilier créé"
+msgstr "Identification des lots créés"
 
 #: ../setuphandlers.py:138
 msgid "DGO 4"
@@ -207,7 +207,7 @@ msgstr "Radical"
 
 #: ../content/notarydivision.py:201
 msgid "Reference"
-msgstr "Référence"
+msgstr "Référence du dossier en l'étude notariale"
 
 #: ../content/notarydivision.py:67
 msgid "Section"

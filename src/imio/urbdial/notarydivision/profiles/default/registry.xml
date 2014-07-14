@@ -29,6 +29,7 @@
             <element>droit d'emphytéose</element>
             <element>droit d'usufruit</element>
             <element>droit de nue propriété</element>
+            <element>lot restant non cédé</element>
             <element>autre</element>
         </value>
     </record>

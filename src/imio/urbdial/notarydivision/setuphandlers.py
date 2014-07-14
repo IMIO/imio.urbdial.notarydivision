@@ -233,16 +233,6 @@ def create_pod_templates(context):
             'title': u'Notification (AC)',
             'condition_adapter': 'notification-generation-condition',
         },
-        {
-            'id': 'acte-passe-fd',
-            'title': u'Information d\'acte passé (FD)',
-            'condition_adapter': 'passed-generation-condition',
-        },
-        {
-            'id': 'acte-passe-ac',
-            'title': u'Information d\'acte passé (AC)',
-            'condition_adapter': 'passed-generation-condition',
-        },
     )
 
     for template_info in pod_templates:

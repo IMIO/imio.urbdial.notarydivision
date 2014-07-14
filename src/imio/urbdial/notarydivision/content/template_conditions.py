@@ -27,6 +27,8 @@ class NotaryDocumentsCondition(PODTemplateCondition):
 
     def current_user_is_notary(self):
         user_name = api.user.get_current().getUserName()
+        if user_name == 'admin':
+            return True
         notary_group = api.group.get('notaries')
         user_groups = api.group.get_groups(user_name)
         is_notary = notary_group in user_groups
@@ -42,17 +44,6 @@ class NotificationDocumentCondition(NotaryDocumentsCondition):
     def condition(self):
         notarydivision = self.context
         return not notarydivision.is_in_draft()
-
-
-class PassedDocumentCondition(NotaryDocumentsCondition):
-    """
-    Conditions to generate the document 'Act passed':
-    - The notary division should be in state 'Passed'.
-    """
-
-    def condition(self):
-        notarydivision = self.context
-        return notarydivision.is_passed()
 
 
 class PrecisionFDDocumentCondition(NotificationDocumentCondition):
