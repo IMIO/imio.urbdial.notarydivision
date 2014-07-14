@@ -105,9 +105,6 @@ class CommentAddView(add.DefaultAddView, CommentContainerView):
     form = CommentAddForm
 
     def render(self):
-        if self._finishedAdd:
-            self.request.response.redirect(self.nextURL())
-            return ""
         return ViewPageTemplateFile("templates/comment_edit.pt")(self)
 
     def __getattr__(self, name):
