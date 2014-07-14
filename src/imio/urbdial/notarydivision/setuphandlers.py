@@ -2,6 +2,7 @@
 
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 
+from imio.urbdial.notarydivision.interfaces import ICommentFTI
 from imio.urbdial.notarydivision.interfaces import INotaryDivisionFTI
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
@@ -42,9 +43,9 @@ def post_install(context):
     if isNotCurrentProfile(context):
         return
 
-    logger.info('set_NotaryDivision_FTI_marker_interface : starting...')
-    set_NotaryDivision_FTI_marker_interface(context)
-    logger.info('set_NotaryDivision_FTI_marker_interface : Done')
+    logger.info('set_FTI_marker_interfaces : starting...')
+    set_FTI_marker_interfaces(context)
+    logger.info('set_FTI_marker_interfaces : Done')
     logger.info('delete_plone_root_default_objects : starting...')
     delete_plone_root_default_objects(context)
     logger.info('delete_plone_root_default_objects : Done')
@@ -71,14 +72,24 @@ def post_install(context):
     logger.info('redirect_root_default_view : Done')
 
 
-def set_NotaryDivision_FTI_marker_interface(context):
+def set_FTI_marker_interfaces(context):
     """
-    Set INotaryDivisionFTI interface on NotaryDivision FTI, so we can register
+    Set FTI interface on some content type FTI's, so we can register
     custom AddView for this specific interface.
     """
     site = context.getSite()
     divnot_type = site.portal_types.NotaryDivision
     alsoProvides(divnot_type, INotaryDivisionFTI)
+
+    comment_types = [
+        'Precision',
+        'FDObservation', 'FDPrecisionDemand', 'FDInadmissibleFolder',
+        'TownshipObservation', 'TownshipPrecisionDemand', 'TownshipInadmissibleFolder',
+    ]
+
+    for portal_type in comment_types:
+        comment_type = getattr(site.portal_types, portal_type)
+        alsoProvides(comment_type, ICommentFTI)
 
 
 def delete_plone_root_default_objects(context):

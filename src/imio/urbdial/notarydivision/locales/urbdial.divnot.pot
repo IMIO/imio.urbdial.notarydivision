@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-07-12 07:20+0000\n"
+"POT-Creation-Date: 2014-07-14 12:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,7 +64,7 @@ msgstr ""
 msgid "Created estate"
 msgstr ""
 
-#: ../setuphandlers.py:127
+#: ../setuphandlers.py:138
 msgid "DGO 4"
 msgstr ""
 
@@ -157,11 +157,11 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: ../setuphandlers.py:115
+#: ../setuphandlers.py:126
 msgid "Notaries"
 msgstr ""
 
-#: ../setuphandlers.py:121
+#: ../setuphandlers.py:132
 msgid "Notaries admin"
 msgstr ""
 
@@ -195,6 +195,10 @@ msgstr ""
 
 #: ../profiles/default/types/Precision.xml
 msgid "Precision"
+msgstr ""
+
+#: ../content/templates/comment_edit.pt:16
+msgid "Previous comments"
 msgstr ""
 
 #: ../content/notarydivision.py:72
@@ -237,18 +241,18 @@ msgstr ""
 msgid "TownshipPrecisionDemand"
 msgstr ""
 
-#: ../setuphandlers.py:133
+#: ../setuphandlers.py:144
 msgid "Townships"
 msgstr ""
 
 msgid "True"
 msgstr ""
 
-#: ../setuphandlers.py:165
+#: ../setuphandlers.py:176
 msgid "notarydivisions_folder_title"
 msgstr ""
 
-#: ../setuphandlers.py:192
+#: ../setuphandlers.py:203
 msgid "pod_templates_folder_title"
 msgstr ""
 

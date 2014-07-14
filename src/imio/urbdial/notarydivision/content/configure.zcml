@@ -41,6 +41,74 @@
         permission="zope2.View"
     />
 
+    <!--
+        This is how you register custom dexterity AddForm:
+        you register a custom AddView where you set the attr 'form' to your
+        custom AddForm. Then you register your AddView for your content type FTI.
+    -->
+    <adapter
+        for="Products.CMFCore.interfaces.IFolderish
+             zope.publisher.interfaces.browser.IDefaultBrowserLayer
+             imio.urbdial.notarydivision.interfaces.ICommentFTI"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        factory=".comment_view.CommentAddView"
+     />
+    <class class=".comment_view.CommentAddView">
+        <require
+            permission="cmf.AddPortalContent"
+            interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+    </class>
+
+    <browser:page
+        for=".comment.IPrecision"
+        name="edit"
+        class=".comment_view.CommentEditForm"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for=".comment.IFDObservation"
+        name="edit"
+        class=".comment_view.CommentEditForm"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for=".comment.IFDPrecisionDemand"
+        name="edit"
+        class=".comment_view.CommentEditForm"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for=".comment.IFDInadmissibleFolder"
+        name="edit"
+        class=".comment_view.CommentEditForm"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for=".comment.ITownshipObservation"
+        name="edit"
+        class=".comment_view.CommentEditForm"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for=".comment.ITownshipPrecisionDemand"
+        name="edit"
+        class=".comment_view.CommentEditForm"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for=".comment.ITownshipInadmissibleFolder"
+        name="edit"
+        class=".comment_view.CommentEditForm"
+        permission="cmf.ModifyPortalContent"
+    />
+
     <!-- Register comments display macros  -->
     <browser:page
         for=".notarydivision.INotaryDivision"

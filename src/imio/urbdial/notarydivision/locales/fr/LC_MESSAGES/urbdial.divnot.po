@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-07-12 07:20+0000\n"
+"POT-Creation-Date: 2014-07-14 12:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,7 +63,7 @@ msgstr "Dossier de configuration"
 msgid "Created estate"
 msgstr "Ensemble immobilier créé"
 
-#: ../setuphandlers.py:127
+#: ../setuphandlers.py:138
 msgid "DGO 4"
 msgstr "DGO 4"
 
@@ -157,11 +157,11 @@ msgid "None"
 msgstr ""
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:115
+#: ../setuphandlers.py:126
 msgid "Notaries"
 msgstr "Notaires"
 
-#: ../setuphandlers.py:121
+#: ../setuphandlers.py:132
 msgid "Notaries admin"
 msgstr "Administrateur FRNB"
 
@@ -196,6 +196,10 @@ msgstr "Puissance"
 #: ../profiles/default/types/Precision.xml
 msgid "Precision"
 msgstr "Précision"
+
+#: ../content/templates/comment_edit.pt:16
+msgid "Previous comments"
+msgstr "Messages précédents"
 
 #: ../content/notarydivision.py:72
 msgid "Radical"
@@ -237,7 +241,7 @@ msgstr "Observation"
 msgid "TownshipPrecisionDemand"
 msgstr "Demande de précision"
 
-#: ../setuphandlers.py:133
+#: ../setuphandlers.py:144
 msgid "Townships"
 msgstr "Communes"
 
@@ -245,11 +249,11 @@ msgid "True"
 msgstr "Oui"
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:165
+#: ../setuphandlers.py:176
 msgid "notarydivisions_folder_title"
 msgstr "Divisions notariales"
 
-#: ../setuphandlers.py:192
+#: ../setuphandlers.py:203
 msgid "pod_templates_folder_title"
 msgstr "Modèles de documents"
 

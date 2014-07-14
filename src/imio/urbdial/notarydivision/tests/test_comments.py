@@ -282,6 +282,77 @@ class FunctionalTestCommentView(CommentFunctionalBrowserTest):
         contents = self.browser.contents
         self.assertTrue('Répondre' not in contents, msg)
 
+    def test_display_previous_comments_on_add_form(self):
+        """
+        If a comment is an answer of a previous comment, all the previous
+        answers should be displayed on the edit form.
+        """
+        comment = self.test_observation
+
+        # fill the top comment with some text and publish it
+        comment.text = RichTextValue('<p>Hello</p>')
+        comment.transition('Publish')
+
+        # create a sub comment and publish it
+        login(self.portal, TEST_NOTARY_NAME)
+        sub_comment = api.content.create(
+            type='Precision',
+            id='sub_comment',
+            container=comment,
+            text=RichTextValue('<p>world!</p>'),
+        )
+        sub_comment.transition('Publish')
+
+        transaction.commit()
+
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        # create a new sub sub comment and go on its add form.
+        self.browser.open(sub_comment.absolute_url() + '/++add++Precision')
+        contents = self.browser.contents
+        msg = 'Text of top comment should be displayed on add form of the sub sub comment'
+        self.assertTrue('Hello' in contents, msg)
+        msg = 'Text of sub comment should be displayed on add form of the sub sub comment'
+        self.assertTrue('world!' in contents, msg)
+
+    def test_display_previous_comments_in_edit_mode(self):
+        """
+        If a comment is an answer of a previous comment, all the previous
+        answers should be displayed on the edit form.
+        """
+        comment = self.test_observation
+
+        # fill the top comment with some text and publish it
+        comment.text = RichTextValue('<p>Hello</p>')
+        comment.transition('Publish')
+
+        # create a sub comment and publish it
+        login(self.portal, TEST_NOTARY_NAME)
+        sub_comment = api.content.create(
+            type='Precision',
+            id='sub_comment',
+            container=comment,
+            text=RichTextValue('<p>world!</p>'),
+        )
+        sub_comment.transition('Publish')
+
+        # create a sub sub comment
+        login(self.portal, TEST_FD_NAME)
+        sub_sub_comment = api.content.create(
+            type='FDObservation',
+            id='sub_sub_comment',
+            container=sub_comment,
+        )
+
+        transaction.commit()
+
+        self.browser_login(TEST_FD_NAME, TEST_FD_PASSWORD)
+        self.browser.open(sub_sub_comment.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = 'Text of top comment should be displayed in edit mode of the sub sub comment'
+        self.assertTrue('Hello' in contents, msg)
+        msg = 'Text of sub comment should be displayed in edit mode of the sub sub comment'
+        self.assertTrue('world!' in contents, msg)
+
 
 class TestObservationCreatorRoleAssignment(CommentBrowserTest, WorkflowLocaRolesAssignmentTest):
     """

@@ -4,6 +4,7 @@ from imio.urbdial.notarydivision.content.comment_view import CommentContainerVie
 
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
+from plone.dexterity.browser import view
 
 from z3c.form import interfaces
 
@@ -42,7 +43,7 @@ class NotaryDivisionEditForm(edit.DefaultEditForm):
                 group.widgets['local_township'].mode = interfaces.HIDDEN_MODE
 
 
-class NotaryDivisionView(CommentContainerView):
+class NotaryDivisionView(view.DefaultView, CommentContainerView):
     """
     NotaryDivision custom View.
     """

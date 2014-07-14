@@ -11,6 +11,10 @@ class IImioUrbdialNotarydivisionLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
+class ICommentFTI(IDexterityFTI):
+    """Marker interface for Comment FTI's."""
+
+
 class INotaryDivisionFTI(IDexterityFTI):
     """Marker interface for NotaryDivision FTI."""
 

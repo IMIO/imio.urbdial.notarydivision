@@ -1,17 +1,36 @@
 # -*- coding: utf-8 -*-
 
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 from imio.urbdial.notarydivision import _
+from imio.urbdial.notarydivision.content.comment import IComment
 from imio.urbdial.notarydivision.utils import translate
 
 from plone import api
+from plone.dexterity.browser import add
+from plone.dexterity.browser import edit
 from plone.dexterity.browser import view
 
 from zope.security import checkPermission
 
 
-class CommentContainerView(view.DefaultView):
+class CommentContainerView(object):
     """
-    Base class for content type view which can contain comment.
+    Base helper class for the view of any comment container.
+    """
+
+    def get_view_of(self, comment):
+        """
+        Return BrowserView of a subcomment.
+        """
+        comment_view = comment.restrictedTraverse('view')
+        comment_view.update()
+        return comment_view
+
+
+class CommentContainerView(CommentContainerView):
+    """
+    Base helper class for the display view of any comment container.
     """
 
     def get_comments(self):
@@ -19,15 +38,8 @@ class CommentContainerView(view.DefaultView):
         visible_comments = [c for c in all_comments if checkPermission('zope2.View', c)]
         return visible_comments
 
-    def get_view_of(self, comment):
-        """Return BrowserView of a subcomment."""
 
-        comment_view = comment.restrictedTraverse('view')
-        comment_view.update()
-        return comment_view
-
-
-class CommentView(CommentContainerView):
+class CommentView(view.DefaultView, CommentContainerView):
     """
     Comment custom View.
     """
@@ -75,3 +87,58 @@ class CommentView(CommentContainerView):
             widget = self.widgets[field_id]
             display_value = widget.render()
         return display_value
+
+
+class CommentAddForm(add.DefaultAddForm):
+    """
+    Comment custom add form.
+    """
+
+
+class CommentAddView(add.DefaultAddView, CommentContainerView):
+    """
+    Comment custom AddView.
+    Required to customize AddForm:
+    - first we override the attr 'form' with our custom AddForm.
+    - then we register the AddView for our Comment FTI.
+    """
+    form = CommentAddForm
+
+    def render(self):
+        if self._finishedAdd:
+            self.request.response.redirect(self.nextURL())
+            return ""
+        return ViewPageTemplateFile("templates/comment_edit.pt")(self)
+
+    def __getattr__(self, name):
+        return getattr(self.form_instance, name)
+
+    def get_previous_comments(self):
+        previous_comments = []
+        container = self.context
+
+        while IComment.providedBy(container):
+            previous_comments.append(container)
+            container = container.aq_parent
+
+        return previous_comments
+
+
+class CommentEditForm(edit.DefaultEditForm, CommentContainerView):
+    """
+    Comment custom edit form.
+    """
+
+    def __call__(self):
+        self.update()
+        return ViewPageTemplateFile("templates/comment_edit.pt")(self)
+
+    def get_previous_comments(self):
+        previous_comments = []
+        container = self.context.aq_parent
+
+        while IComment.providedBy(container):
+            previous_comments.append(container)
+            container = container.aq_parent
+
+        return previous_comments

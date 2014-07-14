@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+    <body>
+
+        <metal:main fill-slot="main">
+            <div id="content-core">
+                <metal:form use-macro="context/@@ploneform-macros/titlelessform">
+
+                <div metal:fill-slot="formbottom">
+                    <fieldset>
+                        <legend i18n:translate="" i18n:domain="urbdial.divnot">Previous comments</legend>
+                        <tal:comments repeat="comment view/get_previous_comments">
+                            <tal:vars define="view python: view.get_view_of(comment)">
+
+                                <br />
+
+                                <span class="comment_title">
+                                    <strong><span tal:content="view/display_title"></span></strong>
+                                </span>
+
+                                <tal:text content="structure python: view.display_field('text')" />
+
+                                <tal:files content="structure python: view.display_field('files')" />
+
+                            </tal:vars>
+                        </tal:comments>
+                    </fieldset>
+                </div>
+                </metal:form>
+            </div>
+        </metal:main>
+
+    </body>
+</html>
