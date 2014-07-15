@@ -126,8 +126,7 @@ class CommentEditForm(edit.DefaultEditForm, CommentContainerView):
     Comment custom edit form.
     """
 
-    def __call__(self):
-        self.update()
+    def render(self):
         return ViewPageTemplateFile("templates/comment_edit.pt")(self)
 
     def get_previous_comments(self):
