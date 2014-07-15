@@ -264,14 +264,14 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         msg = "field 'created_estate' is not displayed"
         self.assertTrue('form.widgets.created_estate' in contents, msg)
         msg = "field 'created_estate' is not translated"
-        self.assertTrue('Ensemble immobilier créé' in contents, msg)
+        self.assertTrue('Identification des lots créés' in contents, msg)
 
     def test_created_estate_field_edit(self):
         self.browser.open(self.test_divnot.absolute_url() + '/edit')
         contents = self.browser.contents
 
         msg = "field 'created_estate' is not editable"
-        self.assertTrue('Ensemble immobilier créé' in contents, msg)
+        self.assertTrue('Identification des lots créés' in contents, msg)
 
         datagrid_columns = [
             ('locality', 'Commune'),
