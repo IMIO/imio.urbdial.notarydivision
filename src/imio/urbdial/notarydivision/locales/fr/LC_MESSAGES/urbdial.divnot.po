@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-07-16 07:48+0000\n"
+"POT-Creation-Date: 2014-07-16 07:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-#: ../content/notarydivision.py:331
+#: ../content/notarydivision.py:332
 msgid "Annex"
 msgstr "Autres annexes"
 
-#: ../content/notarydivision.py:337
+#: ../content/notarydivision.py:338
 msgid "Annex files"
 msgstr "Fichiers des annexes"
 
@@ -177,13 +177,17 @@ msgstr "Autres divisions"
 msgid "Other division reason"
 msgstr "Notification d’une division pour des raisons autres que celles prévues par l’article 90 du CWATUPE"
 
+#: ../content/notarydivision.py:325
+msgid "Other plans must be attached in the \"other files\" tab."
+msgstr "Les plans autres que ceux réalisés par un géomètre sont à joindre dans l’onglet « Autres annexes »."
+
 #: ../content/notarydivision.py:171
 msgid "Parcel destination"
 msgstr "Destination du lot"
 
 #: ../content/notarydivision.py:303
 msgid "Plan"
-msgstr "Plan"
+msgstr "Plan de géomètre"
 
 #: ../content/notarydivision.py:313
 msgid "Plan date"

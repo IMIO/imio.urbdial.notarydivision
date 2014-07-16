@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-07-16 07:48+0000\n"
+"POT-Creation-Date: 2014-07-16 07:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/notarydivision.py:331
+#: ../content/notarydivision.py:332
 msgid "Annex"
 msgstr ""
 
-#: ../content/notarydivision.py:337
+#: ../content/notarydivision.py:338
 msgid "Annex files"
 msgstr ""
 
@@ -175,6 +175,10 @@ msgstr ""
 
 #: ../content/notarydivision.py:297
 msgid "Other division reason"
+msgstr ""
+
+#: ../content/notarydivision.py:325
+msgid "Other plans must be attached in the "other files" tab."
 msgstr ""
 
 #: ../content/notarydivision.py:171

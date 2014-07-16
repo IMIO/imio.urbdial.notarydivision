@@ -322,6 +322,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     form.widget('plan_files', MultiFileFieldWidget)
     plan_files = schema.List(
         title=_(u'Plans files'),
+        description=_(u'Other plans must be attached in the "other files" tab.'),
         value_type=field.NamedBlobFile(),
         required=False,
     )
