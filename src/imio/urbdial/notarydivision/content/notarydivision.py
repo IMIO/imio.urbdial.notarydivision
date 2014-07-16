@@ -288,6 +288,17 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     )
 
     model.fieldset(
+        'otherdivision',
+        label=_(u"Other division"),
+        fields=['otherdivision_reason']
+    )
+
+    otherdivision_reason = textfield.RichText(
+        title=_(u'Other division reason'),
+        required=False,
+    )
+
+    model.fieldset(
         'plan',
         label=_(u"Plan"),
         fields=['plan_reference', 'plan_date', 'geometrician', 'plan_files']

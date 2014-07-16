@@ -332,7 +332,7 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         self.browser.open(self.test_divnot.absolute_url() + '/edit')
         contents = self.browser.contents
         msg = "field 'article_90' is not editable"
-        self.assertTrue('Motifs d\'exception article 90' in contents, msg)
+        self.assertTrue('Cette division entre dans le champ de l’article 90' in contents, msg)
 
     def test_article_90_field_vocabulary_is_displayed(self):
         self.browser.open(self.test_divnot.absolute_url() + '/edit')
@@ -359,6 +359,25 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         contents = self.browser.contents
         msg = "field 'article90_detail' is not editable"
         self.assertTrue('Justificatif des motifs d\'exception' in contents, msg)
+
+    def test_otherdivision_reason_attribute(self):
+        test_divnot = aq_base(self.test_divnot)
+        self.assertTrue(hasattr(test_divnot, 'otherdivision_reason'))
+
+    def test_otherdivision_reason_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+
+        msg = "field 'otherdivision_reason' is not displayed"
+        self.assertTrue('form-widgets-otherdivision_reason' in contents, msg)
+        msg = "field 'otherdivision_reason' is not translated"
+        self.assertTrue('Notification d’une division pour des raisons autres' in contents, msg)
+
+    def test_otherdivision_reason_field_edit(self):
+        self.browser.open(self.test_divnot.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'otherdivision_reason' is not editable"
+        self.assertTrue('Notification d’une division pour des raisons autres' in contents, msg)
 
     def test_plan_reference_attribute(self):
         test_divnot = aq_base(self.test_divnot)

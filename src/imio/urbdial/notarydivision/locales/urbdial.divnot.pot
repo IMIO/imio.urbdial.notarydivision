@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-07-14 12:42+0000\n"
+"POT-Creation-Date: 2014-07-16 07:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/notarydivision.py:320
+#: ../content/notarydivision.py:331
 msgid "Annex"
 msgstr ""
 
-#: ../content/notarydivision.py:326
+#: ../content/notarydivision.py:337
 msgid "Annex files"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgstr ""
 msgid "Generate documents"
 msgstr ""
 
-#: ../content/notarydivision.py:307
+#: ../content/notarydivision.py:318
 msgid "Geometrician"
 msgstr ""
 
@@ -169,23 +169,31 @@ msgstr ""
 msgid "NotaryDivision"
 msgstr ""
 
+#: ../content/notarydivision.py:292
+msgid "Other division"
+msgstr ""
+
+#: ../content/notarydivision.py:297
+msgid "Other division reason"
+msgstr ""
+
 #: ../content/notarydivision.py:171
 msgid "Parcel destination"
 msgstr ""
 
-#: ../content/notarydivision.py:292
+#: ../content/notarydivision.py:303
 msgid "Plan"
 msgstr ""
 
-#: ../content/notarydivision.py:302
+#: ../content/notarydivision.py:313
 msgid "Plan date"
 msgstr ""
 
-#: ../content/notarydivision.py:297
+#: ../content/notarydivision.py:308
 msgid "Plan reference"
 msgstr ""
 
-#: ../content/notarydivision.py:313
+#: ../content/notarydivision.py:324
 msgid "Plans files"
 msgstr ""
 
