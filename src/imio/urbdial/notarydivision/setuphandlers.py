@@ -58,6 +58,9 @@ def post_install(context):
     logger.info('create_local_groups : starting...')
     create_local_groups(context)
     logger.info('create_local_groups : Done')
+    logger.info('set_admin_groups : starting...')
+    set_admin_groups(context)
+    logger.info('set_admin_groups : Done')
     logger.info('create_pod_templates_folder : starting...')
     create_pod_templates_folder(context)
     logger.info('create_pod_templates_folder : Done')
@@ -159,6 +162,16 @@ def _create_subgroups(container, subgroups):
     for group_infos in subgroups:
         local_group = api.group.create(**group_infos)
         api.group.add_user(user=local_group, groupname=container)
+
+
+def set_admin_groups(context):
+    """
+    Put admin user in all global groups: notaries, dgo4, townships
+    """
+    admin = api.user.get('admin')
+    api.group.add_user(user=admin, groupname='notaries')
+    api.group.add_user(user=admin, groupname='dgo4')
+    api.group.add_user(user=admin, groupname='townships')
 
 
 def create_notarydivisions_folder(context):
