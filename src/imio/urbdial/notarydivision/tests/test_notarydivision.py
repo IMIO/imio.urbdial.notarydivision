@@ -326,7 +326,7 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
         msg = "field 'article_90' is not displayed"
         self.assertTrue('form-widgets-article_90' in contents, msg)
         msg = "field 'article_90' is not translated"
-        self.assertTrue('Motifs d\'exception article 90' in contents, msg)
+        self.assertTrue('Cette division entre dans le champ de l’article 90' in contents, msg)
 
     def test_article_90_field_edit(self):
         self.browser.open(self.test_divnot.absolute_url() + '/edit')

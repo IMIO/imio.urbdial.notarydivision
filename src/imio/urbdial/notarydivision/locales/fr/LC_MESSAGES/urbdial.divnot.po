@@ -41,7 +41,7 @@ msgstr "Justificatif des motifs d'exception"
 
 #: ../content/notarydivision.py:278
 msgid "Article 90 reasons"
-msgstr "Motifs d'exception article 90"
+msgstr "Cette division entre dans le champ de l’article 90 du CWATUPE et répond à (aux) exception(s) suivante(s)"
 
 #: ../content/notarydivision.py:77
 msgid "Bis"
