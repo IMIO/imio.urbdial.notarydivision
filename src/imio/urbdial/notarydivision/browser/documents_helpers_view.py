@@ -61,3 +61,19 @@ class DocumentGenerationHelperView(BrowserView):
         if not comment:
             comment = self.context
         return ', '.join([f.filename for f in comment.files])
+
+    def list_applicants(self):
+        applicants = ['{} {}'.format(a['firstname'], a['name']) for a in self.context.applicants]
+
+        if not applicants:
+            display = ''
+        elif len(applicants) == 1:
+            display = applicants[0]
+        elif len(applicants) == 2:
+            display = ' et '.join(applicants[-2:])
+        else:
+            display_head = ', '.join(applicants[0:-2])
+            display_tail = ' et '.join(applicants[-2:])
+            display = '{}, {}'.format(display_head, display_tail)
+
+        return display
