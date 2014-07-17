@@ -21,6 +21,39 @@ class DocumentGenerationHelperView(BrowserView):
         self.request = request
         self.notarydivision = get_notarydivision(context)
 
+    def get_vocabulary_of_field(self, field_name='', obj=None):
+        if obj is None:
+            obj = self.context
+
+        portal_types = api.portal.get_tool('portal_types')
+        fti = portal_types.get(obj.portal_type)
+        schema = fti.lookupSchema()
+        field = schema.get(field_name)
+        voc_factory = queryUtility(IVocabularyFactory, field.value_type.vocabularyName)
+
+        vocabulary = voc_factory(obj)
+        return vocabulary
+
+    def display_voc_value_of_field(self, field_name='', value='', obj=None):
+        if obj is None:
+            obj = self.context
+        if value is '':
+            value = getattr(obj, field_name)
+
+        vocabulary = self.get_vocabulary_of_field(field_name)
+        term = vocabulary.getTerm(value)
+        return term.title
+
+    def display_voc_values_of_field(self, field_name='', values=[], obj=None):
+        if obj is None:
+            obj = self.context
+        if values == []:
+            values = getattr(obj, field_name)
+
+        display_values = [self.display_voc_value_of_field(field_name, val, obj) for val in values]
+
+        return ', '.join(display_values)
+
     def date(self, date):
         return date.strftime('%d/%m/%Y')
 

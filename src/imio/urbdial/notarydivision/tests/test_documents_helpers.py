@@ -44,6 +44,24 @@ class GenerationHelperMethods(CommentBrowserTest):
         msg = "Expected display '{}' but got '{}'".format(expected, result)
         self.assertTrue(result == expected, msg)
 
+    def test_display_voc_value(self):
+        notarydivision = self.test_divnot
+        view = self.get_helper_view(notarydivision)
+
+        notarydivision.article_90 = set(['3deg'])
+        expected_display = u"3° : la division s'inscrit dans le cadre d'un partage pour sortir d'une indivision d'origine successorale ne créant pas plus de lots que de copartageants"
+        result = view.display_voc_value_of_field(value='3deg', field_name='article_90')
+        self.assertTrue(result == expected_display)
+
+    def test_display_voc_values(self):
+        notarydivision = self.test_divnot
+        view = self.get_helper_view(notarydivision)
+
+        notarydivision.local_township = set(['ac_namur', 'ac_sambreville'])
+        expected_display = u"Namur, Sambreville"
+        result = view.display_voc_values_of_field(field_name='local_township')
+        self.assertTrue(result == expected_display)
+
     def test_date(self):
         view = self.get_helper_view(self.test_divnot)
         date = DateTime('18/09/1986')
