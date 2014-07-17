@@ -15,3 +15,26 @@ TOWNSHIPS_LOCAL_GROUPS = (
     {'groupname': 'ac_namur', 'title': 'Namur'},
     {'groupname': 'ac_sambreville', 'title': 'Sambreville'},
 )
+
+POD_TEMPLATES = (
+    {
+        'id': 'precision-fd',
+        'title': u'Précision',
+        'condition_adapter': 'precision-fd-generation-condition',
+    },
+    {
+        'id': 'precision-ac',
+        'title': u'Précision',
+        'condition_adapter': 'precision-ac-generation-condition',
+    },
+    {
+        'id': 'notification-fd',
+        'title': u'Notification (FD)',
+        'condition_adapter': 'notification-generation-condition',
+    },
+    {
+        'id': 'notification-ac',
+        'title': u'Notification (AC)',
+        'condition_adapter': 'notification-generation-condition',
+    },
+)

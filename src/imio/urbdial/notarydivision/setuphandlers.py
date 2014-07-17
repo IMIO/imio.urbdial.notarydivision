@@ -15,6 +15,7 @@ from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
 from imio.urbdial.notarydivision.utils import get_pod_templates_folder
 from imio.urbdial.notarydivision.vars import DGO4_LOCAL_GROUPS
+from imio.urbdial.notarydivision.vars import POD_TEMPLATES
 from imio.urbdial.notarydivision.vars import TOWNSHIPS_LOCAL_GROUPS
 
 from plone import api
@@ -176,7 +177,7 @@ def set_admin_groups(context):
 
 def create_notarydivisions_folder(context):
     """
-     Create a folder which will contain all our NotaryDivision objects.
+    Create a folder which will contain all our NotaryDivision objects.
     """
 
     portal = context.getSite()
@@ -203,7 +204,7 @@ def create_notarydivisions_folder(context):
 
 def create_pod_templates_folder(context):
     """
-     Create a folder which will contain all our PODTemplate objects.
+    Create a folder which will contain all our PODTemplate objects.
     """
 
     portal = context.getSite()
@@ -224,31 +225,11 @@ def create_pod_templates_folder(context):
 
 
 def create_pod_templates(context):
+    """
+    Create PODTemplate objects.
+    """
     pod_template_folder = get_pod_templates_folder()
-    pod_templates = (
-        {
-            'id': 'precision-fd',
-            'title': u'Précision',
-            'condition_adapter': 'precision-fd-generation-condition',
-        },
-        {
-            'id': 'precision-ac',
-            'title': u'Précision',
-            'condition_adapter': 'precision-ac-generation-condition',
-        },
-        {
-            'id': 'notification-fd',
-            'title': u'Notification (FD)',
-            'condition_adapter': 'notification-generation-condition',
-        },
-        {
-            'id': 'notification-ac',
-            'title': u'Notification (AC)',
-            'condition_adapter': 'notification-generation-condition',
-        },
-    )
-
-    for template_info in pod_templates:
+    for template_info in POD_TEMPLATES:
         templates_path = '%s/pod_templates/%s.odt' % (context._profile_path, template_info['id'])
         odt_file = file(templates_path, 'rb').read()
         blob_file = NamedBlobFile(
