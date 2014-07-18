@@ -34,17 +34,15 @@ class DocumentGenerationHelperView(BrowserView):
         vocabulary = voc_factory(obj)
         return vocabulary
 
-    def display_voc_value_of_field(self, field_name='', value='', obj=None):
+    def display_voc_value_of_field(self, field_name, value='', obj=None):
         if obj is None:
             obj = self.context
-        if value is '':
-            value = getattr(obj, field_name)
 
         vocabulary = self.get_vocabulary_of_field(field_name)
         term = vocabulary.getTerm(value)
         return term.title
 
-    def display_voc_values_of_field(self, field_name='', values=[], obj=None):
+    def display_voc_values_of_field(self, field_name, values=[], obj=None):
         if obj is None:
             obj = self.context
         if values == []:
