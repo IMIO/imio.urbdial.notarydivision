@@ -32,6 +32,16 @@ class TestNotaryDivision(unittest.TestCase):
         divnot_type = portal_types.NotaryDivision
         self.assertTrue(divnot_type.add_permission == 'cmf.AddPortalContent')
 
+    def test_InitialParcel_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('InitialParcel' in divnot_type.allowed_content_types)
+
+    def test_CreatedParcel_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('CreatedParcel' in divnot_type.allowed_content_types)
+
     def test_Precision_is_in_NotaryDivision_allowed_content_types(self):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
@@ -634,7 +644,7 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
     def test_published_comments_are_frozen_when_notarydivision_is_passed(self):
         notarydivision = self.test_divnot
 
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             comment.transition('Publish')
 
         # 'Pass' notarydivision
@@ -642,14 +652,14 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
         notarydivision.transition('Pass')
 
         # Comments should be in Frozen states
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
             self.assertTrue(comment.is_frozen(), msg)
 
     def test_published_comments_are_frozen_when_notarydivision_is_cancelled(self):
         notarydivision = self.test_divnot
 
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             comment.transition('Publish')
 
         # 'Cancel' notarydivision
@@ -657,28 +667,28 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
         notarydivision.transition('Cancel')
 
         # Comments should be in Frozen states
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
             self.assertTrue(comment.is_frozen(), msg)
 
     def test_draft_comments_are_deleted_when_notarydivision_is_passed(self):
         notarydivision = self.test_divnot
 
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             self.assertTrue(comment.is_in_draft())
 
         login(self.portal, TEST_NOTARY_NAME)
         notarydivision.transition('Pass')
         msg = "Some draft comments are not deleted"
-        self.assertTrue(len(notarydivision.objectValues()) == 0, msg)
+        self.assertTrue(len(notarydivision.get_comments()) == 0, msg)
 
     def test_draft_comments_are_deleted_when_notarydivision_is_cancelled(self):
         notarydivision = self.test_divnot
 
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             self.assertTrue(comment.is_in_draft())
 
         login(self.portal, TEST_NOTARY_NAME)
         notarydivision.transition('Cancel')
         msg = "Some draft comments are not deleted"
-        self.assertTrue(len(notarydivision.objectValues()) == 0, msg)
+        self.assertTrue(len(notarydivision.get_comments()) == 0, msg)

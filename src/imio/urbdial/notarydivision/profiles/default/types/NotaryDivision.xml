@@ -12,6 +12,8 @@
  <property name="global_allow">True</property>
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types">
+  <element value="InitialParcel"/>
+  <element value="CreatedParcel"/>
   <element value="Precision"/>
   <element value="FDObservation"/>
   <element value="FDPrecisionDemand"/>
