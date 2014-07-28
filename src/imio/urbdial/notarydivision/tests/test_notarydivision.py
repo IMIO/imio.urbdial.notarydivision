@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-"""Setup/installation tests for this package."""
 
 from Acquisition import aq_base
 
