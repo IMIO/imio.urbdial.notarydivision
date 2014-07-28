@@ -52,6 +52,9 @@ class TestRolesAndPermissions(unittest.TestCase):
         registered_roles = portal_roles.listRoleIds()
         self.assertTrue('NotaryDivision Manager' in registered_roles)
 
+    def test_AddParcel_permission_registration(self):
+        self.assertTrue('imio.urbdial.notarydivision: Add Parcel' in self.portal.possible_permissions())
+
     def test_AddFDObservation_permission_registration(self):
         self.assertTrue('imio.urbdial.notarydivision: Add FD Observation' in self.portal.possible_permissions())
 
