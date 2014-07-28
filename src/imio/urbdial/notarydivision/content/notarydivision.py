@@ -6,8 +6,8 @@ from collective.z3cform.datagridfield import DictRow
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_DataGridFieldFactory
 from imio.urbdial.notarydivision.browser.field import DataGridBool
+from imio.urbdial.notarydivision.content.base import UrbdialContainer
 from imio.urbdial.notarydivision.content.comment import IComment
-from imio.urbdial.notarydivision.content.container import BaseContainer
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
@@ -341,7 +341,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     )
 
 
-class NotaryDivision(BaseContainer):
+class NotaryDivision(UrbdialContainer):
     """
     NotaryDivision dexterity class
     """

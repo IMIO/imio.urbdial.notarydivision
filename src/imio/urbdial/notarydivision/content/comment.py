@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.content.container import BaseContainer
+from imio.urbdial.notarydivision.content.base import UrbdialContainer
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 from imio.urbdial.notarydivision.content.interfaces import IObservation
 
@@ -33,7 +33,7 @@ class IComment(model.Schema, INotaryDivisionElement):
     )
 
 
-class Comment(BaseContainer):
+class Comment(UrbdialContainer):
     """
     Comment dexterity class.
     """
