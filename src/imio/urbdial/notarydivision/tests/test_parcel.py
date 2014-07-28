@@ -19,7 +19,7 @@ class TestInitialParcel(unittest.TestCase):
         registered_types = portal_types.listContentTypes()
         self.assertTrue('InitialParcel' in registered_types)
 
-    def test_creation_permission_is_cmfAddPortalContent(self):
+    def test_creation_permission_is_AddParcel(self):
         portal_types = api.portal.get_tool('portal_types')
         parcel_type = portal_types.InitialParcel
         self.assertTrue(parcel_type.add_permission == 'imio.urbdial.notarydivision.AddParcel')
