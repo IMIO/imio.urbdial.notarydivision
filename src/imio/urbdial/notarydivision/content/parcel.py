@@ -9,7 +9,7 @@ import zope
 
 class IInitialParcel(zope.interface.Interface):
     """
-    Schema for DataGridField widget's row of field 'initial_estate'
+    Schema of InitialParcel
     """
 
 
@@ -20,3 +20,16 @@ class InitialParcel(UrbdialItem):
     implements(IInitialParcel)
 
     __ac_local_roles_block__ = True
+
+
+class ICreatedParcel(IInitialParcel):
+    """
+    Schema of CreatedParcel
+    """
+
+
+class CreatedParcel(InitialParcel):
+    """
+    CreatedParcel dexterity class
+    """
+    implements(ICreatedParcel)
