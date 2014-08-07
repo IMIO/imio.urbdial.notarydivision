@@ -38,40 +38,6 @@ tr.field_row_display > td{
     width: 35em;
 }
 
-
-/* Resize cadastral ref widget columns */
-div[id$=_estate] table{
-    width: auto;
-}
-div[id$=_estate] input[name$=locality]{
-    width: 8em;
-}
-div[id$=_estate] input[name$=division]{
-    width: 8em;
-}
-div[id$=_estate] input[name$=surface]{
-    width: 5em;
-}
-div[id$=_estate] textarea[name$=specific_rights]{
-    height: 1.4em;
-    width: 30em;
-}
-div[id$=_estate] table th:nth-child(3){font-size: 0.7em;}
-div[id$=_estate] table th:nth-child(4){font-size: 0.7em;}
-div[id$=_estate] table th:nth-child(5){font-size: 0.7em;}
-div[id$=_estate] table th:nth-child(6){font-size: 0.7em;}
-div[id$=_estate] table th:nth-child(7){font-size: 0.7em;}
-div[id$=_estate] table tr td:nth-child(3){width: 4em;}
-div[id$=_estate] table tr td:nth-child(4){width: 4em;}
-div[id$=_estate] table tr td:nth-child(5){width: 1.5em;}
-div[id$=_estate] table tr td:nth-child(6){width: 4em;}
-div[id$=_estate] table tr td:nth-child(7){width: 4em; padding-right: 0.3em;}
-div[id$=_estate] textarea[name$=destination]{
-    height: 1.4em;
-    width: 20em;
-}
-div[id$=_estate] table.display th{font-size: 0.9em;}
-
 /* Align checkbox to the middle of the datagrid column*/
 .datagridwidget-cell span[id$=widgets-built]{
     display: block;

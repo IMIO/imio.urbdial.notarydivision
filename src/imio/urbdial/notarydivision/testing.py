@@ -3,7 +3,9 @@
 
 from imio.helpers.test_helpers import BrowserTest
 
+from imio.urbdial.notarydivision.testing_vars import TEST_CREATEDPARCEL_ID
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_INITIALPARCEL_ID
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARYDIVISION_ID
 
@@ -128,10 +130,22 @@ class ExampleDivisionLayer(TestInstallUrbdialLayer):
         super(ExampleDivisionLayer, self).setUpPloneSite(portal)
 
         # Create some test content
-        api.content.create(
+        test_divnot = api.content.create(
             type='NotaryDivision',
             id=TEST_NOTARYDIVISION_ID,
             container=portal.notarydivisions,
+        )
+
+        api.content.create(
+            type='InitialParcel',
+            id=TEST_INITIALPARCEL_ID,
+            container=test_divnot,
+        )
+
+        api.content.create(
+            type='CreatedParcel',
+            id=TEST_CREATEDPARCEL_ID,
+            container=test_divnot,
         )
 
         # Commit so that the test browser sees these objects
@@ -212,23 +226,20 @@ class NotaryDivisionBrowserTest(BrowserTest):
     def setUp(self):
         super(NotaryDivisionBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
+        self.test_initialparcel = self.test_divnot.get(TEST_INITIALPARCEL_ID)
+        self.test_createdparcel = self.test_divnot.get(TEST_CREATEDPARCEL_ID)
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
-class NotaryDivisionFunctionalBrowserTest(BrowserTest):
+class NotaryDivisionFunctionalBrowserTest(NotaryDivisionBrowserTest):
     """
     Helper class factorizing setUp of all NotaryDivision Browser tests.
     """
 
     layer = EXAMPLE_DIVISION_FUNCTIONAL
 
-    def setUp(self):
-        super(NotaryDivisionFunctionalBrowserTest, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
-        self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
-
-class CommentBrowserTest(BrowserTest):
+class CommentBrowserTest(NotaryDivisionBrowserTest):
     """
     Helper class factorizing setUp of all Comment Browser tests.
     """
@@ -237,25 +248,17 @@ class CommentBrowserTest(BrowserTest):
 
     def setUp(self):
         super(CommentBrowserTest, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
         self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
         self.test_precision = self.test_divnot.get(TEST_PRECISION_ID)
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
-class CommentFunctionalBrowserTest(BrowserTest):
+class CommentFunctionalBrowserTest(CommentBrowserTest):
     """
     Helper class factorizing setUp of all Comment Browser tests.
     """
 
     layer = EXAMPLE_COMMENT_FUNCTIONAL
-
-    def setUp(self):
-        super(CommentFunctionalBrowserTest, self).setUp()
-        self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
-        self.test_observation = self.test_divnot.get(TEST_OBSERVATION_ID)
-        self.test_precision = self.test_divnot.get(TEST_PRECISION_ID)
-        self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 
 class WorkflowLocaRolesAssignmentTest(object):

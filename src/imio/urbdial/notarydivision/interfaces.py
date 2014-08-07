@@ -19,6 +19,10 @@ class INotaryDivisionFTI(IDexterityFTI):
     """Marker interface for NotaryDivision FTI."""
 
 
+class IInitialParcelFTI(IDexterityFTI):
+    """Marker interface for InitialParcel FTI."""
+
+
 class IAvailableDocumentsForGeneration(Interface):
     """Adapt a context and a request to provide a list of PODTemplate."""
 

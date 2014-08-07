@@ -117,12 +117,31 @@
         permission="zope2.View"
     />
 
-    <!-- register SingleCheckBoxForDataGridWidget for the DataGridBool field 'built'
-         (implementing IDataGridBool) -->
+    <!--
+        This is how you register custom dexterity AddForm:
+        you register a custom AddView where you set the attr 'form' to your
+        custom AddForm. Then you register your AddView for your content type FTI.
+    -->
     <adapter
-      factory="..browser.singlecheckbox_for_datagrid.SingleCheckBoxForDataGridWidgetFactory"
-      for="..browser.interfaces.IDataGridBool
-           plone.app.z3cform.interfaces.IPloneFormLayer"
+        for="Products.CMFCore.interfaces.IFolderish
+             zope.publisher.interfaces.browser.IDefaultBrowserLayer
+             imio.urbdial.notarydivision.interfaces.IInitialParcelFTI"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        factory=".parcel_view.ParcelAddView"
+    />
+    <class class=".parcel_view.ParcelAddView">
+        <require
+            permission="cmf.AddPortalContent"
+            interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+    </class>
+
+    <!-- Register parcels add/display macros  -->
+    <browser:page
+        for=".notarydivision.INotaryDivision"
+        name="parcels"
+        template="templates/parcels.pt"
+        permission="zope2.View"
     />
 
     <browser:page

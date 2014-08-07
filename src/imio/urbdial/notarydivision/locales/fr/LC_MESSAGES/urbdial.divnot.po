@@ -81,7 +81,7 @@ msgstr "Sauf en cas de force majeure, les parties se sont engagées à maintenir
 
 #: ../content/notarydivision.py:235
 msgid "Estate"
-msgstr "Ensemble immobilier"
+msgstr "Objet de la division"
 
 #: ../content/notarydivision.py:240
 msgid "Estate actual use"
