@@ -15,6 +15,15 @@ tr.field_row_display > td{
 }
 
 
+/* Espacement bouton */
+.divnot_actions table{
+    margin-right:2.5em;
+}
+.divnot_actions td{
+    padding:1em;
+}
+
+
 /* Remove gray background and border of all datagrids , align cell widgets to the top*/
 .datagridwidget-table-view .header{
     padding-right: 1em;
