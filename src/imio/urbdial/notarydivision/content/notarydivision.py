@@ -98,12 +98,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     model.fieldset(
         'estate',
         label=_(u"Estate"),
-        fields=['actual_use', 'entrusting']
-    )
-
-    actual_use = textfield.RichText(
-        title=_(u'Estate actual use'),
-        required=False,
+        fields=['entrusting']
     )
 
     form.widget('entrusting', SingleCheckBoxFieldWidget)
@@ -167,7 +162,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     form.widget('plan_files', MultiFileFieldWidget)
     plan_files = schema.List(
         title=_(u'Plans files'),
-        description=_(u'Other plans must be attached in the "other files" tab.'),
+        description=_(u'Other plans must be attached in the «other files» tab.'),
         value_type=field.NamedBlobFile(),
         required=False,
     )

@@ -23,6 +23,10 @@ class IInitialParcelFTI(IDexterityFTI):
     """Marker interface for InitialParcel FTI."""
 
 
+class ICreatedParcelFTI(IDexterityFTI):
+    """Marker interface for CreatedParcel FTI."""
+
+
 class IAvailableDocumentsForGeneration(Interface):
     """Adapt a context and a request to provide a list of PODTemplate."""
 

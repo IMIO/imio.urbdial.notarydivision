@@ -202,18 +202,6 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             msg = "column '{}' of 'applicants' field is not translated".format(column_name)
             self.assertTrue(translation in contents, msg)
 
-    def test_actual_use_attribute(self):
-        test_divnot = aq_base(self.test_divnot)
-        self.assertTrue(hasattr(test_divnot, 'actual_use'))
-
-    def test_actual_use_field_display(self):
-        self.browser.open(self.test_divnot.absolute_url())
-        contents = self.browser.contents
-        msg = "field 'actual_use' is not displayed"
-        self.assertTrue('id="form-widgets-actual_use"' in contents, msg)
-        msg = "field 'actual_use' is not translated"
-        self.assertTrue('Affectation actuelle du bien' in contents, msg)
-
     def test_article_90_attribute(self):
         test_divnot = aq_base(self.test_divnot)
         self.assertTrue(hasattr(test_divnot, 'article_90'))

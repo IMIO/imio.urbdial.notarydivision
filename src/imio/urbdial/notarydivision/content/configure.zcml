@@ -129,6 +129,13 @@
         provides="zope.publisher.interfaces.browser.IBrowserPage"
         factory=".parcel_view.ParcelAddView"
     />
+    <adapter
+        for="Products.CMFCore.interfaces.IFolderish
+             zope.publisher.interfaces.browser.IDefaultBrowserLayer
+             imio.urbdial.notarydivision.interfaces.ICreatedParcelFTI"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        factory=".parcel_view.ParcelAddView"
+    />
     <class class=".parcel_view.ParcelAddView">
         <require
             permission="cmf.AddPortalContent"

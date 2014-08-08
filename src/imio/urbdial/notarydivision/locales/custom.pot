@@ -21,7 +21,13 @@ msgstr ""
 msgid "Cadastral reference"
 msgstr ""
 
+msgid "Initial estate"
+msgstr ""
+
 msgid "Generate documents"
+msgstr ""
+
+msgid "Created estate"
 msgstr ""
 
 msgid "True"

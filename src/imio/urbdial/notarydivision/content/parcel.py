@@ -3,15 +3,17 @@
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.content.base import UrbdialItem
 
+from plone.formwidget.masterselect import MasterSelectBoolField
+
 from zope import schema
 from zope.interface import implements
 
 import zope
 
 
-class IInitialParcel(zope.interface.Interface):
+class IParcel(zope.interface.Interface):
     """
-    Schema of InitialParcel
+    Schema of Parcel
     """
 
     locality = schema.Choice(
@@ -50,17 +52,38 @@ class IInitialParcel(zope.interface.Interface):
         required=False,
     )
 
-    undivided = schema.Bool(
-        title=_(u'Case of undivided parcel'),
-    )
 
-    specific_rights = schema.Text(
-        title=_(u'Specific rights'),
+class IInitialParcel(IParcel):
+    """
+    Schema of InitialParcel
+    """
+
+    actual_use = schema.Text(
+        title=_(u'Estate actual use'),
         required=False,
     )
 
     surface = schema.TextLine(
         title=_(u'Surface'),
+        required=False,
+    )
+
+    # Add a '_a' at the end of the field so it can be distinguished from
+    # undivided_b to avoid javascript issues with the boolean master select
+    # widget.
+    undivided_a = MasterSelectBoolField(
+        title=_(u'Case of undivided parcel'),
+        slave_fields=(
+            {
+                'masterID': 'form-widgets-undivided_a-0',
+                'name': 'specific_rights_a',
+                'action': 'show',
+                'hide_values': 1,
+            },
+        ),
+    )
+
+    specific_rights_a = schema.Text(
         required=False,
     )
 
@@ -74,19 +97,23 @@ class InitialParcel(UrbdialItem):
     __ac_local_roles_block__ = True
 
 
-class ICreatedParcel(IInitialParcel):
+class ICreatedParcel(IParcel):
     """
     Schema of CreatedParcel
     """
 
-    surface_accuracy = schema.Choice(
-        title=_(u'Surface accuracy'),
-        vocabulary='imio.urbdial.notarydivision.SurfaceAccuracies',
+    destination = schema.Text(
+        title=_(u'Parcel destination'),
         required=False,
     )
 
-    built = schema.Bool(
-        title=_(u'Built'),
+    surface = schema.TextLine(
+        title=_(u'Surface'),
+        required=False,
+    )
+
+    surface_accuracy = schema.Choice(
+        vocabulary='imio.urbdial.notarydivision.SurfaceAccuracies',
         required=False,
     )
 
@@ -96,8 +123,27 @@ class ICreatedParcel(IInitialParcel):
         required=False,
     )
 
-    destination = schema.Text(
-        title=_(u'Parcel destination'),
+    built = schema.Bool(
+        title=_(u'Built'),
+        required=False,
+    )
+
+    # Add a '_b' at the end of the field so it can be distinguished from
+    # undivided_a to avoid javascript issues with the boolean master select
+    # widget.
+    undivided_b = MasterSelectBoolField(
+        title=_(u'Case of undivided parcel'),
+        slave_fields=(
+            {
+                'masterID': 'form-widgets-undivided_b-0',
+                'name': 'specific_rights_b',
+                'action': 'show',
+                'hide_values': 1,
+            },
+        ),
+    )
+
+    specific_rights_b = schema.Text(
         required=False,
     )
 

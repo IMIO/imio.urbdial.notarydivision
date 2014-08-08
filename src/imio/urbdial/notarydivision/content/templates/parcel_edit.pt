@@ -5,11 +5,9 @@
       lang="en"
       i18n:domain="plone.app.dexterity">
     <body>
-
-            <div id="content-core">
-                <metal:form use-macro="context/@@ploneform-macros/titlelessform">
-                </metal:form>
-            </div>
-
+        <div id="content-core">
+            <metal:form use-macro="context/@@ploneform-macros/titlelessform">
+            </metal:form>
+        </div>
     </body>
 </html>

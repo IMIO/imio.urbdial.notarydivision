@@ -74,9 +74,13 @@ class TestInitialParcelFields(NotaryDivisionBrowserTest):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'surface'))
 
+    def test_undivided_attribute(self):
+        test_initialparcel = aq_base(self.test_initialparcel)
+        self.assertTrue(hasattr(test_initialparcel, 'undivided_a'))
+
     def test_specific_rights_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
-        self.assertTrue(hasattr(test_initialparcel, 'specific_rights'))
+        self.assertTrue(hasattr(test_initialparcel, 'specific_rights_a'))
 
 
 class TestCreatedParcel(unittest.TestCase):
@@ -111,18 +115,30 @@ class TestCreatedParcelFields(NotaryDivisionBrowserTest):
         parcel_type = portal_types.get(self.test_createdparcel.portal_type)
         self.assertTrue('ICreatedParcel' in parcel_type.schema)
 
+    def test_undivided_attribute(self):
+        test_createdparcel = aq_base(self.test_createdparcel)
+        self.assertTrue(hasattr(test_createdparcel, 'undivided_b'))
+
+    def test_specific_rights_attribute(self):
+        test_createdparcel = aq_base(self.test_createdparcel)
+        self.assertTrue(hasattr(test_createdparcel, 'specific_rights_b'))
+
+    def test_surface_attribute(self):
+        test_createdparcel = aq_base(self.test_createdparcel)
+        self.assertTrue(hasattr(test_createdparcel, 'surface'))
+
     def test_surface_accuracy_attribute(self):
-        test_initialparcel = aq_base(self.test_createdparcel)
-        self.assertTrue(hasattr(test_initialparcel, 'surface_accuracy'))
+        test_createdparcel = aq_base(self.test_createdparcel)
+        self.assertTrue(hasattr(test_createdparcel, 'surface_accuracy'))
 
     def test_built_attribute(self):
-        test_initialparcel = aq_base(self.test_createdparcel)
-        self.assertTrue(hasattr(test_initialparcel, 'built'))
+        test_createdparcel = aq_base(self.test_createdparcel)
+        self.assertTrue(hasattr(test_createdparcel, 'built'))
 
     def test_deed_type_attribute(self):
-        test_initialparcel = aq_base(self.test_createdparcel)
-        self.assertTrue(hasattr(test_initialparcel, 'deed_type'))
+        test_createdparcel = aq_base(self.test_createdparcel)
+        self.assertTrue(hasattr(test_createdparcel, 'deed_type'))
 
     def test_destination_attribute(self):
-        test_initialparcel = aq_base(self.test_createdparcel)
-        self.assertTrue(hasattr(test_initialparcel, 'destination'))
+        test_createdparcel = aq_base(self.test_createdparcel)
+        self.assertTrue(hasattr(test_createdparcel, 'destination'))

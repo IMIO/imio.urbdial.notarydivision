@@ -52,8 +52,19 @@
                             </table>
 
                             <tal:estate_tab condition="python: group.__name__ == 'estate'"
-                                            define="initial_parcels here/@@parcels/initial_parcels">
-                                <metal:use_macro use-macro="initial_parcels" />
+                                            define="initial_parcels here/@@parcels/initial_parcels;
+                                                    created_parcels here/@@parcels/created_parcels">
+
+                                <fieldset id="initial_estate">
+                                    <legend i18n:translate="" i18n:domain="urbdial.divnot">Initial estate</legend>
+                                    <metal:use_macro use-macro="initial_parcels" />
+                                </fieldset>
+
+                                <fieldset id="created_estate">
+                                    <legend i18n:translate="" i18n:domain="urbdial.divnot">Created estate</legend>
+                                    <metal:use_macro use-macro="created_parcels" />
+                                </fieldset>
+
                             </tal:estate_tab>
                         </dd>
                     </tal:tabs>

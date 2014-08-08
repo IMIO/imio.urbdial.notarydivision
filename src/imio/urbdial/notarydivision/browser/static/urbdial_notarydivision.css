@@ -38,11 +38,57 @@ tr.field_row_display > td{
     width: 35em;
 }
 
-/* Align checkbox to the middle of the datagrid column*/
-.datagridwidget-cell span[id$=widgets-built]{
-    display: block;
-    text-align: center;
+
+/* Style parcel fields */
+#formfield-form-widgets-locality{
+    display: inline-block;
 }
+#formfield-form-widgets-division{
+    display: inline-block;
+}
+#form-widgets-division{
+    width: 4em;
+}
+#formfield-form-widgets-section{
+    display: inline-block;
+}
+#form-widgets-section{
+    width: 4em;
+}
+#formfield-form-widgets-radical{
+    display: inline-block;
+}
+#form-widgets-radical{
+    width: 4em;
+}
+#formfield-form-widgets-bis{
+    display: inline-block;
+}
+#form-widgets-bis{
+    width: 2em;
+}
+#formfield-form-widgets-exposant{
+    display: inline-block;
+}
+#form-widgets-exposant{
+    width: 4em;
+}
+#formfield-form-widgets-power{
+    display: inline-block;
+}
+#form-widgets-power{
+    width: 4em;
+}
+#formfield-form-widgets-surface{
+    display: inline-block;
+}
+#form-widgets-surface{
+    width: 4em;
+}
+#formfield-form-widgets-surface_accuracy{
+    display: inline-block;
+}
+
 
 /* Display input chekboxes by line */
 .option{
@@ -53,7 +99,9 @@ tr.field_row_display > td{
     clear: both;
     float: left;
 }
-.option .label{
+
+/* Lowercase slection values */
+#form-widgets-article_90 .label{
     font-weight: normal;
 }
 

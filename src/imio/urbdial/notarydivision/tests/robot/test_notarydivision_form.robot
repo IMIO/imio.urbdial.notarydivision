@@ -20,18 +20,6 @@ Test datagrid fields
     Page should contain  Nom
     Page should contain  Prénom
 
-    Page should contain  Ensemble immobilier initial
-    Page should contain  Commune
-    Page should contain  Division
-    Page should contain  Section
-    Page should contain  Radical
-    Page should contain  Bis
-    Page should contain  Exposant
-    Page should contain  Puissance
-    Page should contain  Superficie
-    Page should contain  Droits des parties
-
-
 *** Keywords ***
 
 Suite Setup
