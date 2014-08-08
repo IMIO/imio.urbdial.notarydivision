@@ -46,6 +46,7 @@ setup(
         'collective.z3cform.rolefield',
         'imio.actionspanel',
         'plone.api',
+        'plone.formwidget.masterselect',
         'plone.formwidget.multifile',
         'setuptools',
     ],
