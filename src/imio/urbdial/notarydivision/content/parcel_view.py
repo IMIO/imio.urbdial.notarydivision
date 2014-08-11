@@ -12,6 +12,11 @@ class ParcelView(view.DefaultView):
     Parcel custom View.
     """
 
+    def __call__(self):
+        return self.request.response.redirect(
+            self.context.get_notarydivision().absolute_url() + '/view#initial_estate'
+        )
+
 
 class ParcelAddForm(add.DefaultAddForm):
     """

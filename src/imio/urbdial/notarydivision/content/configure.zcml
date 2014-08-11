@@ -152,6 +152,13 @@
     />
 
     <browser:page
+        for=".parcel.IInitialParcel"
+        name="view"
+        class=".parcel_view.ParcelView"
+        permission="zope2.View"
+    />
+
+    <browser:page
         for=".comment.IComment"
         name="view"
         class=".comment_view.CommentView"

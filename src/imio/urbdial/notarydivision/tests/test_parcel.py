@@ -28,6 +28,22 @@ class TestInitialParcel(unittest.TestCase):
         self.assertTrue(parcel_type.add_permission == 'imio.urbdial.notarydivision.AddParcel')
 
 
+class TestInitialParcelView(NotaryDivisionBrowserTest):
+    """
+    """
+
+    def test_InitialParcelView_class_registration(self):
+        from imio.urbdial.notarydivision.content.parcel_view import ParcelView
+        view = self.test_initialparcel.restrictedTraverse('view')
+        self.assertTrue(isinstance(view, ParcelView))
+
+    def test_InitialParcel_view_redirects_to_NotaryDivisionView(self):
+        self.browser.open(self.test_initialparcel.absolute_url())
+        notary_division_url = self.test_divnot.absolute_url()
+        msg = 'InitialParcel view does not redirect to NotaryDivisionView'
+        self.assertTrue(self.browser.url == notary_division_url + '/view#initial_estate', msg)
+
+
 class TestInitialParcelFields(NotaryDivisionBrowserTest):
     """
     Test schema fields declaration.
@@ -42,9 +58,29 @@ class TestInitialParcelFields(NotaryDivisionBrowserTest):
         parcel_type = portal_types.get(self.test_initialparcel.portal_type)
         self.assertTrue('IInitialParcel' in parcel_type.schema)
 
+    def test_initial_parcel_add_form_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "Inital parcel add form is not visible on notary division"
+        self.assertTrue('kssattr-formname-InitialParcel' in contents, msg)
+
     def test_locality_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'locality'))
+
+    def test_locality_field_display(self):
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "field 'locality' is not displayed"
+        self.assertTrue('id="form-widgets-locality"' in contents, msg)
+        msg = "field 'locality' is not translated"
+        self.assertTrue('' in contents, msg)
+
+    def test_locality_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'locality' is not editable"
+        self.assertTrue('Commune' in contents, msg)
 
     def test_division_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)

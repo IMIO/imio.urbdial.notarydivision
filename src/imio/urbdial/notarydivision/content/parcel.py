@@ -53,6 +53,15 @@ class IParcel(zope.interface.Interface):
     )
 
 
+class Parcel(UrbdialItem):
+    """
+    Parcel base class
+    """
+
+    def get_notarydivision(self):
+        return self.aq_parent
+
+
 class IInitialParcel(IParcel):
     """
     Schema of InitialParcel
@@ -88,7 +97,7 @@ class IInitialParcel(IParcel):
     )
 
 
-class InitialParcel(UrbdialItem):
+class InitialParcel(Parcel):
     """
     InitialParcel dexterity class
     """
