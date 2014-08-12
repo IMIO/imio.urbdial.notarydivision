@@ -2,16 +2,17 @@
 
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.content.base import UrbdialItem
+from imio.urbdial.notarydivision.content import fields
 
 from plone.formwidget.masterselect import MasterSelectBoolField
+from plone.autoform import directives as form
+from plone.supermodel import model
 
 from zope import schema
 from zope.interface import implements
 
-import zope
 
-
-class IParcel(zope.interface.Interface):
+class IParcel(model.Schema):
     """
     Schema of Parcel
     """
@@ -67,6 +68,12 @@ class IInitialParcel(IParcel):
     Schema of InitialParcel
     """
 
+    form.order_before(number='locality')
+    number = fields.AutoIncrementInt(
+        title=_(u'Number'),
+        required=False,
+    )
+
     actual_use = schema.Text(
         title=_(u'Estate actual use'),
         required=False,
@@ -103,13 +110,17 @@ class InitialParcel(Parcel):
     """
     implements(IInitialParcel)
 
-    __ac_local_roles_block__ = True
-
 
 class ICreatedParcel(IParcel):
     """
     Schema of CreatedParcel
     """
+
+    form.order_before(number='locality')
+    number = fields.AutoIncrementInt(
+        title=_(u'Number'),
+        required=False,
+    )
 
     destination = schema.Text(
         title=_(u'Parcel destination'),
@@ -157,7 +168,7 @@ class ICreatedParcel(IParcel):
     )
 
 
-class CreatedParcel(InitialParcel):
+class CreatedParcel(Parcel):
     """
     CreatedParcel dexterity class
     """

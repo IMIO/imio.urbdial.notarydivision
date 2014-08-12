@@ -35,3 +35,7 @@ class IAvailableDocumentsForGeneration(Interface):
         Return a list of PODTemplate which can be generated on the
         adapted context.
         """
+
+
+class IAutoIncrementInt(Interface):
+    """Marker interface for AutoIncrementInt zope.schema field."""

@@ -143,6 +143,18 @@
         />
     </class>
 
+    <!-- z3c.form default value adapter for parcel's field 'number' -->
+    <adapter
+        for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
+             zope.publisher.interfaces.browser.IBrowserRequest
+             zope.interface.Interface
+             imio.urbdial.notarydivision.interfaces.IAutoIncrementInt
+             zope.interface.Interface"
+        name="default"
+        provides="z3c.form.interfaces.IValue"
+        factory=".default_values.AutoIncrementDefaultValue"
+    />
+
     <!-- Register parcels add/display macros  -->
     <browser:page
         for=".notarydivision.INotaryDivision"
@@ -153,6 +165,13 @@
 
     <browser:page
         for=".parcel.IInitialParcel"
+        name="view"
+        class=".parcel_view.ParcelView"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for=".parcel.ICreatedParcel"
         name="view"
         class=".parcel_view.ParcelView"
         permission="zope2.View"

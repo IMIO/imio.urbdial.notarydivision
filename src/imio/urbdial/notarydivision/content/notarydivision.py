@@ -6,6 +6,7 @@ from collective.z3cform.datagridfield import DictRow
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.content.base import UrbdialContainer
 from imio.urbdial.notarydivision.content.comment import IComment
+from imio.urbdial.notarydivision.content.parcel import IParcel
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
@@ -207,24 +208,33 @@ class NotaryDivision(UrbdialContainer):
             if action.get('action') == 'Pass':
                 return action.get('time')
 
-    def get_comments(self, state=None, portal_type='', interface=None):
-        """
-        Query all comments of the current NotaryDivision.
-        """
+    def get_objects(self, state=None, portal_type='', interface=None):
         catalog = api.portal.get_tool('portal_catalog')
 
-        query = {'object_provides': IComment.__identifier__}
+        query = {'object_provides': interface.__identifier__}
         if state:
             query['review_state'] = state
         if portal_type:
             query['portal_type'] = portal_type
-        if interface:
-            query['object_provides'] = interface.__identifier__
 
-        comment_brains = catalog(
+        brains = catalog(
             path={'query': '/'.join(self.getPhysicalPath())},
             **query
         )
-        comments = [brain.getObject() for brain in comment_brains]
+        objects = [brain.getObject() for brain in brains]
 
+        return objects
+
+    def get_comments(self, state=None, portal_type='', interface=IComment):
+        """
+        Query all comments of the current NotaryDivision.
+        """
+        comments = self.get_objects(state, portal_type, interface)
         return comments
+
+    def get_parcels(self, state=None, portal_type='', interface=IParcel):
+        """
+        Query all parcels of the current NotaryDivision.
+        """
+        parcels = self.get_objects(state, portal_type, interface)
+        return parcels

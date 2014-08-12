@@ -14,7 +14,7 @@ class ParcelView(view.DefaultView):
 
     def __call__(self):
         return self.request.response.redirect(
-            self.context.get_notarydivision().absolute_url() + '/view#initial_estate'
+            self.context.get_notarydivision().absolute_url() + '/view'
         )
 
 
