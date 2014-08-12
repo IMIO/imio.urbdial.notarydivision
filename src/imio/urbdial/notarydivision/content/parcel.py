@@ -5,6 +5,7 @@ from imio.urbdial.notarydivision.content.base import UrbdialItem
 from imio.urbdial.notarydivision.content import fields
 
 from plone.formwidget.masterselect import MasterSelectBoolField
+from plone.formwidget.masterselect import MasterSelectField
 from plone.autoform import directives as form
 from plone.supermodel import model
 
@@ -137,9 +138,22 @@ class ICreatedParcel(IParcel):
         required=False,
     )
 
-    deed_type = schema.Choice(
+    deed_type = MasterSelectField(
         title=_(u'Deed type'),
         vocabulary='imio.urbdial.notarydivision.DeedTypes',
+        required=False,
+        slave_fields=(
+            {
+                'name': 'other_deed_type',
+                'action': 'show',
+                'hide_values': ('autre',),
+                'siblings': True,
+            },
+        )
+    )
+
+    other_deed_type = schema.TextLine(
+        title=_(u'Other deed type'),
         required=False,
     )
 

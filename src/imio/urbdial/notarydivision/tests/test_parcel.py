@@ -288,6 +288,10 @@ class TestCreatedParcelFields(NotaryDivisionBrowserTest):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'deed_type'))
 
+    def test_other_deed_type_attribute(self):
+        test_createdparcel = aq_base(self.test_createdparcel)
+        self.assertTrue(hasattr(test_createdparcel, 'other_deed_type'))
+
     def test_destination_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'destination'))
