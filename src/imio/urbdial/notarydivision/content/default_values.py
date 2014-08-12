@@ -3,31 +3,46 @@
 
 class AutoIncrementDefaultValue(object):
     """
+    z3c.form default value adapter for AutoIncrementInt field.
     """
 
     def __init__(self, context, request, form, field, widget):
         self.context = context
         self.form = form
+        self.field = field
 
     def get(self):
+        """
+        Return the first available value amongst objects of the same type
+        in the container.
+        """
+        existing_values = self.get_existing_values()
+
+        default_value = 1
+
+        for value in existing_values:
+            if default_value < value:
+                return default_value
+            else:
+                default_value += 1
+
+        return default_value
+
+    def get_existing_values(self):
+        """
+        Return field values of other objects of the same type in the container.
+        """
         type_interface = self.form.schema
-        default_number = get_parcel_default_number(self.context, type_interface)
-        return default_number
+        context = self.context
+        fieldname = self.field.getName()
+        objects = context.get_objects(interface=type_interface)
 
+        existing_values = []
+        for obj in objects:
+            val = getattr(obj, fieldname)
+            if val:
+                existing_values.append(val)
 
-def get_parcel_default_number(context, type_interface):
-    """
-    Compute lowest available default number for a parcel type.
-    """
+        existing_values = sorted(set(existing_values))
 
-    parcels = context.get_parcels(interface=type_interface)
-    existing_numbers = sorted(set([p.number for p in parcels if p.number]))
-    default_number = 1
-
-    for number in existing_numbers:
-        if default_number < number:
-            return default_number
-        else:
-            default_number += 1
-
-    return default_number
+        return existing_values
