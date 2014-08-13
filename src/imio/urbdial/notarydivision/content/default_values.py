@@ -32,16 +32,15 @@ class AutoIncrementDefaultValue(object):
         """
         Return field values of other objects of the same type in the container.
         """
-        type_interface = self.form.schema
-        context = self.context
+        interface = self.form.schema
+        objects = self.context.get_objects(provides=interface)
         fieldname = self.field.getName()
-        objects = context.get_objects(interface=type_interface)
 
         existing_values = []
         for obj in objects:
-            val = getattr(obj, fieldname)
-            if val:
-                existing_values.append(val)
+            value = getattr(obj, fieldname)
+            if value:
+                existing_values.append(value)
 
         existing_values = sorted(set(existing_values))
 

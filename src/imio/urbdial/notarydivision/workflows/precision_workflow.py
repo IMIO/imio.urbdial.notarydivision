@@ -56,7 +56,7 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
         """
         notarydivision = self.obj.get_notarydivision()
 
-        draft_observations = notarydivision.get_comments(interface=interface, state='Draft')
+        draft_observations = notarydivision.get_comments(provides=interface, state='Draft')
         if draft_observations:
             return ()
         return (creation_role,)

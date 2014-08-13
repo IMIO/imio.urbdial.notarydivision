@@ -208,10 +208,10 @@ class NotaryDivision(UrbdialContainer):
             if action.get('action') == 'Pass':
                 return action.get('time')
 
-    def get_objects(self, state=None, portal_type='', interface=None):
+    def get_objects(self, state=None, portal_type='', provides=None):
         catalog = api.portal.get_tool('portal_catalog')
 
-        query = {'object_provides': interface.__identifier__}
+        query = {'object_provides': provides.__identifier__}
         if state:
             query['review_state'] = state
         if portal_type:
@@ -225,16 +225,16 @@ class NotaryDivision(UrbdialContainer):
 
         return objects
 
-    def get_comments(self, state=None, portal_type='', interface=IComment):
+    def get_comments(self, state=None, portal_type='', provides=IComment):
         """
         Query all comments of the current NotaryDivision.
         """
-        comments = self.get_objects(state, portal_type, interface)
+        comments = self.get_objects(state, portal_type, provides)
         return comments
 
-    def get_parcels(self, state=None, portal_type='', interface=IParcel):
+    def get_parcels(self, state=None, portal_type='', provides=IParcel):
         """
         Query all parcels of the current NotaryDivision.
         """
-        parcels = self.get_objects(state, portal_type, interface)
+        parcels = self.get_objects(state, portal_type, provides)
         return parcels
