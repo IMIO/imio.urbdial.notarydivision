@@ -40,6 +40,13 @@ tr.field_row_display > td{
 
 
 /* Style parcel fields */
+#formfield-form-widgets-number{
+    display: inline-block;
+    padding-right: 2em;
+}
+#form-widgets-number{
+    width: 3em;
+}
 #formfield-form-widgets-locality{
     display: inline-block;
 }
@@ -79,13 +86,31 @@ tr.field_row_display > td{
 #form-widgets-power{
     width: 4em;
 }
+#formfield-form-widgets-actual_use textarea{
+    width: 46em;
+    height: 1.5em;
+}
+#formfield-form-widgets-destination textarea{
+    width: 46em;
+    height: 1.5em;
+}
 #formfield-form-widgets-surface{
     display: inline-block;
 }
 #form-widgets-surface{
-    width: 4em;
+    width: 9em;
 }
 #formfield-form-widgets-surface_accuracy{
+    display: inline-block;
+}
+#formfield-form-widgets-road_distance{
+    display: inline-block;
+    padding-left: 3em;
+}
+#form-widgets-road_distance{
+    width: 9em;
+}
+#formfield-form-widgets-road_distance_accuracy{
     display: inline-block;
 }
 
