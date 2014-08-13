@@ -116,16 +116,15 @@ div[id$=_estate] table.display th{font-size: 0.9em;}
 }
 #content li.formTab  {
     margin:0;
-    text-align:center;
+    text-align:left;
 }
 #content .formTabs li a{
-    width:14%;
+    width: 200px;
 }
 #content .formTabs li > a span  {
     display:block;
     color:#999;
     font-weight:bold;
-    text-transform:uppercase;
 }
 #content li.formTab a.selected, #content li.formTab a:hover, #content-core li.formTab a.selected, #content-core li.formTab a:hover{
     background:none;
@@ -155,7 +154,7 @@ div[id$=_estate] table.display th{font-size: 0.9em;}
     border-left-color: #184B75;
     border-width: 13.8px;
     float: right;
-    margin-right: -10.5%;
+    margin-right: -12.5%;
     margin-top: -0.1%;
 }
 #content .formTabs li > a span:before{
@@ -188,4 +187,7 @@ div[id$=_estate] table.display th{font-size: 0.9em;}
 }
 #content .formTabs li.formTab + li > a:hover span:before{
     border-left-color:#184B75;
+}
+#content li.firstFormTab a span{
+     padding-left:12px;
 }
