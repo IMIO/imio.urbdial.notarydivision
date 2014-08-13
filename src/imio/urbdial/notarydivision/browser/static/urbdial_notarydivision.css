@@ -112,9 +112,10 @@ div[id$=_estate] table.display th{font-size: 0.9em;}
     border-style:none;
     border-radius:none;
     background-color:transparent;
+    padding:0;
 }
 #content li.formTab  {
-    margin-right:0;
+    margin:0;
     text-align:center;
 }
 #content .formTabs li a{
@@ -134,87 +135,57 @@ div[id$=_estate] table.display th{font-size: 0.9em;}
     padding:0;
 }
 #content .formTabs li.formTab > a span{
-    background-color:#53666b;
-    color:#DBDBDB;
+    background-color:#184B75;
+    color:#e5e5e5;
 }
 #content .formTabs li.formTab + li > a span:before{
-    border-left-color: #53666b;
+    border-left-color: #c9c9c9;
 }
 #content .formTabs li > a span:after,#content .formTabs li > a span:before{
     content: "";
     display: block;
     width: 0px;
     height: 0px;
-    margin:0 0em 0 -1em;
-    position: absolute;
-    top: 89px;
+    margin:0 ;
     border: solid transparent;
-    border-left-color: #c9c9c9;
-    border-width: 9px;
-}
-#content .formTabs li > a span:after{
-    top: 85px;
-    z-index: 1;
     border-left-color: #c9c9c9;
     border-width: 13px;
 }
+#content .formTabs li > a span:after{
+    border-left-color: #184B75;
+    border-width: 13.8px;
+    float: right;
+    margin-right: -10.5%;
+    margin-top: -0.1%;
+}
 #content .formTabs li > a span:before{
-    z-index:2;
+    float:left;
 }
 #content .formTabs li:first-child > a span:after,#content .formTabs li:first-child > a span:before{
     display:none;
 }
-
-/*Pour mettre la fléche au début et a la fin
-#content li.firstFormTab {
-   display: block;
-   height: 0;
-   width: 0;
-   position: absolute;
-   top: 87px;
-   left: 0;
-   border: solid transparent;
-   border-left-color: white;
-   border-width: 15px;
-   width:14%;
-}
-#content li.firstFormTab {
-   border-left-color: transparent;
-   border-top-color: white;
-   border-bottom-color: white;
-}
-
-#content li.firstFormTab > a{
-   width:100%;
-}*/
 /*Enlever le champ discret visible en modification */
 .discreet{
     display:none;
 }
-/* Track progress mode edit */
-.template-edit #content ul.formTabs, #content-core ul.formTabs{
-    padding-top:0.5em;
-}
-.template-edit #content .formTabs li > a span:after,.template-edit #content .formTabs li > a span:before{
-    top:124px;
-}
-.template-edit #content .formTabs li > a span:after{
-    top:120px;
-}
-/*Selected*/
+/*Track progres selected*/
 #content .formTabs li.formTab > a.selected span {
-    color: #fff;
-}
-#content .formTabs li.formTab + li > a.selected span:before{
-    border-left-color: #53666B;
+    color: #494949;
+    background-color:#c9c9c9;
 }
 #content .formTabs li.formTab > a:hover span {
-    color: #fff;
-}
-
-#content .formTabs li.formTab > a.selected span:after,#content .formTabs li.formTab > a.selected span:before{
-     border-color:transparent transparent transparent #fff;
+    color: #3d3d3d;
+    background-color:#c9c9c9;
 }
 #content .formTabs li.formTab > a:hover span:after{
-     border-left-color:#fff;
+     border-left-color:#c9c9c9;
+}
+#content .formTabs li > a.selected span:after{
+    border-left-color: #c9c9c9;
+}
+#content .formTabs li.formTab + li > a.selected span:before{
+    border-left-color: #184B75;
+}
+#content .formTabs li.formTab + li > a:hover span:before{
+    border-left-color:#184B75;
 }
