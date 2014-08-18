@@ -1,4 +1,4 @@
-<metal:initial_parcel_macro define-macro="initial_parcels">
+<metal:initial_parcel_macro define-macro="add_initial_parcel_form">
     <tal:add_initial_parcel replace="structure here/++add++InitialParcel" />
 </metal:initial_parcel_macro>
 
@@ -14,6 +14,6 @@
 
 </metal:initial_parcel_display>
 
-<metal:created_parcel_macro define-macro="created_parcels">
+<metal:created_parcel_macro define-macro="add_created_parcel_form">
     <tal:add_created_parcel replace="structure here/++add++CreatedParcel" />
 </metal:created_parcel_macro>

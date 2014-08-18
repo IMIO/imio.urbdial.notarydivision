@@ -1,6 +1,7 @@
 ## -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.browser.interfaces import ICreatedParcelTable
+from imio.urbdial.notarydivision.browser.interfaces import IEditableParcelTable
 from imio.urbdial.notarydivision.browser.interfaces import IInitialParcelTable
 from imio.urbdial.notarydivision.browser.interfaces import IParcelTable
 from imio.urbdial.notarydivision.content.vocabulary import DeedTypesVocabularyFactory
@@ -37,6 +38,18 @@ class CreatedParcelTable(Table):
     implements(ICreatedParcelTable)
 
     cssClasses = {'table': 'listing largetable'}
+
+
+class EditableInitialParcelTable(InitialParcelTable):
+    """
+    """
+    implements(IEditableParcelTable)
+
+
+class EditableCreatedParcelTable(CreatedParcelTable):
+    """
+    """
+    implements(IEditableParcelTable)
 
 
 class InitialParcelValues(ValuesMixin):

@@ -8,6 +8,12 @@ class IParcelTable(Interface):
     """
 
 
+class IEditableParcelTable(Interface):
+    """
+    Marker interface for parcel table listing with actions column.
+    """
+
+
 class IInitialParcelTable(IParcelTable):
     """
     Marker interface for InitialParcel table listing.

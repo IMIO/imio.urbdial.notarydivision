@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.browser.table import CreatedParcelTable
+from imio.urbdial.notarydivision.browser.table import EditableCreatedParcelTable
+from imio.urbdial.notarydivision.browser.table import EditableInitialParcelTable
 from imio.urbdial.notarydivision.browser.table import InitialParcelTable
 from imio.urbdial.notarydivision.content.comment_view import CommentContainerView
 
@@ -9,6 +11,8 @@ from plone.dexterity.browser import edit
 from plone.dexterity.browser import view
 
 from z3c.form import interfaces
+
+from zope.security import checkPermission
 
 
 class NotaryDivisionAddForm(add.DefaultAddForm):
@@ -51,13 +55,23 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
     """
 
     def render_InitiaParcel_listing(self):
-        listing = InitialParcelTable(self.context, self.request)
+        if self.context.get_state() == 'In preparation':
+            listing = EditableInitialParcelTable(self.context, self.request)
+        else:
+            listing = InitialParcelTable(self.context, self.request)
         listing.update()
         render = listing.render()
         return render
 
     def render_CreatedParcel_listing(self):
-        listing = CreatedParcelTable(self.context, self.request)
+        if self.context.get_state() == 'In preparation':
+            listing = EditableCreatedParcelTable(self.context, self.request)
+        else:
+            listing = CreatedParcelTable(self.context, self.request)
         listing.update()
         render = listing.render()
         return render
+
+    def can_add_parcel(self):
+        can_add_parcel = checkPermission('imio.urbdial.notarydivision.AddParcel', self.context)
+        return can_add_parcel
