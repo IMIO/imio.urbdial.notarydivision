@@ -130,4 +130,13 @@
      name="undividedColumn"
   />
 
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IParcelTable"
+     factory=".table.ActionsColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="actionsColumn"
+  />
+
 </configure>

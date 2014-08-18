@@ -8,6 +8,8 @@ from imio.urbdial.notarydivision.content.vocabulary import LocalitiesVocabularyF
 from imio.urbdial.notarydivision.content.vocabulary import SurfaceAccuraciesVocabularyFactory
 from imio.urbdial.notarydivision.utils import translate
 
+from plone import api
+
 from z3c.table.column import Column
 from z3c.table.table import Table
 from z3c.table.value import ValuesMixin
@@ -273,3 +275,33 @@ class CreatedParcelUndividedColumn(UndividedColumn):
 
     weight = 90
     undivided = 'undivided_b'
+
+
+class ActionsColumn(UrbdialColumn):
+    """
+    """
+
+    weight = 100
+    cssClasses = {'th': 'actionsheader'}
+    header = 'actions'
+
+    def renderCell(self, parcel):
+        base_url = api.portal.get_tool('portal_url')()
+        object_url = parcel.absolute_url()
+        action_links = ['<div>']
+
+        action = 'edit'
+        image = '<img src="%s/edit.png" title="label_edit" i18n:attributes="title" />' % base_url
+        edit_action = '<a class="noPadding" href="%s/%s">%s</a>' % (object_url, action, image)
+        action_links.append(edit_action)
+
+        action = 'delete_confirmation'
+        image = '<img src="%s/delete_icon.png" title="label_edit" i18n:attributes="title" title="label_remove"\
+                    style="cursor: pointer" onClick="javascript:confirmDeleteObject(this)"/>' % base_url
+        delete_action = '<a class="urbanDelete noPadding" href="%s/%s">%s</a>' % (object_url, action, image)
+        action_links.append(delete_action)
+
+        action_links.append('</div>')
+        action_links = ''.join(action_links)
+
+        return action_links
