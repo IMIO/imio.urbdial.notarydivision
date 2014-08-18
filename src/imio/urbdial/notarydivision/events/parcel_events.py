@@ -9,6 +9,10 @@ def handle_z3cform_bug(created_parcel, event):
     the save action of the InitialParcel add form. So when a new CreatedParcel is created
     ttw, an undesired InitialParcel is also created. We delete it through this event.
     """
+    # we do not want to trigger this event in tests
+    if created_parcel.REQUEST.getURL() == 'http://foo':
+        return
+
     notarydivision = created_parcel.get_notarydivision()
     initial_parcels = notarydivision.get_parcels(portal_type='InitialParcel')
     initial_parcels = sorted(initial_parcels, key=lambda parcel: parcel.created())
