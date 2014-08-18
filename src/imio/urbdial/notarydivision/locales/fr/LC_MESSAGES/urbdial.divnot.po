@@ -241,7 +241,7 @@ msgstr "Référence du dossier en l'étude notariale"
 
 #: ../content/parcel.py:134
 msgid "Road distance"
-msgstr "Distance à route (m)"
+msgstr "Distance à route"
 
 #: ../content/parcel.py:38
 msgid "Section"
@@ -252,7 +252,7 @@ msgstr "droits des parties"
 
 #: ../content/parcel.py:63
 msgid "Surface"
-msgstr "Superficie (m²)"
+msgstr "Superficie"
 
 #: ../content/comment.py:24
 msgid "Text"
@@ -281,7 +281,7 @@ msgid "Undivided or dismemberment"
 msgstr "Indivision ou démembrement"
 
 msgid "label_colname_cadastral_ref"
-msgstr "Référence cadastrale"
+msgstr "Réf. cadastrale"
 
 msgid "label_colname_number"
 msgstr "N°"

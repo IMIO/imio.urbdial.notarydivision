@@ -70,6 +70,8 @@ class Parcel(UrbdialItem):
     Parcel base class
     """
 
+    __ac_local_roles_block__ = True
+
     def get_notarydivision(self):
         return self.aq_parent
 

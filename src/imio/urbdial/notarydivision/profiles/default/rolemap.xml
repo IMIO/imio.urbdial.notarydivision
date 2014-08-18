@@ -13,6 +13,9 @@
     <role name="Precision Manager"/>
     <role name="Precision Reader"/>
     <role name="Precision Creator"/>
+    <role name="Parcel Manager"/>
+    <role name="Parcel Creator"/>
+    <role name="Parcel Reader"/>
  </roles>
  <permissions>
  </permissions>
