@@ -201,9 +201,12 @@ class DeedTypeColumn(UrbdialColumn):
 
     def renderCell(self, parcel):
         deed_type = self.get(parcel, 'deed_type')
-        deed_type_voc_factory = DeedTypesVocabularyFactory()
-        deed_type_voc = deed_type_voc_factory(parcel)
-        deed_type = deed_type_voc.getTerm(deed_type).title
+        if deed_type == 'autre':
+            deed_type = self.get(parcel, 'other_deed_type')
+        elif deed_type:
+            deed_type_voc_factory = DeedTypesVocabularyFactory()
+            deed_type_voc = deed_type_voc_factory(parcel)
+            deed_type = deed_type_voc.getTerm(deed_type).title
         return deed_type
 
 
