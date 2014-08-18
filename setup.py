@@ -49,6 +49,7 @@ setup(
         'plone.formwidget.masterselect',
         'plone.formwidget.multifile',
         'setuptools',
+        'z3c.table',
     ],
     extras_require={
         'test': [
