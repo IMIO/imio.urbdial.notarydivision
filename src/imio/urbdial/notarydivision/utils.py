@@ -6,9 +6,13 @@ from zope.component import getUtility
 from zope.i18n.interfaces import ITranslationDomain
 
 
-def translate(msgid, domain='urbdial.divnot'):
+def translate(msgid, domain='urbdial.divnot', target_language='fr'):
     translation_domain = getUtility(ITranslationDomain, domain)
-    translation = translation_domain.translate(msgid, target_language='fr', default=msgid)
+    translation = translation_domain.translate(
+        msgid,
+        target_language=target_language,
+        default=msgid
+    )
     return translation
 
 
