@@ -5,6 +5,8 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="urbdial.divnot">
 
+    <include file="table.zcml" />
+
     <!-- Publish static files -->
     <browser:resourceDirectory
         name="imio.urbdial.notarydivision"
@@ -15,6 +17,13 @@
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         name="redirect_root_view"
         template="templates/redirect_root_view.pt"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for="imio.urbdial.notarydivision.content.parcel.IParcel"
+        name="specificrights"
+        template="templates/specific_rights.pt"
         permission="zope2.View"
     />
 

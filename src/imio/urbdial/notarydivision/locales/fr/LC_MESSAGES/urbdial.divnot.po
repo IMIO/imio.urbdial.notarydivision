@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-08-13 08:18+0000\n"
+"POT-Creation-Date: 2014-08-18 07:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr "Cette division entre dans le champ de l’article 90 du CWATUPE et répo
 msgid "Bis"
 msgstr "Bis"
 
-#: ../content/parcel.py:164
+#: ../content/parcel.py:161
 msgid "Built"
 msgstr "Bâti"
 
@@ -74,7 +74,7 @@ msgstr "Lot créé"
 msgid "DGO 4"
 msgstr "DGO 4"
 
-#: ../content/parcel.py:145
+#: ../content/parcel.py:143
 msgid "Deed type"
 msgstr "Type d'acte"
 
@@ -183,7 +183,7 @@ msgstr "Division notariale"
 msgid "Number"
 msgstr "Numéro"
 
-#: ../content/parcel.py:159
+#: ../content/parcel.py:156
 msgid "Other deed type"
 msgstr "Autre type d'acte"
 
@@ -239,13 +239,16 @@ msgstr "Radical"
 msgid "Reference"
 msgstr "Référence du dossier en l'étude notariale"
 
-#: ../content/parcel.py:135
+#: ../content/parcel.py:134
 msgid "Road distance"
 msgstr "Distance à route (m)"
 
 #: ../content/parcel.py:38
 msgid "Section"
 msgstr "Section"
+
+msgid "Specific rights"
+msgstr "droits des parties"
 
 #: ../content/parcel.py:63
 msgid "Surface"
@@ -273,6 +276,15 @@ msgstr "Communes"
 
 msgid "True"
 msgstr "Oui"
+
+msgid "Undivided or dismemberment"
+msgstr "Indivision ou démembrement"
+
+msgid "label_colname_cadastral_ref"
+msgstr "Référence cadastrale"
+
+msgid "label_colname_number"
+msgstr "N°"
 
 #. Default: "urbdial.divnot"
 #: ../setuphandlers.py:198

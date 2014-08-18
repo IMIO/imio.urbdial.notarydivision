@@ -27,4 +27,8 @@
                    OFS.interfaces.IObjectWillBeRemovedEvent "
               handler=".observation_events.restore_observation_creation_role" />
 
+  <subscriber for="imio.urbdial.notarydivision.content.parcel.ICreatedParcel
+                   zope.lifecycleevent.interfaces.IObjectAddedEvent"
+              handler=".parcel_events.handle_z3cform_bug" />
+
 </configure>

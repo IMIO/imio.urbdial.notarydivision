@@ -57,11 +57,13 @@
 
                                 <fieldset id="initial_estate">
                                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Initial estate</legend>
+                                    <tal:listing content="structure view/render_InitiaParcel_listing" />
                                     <metal:use_macro use-macro="initial_parcels" />
                                 </fieldset>
 
                                 <fieldset id="created_estate">
                                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Created estate</legend>
+                                    <tal:listing content="structure view/render_CreatedParcel_listing" />
                                     <metal:use_macro use-macro="created_parcels" />
                                 </fieldset>
 

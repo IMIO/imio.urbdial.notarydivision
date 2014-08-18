@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-13 08:18+0000\n"
+"POT-Creation-Date: 2014-08-18 07:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Bis"
 msgstr ""
 
-#: ../content/parcel.py:164
+#: ../content/parcel.py:161
 msgid "Built"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgstr ""
 msgid "DGO 4"
 msgstr ""
 
-#: ../content/parcel.py:145
+#: ../content/parcel.py:143
 msgid "Deed type"
 msgstr ""
 
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: ../content/parcel.py:159
+#: ../content/parcel.py:156
 msgid "Other deed type"
 msgstr ""
 
@@ -239,12 +239,15 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: ../content/parcel.py:135
+#: ../content/parcel.py:134
 msgid "Road distance"
 msgstr ""
 
 #: ../content/parcel.py:38
 msgid "Section"
+msgstr ""
+
+msgid "Specific rights"
 msgstr ""
 
 #: ../content/parcel.py:63
@@ -272,6 +275,15 @@ msgid "Townships"
 msgstr ""
 
 msgid "True"
+msgstr ""
+
+msgid "Undivided or dismemberment"
+msgstr ""
+
+msgid "label_colname_cadastral_ref"
+msgstr ""
+
+msgid "label_colname_number"
 msgstr ""
 
 #: ../setuphandlers.py:198

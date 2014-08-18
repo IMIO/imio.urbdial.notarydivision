@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision.browser.table import CreatedParcelTable
+from imio.urbdial.notarydivision.browser.table import InitialParcelTable
 from imio.urbdial.notarydivision.content.comment_view import CommentContainerView
 
 from plone.dexterity.browser import add
@@ -47,3 +49,15 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
     """
     NotaryDivision custom View.
     """
+
+    def render_InitiaParcel_listing(self):
+        listing = InitialParcelTable(self.context, self.request)
+        listing.update()
+        render = listing.render()
+        return render
+
+    def render_CreatedParcel_listing(self):
+        listing = CreatedParcelTable(self.context, self.request)
+        listing.update()
+        render = listing.render()
+        return render

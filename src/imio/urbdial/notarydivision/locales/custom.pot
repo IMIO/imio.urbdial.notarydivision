@@ -35,3 +35,15 @@ msgstr ""
 
 msgid "False"
 msgstr ""
+
+msgid "label_colname_cadastral_ref"
+msgstr ""
+
+msgid "label_colname_number"
+msgstr ""
+
+msgid "Specific rights"
+msgstr ""
+
+msgid "Undivided or dismemberment"
+msgstr ""

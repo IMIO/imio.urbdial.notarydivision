@@ -18,20 +18,42 @@ class ParcelView(view.DefaultView):
         )
 
 
-class ParcelAddForm(add.DefaultAddForm):
+class InitialParcelAddForm(add.DefaultAddForm):
     """
-    Parcel custom add form.
+    InitialParcel custom add form.
     """
 
 
-class ParcelAddView(add.DefaultAddView):
+class InitialParcelAddView(add.DefaultAddView):
     """
-    Parcel custom AddView.
+    InitialParcel custom AddView.
     Required to customize AddForm:
     - first we override the attr 'form' with our custom AddForm.
-    - then we register the AddView for our Parcel FTI.
+    - then we register the AddView for our InitialParcel FTI.
     """
-    form = ParcelAddForm
+    form = InitialParcelAddForm
+
+    def render(self):
+        return ViewPageTemplateFile("templates/parcel_edit.pt")(self)
+
+    def __getattr__(self, name):
+        return getattr(self.form_instance, name)
+
+
+class CreatedParcelAddForm(add.DefaultAddForm):
+    """
+    CreatedParcel custom add form.
+    """
+
+
+class CreatedParcelAddView(add.DefaultAddView):
+    """
+    CreatedParcel custom AddView.
+    Required to customize AddForm:
+    - first we override the attr 'form' with our custom AddForm.
+    - then we register the AddView for our CreatedParcel FTI.
+    """
+    form = CreatedParcelAddForm
 
     def render(self):
         return ViewPageTemplateFile("templates/parcel_edit.pt")(self)

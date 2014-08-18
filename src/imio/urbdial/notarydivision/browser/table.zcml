@@ -1,0 +1,133 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="urbdial.divnot">
+
+  <!-- values -->
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IInitialParcelTable"
+     factory=".table.InitialParcelValues"
+     provides="z3c.table.interfaces.IValues"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
+     factory=".table.CreatedParcelValues"
+     provides="z3c.table.interfaces.IValues"
+  />
+
+  <!-- columns -->
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IParcelTable"
+     factory=".table.ParcelNumberColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="parcelnumberColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IParcelTable"
+     factory=".table.LocalityColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="localityColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IParcelTable"
+     factory=".table.CadastralReferenceColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="cadastralreferenceColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IInitialParcelTable"
+     factory=".table.SurfaceColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="surfaceColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
+     factory=".table.SurfaceAccuracyColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="surfaceaccuracyColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IInitialParcelTable"
+     factory=".table.ActualUseColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="actualuseColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
+     factory=".table.RoadDistanceColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="roaddistanceColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
+     factory=".table.DeedTypeColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="deedtypeColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
+     factory=".table.DestinationColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="destinationColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
+     factory=".table.BuiltColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="builtColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IInitialParcelTable"
+     factory=".table.InitialParcelUndividedColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="undividedColumn"
+  />
+
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
+     factory=".table.CreatedParcelUndividedColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="undividedColumn"
+  />
+
+</configure>
