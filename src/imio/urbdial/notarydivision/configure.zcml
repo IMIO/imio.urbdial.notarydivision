@@ -19,6 +19,8 @@
     <include package="imio.helpers"/>
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
+    <include package="plone.formwidget.masterselect" />
+    <include package="z3c.table" />
 
     <include package=".browser" />
     <include package=".content" />

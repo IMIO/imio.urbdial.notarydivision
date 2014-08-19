@@ -11,6 +11,10 @@
                    Products.DCWorkflow.interfaces.IAfterTransitionEvent"
               handler=".workflow_events.close_comments" />
 
+  <subscriber for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
+                   Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+              handler=".workflow_events.publish_draft_parcels" />
+
   <subscriber for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement
                    zope.lifecycleevent.interfaces.IObjectAddedEvent"
               handler=".notarydivision_events.remove_owner_role" />
@@ -26,5 +30,9 @@
   <subscriber for="imio.urbdial.notarydivision.content.comment.IObservation
                    OFS.interfaces.IObjectWillBeRemovedEvent "
               handler=".observation_events.restore_observation_creation_role" />
+
+  <subscriber for="imio.urbdial.notarydivision.content.parcel.ICreatedParcel
+                   zope.lifecycleevent.interfaces.IObjectAddedEvent"
+              handler=".parcel_events.handle_z3cform_bug" />
 
 </configure>

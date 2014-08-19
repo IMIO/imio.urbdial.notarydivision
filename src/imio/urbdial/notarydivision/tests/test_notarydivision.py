@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-"""Setup/installation tests for this package."""
 
 from Acquisition import aq_base
 
@@ -32,6 +31,16 @@ class TestNotaryDivision(unittest.TestCase):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision
         self.assertTrue(divnot_type.add_permission == 'cmf.AddPortalContent')
+
+    def test_InitialParcel_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('InitialParcel' in divnot_type.allowed_content_types)
+
+    def test_CreatedParcel_is_in_NotaryDivision_allowed_content_types(self):
+        portal_types = api.portal.get_tool('portal_types')
+        divnot_type = portal_types.NotaryDivision
+        self.assertTrue('CreatedParcel' in divnot_type.allowed_content_types)
 
     def test_Precision_is_in_NotaryDivision_allowed_content_types(self):
         portal_types = api.portal.get_tool('portal_types')
@@ -192,128 +201,6 @@ class TestNotaryDivisionFields(NotaryDivisionBrowserTest):
             self.assertTrue('<input id="form-widgets-applicants-AA-widgets-{}"'.format(column_name) in contents, msg)
             msg = "column '{}' of 'applicants' field is not translated".format(column_name)
             self.assertTrue(translation in contents, msg)
-
-    def test_actual_use_attribute(self):
-        test_divnot = aq_base(self.test_divnot)
-        self.assertTrue(hasattr(test_divnot, 'actual_use'))
-
-    def test_actual_use_field_display(self):
-        self.browser.open(self.test_divnot.absolute_url())
-        contents = self.browser.contents
-        msg = "field 'actual_use' is not displayed"
-        self.assertTrue('id="form-widgets-actual_use"' in contents, msg)
-        msg = "field 'actual_use' is not translated"
-        self.assertTrue('Affectation actuelle du bien' in contents, msg)
-
-    def test_actual_use_field_edit(self):
-        self.browser.open(self.test_divnot.absolute_url() + '/edit')
-        contents = self.browser.contents
-        msg = "field 'actual_use' is not editable"
-        self.assertTrue('Affectation actuelle du bien' in contents, msg)
-
-    def test_initial_estate_attribute(self):
-        test_divnot = aq_base(self.test_divnot)
-        self.assertTrue(hasattr(test_divnot, 'initial_estate'))
-
-    def test_initial_estate_field_display(self):
-        self.browser.open(self.test_divnot.absolute_url())
-        contents = self.browser.contents
-        msg = "field 'initial_estate' is not displayed"
-        self.assertTrue('form.widgets.initial_estate' in contents, msg)
-        msg = "field 'initial_estate' is not translated"
-        self.assertTrue('Ensemble immobilier initial' in contents, msg)
-
-    def test_initial_estate_field_edit(self):
-        self.browser.open(self.test_divnot.absolute_url() + '/edit')
-        contents = self.browser.contents
-
-        msg = "field 'initial_estate' is not editable"
-        self.assertTrue('Ensemble immobilier initial' in contents, msg)
-
-        datagrid_columns = [
-            ('locality', 'Commune'),
-            ('division', 'Division'),
-            ('section', 'Section'),
-            ('radical', 'Radical'),
-            ('bis', 'Bis'),
-            ('exposant', 'Exposant'),
-            ('power', 'Puissance'),
-            ('surface', 'Superficie'),
-            ('specific_rights', 'Droits des parties'),
-        ]
-        for column_name, translation in datagrid_columns:
-            msg = "column '{}' of 'initial_estate' field is not editable".format(column_name)
-            self.assertTrue('id="form-widgets-initial_estate-AA-widgets-{}"'.format(column_name) in contents, msg)
-            msg = "column '{}' of 'initial_estate' field is not translated".format(column_name)
-            self.assertTrue(translation in contents, msg)
-
-    def test_locality_field_vocabulary_displayed_for_initial_estate_field(self):
-        self.browser.open(self.test_divnot.absolute_url() + '/edit')
-        contents = self.browser.contents
-        msg = 'Localities vocabulary not displayed in locality field of initial_estate'
-        self.assertTrue('initial_estate-AA-widgets-locality-0" value="6250">Aiseau-Presles' in contents, msg)
-        self.assertTrue('initial_estate-AA-widgets-locality-8" value="5000">Namur' in contents, msg)
-
-    def test_created_estate_attribute(self):
-        test_divnot = aq_base(self.test_divnot)
-        self.assertTrue(hasattr(test_divnot, 'created_estate'))
-
-    def test_created_estate_field_display(self):
-        self.browser.open(self.test_divnot.absolute_url())
-        contents = self.browser.contents
-        msg = "field 'created_estate' is not displayed"
-        self.assertTrue('form.widgets.created_estate' in contents, msg)
-        msg = "field 'created_estate' is not translated"
-        self.assertTrue('Identification des lots créés' in contents, msg)
-
-    def test_created_estate_field_edit(self):
-        self.browser.open(self.test_divnot.absolute_url() + '/edit')
-        contents = self.browser.contents
-
-        msg = "field 'created_estate' is not editable"
-        self.assertTrue('Identification des lots créés' in contents, msg)
-
-        datagrid_columns = [
-            ('locality', 'Commune'),
-            ('division', 'Division'),
-            ('section', 'Section'),
-            ('radical', 'Radical'),
-            ('bis', 'Bis'),
-            ('exposant', 'Exposant'),
-            ('power', 'Puissance'),
-            ('surface_accuracy', '(type)'),
-            ('surface', 'Superficie'),
-            ('built', 'Bâti'),
-            ('deed_type', 'Type d\'acte'),
-            ('destination', 'Destination du lot'),
-            ('specific_rights', 'Droits des parties'),
-        ]
-        for column_name, translation in datagrid_columns:
-            msg = "column '{}' of 'created_estate' field is not editable".format(column_name)
-            self.assertTrue('id="form-widgets-created_estate-AA-widgets-{}"'.format(column_name) in contents, msg)
-            msg = "column '{}' of 'created_estate' field is not translated".format(column_name)
-            self.assertTrue(translation in contents, msg)
-
-    def test_locality_field_vocabulary_displayed_for_created_estate_field(self):
-        self.browser.open(self.test_divnot.absolute_url() + '/edit')
-        contents = self.browser.contents
-        msg = 'Localities vocabulary not displayed in locality field of created_estate'
-        self.assertTrue('created_estate-AA-widgets-locality-0" value="6250">Aiseau-Presles' in contents, msg)
-        self.assertTrue('created_estate-AA-widgets-locality-8" value="5000">Namur' in contents, msg)
-
-    def test_surface_accuracy_field_vocabulary_displayed_for_created_estate_field(self):
-        self.browser.open(self.test_divnot.absolute_url() + '/edit')
-        contents = self.browser.contents
-        msg = 'Surface accuracy vocabulary not displayed in locality field of created_estate'
-        self.assertTrue('created_estate-AA-widgets-surface_accuracy-0" value="cadastrale">' in contents, msg)
-        self.assertTrue('created_estate-AA-widgets-surface_accuracy-1" value="mesuree">' in contents, msg)
-
-    def test_deed_type_field_vocabulary_displayed_for_created_estate_field(self):
-        self.browser.open(self.test_divnot.absolute_url() + '/edit')
-        contents = self.browser.contents
-        msg = 'Deed types vocabulary not displayed in locality field of created_estate'
-        self.assertTrue('created_estate-AA-widgets-deed_type-0" value="vente">' in contents, msg)
-        self.assertTrue('created_estate-AA-widgets-deed_type-1" value="partage">' in contents, msg)
 
     def test_article_90_attribute(self):
         test_divnot = aq_base(self.test_divnot)
@@ -635,7 +522,7 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
     def test_published_comments_are_frozen_when_notarydivision_is_passed(self):
         notarydivision = self.test_divnot
 
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             comment.transition('Publish')
 
         # 'Pass' notarydivision
@@ -643,14 +530,14 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
         notarydivision.transition('Pass')
 
         # Comments should be in Frozen states
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
             self.assertTrue(comment.is_frozen(), msg)
 
     def test_published_comments_are_frozen_when_notarydivision_is_cancelled(self):
         notarydivision = self.test_divnot
 
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             comment.transition('Publish')
 
         # 'Cancel' notarydivision
@@ -658,28 +545,28 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
         notarydivision.transition('Cancel')
 
         # Comments should be in Frozen states
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             msg = "Comment '{}' should be in state 'Frozen'".format(comment.id)
             self.assertTrue(comment.is_frozen(), msg)
 
     def test_draft_comments_are_deleted_when_notarydivision_is_passed(self):
         notarydivision = self.test_divnot
 
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             self.assertTrue(comment.is_in_draft())
 
         login(self.portal, TEST_NOTARY_NAME)
         notarydivision.transition('Pass')
         msg = "Some draft comments are not deleted"
-        self.assertTrue(len(notarydivision.objectValues()) == 0, msg)
+        self.assertTrue(len(notarydivision.get_comments()) == 0, msg)
 
     def test_draft_comments_are_deleted_when_notarydivision_is_cancelled(self):
         notarydivision = self.test_divnot
 
-        for comment in notarydivision.objectValues():
+        for comment in notarydivision.get_comments():
             self.assertTrue(comment.is_in_draft())
 
         login(self.portal, TEST_NOTARY_NAME)
         notarydivision.transition('Cancel')
         msg = "Some draft comments are not deleted"
-        self.assertTrue(len(notarydivision.objectValues()) == 0, msg)
+        self.assertTrue(len(notarydivision.get_comments()) == 0, msg)

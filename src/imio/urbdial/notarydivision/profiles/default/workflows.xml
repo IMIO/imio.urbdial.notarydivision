@@ -4,6 +4,7 @@
  <object name="Config_item_workflow" meta_type="Workflow"/>
  <object name="Notification_workflow" meta_type="Workflow"/>
  <object name="Observation_workflow" meta_type="Workflow"/>
+ <object name="Parcel_workflow" meta_type="Workflow"/>
  <object name="Precision_workflow" meta_type="Workflow"/>
  <object name="Root_folder_workflow" meta_type="Workflow"/>
 <!-- ##code-section workflowobjects -->
@@ -17,6 +18,9 @@
   </type>
   <type type_id="Folder">
      <bound-workflow workflow_id="Root_folder_workflow" />
+  </type>
+  <type type_id="InitialParcel">
+     <bound-workflow workflow_id="Parcel_workflow" />
   </type>
   <type type_id="NotaryDivision">
      <bound-workflow workflow_id="Notification_workflow" />
@@ -42,6 +46,9 @@
   </type>
   <type type_id="TownshipPrecisionDemand">
      <bound-workflow workflow_id="Observation_workflow" />
+  </type>
+  <type type_id="CreatedParcel">
+     <bound-workflow workflow_id="Parcel_workflow" />
   </type>
 <!-- ##/code-section workflowbindings -->
  </bindings>

@@ -18,6 +18,17 @@ class UrbdialActionsPanelView(ActionsPanelView):
             'renderOwnDelete',
         )
 
+    def _transitionsToConfirm(self):
+        """
+          Return the list of transitions the user will have to confirm, aka
+          the user will be able to enter a comment for.
+          This is a per meta_type or portal_type list of transitions to confirm.
+          So for example, this could be :
+          ('ATDocument.reject', 'Document.publish', 'Collection.publish', )
+          --> ATDocument is a meta_type and Document is a portal_type for example
+        """
+        return ('NotaryDivision.Notify', 'NotaryDivision.Pass', 'Precision.Publish')
+
 
 class UrbdialAddContentPanelView(ActionsPanelView):
     """

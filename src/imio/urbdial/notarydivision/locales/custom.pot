@@ -21,11 +21,29 @@ msgstr ""
 msgid "Cadastral reference"
 msgstr ""
 
+msgid "Initial estate"
+msgstr ""
+
 msgid "Generate documents"
+msgstr ""
+
+msgid "Created estate"
 msgstr ""
 
 msgid "True"
 msgstr ""
 
 msgid "False"
+msgstr ""
+
+msgid "label_colname_cadastral_ref"
+msgstr ""
+
+msgid "label_colname_number"
+msgstr ""
+
+msgid "Specific rights"
+msgstr ""
+
+msgid "Undivided or dismemberment"
 msgstr ""

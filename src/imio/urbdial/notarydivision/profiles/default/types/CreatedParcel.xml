@@ -1,39 +1,24 @@
 <?xml version="1.0"?>
-<object name="NotaryDivision" meta_type="Dexterity FTI" i18n:domain="urbdial.divnot"
+<object name="CreatedParcel" meta_type="Dexterity FTI" i18n:domain="urbdial.divnot"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">NotaryDivision</property>
+ <property name="title" i18n:translate="">CreatedParcel</property>
  <property name="description" i18n:translate="">None</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
- <property name="factory">NotaryDivision</property>
+ <property name="factory">CreatedParcel</property>
  <property
-    name="add_view_expr">string:${folder_url}/++add++NotaryDivision</property>
+    name="add_view_expr">string:${folder_url}/++add++CreatedParcel</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
- <property name="filter_content_types">True</property>
- <property name="allowed_content_types">
-  <element value="InitialParcel"/>
-  <element value="CreatedParcel"/>
-  <element value="Precision"/>
-  <element value="FDObservation"/>
-  <element value="FDPrecisionDemand"/>
-  <element value="FDInadmissibleFolder"/>
-  <element value="TownshipObservation"/>
-  <element value="TownshipPrecisionDemand"/>
-  <element value="TownshipInadmissibleFolder"/>
- </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">view</property>
  <property name="view_methods">
   <element value="view"/>
  </property>
  <property name="default_view_fallback">False</property>
- <property name="add_permission">cmf.AddPortalContent</property>
- <property name="klass">imio.urbdial.notarydivision.content.notarydivision.NotaryDivision</property>
- <property name="behaviors">
-  <element value="plone.app.content.interfaces.INameFromTitle"/>
- </property>
- <property name="schema">imio.urbdial.notarydivision.content.notarydivision.INotaryDivision</property>
+ <property name="add_permission">imio.urbdial.notarydivision.AddParcel</property>
+ <property name="klass">imio.urbdial.notarydivision.content.parcel.CreatedParcel</property>
+ <property name="schema">imio.urbdial.notarydivision.content.parcel.ICreatedParcel</property>
  <property name="schema_policy">dexterity</property>
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="@@edit"/>

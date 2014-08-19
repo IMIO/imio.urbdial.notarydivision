@@ -48,43 +48,87 @@ tr.field_row_display > td{
 }
 
 
-/* Resize cadastral ref widget columns */
-div[id$=_estate] table{
-    width: auto;
+/* Style parcel fields */
+#formfield-form-widgets-number{
+    display: inline-block;
+    padding-right: 2em;
 }
-div[id$=_estate] input[name$=locality]{
-    width: 8em;
+#form-widgets-number{
+    width: 3em;
 }
-div[id$=_estate] input[name$=division]{
-    width: 8em;
+#formfield-form-widgets-locality{
+    display: inline-block;
 }
-div[id$=_estate] input[name$=surface]{
-    width: 5em;
+#formfield-form-widgets-division{
+    display: inline-block;
 }
-div[id$=_estate] textarea[name$=specific_rights]{
-    height: 1.4em;
-    width: 30em;
+#form-widgets-division{
+    width: 4em;
 }
-div[id$=_estate] table th:nth-child(3){font-size: 0.7em;}
-div[id$=_estate] table th:nth-child(4){font-size: 0.7em;}
-div[id$=_estate] table th:nth-child(5){font-size: 0.7em;}
-div[id$=_estate] table th:nth-child(6){font-size: 0.7em;}
-div[id$=_estate] table th:nth-child(7){font-size: 0.7em;}
-div[id$=_estate] table tr td:nth-child(3){width: 4em;}
-div[id$=_estate] table tr td:nth-child(4){width: 4em;}
-div[id$=_estate] table tr td:nth-child(5){width: 1.5em;}
-div[id$=_estate] table tr td:nth-child(6){width: 4em;}
-div[id$=_estate] table tr td:nth-child(7){width: 4em; padding-right: 0.3em;}
-div[id$=_estate] textarea[name$=destination]{
-    height: 1.4em;
-    width: 20em;
+#formfield-form-widgets-section{
+    display: inline-block;
 }
-div[id$=_estate] table.display th{font-size: 0.9em;}
+#form-widgets-section{
+    width: 4em;
+}
+#formfield-form-widgets-radical{
+    display: inline-block;
+}
+#form-widgets-radical{
+    width: 4em;
+}
+#formfield-form-widgets-bis{
+    display: inline-block;
+}
+#form-widgets-bis{
+    width: 2em;
+}
+#formfield-form-widgets-exposant{
+    display: inline-block;
+}
+#form-widgets-exposant{
+    width: 4em;
+}
+#formfield-form-widgets-power{
+    display: inline-block;
+}
+#form-widgets-power{
+    width: 4em;
+}
+#formfield-form-widgets-actual_use textarea{
+    width: 46em;
+    height: 1.5em;
+}
+#formfield-form-widgets-destination textarea{
+    width: 46em;
+    height: 1.5em;
+}
+#formfield-form-widgets-surface{
+    display: inline-block;
+}
+#form-widgets-surface{
+    width: 9em;
+}
+#formfield-form-widgets-surface_accuracy{
+    display: inline-block;
+}
+#formfield-form-widgets-road_distance{
+    display: inline-block;
+    padding-left: 3em;
+}
+#form-widgets-road_distance{
+    width: 9em;
+}
+#formfield-form-widgets-road_distance_accuracy{
+    display: inline-block;
+}
 
-/* Align checkbox to the middle of the datagrid column*/
-.datagridwidget-cell span[id$=widgets-built]{
-    display: block;
-    text-align: center;
+/* hide cancel button on parcel's add form */
+.kssattr-formname-InitialParcel #form-buttons-cancel{
+    display: none;
+}
+.kssattr-formname-CreatedParcel #form-buttons-cancel{
+    display: none;
 }
 
 /* Display input chekboxes by line */
@@ -96,7 +140,9 @@ div[id$=_estate] table.display th{font-size: 0.9em;}
     clear: both;
     float: left;
 }
-.option .label{
+
+/* Lowercase slection values */
+#form-widgets-article_90 .label{
     font-weight: normal;
 }
 

@@ -1,0 +1,19 @@
+<metal:initial_parcel_macro define-macro="add_initial_parcel_form">
+    <tal:add_initial_parcel replace="structure here/++add++InitialParcel" />
+</metal:initial_parcel_macro>
+
+<metal:initial_parcel_display define-macro="initial_parcel_display">
+
+  <tal:block repeat="widget view/widgets/values">
+      <div class="field" tal:condition="python:widget.__name__ not in ('IBasic.title', 'IBasic.description', 'title', 'description',)">
+          <label tal:content="widget/label" />
+          <br />
+          <div tal:content="structure widget/render" />
+      </div>
+  </tal:block>
+
+</metal:initial_parcel_display>
+
+<metal:created_parcel_macro define-macro="add_created_parcel_form">
+    <tal:add_created_parcel replace="structure here/++add++CreatedParcel" />
+</metal:created_parcel_macro>

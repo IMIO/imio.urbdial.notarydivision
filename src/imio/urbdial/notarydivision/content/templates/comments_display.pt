@@ -10,7 +10,7 @@
 
             <span class="documents_action">
                <tal:actions content="structure comment/documents_action" />
-               <tal:actions content="structure comment/actions" />
+               <tal:actions content="structure comment/actions_panel" />
             </span>
 
 

@@ -11,6 +11,7 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
             'get_notary_office': (
                 'NotaryDivision Manager',
                 'Notification Manager',
+                'Parcel Creator',
             ),
         },
 

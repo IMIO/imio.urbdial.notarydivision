@@ -18,6 +18,13 @@
   />
 
   <adapter
+     for="..content.parcel.IParcel
+          Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
+     factory=".parcel_workflow.StateRolesMapping"
+     provides=".interfaces.IWorkflowStateRolesMapping"
+  />
+
+  <adapter
      for="..content.notarydivision.INotaryDivision
           Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
      factory=".notification_workflow.StateRolesMapping"

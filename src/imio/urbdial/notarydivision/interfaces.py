@@ -19,6 +19,14 @@ class INotaryDivisionFTI(IDexterityFTI):
     """Marker interface for NotaryDivision FTI."""
 
 
+class IInitialParcelFTI(IDexterityFTI):
+    """Marker interface for InitialParcel FTI."""
+
+
+class ICreatedParcelFTI(IDexterityFTI):
+    """Marker interface for CreatedParcel FTI."""
+
+
 class IAvailableDocumentsForGeneration(Interface):
     """Adapt a context and a request to provide a list of PODTemplate."""
 
@@ -27,3 +35,7 @@ class IAvailableDocumentsForGeneration(Interface):
         Return a list of PODTemplate which can be generated on the
         adapted context.
         """
+
+
+class IAutoIncrementInt(Interface):
+    """Marker interface for AutoIncrementInt zope.schema field."""

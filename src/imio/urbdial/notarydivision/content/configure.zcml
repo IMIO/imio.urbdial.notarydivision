@@ -117,12 +117,70 @@
         permission="zope2.View"
     />
 
-    <!-- register SingleCheckBoxForDataGridWidget for the DataGridBool field 'built'
-         (implementing IDataGridBool) -->
+    <!--
+        This is how you register custom dexterity AddForm:
+        you register a custom AddView where you set the attr 'form' to your
+        custom AddForm. Then you register your AddView for your content type FTI.
+    -->
     <adapter
-      factory="..browser.singlecheckbox_for_datagrid.SingleCheckBoxForDataGridWidgetFactory"
-      for="..browser.interfaces.IDataGridBool
-           plone.app.z3cform.interfaces.IPloneFormLayer"
+        for="Products.CMFCore.interfaces.IFolderish
+             zope.publisher.interfaces.browser.IDefaultBrowserLayer
+             imio.urbdial.notarydivision.interfaces.IInitialParcelFTI"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        factory=".parcel_view.InitialParcelAddView"
+    />
+    <class class=".parcel_view.InitialParcelAddView">
+        <require
+            permission="cmf.AddPortalContent"
+            interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+    </class>
+    <adapter
+        for="Products.CMFCore.interfaces.IFolderish
+             zope.publisher.interfaces.browser.IDefaultBrowserLayer
+             imio.urbdial.notarydivision.interfaces.ICreatedParcelFTI"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        factory=".parcel_view.CreatedParcelAddView"
+    />
+    <class class=".parcel_view.CreatedParcelAddView">
+        <require
+            permission="cmf.AddPortalContent"
+            interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+    </class>
+
+    <!-- z3c.form default value adapter for parcel's field 'number' -->
+    <adapter
+        for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
+             zope.publisher.interfaces.browser.IBrowserRequest
+             zope.interface.Interface
+             imio.urbdial.notarydivision.interfaces.IAutoIncrementInt
+             zope.interface.Interface"
+        name="default"
+        provides="z3c.form.interfaces.IValue"
+        factory=".default_values.AutoIncrementDefaultValue"
+    />
+
+    <!-- Register parcels add/display macros  -->
+    <browser:page
+        for=".notarydivision.INotaryDivision"
+        name="parcels"
+        template="templates/parcels.pt"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for=".parcel.IInitialParcel"
+        name="view"
+        class=".parcel_view.ParcelView"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for=".parcel.ICreatedParcel"
+        name="view"
+        class=".parcel_view.ParcelView"
+        permission="zope2.View"
     />
 
     <browser:page

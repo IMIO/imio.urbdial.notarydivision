@@ -4,10 +4,9 @@ from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.browser.estate_datagridfield import estate_DataGridFieldFactory
-from imio.urbdial.notarydivision.browser.field import DataGridBool
+from imio.urbdial.notarydivision.content.base import UrbdialContainer
 from imio.urbdial.notarydivision.content.comment import IComment
-from imio.urbdial.notarydivision.content.container import BaseContainer
+from imio.urbdial.notarydivision.content.parcel import IParcel
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
@@ -41,139 +40,6 @@ class IApplicantsRowSchema(zope.interface.Interface):
 
     name = schema.TextLine(
         title=_(u'Name'),
-        required=False,
-    )
-
-
-# Initial estate's DataGridField schema #
-
-class IInitialEstateRowSchema(zope.interface.Interface):
-    """
-    Schema for DataGridField widget's row of field 'initial_estate'
-    """
-
-    locality = schema.Choice(
-        title=_(u'Locality'),
-        vocabulary='imio.urbdial.notarydivision.Localities',
-        required=False,
-    )
-
-    division = schema.TextLine(
-        title=_(u'Division'),
-        required=False,
-    )
-
-    section = schema.TextLine(
-        title=_(u'Section'),
-        required=False,
-    )
-
-    radical = schema.TextLine(
-        title=_(u'Radical'),
-        required=False,
-    )
-
-    bis = schema.TextLine(
-        title=_(u'Bis'),
-        required=False,
-    )
-
-    exposant = schema.TextLine(
-        title=_(u'Exposant'),
-        required=False,
-    )
-
-    power = schema.TextLine(
-        title=_(u'Power'),
-        required=False,
-    )
-
-    surface = schema.TextLine(
-        title=_(u'Surface'),
-        required=False,
-    )
-
-    specific_rights = schema.Text(
-        title=_(u'Specific rights'),
-        required=False,
-    )
-
-
-# Created estate's DataGridField schema #
-
-class ICreatedEstateRowSchema(zope.interface.Interface):
-    """
-    Schema for DataGridField widget's row of field 'created_estate'
-    We fully duplicate the schema of IInitialEstateRowSchema rather than
-    inheriting it because fields reordering is likely impossible to be done
-    in a clean way.
-    """
-
-    locality = schema.Choice(
-        title=_(u'Locality'),
-        vocabulary='imio.urbdial.notarydivision.Localities',
-        required=False,
-    )
-
-    division = schema.TextLine(
-        title=_(u'Division'),
-        required=False,
-    )
-
-    section = schema.TextLine(
-        title=_(u'Section'),
-        required=False,
-    )
-
-    radical = schema.TextLine(
-        title=_(u'Radical'),
-        required=False,
-    )
-
-    bis = schema.TextLine(
-        title=_(u'Bis'),
-        required=False,
-    )
-
-    exposant = schema.TextLine(
-        title=_(u'Exposant'),
-        required=False,
-    )
-
-    power = schema.TextLine(
-        title=_(u'Power'),
-        required=False,
-    )
-
-    surface = schema.TextLine(
-        title=_(u'Surface'),
-        required=False,
-    )
-
-    surface_accuracy = schema.Choice(
-        title=_(u'Surface accuracy'),
-        vocabulary='imio.urbdial.notarydivision.SurfaceAccuracies',
-        required=False,
-    )
-
-    built = DataGridBool(
-        title=_(u'Built'),
-        required=False,
-    )
-
-    deed_type = schema.Choice(
-        title=_(u'Deed type'),
-        vocabulary='imio.urbdial.notarydivision.DeedTypes',
-        required=False,
-    )
-
-    destination = schema.Text(
-        title=_(u'Parcel destination'),
-        required=False,
-    )
-
-    specific_rights = schema.Text(
-        title=_(u'Specific rights'),
         required=False,
     )
 
@@ -233,32 +99,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     model.fieldset(
         'estate',
         label=_(u"Estate"),
-        fields=['actual_use', 'initial_estate', 'created_estate', 'entrusting']
-    )
-
-    actual_use = textfield.RichText(
-        title=_(u'Estate actual use'),
-        required=False,
-    )
-
-    form.widget('initial_estate', estate_DataGridFieldFactory)
-    initial_estate = schema.List(
-        title=_(u'Initial estate'),
-        required=False,
-        value_type=DictRow(
-            schema=IInitialEstateRowSchema,
-            required=False
-        ),
-    )
-
-    form.widget('created_estate', estate_DataGridFieldFactory)
-    created_estate = schema.List(
-        title=_(u'Created estate'),
-        required=False,
-        value_type=DictRow(
-            schema=ICreatedEstateRowSchema,
-            required=False
-        ),
+        fields=['entrusting']
     )
 
     form.widget('entrusting', SingleCheckBoxFieldWidget)
@@ -322,7 +163,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     form.widget('plan_files', MultiFileFieldWidget)
     plan_files = schema.List(
         title=_(u'Plans files'),
-        description=_(u'Other plans must be attached in the "other files" tab.'),
+        description=_(u'Other plans must be attached in the «other files» tab.'),
         value_type=field.NamedBlobFile(),
         required=False,
     )
@@ -341,7 +182,7 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     )
 
 
-class NotaryDivision(BaseContainer):
+class NotaryDivision(UrbdialContainer):
     """
     NotaryDivision dexterity class
     """
@@ -367,24 +208,33 @@ class NotaryDivision(BaseContainer):
             if action.get('action') == 'Pass':
                 return action.get('time')
 
-    def get_comments(self, state=None, portal_type='', interface=None):
-        """
-        Query all comments of the current NotaryDivision.
-        """
+    def get_objects(self, state=None, portal_type='', provides=None):
         catalog = api.portal.get_tool('portal_catalog')
 
-        query = {'object_provides': IComment.__identifier__}
+        query = {'object_provides': provides.__identifier__}
         if state:
             query['review_state'] = state
         if portal_type:
             query['portal_type'] = portal_type
-        if interface:
-            query['object_provides'] = interface.__identifier__
 
-        comment_brains = catalog(
+        brains = catalog(
             path={'query': '/'.join(self.getPhysicalPath())},
             **query
         )
-        comments = [brain.getObject() for brain in comment_brains]
+        objects = [brain.getObject() for brain in brains]
 
+        return objects
+
+    def get_comments(self, state=None, portal_type='', provides=IComment):
+        """
+        Query all comments of the current NotaryDivision.
+        """
+        comments = self.get_objects(state, portal_type, provides)
         return comments
+
+    def get_parcels(self, state=None, portal_type='', provides=IParcel):
+        """
+        Query all parcels of the current NotaryDivision.
+        """
+        parcels = self.get_objects(state, portal_type, provides)
+        return parcels

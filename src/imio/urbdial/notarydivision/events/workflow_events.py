@@ -43,6 +43,28 @@ def update_local_roles(obj, event):
         add_local_roles_to_principals(obj, [group], roles)
 
 
+def publish_draft_parcels(notarydivision, event):
+    """
+    Publis all draft parcels of a NotaryDivision when it is notified.
+    """
+    if not event.new_state.title == 'In investigation':
+        return
+
+    # We have to execute publish_parcels with a super user because
+    # notary user dont have the permission to trigger 'Publish' transition on
+    # parcels.
+    call_as_super_user(publish_parcels, notarydivision)
+
+
+def publish_parcels(notarydivision):
+    """
+    Publish draft parcels of a NotaryDivision.
+    """
+    parcels = notarydivision.get_parcels(state='Draft')
+    for parcel in parcels:
+        parcel.transition('Publish')
+
+
 def close_comments(notarydivision, event):
     """
     Delete all draft comments of a NotaryDivision when its passed or cancelled.

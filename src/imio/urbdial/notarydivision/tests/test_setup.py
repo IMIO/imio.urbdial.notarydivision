@@ -60,6 +60,14 @@ class TestInstallDependencies(unittest.TestCase):
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
         self.assertTrue(self.installer.isProductInstalled('collective.ckeditor'))
 
+    def test_MasterSelectWidget_is_dependency_of_urbdial(self):
+        """
+        plone.formwidget.masterselect should be installed when we install urbdial
+        """
+        self.assertTrue(not self.installer.isProductInstalled('plone.formwidget.masterselect'))
+        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
+        self.assertTrue(self.installer.isProductInstalled('plone.formwidget.masterselect'))
+
 
 class TestInstall(unittest.TestCase):
     """

@@ -5,6 +5,8 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="urbdial.divnot">
 
+    <include file="table.zcml" />
+
     <!-- Publish static files -->
     <browser:resourceDirectory
         name="imio.urbdial.notarydivision"
@@ -18,34 +20,17 @@
         permission="zope2.View"
     />
 
-    <!-- Register custom display template for EstateDataGridField widget-->
-    <z3c:widgetTemplate
-        for="..content.notarydivision.INotaryDivision"
-        mode="display"
-        widget=".estate_datagridfield.EstateDataGridField"
-        layer="z3c.form.interfaces.IFormLayer"
-        template="templates/datagrid_estate_display.pt"
-    />
-
-    <!-- Register custom edit and display templates for
-         SingleCheckBoxForDataGrid widget -->
-    <z3c:widgetTemplate
-        mode="display"
-        widget=".interfaces.ISingleCheckBoxForDataGridWidget"
-        layer="z3c.form.interfaces.IFormLayer"
-        template="templates/datagrid_checkbox_display.pt"
-    />
-    <z3c:widgetTemplate
-        mode="input"
-        widget=".interfaces.ISingleCheckBoxForDataGridWidget"
-        layer="z3c.form.interfaces.IFormLayer"
-        template="templates/datagrid_checkbox_input.pt"
+    <browser:page
+        for="imio.urbdial.notarydivision.content.parcel.IParcel"
+        name="specificrights"
+        template="templates/specific_rights.pt"
+        permission="zope2.View"
     />
 
     <configure package="imio.actionspanel">
       <browser:page
-          for="*"
-          name="actions"
+          for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement"
+          name="actions_panel"
           class="imio.urbdial.notarydivision.browser.actions_view.UrbdialActionsPanelView"
           layer="imio.actionspanel.interfaces.IActionsPanelLayer"
           template="browser/actions_panel.pt"

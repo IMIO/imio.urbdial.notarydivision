@@ -8,6 +8,11 @@
         />
 
     <permission
+        id="imio.urbdial.notarydivision.AddParcel"
+        title="imio.urbdial.notarydivision: Add Parcel"
+        />
+
+    <permission
         id="imio.urbdial.notarydivision.AddFDObservation"
         title="imio.urbdial.notarydivision: Add FD Observation"
         />

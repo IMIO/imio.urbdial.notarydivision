@@ -46,8 +46,10 @@ setup(
         'collective.z3cform.rolefield',
         'imio.actionspanel',
         'plone.api',
+        'plone.formwidget.masterselect',
         'plone.formwidget.multifile',
         'setuptools',
+        'z3c.table',
     ],
     extras_require={
         'test': [

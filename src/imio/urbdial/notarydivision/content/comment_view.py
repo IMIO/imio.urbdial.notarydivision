@@ -34,7 +34,16 @@ class CommentContainerView(CommentContainerView):
     """
 
     def get_comments(self):
-        all_comments = self.context.objectValues()
+        catalog = api.portal.get_tool('portal_catalog')
+
+        comment_brains = catalog(
+            object_provides=IComment.__identifier__,
+            path={
+                'query': '/'.join(self.context.getPhysicalPath()),
+                'depth': 1
+            },
+        )
+        all_comments = [brain.getObject() for brain in comment_brains]
         visible_comments = [c for c in all_comments if checkPermission('zope2.View', c)]
         return visible_comments
 
