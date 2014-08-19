@@ -160,12 +160,14 @@ tr.field_row_display > td{
     background-color:transparent;
     padding:0;
 }
-#content li.formTab  {
-    margin:0;
+#content li.formTab{
+    border-left-color: #184b75;
+    margin:0 4px 0 0;
     text-align:left;
 }
 #content .formTabs li a{
     width: 200px;
+    line-height:28px;
 }
 #content .formTabs li > a span  {
     display:block;
@@ -184,7 +186,11 @@ tr.field_row_display > td{
     color:#e5e5e5;
 }
 #content .formTabs li.formTab + li > a span:before{
-    border-left-color: #c9c9c9;
+    border-color: transparent transparent transparent #fff;
+    border-width: 19px;
+    margin-left: -4px;
+    position: relative;
+    top: -5px;
 }
 #content .formTabs li > a span:after,#content .formTabs li > a span:before{
     content: "";
@@ -195,20 +201,21 @@ tr.field_row_display > td{
     border: solid transparent;
     border-left-color: #c9c9c9;
     border-width: 13px;
+    z-index:0;
 }
 #content .formTabs li > a span:after{
-    border-left-color: #184B75;
-    border-width: 13.8px;
+    border-left-color: #184b75;
+    border-width: 14px;
     float: right;
-    margin-right: -12.5%;
-    margin-top: -0.1%;
+    margin-right: -28px;
+    margin-top: 0%;
+    position: relative;
+    z-index: 2;
 }
 #content .formTabs li > a span:before{
     float:left;
 }
-#content .formTabs li:first-child > a span:after,#content .formTabs li:first-child > a span:before{
-    display:none;
-}
+
 /*Enlever le champ discret visible en modification */
 .discreet{
     display:none;
@@ -229,13 +236,16 @@ tr.field_row_display > td{
     border-left-color: #c9c9c9;
 }
 #content .formTabs li.formTab + li > a.selected span:before{
-    border-left-color: #184B75;
+    border-left-color: #fff;
 }
 #content .formTabs li.formTab + li > a:hover span:before{
-    border-left-color:#184B75;
+    border-left-color:#fff;
 }
-#content li.firstFormTab a span{
-     padding-left:12px;
+#contents li.firstFormTab > a span:after, #content li.firstFormTab > a span:before{
+      border-color:transparent;
+}
+#content .formTabs li > a {
+    outline: medium none #184B75;
 }
 
 /* */
