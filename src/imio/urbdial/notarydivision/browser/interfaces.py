@@ -24,3 +24,15 @@ class ICreatedParcelTable(IParcelTable):
     """
     Marker interface for CreatedParcel table listing.
     """
+
+
+class IPreviouParcelsTable(IParcelTable):
+    """
+    Marker interface for previous parcels table listing.
+    """
+
+
+class INextParcelsTable(IParcelTable):
+    """
+    Marker interface for next parcels table listing.
+    """

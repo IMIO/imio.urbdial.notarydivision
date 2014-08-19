@@ -14,10 +14,42 @@
   />
 
   <adapter
+     for="imio.urbdial.notarydivision.content.parcel.IInitialParcel
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IPreviouParcelsTable"
+     factory=".table.PreviousInitialParcelsValues"
+     provides="z3c.table.interfaces.IValues"
+  />
+
+  <adapter
+     for="imio.urbdial.notarydivision.content.parcel.IInitialParcel
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.INextParcelsTable"
+     factory=".table.NextInitialParcelsValues"
+     provides="z3c.table.interfaces.IValues"
+  />
+
+  <adapter
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
      factory=".table.CreatedParcelValues"
+     provides="z3c.table.interfaces.IValues"
+  />
+
+  <adapter
+     for="imio.urbdial.notarydivision.content.parcel.ICreatedParcel
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.IPreviouParcelsTable"
+     factory=".table.PreviousCreatedParcelsValues"
+     provides="z3c.table.interfaces.IValues"
+  />
+
+  <adapter
+     for="imio.urbdial.notarydivision.content.parcel.ICreatedParcel
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.browser.interfaces.INextParcelsTable"
+     factory=".table.NextCreatedParcelsValues"
      provides="z3c.table.interfaces.IValues"
   />
 

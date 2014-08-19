@@ -3,6 +3,7 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from imio.actionspanel.browser.views import ActionsPanelView
+from imio.actionspanel.browser.views import DeleteGivenUidView
 
 
 class UrbdialActionsPanelView(ActionsPanelView):
@@ -32,7 +33,7 @@ class UrbdialActionsPanelView(ActionsPanelView):
 
 class UrbdialAddContentPanelView(ActionsPanelView):
     """
-      This manage the view displaying actions on context.
+    This manage the view displaying actions on context.
     """
     def __init__(self, context, request):
         super(UrbdialAddContentPanelView, self).__init__(context, request)
@@ -46,6 +47,14 @@ class UrbdialAddContentPanelView(ActionsPanelView):
 
     def renderAddContent(self):
         """
-          Render allowed_content_types coming from portal_type.
+        Render allowed_content_types coming from portal_type.
         """
         return ViewPageTemplateFile("templates/add_actions.pt")(self)
+
+
+class DeleteObjectView(DeleteGivenUidView):
+    """
+    """
+
+    def _computeBackURL(self, obj):
+        return obj.aq_parent.absolute_url() + '/#fieldset-estate'

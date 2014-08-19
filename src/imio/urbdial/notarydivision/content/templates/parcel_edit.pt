@@ -6,8 +6,14 @@
       i18n:domain="plone.app.dexterity">
     <body>
         <div id="content-core">
+
+            <tal:listing content="structure view/render_previous_parcels_listing" />
+
             <metal:form use-macro="context/@@ploneform-macros/titlelessform">
             </metal:form>
+
+            <tal:listing content="structure view/render_next_parcels_listing" />
+
         </div>
     </body>
 </html>

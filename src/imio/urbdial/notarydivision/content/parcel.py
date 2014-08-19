@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.content.base import UrbdialItem
 from imio.urbdial.notarydivision.content import fields
+from imio.urbdial.notarydivision.content.base import UrbdialItem
+from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 
 from plone.autoform import directives as form
 from plone.formwidget.masterselect import MasterSelectBoolField
@@ -13,7 +14,7 @@ from zope import schema
 from zope.interface import implements
 
 
-class IParcel(model.Schema):
+class IParcel(model.Schema, INotaryDivisionElement):
     """
     Schema of Parcel
     """

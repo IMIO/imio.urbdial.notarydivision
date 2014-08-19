@@ -2,9 +2,19 @@
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+from Products.statusmessages.interfaces import IStatusMessage
+
+from imio.urbdial.notarydivision.browser.table import NextCreatedParcelsTable
+from imio.urbdial.notarydivision.browser.table import NextInitialParcelsTable
+from imio.urbdial.notarydivision.browser.table import PreviousCreatedParcelsTable
+from imio.urbdial.notarydivision.browser.table import PreviousInitialParcelsTable
+
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
 from plone.dexterity.browser import view
+from plone.dexterity.i18n import MessageFactory as _
+
+from z3c.form import button
 
 
 class ParcelView(view.DefaultView):
@@ -14,7 +24,7 @@ class ParcelView(view.DefaultView):
 
     def __call__(self):
         return self.request.response.redirect(
-            self.context.get_notarydivision().absolute_url() + '/view'
+            self.context.get_notarydivision().absolute_url() + '/#fieldset-estate'
         )
 
 
@@ -22,6 +32,18 @@ class InitialParcelAddForm(add.DefaultAddForm):
     """
     InitialParcel custom add form.
     """
+
+    @button.buttonAndHandler(_('Ajouter le lot'), name='add')
+    def handleAdd(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+        obj = self.createAndAdd(data)
+        if obj is not None:
+            # mark only as finished if we get the new object
+            self._finishedAdd = True
+            IStatusMessage(self.request).addStatusMessage(_(u"Item created"), "info")
 
 
 class InitialParcelAddView(add.DefaultAddView):
@@ -34,7 +56,7 @@ class InitialParcelAddView(add.DefaultAddView):
     form = InitialParcelAddForm
 
     def render(self):
-        return ViewPageTemplateFile("templates/parcel_edit.pt")(self)
+        return ViewPageTemplateFile("templates/parcel_add.pt")(self)
 
     def __getattr__(self, name):
         return getattr(self.form_instance, name)
@@ -44,6 +66,18 @@ class CreatedParcelAddForm(add.DefaultAddForm):
     """
     CreatedParcel custom add form.
     """
+
+    @button.buttonAndHandler(_('Ajouter le lot'), name='add')
+    def handleAdd(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+        obj = self.createAndAdd(data)
+        if obj is not None:
+            # mark only as finished if we get the new object
+            self._finishedAdd = True
+            IStatusMessage(self.request).addStatusMessage(_(u"Item created"), "info")
 
 
 class CreatedParcelAddView(add.DefaultAddView):
@@ -56,7 +90,7 @@ class CreatedParcelAddView(add.DefaultAddView):
     form = CreatedParcelAddForm
 
     def render(self):
-        return ViewPageTemplateFile("templates/parcel_edit.pt")(self)
+        return ViewPageTemplateFile("templates/parcel_add.pt")(self)
 
     def __getattr__(self, name):
         return getattr(self.form_instance, name)
@@ -69,3 +103,21 @@ class ParcelEditForm(edit.DefaultEditForm):
 
     def render(self):
         return ViewPageTemplateFile("templates/parcel_edit.pt")(self)
+
+    def render_previous_parcels_listing(self):
+        portal_type = self.context.portal_type
+        if portal_type == 'InitialParcel':
+            listing = PreviousInitialParcelsTable()
+        elif portal_type == 'CreatedParcel':
+            listing = PreviousCreatedParcelsTable()
+        listing.update()
+        return listing
+
+    def render_next_parcels_listing(self):
+        portal_type = self.context.portal_type
+        if portal_type == 'InitialParcel':
+            listing = NextInitialParcelsTable()
+        elif portal_type == 'CreatedParcel':
+            listing = NextCreatedParcelsTable()
+        listing.update()
+        return listing

@@ -195,7 +195,7 @@ tr.field_row_display > td{
 #content .formTabs li > a span:after,#content .formTabs li > a span:before{
     content: "";
     display: block;
-    width: 0px;
+    width: 1px;
     height: 0px;
     margin:0 ;
     border: solid transparent;

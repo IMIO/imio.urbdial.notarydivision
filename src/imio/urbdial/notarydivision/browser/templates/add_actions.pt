@@ -1,10 +1,10 @@
-<tal:block define="content_actions view/add_contents;">
+<tal:block define="content_actions view/addableContents;">
     <tal:display condition="content_actions">
     <form action='' i18n:domain="urbdial.divnot">
         <select name="Add element" onchange="javascript:window.location=this.value;">
             <option value=# i18n:translate="">Answer</option>
             <option tal:repeat="action content_actions"
-                tal:attributes="value action/url;"
+                tal:attributes="value action/action;"
                 tal:content="action/title">
             </option>
         </select>

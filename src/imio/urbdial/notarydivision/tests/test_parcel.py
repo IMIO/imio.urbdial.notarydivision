@@ -45,7 +45,7 @@ class TestInitialParcelView(NotaryDivisionBrowserTest):
         self.browser.open(self.test_initialparcel.absolute_url())
         notary_division_url = self.test_divnot.absolute_url()
         msg = 'InitialParcel view does not redirect to NotaryDivisionView'
-        self.assertTrue(self.browser.url == notary_division_url + '/view', msg)
+        self.assertTrue(self.browser.url == notary_division_url + '/#fieldset-estate', msg)
 
 
 class TestInitialParcelAddForm(NotaryDivisionFunctionalBrowserTest):
@@ -191,7 +191,7 @@ class TestCreatedParcelView(NotaryDivisionBrowserTest):
         self.browser.open(self.test_createdparcel.absolute_url())
         notary_division_url = self.test_divnot.absolute_url()
         msg = 'CreatedParcel view does not redirect to NotaryDivisionView'
-        self.assertTrue(self.browser.url == notary_division_url + '/view', msg)
+        self.assertTrue(self.browser.url == notary_division_url + '/#fieldset-estate', msg)
 
 
 class TestCreatedParcelAddForm(NotaryDivisionFunctionalBrowserTest):

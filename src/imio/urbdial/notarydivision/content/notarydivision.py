@@ -99,7 +99,17 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     model.fieldset(
         'estate',
         label=_(u"Estate"),
-        fields=['entrusting']
+        fields=['initial_parcels', 'created_parcels', 'entrusting']
+    )
+
+    initial_parcels = schema.Int(
+        title=_(u'Number of initial parcels'),
+        required=False,
+    )
+
+    created_parcels = schema.Int(
+        title=_(u'Number of created parcels'),
+        required=False,
     )
 
     form.widget('entrusting', SingleCheckBoxFieldWidget)

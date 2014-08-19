@@ -72,6 +72,30 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
         render = listing.render()
         return render
 
-    def can_add_parcel(self):
+    def can_add_parcel(self, portal_type='InitialParcel'):
         can_add_parcel = checkPermission('imio.urbdial.notarydivision.AddParcel', self.context)
         return can_add_parcel
+
+    def can_add_initial_parcel(self):
+        can_add_parcels = self.can_add_parcel()
+
+        notarydivision = self.context
+        existing_parcels = notarydivision.get_parcels(portal_type='InitialParcel')
+        more_parcels_needed = len(existing_parcels) < notarydivision.initial_parcels
+
+        can_add_initial_parcel = can_add_parcels and more_parcels_needed
+        return can_add_initial_parcel
+
+    def can_add_created_parcel(self):
+        can_add_parcels = self.can_add_parcel()
+
+        notarydivision = self.context
+        existing_parcels = notarydivision.get_parcels(portal_type='CreatedParcel')
+        more_parcels_needed = len(existing_parcels) < notarydivision.created_parcels
+
+        can_add_created_parcel = can_add_parcels and more_parcels_needed
+        return can_add_created_parcel
+
+    def show_comments_zone(self):
+        show_comments_zone = self.context.get_state() != 'In preparation'
+        return show_comments_zone

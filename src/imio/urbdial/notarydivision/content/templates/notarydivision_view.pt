@@ -36,7 +36,7 @@
                     </div>
 
                     <tal:tabs repeat="group view/groups">
-                        <dt class="formTab" attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
+                        <dt class="formTab" tal:attributes="id python:''.join(('fieldset.', group.__name__)).replace('.', '-')">
                             <span tal:content="group/label">Tab name</span>
                         </dt>
                         <dd>
@@ -57,16 +57,32 @@
 
                                 <fieldset id="initial_estate">
                                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Initial estate</legend>
+                                    <table>
+                                        <tr class="field_row_display">
+                                            <td style="vertical-align:top"class="table_widget_label">
+                                                <label>Nombre de lots initiaux:</label>
+                                            </td>
+                                            <td class="table_widget_value" tal:content="here/initial_parcels">Value</td>
+                                        </tr>
+                                    </table>
                                     <tal:listing content="structure view/render_InitiaParcel_listing" />
-                                    <tal:can_add_parcel condition="view/can_add_parcel">
+                                    <tal:can_add_parcel condition="view/can_add_initial_parcel">
                                         <metal:use_macro use-macro="add_initial_parcel" />
                                     </tal:can_add_parcel>
                                 </fieldset>
 
                                 <fieldset id="created_estate">
                                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Created estate</legend>
+                                    <table>
+                                        <tr class="field_row_display">
+                                            <td style="vertical-align:top"class="table_widget_label">
+                                                <label>Nombre de lots créés:</label>
+                                            </td>
+                                            <td class="table_widget_value" tal:content="here/created_parcels">Value</td>
+                                        </tr>
+                                    </table>
                                     <tal:listing content="structure view/render_CreatedParcel_listing" />
-                                    <tal:can_add_parcel condition="view/can_add_parcel">
+                                    <tal:can_add_parcel condition="view/can_add_created_parcel">
                                         <metal:use_macro use-macro="add_created_parcel" />
                                     </tal:can_add_parcel>
                                 </fieldset>
@@ -76,19 +92,21 @@
                     </tal:tabs>
                 </dl>
 
-                <fieldset id="comments">
-                    <legend i18n:translate="" i18n:domain="urbdial.divnot">Comments</legend>
-                    <div>
-                        <tal:block define="comments_macro here/@@comments_display/comments">
-                            <metal:use_macro use-macro="comments_macro" />
-                        </tal:block>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div>
-                        <tal:actions content="structure here/addcontent_actions" />
-                    </div>
-                </fieldset>
+                <tal:comments condition="view/show_comments_zone">
+                    <fieldset id="comments">
+                        <legend i18n:translate="" i18n:domain="urbdial.divnot">Comments</legend>
+                        <div>
+                            <tal:block define="comments_macro here/@@comments_display/comments">
+                                <metal:use_macro use-macro="comments_macro" />
+                            </tal:block>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div>
+                            <tal:actions content="structure here/addcontent_actions" />
+                        </div>
+                    </fieldset>
+                </tal:comments>
 
                 </metal:body>
             </metal:main_macro>

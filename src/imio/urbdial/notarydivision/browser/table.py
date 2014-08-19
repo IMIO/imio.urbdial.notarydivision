@@ -3,13 +3,13 @@
 from imio.urbdial.notarydivision.browser.interfaces import ICreatedParcelTable
 from imio.urbdial.notarydivision.browser.interfaces import IEditableParcelTable
 from imio.urbdial.notarydivision.browser.interfaces import IInitialParcelTable
+from imio.urbdial.notarydivision.browser.interfaces import INextParcelsTable
 from imio.urbdial.notarydivision.browser.interfaces import IParcelTable
+from imio.urbdial.notarydivision.browser.interfaces import IPreviouParcelsTable
 from imio.urbdial.notarydivision.content.vocabulary import DeedTypesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import LocalitiesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import SurfaceAccuraciesVocabularyFactory
 from imio.urbdial.notarydivision.utils import translate
-
-from plone import api
 
 from z3c.table.column import Column
 from z3c.table.table import Table
@@ -52,6 +52,30 @@ class EditableCreatedParcelTable(CreatedParcelTable):
     implements(IEditableParcelTable)
 
 
+class PreviousInitialParcelsTable(InitialParcelTable):
+    """
+    """
+    implements(IPreviouParcelsTable)
+
+
+class NextInitialParcelsTable(InitialParcelTable):
+    """
+    """
+    implements(INextParcelsTable)
+
+
+class PreviousCreatedParcelsTable(InitialParcelTable):
+    """
+    """
+    implements(IPreviouParcelsTable)
+
+
+class NextCreatedParcelsTable(InitialParcelTable):
+    """
+    """
+    implements(INextParcelsTable)
+
+
 class InitialParcelValues(ValuesMixin):
     """
     """
@@ -70,6 +94,46 @@ class CreatedParcelValues(ValuesMixin):
         notarydivision = self.context
         created_parcels = notarydivision.get_parcels(portal_type='CreatedParcel')
         return created_parcels
+
+
+class PreviousParcelsValues(ValuesMixin):
+    """
+    """
+    @property
+    def values(self):
+        parcel = self.context
+        notarydivision = parcel.get_notarydivision()
+        parcels = notarydivision.get_parcels(portal_type=parcel.portal_type)
+        previous_parcels = [p for p in parcels if p.number < parcel.number]
+        return previous_parcels
+
+
+class NextParcelsValues(ValuesMixin):
+    """
+    """
+    @property
+    def values(self):
+        parcel = self.context
+        notarydivision = parcel.get_notarydivision()
+        parcels = notarydivision.get_parcels(portal_type=parcel.portal_type)
+        next_parcels = [p for p in parcels if p.number > parcel.number]
+        return next_parcels
+
+
+class PreviousInitialParcelsValues(PreviousParcelsValues):
+    """ """
+
+
+class NextInitialParcelsValues(NextParcelsValues):
+    """ """
+
+
+class PreviousCreatedParcelsValues(PreviousParcelsValues):
+    """ """
+
+
+class NextCreatedParcelsValues(NextParcelsValues):
+    """ """
 
 
 class UrbdialColumn(Column):
@@ -299,22 +363,5 @@ class ActionsColumn(UrbdialColumn):
     header = 'actions'
 
     def renderCell(self, parcel):
-        base_url = api.portal.get_tool('portal_url')()
-        object_url = parcel.absolute_url()
-        action_links = ['<div>']
-
-        action = 'edit'
-        image = '<img src="%s/edit.png" title="label_edit" i18n:attributes="title" />' % base_url
-        edit_action = '<a class="noPadding" href="%s/%s">%s</a>' % (object_url, action, image)
-        action_links.append(edit_action)
-
-        action = 'delete_confirmation'
-        image = '<img src="%s/delete_icon.png" title="label_edit" i18n:attributes="title" title="label_remove"\
-                    style="cursor: pointer" onClick="javascript:confirmDeleteObject(this)"/>' % base_url
-        delete_action = '<a class="urbanDelete noPadding" href="%s/%s">%s</a>' % (object_url, action, image)
-        action_links.append(delete_action)
-
-        action_links.append('</div>')
-        action_links = ''.join(action_links)
-
-        return action_links
+        actions = parcel.restrictedTraverse('actions_panel')
+        return actions()

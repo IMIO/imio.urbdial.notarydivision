@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-18 07:14+0000\n"
+"POT-Creation-Date: 2014-08-19 12:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,18 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/notarydivision.py:173
+msgid "Add"
+msgstr ""
+
+#: ../content/parcel_view.py:36
+msgid "Ajouter le lot"
+msgstr ""
+
+#: ../content/notarydivision.py:183
 msgid "Annex"
 msgstr ""
 
-#: ../content/notarydivision.py:179
+#: ../content/notarydivision.py:189
 msgid "Annex files"
 msgstr ""
 
@@ -33,30 +40,30 @@ msgstr ""
 msgid "Applicants"
 msgstr ""
 
-#: ../content/notarydivision.py:113
+#: ../content/notarydivision.py:123
 msgid "Article 90"
 msgstr ""
 
-#: ../content/notarydivision.py:127
+#: ../content/notarydivision.py:137
 msgid "Article 90 exceptions detail"
 msgstr ""
 
-#: ../content/notarydivision.py:119
+#: ../content/notarydivision.py:129
 msgid "Article 90 reasons"
 msgstr ""
 
-#: ../content/parcel.py:48
+#: ../content/parcel.py:49
 msgid "Bis"
 msgstr ""
 
-#: ../content/parcel.py:161
+#: ../content/parcel.py:164
 msgid "Built"
 msgstr ""
 
 msgid "Cadastral reference"
 msgstr ""
 
-#: ../content/parcel.py:93
+#: ../content/parcel.py:96
 msgid "Case of undivided parcel"
 msgstr ""
 
@@ -75,15 +82,15 @@ msgstr ""
 msgid "DGO 4"
 msgstr ""
 
-#: ../content/parcel.py:143
+#: ../content/parcel.py:146
 msgid "Deed type"
 msgstr ""
 
-#: ../content/parcel.py:33
+#: ../content/parcel.py:34
 msgid "Division"
 msgstr ""
 
-#: ../content/notarydivision.py:107
+#: ../content/notarydivision.py:117
 msgid "Entrusting"
 msgstr ""
 
@@ -91,7 +98,7 @@ msgstr ""
 msgid "Estate"
 msgstr ""
 
-#: ../content/parcel.py:83
+#: ../content/parcel.py:86
 msgid "Estate actual use"
 msgstr ""
 
@@ -99,7 +106,7 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr ""
 
-#: ../content/parcel.py:53
+#: ../content/parcel.py:54
 msgid "Exposant"
 msgstr ""
 
@@ -134,7 +141,7 @@ msgstr ""
 msgid "Generate documents"
 msgstr ""
 
-#: ../content/notarydivision.py:159
+#: ../content/notarydivision.py:169
 msgid "Geometrician"
 msgstr ""
 
@@ -145,6 +152,10 @@ msgstr ""
 msgid "InitialParcel"
 msgstr ""
 
+#: ../content/parcel_view.py:46
+msgid "Item created"
+msgstr ""
+
 #: ../content/notarydivision.py:82
 msgid "Local DGO4"
 msgstr ""
@@ -153,7 +164,7 @@ msgstr ""
 msgid "Local township"
 msgstr ""
 
-#: ../content/parcel.py:27
+#: ../content/parcel.py:28
 msgid "Locality"
 msgstr ""
 
@@ -179,47 +190,55 @@ msgstr ""
 msgid "NotaryDivision"
 msgstr ""
 
-#: ../content/parcel.py:22
+#: ../content/parcel.py:23
 msgid "Number"
 msgstr ""
 
-#: ../content/parcel.py:156
+#: ../content/notarydivision.py:111
+msgid "Number of created parcels"
+msgstr ""
+
+#: ../content/notarydivision.py:106
+msgid "Number of initial parcels"
+msgstr ""
+
+#: ../content/parcel.py:159
 msgid "Other deed type"
 msgstr ""
 
-#: ../content/notarydivision.py:133
+#: ../content/notarydivision.py:143
 msgid "Other division"
 msgstr ""
 
-#: ../content/notarydivision.py:138
+#: ../content/notarydivision.py:148
 msgid "Other division reason"
 msgstr ""
 
-#: ../content/notarydivision.py:166
+#: ../content/notarydivision.py:176
 msgid "Other plans must be attached in the «other files» tab."
 msgstr ""
 
-#: ../content/parcel.py:123
+#: ../content/parcel.py:126
 msgid "Parcel destination"
 msgstr ""
 
-#: ../content/notarydivision.py:144
+#: ../content/notarydivision.py:154
 msgid "Plan"
 msgstr ""
 
-#: ../content/notarydivision.py:154
+#: ../content/notarydivision.py:164
 msgid "Plan date"
 msgstr ""
 
-#: ../content/notarydivision.py:149
+#: ../content/notarydivision.py:159
 msgid "Plan reference"
 msgstr ""
 
-#: ../content/notarydivision.py:165
+#: ../content/notarydivision.py:175
 msgid "Plans files"
 msgstr ""
 
-#: ../content/parcel.py:58
+#: ../content/parcel.py:59
 msgid "Power"
 msgstr ""
 
@@ -231,7 +250,7 @@ msgstr ""
 msgid "Previous comments"
 msgstr ""
 
-#: ../content/parcel.py:43
+#: ../content/parcel.py:44
 msgid "Radical"
 msgstr ""
 
@@ -239,18 +258,18 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: ../content/parcel.py:134
+#: ../content/parcel.py:137
 msgid "Road distance"
 msgstr ""
 
-#: ../content/parcel.py:38
+#: ../content/parcel.py:39
 msgid "Section"
 msgstr ""
 
 msgid "Specific rights"
 msgstr ""
 
-#: ../content/parcel.py:63
+#: ../content/parcel.py:64
 msgid "Surface"
 msgstr ""
 
