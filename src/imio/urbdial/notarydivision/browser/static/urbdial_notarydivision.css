@@ -237,3 +237,8 @@ tr.field_row_display > td{
 #content li.firstFormTab a span{
      padding-left:12px;
 }
+
+/* */
+#content .actionspanel-no-style-table{
+    margin-bottom: 0;
+}
