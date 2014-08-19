@@ -163,7 +163,7 @@ tr.field_row_display > td{
 #content li.formTab{
     border-left-color: #184b75;
     margin:0 4px 0 0;
-    text-align:center;
+    text-align:left;
 }
 #content .formTabs li a{
     width: 200px;
