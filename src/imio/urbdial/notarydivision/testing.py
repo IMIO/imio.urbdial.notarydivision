@@ -134,6 +134,8 @@ class ExampleDivisionLayer(TestInstallUrbdialLayer):
             type='NotaryDivision',
             id=TEST_NOTARYDIVISION_ID,
             container=portal.notarydivisions,
+            initial_parcels=3,
+            created_parcels=5,
         )
 
         api.content.create(
