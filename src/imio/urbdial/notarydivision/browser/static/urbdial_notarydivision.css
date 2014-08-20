@@ -252,3 +252,8 @@ tr.field_row_display > td{
 #content .actionspanel-no-style-table{
     margin-bottom: 0;
 }
+
+/* Increase popup text font size */
+#content .popup-textfield{
+    font-size: medium;
+}
