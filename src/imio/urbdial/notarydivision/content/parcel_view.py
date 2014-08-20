@@ -4,6 +4,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.statusmessages.interfaces import IStatusMessage
 
+from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.table import NextCreatedParcelsTable
 from imio.urbdial.notarydivision.browser.table import NextInitialParcelsTable
 from imio.urbdial.notarydivision.browser.table import PreviousCreatedParcelsTable
@@ -12,7 +13,6 @@ from imio.urbdial.notarydivision.browser.table import PreviousInitialParcelsTabl
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
 from plone.dexterity.browser import view
-from plone.dexterity.i18n import MessageFactory as _
 
 from z3c.form import button
 
@@ -33,7 +33,7 @@ class InitialParcelAddForm(add.DefaultAddForm):
     InitialParcel custom add form.
     """
 
-    @button.buttonAndHandler(_('Ajouter le lot'), name='add')
+    @button.buttonAndHandler(_('Add parcel'), name='add')
     def handleAdd(self, action):
         data, errors = self.extractData()
         if errors:
@@ -67,7 +67,7 @@ class CreatedParcelAddForm(add.DefaultAddForm):
     CreatedParcel custom add form.
     """
 
-    @button.buttonAndHandler(_('Ajouter le lot'), name='add')
+    @button.buttonAndHandler(_('Add parcel'), name='add')
     def handleAdd(self, action):
         data, errors = self.extractData()
         if errors:

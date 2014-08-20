@@ -57,6 +57,15 @@
     </configure>
 
     <browser:page
+        for="*"
+        name="simpleconfirm_view"
+        class="imio.actionspanel.browser.transitions.ConfirmTransitionView"
+        permission="zope2.View"
+        layer="imio.actionspanel.interfaces.IActionsPanelLayer"
+        template="templates/simple_confirm.pt"
+    />
+
+    <browser:page
         for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement"
         name="documents_action"
         class="imio.urbdial.notarydivision.browser.documents_action_view.DocumentsActionView"

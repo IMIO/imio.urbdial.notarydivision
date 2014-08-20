@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.table import CreatedParcelTable
 from imio.urbdial.notarydivision.browser.table import EditableCreatedParcelTable
 from imio.urbdial.notarydivision.browser.table import EditableInitialParcelTable
 from imio.urbdial.notarydivision.browser.table import InitialParcelTable
 from imio.urbdial.notarydivision.content.comment_view import CommentContainerView
 
+from plone import api
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
 from plone.dexterity.browser import view
@@ -54,6 +56,16 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
     NotaryDivision custom View.
     """
 
+    def __init__(self, context, request):
+        super(NotaryDivisionView, self).__init__(context, request)
+        self.context = context
+        self.request = request
+        plone_utils = api.portal.get_tool('plone_utils')
+        if self.can_add_initial_parcel():
+            plone_utils.addPortalMessage(_('warning_not_enough_initial_parcels'), type="warning")
+        if self.can_add_created_parcel():
+            plone_utils.addPortalMessage(_('warning_not_enough_created_parcels'), type="warning")
+
     def render_InitiaParcel_listing(self):
         if self.context.get_state() == 'In preparation':
             listing = EditableInitialParcelTable(self.context, self.request)
@@ -72,8 +84,11 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
         render = listing.render()
         return render
 
-    def can_add_parcel(self, portal_type='InitialParcel'):
-        can_add_parcel = checkPermission('imio.urbdial.notarydivision.AddParcel', self.context)
+    def can_add_parcel(self):
+        try:
+            can_add_parcel = checkPermission('imio.urbdial.notarydivision.AddParcel', self.context)
+        except:
+            return False
         return can_add_parcel
 
     def can_add_initial_parcel(self):

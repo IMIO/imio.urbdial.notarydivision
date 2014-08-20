@@ -326,5 +326,5 @@ msgstr "Veuillez renseigner les lots de l'ensemble immobilier initial dans l'ong
 #. Default: "Confirm workflow transition ${transition_name} on this ${object_type} object."
 #: ../browser/templates/simple_confirm.pt:27
 msgid "workflow_confirm"
-msgstr "Êtes vous sur de vouloir appliquer l'action ${transition_name} sur ce/cette ${object_type}?"
+msgstr "Êtes vous certain de vouloir appliquer l'action ${transition_name} sur ce/cette ${object_type}?"
 
