@@ -66,7 +66,7 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
     def test_available_transitions(self):
         available_transitions = self.notification_wf.transitions.keys()
 
-        expected_transitions = ['Notify', 'Cancel', 'Pass', 'Restart']
+        expected_transitions = ['Notify', 'CancelAct', 'Pass', 'Restart']
         for transition in expected_transitions:
             msg = 'transition {} is not defined in the Notification workflow'.format(transition)
             self.assertTrue(transition in available_transitions, msg)
@@ -86,7 +86,7 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
         self.assertTrue('imio.urbdial.notarydivision: Manage notification' in guard)
 
     def test_Cancel_is_restricted_to_ModifyPortalContent_permission(self):
-        transition = self.notification_wf.transitions['Cancel']
+        transition = self.notification_wf.transitions['CancelAct']
         guard = transition.getGuardSummary()
         self.assertTrue('imio.urbdial.notarydivision: Manage notification' in guard)
 
@@ -296,7 +296,7 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
     def test_notary_user_roles_on_cancelled_state(self):
         notarydivision = self.test_divnot
         notarydivision.transition('Notify')
-        notarydivision.transition('Cancel')
+        notarydivision.transition('CancelAct')
 
         expected_roles = ('NotaryDivision Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -309,7 +309,7 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
     def test_fd_user_roles_on_cancelled_state(self):
         notarydivision = self.test_divnot
         notarydivision.transition('Notify')
-        notarydivision.transition('Cancel')
+        notarydivision.transition('CancelAct')
 
         expected_roles = ('NotaryDivision Reader',)
         self._test_roles_of_user_on_stateful_context(
@@ -322,7 +322,7 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
     def test_township_user_roles_on_cancelled_state(self):
         notarydivision = self.test_divnot
         notarydivision.transition('Notify')
-        notarydivision.transition('Cancel')
+        notarydivision.transition('CancelAct')
 
         expected_roles = ('NotaryDivision Reader',)
         self._test_roles_of_user_on_stateful_context(

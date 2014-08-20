@@ -542,7 +542,7 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
 
         # 'Cancel' notarydivision
         login(self.portal, TEST_NOTARY_NAME)
-        notarydivision.transition('Cancel')
+        notarydivision.transition('CancelAct')
 
         # Comments should be in Frozen states
         for comment in notarydivision.get_comments():
@@ -567,6 +567,6 @@ class TestNotaryDivisionIntegration(CommentBrowserTest):
             self.assertTrue(comment.is_in_draft())
 
         login(self.portal, TEST_NOTARY_NAME)
-        notarydivision.transition('Cancel')
+        notarydivision.transition('CancelAct')
         msg = "Some draft comments are not deleted"
         self.assertTrue(len(notarydivision.get_comments()) == 0, msg)
