@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-08-19 12:05+0000\n"
+"POT-Creation-Date: 2014-08-20 10:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,12 +15,9 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
 
-msgid "Add"
-msgstr "Ajouter le lot"
-
 #: ../content/parcel_view.py:36
-msgid "Ajouter le lot"
-msgstr ""
+msgid "Add parcel"
+msgstr "Ajouter le lot"
 
 #: ../content/notarydivision.py:183
 msgid "Annex"
@@ -69,6 +66,10 @@ msgstr "En cas d’indivision ou de démembrement de propriété, spécifiez les
 #: ../profiles/default/types/ConfigFolder.xml
 msgid "ConfigFolder"
 msgstr "Dossier de configuration"
+
+#: ../browser/templates/simple_confirm.pt:35
+msgid "Confirm"
+msgstr "Confirmer"
 
 msgid "Created estate"
 msgstr "Lots créés"
@@ -313,4 +314,17 @@ msgstr "Divisions notariales"
 #: ../setuphandlers.py:225
 msgid "pod_templates_folder_title"
 msgstr "Modèles de documents"
+
+#: ../content/notarydivision_view.py:67
+msgid "warning_not_enough_created_parcels"
+msgstr "Veuillez renseigner les lots créés dans l'onglet « Objet de la division »."
+
+#: ../content/notarydivision_view.py:65
+msgid "warning_not_enough_initial_parcels"
+msgstr "Veuillez renseigner les lots de l'ensemble immobilier initial dans l'onglet « Objet de le division »."
+
+#. Default: "Confirm workflow transition ${transition_name} on this ${object_type} object."
+#: ../browser/templates/simple_confirm.pt:27
+msgid "workflow_confirm"
+msgstr "Êtes vous sur de vouloir appliquer l'action ${transition_name} sur ce/cette ${object_type}?"
 

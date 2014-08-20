@@ -1,0 +1,74 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-08-20 09:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "CancelAct"
+msgstr "annuler l'acte"
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "Cancelled"
+msgstr "Acte annulé"
+
+#: ../profiles/default/workflows/Config_folder_workflow/definition.xml
+#: ../profiles/default/workflows/Config_item_workflow/definition.xml
+#: ../profiles/default/workflows/Root_folder_workflow/definition.xml
+msgid "Default"
+msgstr ""
+
+#: ../profiles/default/workflows/Observation_workflow/definition.xml
+#: ../profiles/default/workflows/Parcel_workflow/definition.xml
+#: ../profiles/default/workflows/Precision_workflow/definition.xml
+msgid "Draft"
+msgstr "Brouillon"
+
+#: ../profiles/default/workflows/Observation_workflow/definition.xml
+#: ../profiles/default/workflows/Precision_workflow/definition.xml
+msgid "Freeze"
+msgstr "geler"
+
+#: ../profiles/default/workflows/Observation_workflow/definition.xml
+#: ../profiles/default/workflows/Precision_workflow/definition.xml
+msgid "Frozen"
+msgstr "Gelé"
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "Notify"
+msgstr "notifier"
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "Pass"
+msgstr "passer l'acte"
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "Passed"
+msgstr "Acte passé"
+
+#: ../profiles/default/workflows/Observation_workflow/definition.xml
+#: ../profiles/default/workflows/Parcel_workflow/definition.xml
+#: ../profiles/default/workflows/Precision_workflow/definition.xml
+msgid "Publish"
+msgstr "publier"
+
+#: ../profiles/default/workflows/Observation_workflow/definition.xml
+#: ../profiles/default/workflows/Parcel_workflow/definition.xml
+#: ../profiles/default/workflows/Precision_workflow/definition.xml
+msgid "Published"
+msgstr "Publié"
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "Restart"
+msgstr "Redémarrer"
+

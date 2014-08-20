@@ -78,7 +78,7 @@
  <state state_id="In investigation"
         title="In investigation"
         i18n:attributes="title">
-  <exit-transition transition_id="Cancel"/>
+  <exit-transition transition_id="CancelAct"/>
   <exit-transition transition_id="Pass"/>
   <permission-map name="Access contents information"
                   acquired="False">
@@ -256,14 +256,14 @@
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
- <transition transition_id="Cancel"
-             title="Cancel"
+ <transition transition_id="CancelAct"
+             title="CancelAct"
              new_state="Cancelled"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Cancel</action>
+  <action url="" category="workflow" i18n:translate="">CancelAct</action>
   <guard>
     <guard-permission>imio.urbdial.notarydivision: Manage notification</guard-permission>
   </guard>

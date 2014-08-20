@@ -15,9 +15,6 @@ msgstr ""
 "Domain: urbdial.divnot\n"
 
 
-msgid "Add"
-msgstr ""
-
 msgid "Answer"
 msgstr ""
 

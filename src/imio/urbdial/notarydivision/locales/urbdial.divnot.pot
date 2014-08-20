@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-19 12:05+0000\n"
+"POT-Creation-Date: 2014-08-20 10:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,8 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-msgid "Add"
-msgstr ""
-
 #: ../content/parcel_view.py:36
-msgid "Ajouter le lot"
+msgid "Add parcel"
 msgstr ""
 
 #: ../content/notarydivision.py:183
@@ -69,6 +66,10 @@ msgstr ""
 
 #: ../profiles/default/types/ConfigFolder.xml
 msgid "ConfigFolder"
+msgstr ""
+
+#: ../browser/templates/simple_confirm.pt:35
+msgid "Confirm"
 msgstr ""
 
 msgid "Created estate"
@@ -311,5 +312,18 @@ msgstr ""
 
 #: ../setuphandlers.py:225
 msgid "pod_templates_folder_title"
+msgstr ""
+
+#: ../content/notarydivision_view.py:67
+msgid "warning_not_enough_created_parcels"
+msgstr ""
+
+#: ../content/notarydivision_view.py:65
+msgid "warning_not_enough_initial_parcels"
+msgstr ""
+
+#. Default: "Confirm workflow transition ${transition_name} on this ${object_type} object."
+#: ../browser/templates/simple_confirm.pt:27
+msgid "workflow_confirm"
 msgstr ""
 
