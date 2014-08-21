@@ -8,17 +8,16 @@
                 <strong><span tal:content="view/display_title"></span></strong>
             </span>
 
-            <span class="documents_action">
-               <tal:actions content="structure comment/documents_action" />
-               <tal:actions content="structure comment/actions_panel" />
+            <div class="divnot_actions"><tal:actions content="structure comment/actions_panel" /></div>
+            <div class="divnot_documents_actions"><tal:documents content="structure comment/documents_action" /></div>
+            <div class="divnot_transitions"><tal:transitions content="structure comment/transitions_panel" /></div>
+
+
+            <span class="comment_text">
+                <tal:text content="structure python: view.display_field('text')" />
+                <tal:files content="structure python: view.display_field('files')" />
+                <tal:answer content="structure comment/addcontent_actions" />
             </span>
-
-
-            <tal:text content="structure python: view.display_field('text')" />
-
-            <tal:files content="structure python: view.display_field('files')" />
-
-            <tal:answer content="structure comment/addcontent_actions" />
 
             <div style="padding-left: 1em"><metal:observation use-macro="here/@@comments_display/comments" /></div>
 

@@ -39,6 +39,15 @@
 
       <browser:page
           for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement"
+          name="transitions_panel"
+          class="imio.urbdial.notarydivision.browser.actions_view.UrbdialTransitionsPanelView"
+          layer="imio.actionspanel.interfaces.IActionsPanelLayer"
+          template="browser/actions_panel.pt"
+         permission="zope2.View"
+      />
+
+      <browser:page
+          for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement"
           name="delete_givenuid"
           class="imio.urbdial.notarydivision.browser.actions_view.DeleteObjectView"
           layer="imio.actionspanel.interfaces.IActionsPanelLayer"
@@ -63,6 +72,15 @@
         permission="zope2.View"
         layer="imio.actionspanel.interfaces.IActionsPanelLayer"
         template="templates/simple_confirm.pt"
+    />
+
+    <browser:page
+        for="*"
+        name="dateconfirm_view"
+        class="imio.actionspanel.browser.transitions.ConfirmTransitionView"
+        permission="zope2.View"
+        layer="imio.actionspanel.interfaces.IActionsPanelLayer"
+        template="templates/date_confirm.pt"
     />
 
     <browser:page

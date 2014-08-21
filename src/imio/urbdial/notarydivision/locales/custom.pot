@@ -21,25 +21,34 @@ msgstr ""
 msgid "Cadastral reference"
 msgstr ""
 
-msgid "Initial estate"
-msgstr ""
-
-msgid "Generate documents"
+msgid "Comments"
 msgstr ""
 
 msgid "Created estate"
 msgstr ""
 
-msgid "True"
+msgid "False"
 msgstr ""
 
-msgid "False"
+msgid "Folder state"
+msgstr ""
+
+msgid "Generate documents"
+msgstr ""
+
+msgid "Initial estate"
+msgstr ""
+
+msgid "True"
 msgstr ""
 
 msgid "label_colname_cadastral_ref"
 msgstr ""
 
 msgid "label_colname_number"
+msgstr ""
+
+msgid "since"
 msgstr ""
 
 msgid "Specific rights"

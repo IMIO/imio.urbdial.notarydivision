@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-20 09:43+0000\n"
+"POT-Creation-Date: 2014-08-20 13:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
+
 
 #: ../profiles/default/workflows/Notification_workflow/definition.xml
 msgid "CancelAct"
@@ -45,6 +46,14 @@ msgstr ""
 #: ../profiles/default/workflows/Observation_workflow/definition.xml
 #: ../profiles/default/workflows/Precision_workflow/definition.xml
 msgid "Frozen"
+msgstr ""
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "In investigation"
+msgstr ""
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "In preparation"
 msgstr ""
 
 #: ../profiles/default/workflows/Notification_workflow/definition.xml

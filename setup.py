@@ -42,6 +42,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'collective.ckeditor',
+        'collective.js.jqueryui',
         'collective.z3cform.datagridfield',
         'collective.z3cform.rolefield',
         'imio.actionspanel',

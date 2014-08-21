@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-20 10:55+0000\n"
+"POT-Creation-Date: 2014-08-21 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,26 +49,30 @@ msgstr ""
 msgid "Article 90 reasons"
 msgstr ""
 
-#: ../content/parcel.py:49
+#: ../content/parcel.py:59
 msgid "Bis"
 msgstr ""
 
-#: ../content/parcel.py:164
+#: ../content/parcel.py:170
 msgid "Built"
 msgstr ""
 
 msgid "Cadastral reference"
 msgstr ""
 
-#: ../content/parcel.py:96
+#: ../content/parcel.py:106
 msgid "Case of undivided parcel"
+msgstr ""
+
+msgid "Comments"
 msgstr ""
 
 #: ../profiles/default/types/ConfigFolder.xml
 msgid "ConfigFolder"
 msgstr ""
 
-#: ../browser/templates/simple_confirm.pt:35
+#: ../browser/templates/date_confirm.pt:40
+#: ../browser/templates/simple_confirm.pt:36
 msgid "Confirm"
 msgstr ""
 
@@ -83,11 +87,11 @@ msgstr ""
 msgid "DGO 4"
 msgstr ""
 
-#: ../content/parcel.py:146
+#: ../content/parcel.py:152
 msgid "Deed type"
 msgstr ""
 
-#: ../content/parcel.py:34
+#: ../content/parcel.py:44
 msgid "Division"
 msgstr ""
 
@@ -99,7 +103,7 @@ msgstr ""
 msgid "Estate"
 msgstr ""
 
-#: ../content/parcel.py:86
+#: ../content/parcel.py:96
 msgid "Estate actual use"
 msgstr ""
 
@@ -107,7 +111,7 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr ""
 
-#: ../content/parcel.py:54
+#: ../content/parcel.py:64
 msgid "Exposant"
 msgstr ""
 
@@ -132,6 +136,9 @@ msgstr ""
 
 #: ../content/notarydivision.py:37
 msgid "Firstname"
+msgstr ""
+
+msgid "Folder state"
 msgstr ""
 
 #: ../content/notarydivision.py:62
@@ -165,7 +172,7 @@ msgstr ""
 msgid "Local township"
 msgstr ""
 
-#: ../content/parcel.py:28
+#: ../content/parcel.py:38
 msgid "Locality"
 msgstr ""
 
@@ -203,7 +210,7 @@ msgstr ""
 msgid "Number of initial parcels"
 msgstr ""
 
-#: ../content/parcel.py:159
+#: ../content/parcel.py:165
 msgid "Other deed type"
 msgstr ""
 
@@ -219,7 +226,7 @@ msgstr ""
 msgid "Other plans must be attached in the «other files» tab."
 msgstr ""
 
-#: ../content/parcel.py:126
+#: ../content/parcel.py:136
 msgid "Parcel destination"
 msgstr ""
 
@@ -239,7 +246,7 @@ msgstr ""
 msgid "Plans files"
 msgstr ""
 
-#: ../content/parcel.py:59
+#: ../content/parcel.py:69
 msgid "Power"
 msgstr ""
 
@@ -251,7 +258,7 @@ msgstr ""
 msgid "Previous comments"
 msgstr ""
 
-#: ../content/parcel.py:44
+#: ../content/parcel.py:54
 msgid "Radical"
 msgstr ""
 
@@ -259,18 +266,26 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: ../content/parcel.py:137
+#: ../content/parcel.py:147
 msgid "Road distance"
 msgstr ""
 
-#: ../content/parcel.py:39
+#: ../content/parcel.py:49
 msgid "Section"
 msgstr ""
 
 msgid "Specific rights"
 msgstr ""
 
-#: ../content/parcel.py:64
+#: ../content/parcel.py:28
+msgid "Street"
+msgstr ""
+
+#: ../content/parcel.py:33
+msgid "Street number"
+msgstr ""
+
+#: ../content/parcel.py:74
 msgid "Surface"
 msgstr ""
 
@@ -300,6 +315,11 @@ msgstr ""
 msgid "Undivided or dismemberment"
 msgstr ""
 
+#. Default: "Please, set the act's date signature."
+#: ../browser/templates/date_confirm.pt:33
+msgid "act_signature_date"
+msgstr ""
+
 msgid "label_colname_cadastral_ref"
 msgstr ""
 
@@ -314,6 +334,9 @@ msgstr ""
 msgid "pod_templates_folder_title"
 msgstr ""
 
+msgid "since"
+msgstr ""
+
 #: ../content/notarydivision_view.py:67
 msgid "warning_not_enough_created_parcels"
 msgstr ""
@@ -323,7 +346,8 @@ msgid "warning_not_enough_initial_parcels"
 msgstr ""
 
 #. Default: "Confirm workflow transition ${transition_name} on this ${object_type} object."
-#: ../browser/templates/simple_confirm.pt:27
+#: ../browser/templates/date_confirm.pt:28
+#: ../browser/templates/simple_confirm.pt:28
 msgid "workflow_confirm"
 msgstr ""
 

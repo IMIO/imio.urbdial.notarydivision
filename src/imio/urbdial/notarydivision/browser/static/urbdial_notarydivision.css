@@ -13,14 +13,17 @@ tr.field_row_display > td{
 .divnot-actions{
     align: left;
 }
+.divnot_actions{
+    float: right;
+}
 
 
 /* Espacement bouton */
 .divnot_actions table{
     margin-right:2.5em;
 }
-.divnot_actions td{
-    padding:1em;
+.divnot_actions .noPadding{
+    padding-left:2em !important;
 }
 
 
@@ -49,15 +52,25 @@ tr.field_row_display > td{
 
 
 /* Style parcel fields */
-#formfield-form-widgets-number{
-    display: inline-block;
-    padding-right: 2em;
-}
 #form-widgets-number{
     width: 3em;
 }
 #formfield-form-widgets-locality{
     display: inline-block;
+}
+#formfield-form-widgets-street{
+    display: inline-block;
+}
+#form-widgets-street{
+    display: inline-block;
+    width: 12em;
+}
+#formfield-form-widgets-street_number{
+    display: inline-block;
+    padding-right: 1.5em;
+}
+#form-widgets-street_number{
+    width: 4em;
 }
 #formfield-form-widgets-division{
     display: inline-block;
@@ -147,10 +160,13 @@ tr.field_row_display > td{
 }
 
 /* Align document generationa actions to the right*/
-.documents_action{
-    display: inline;
-    clear: both;
+.divnot_documents_actions{
+    display: inline-block;
     float: right;
+}
+
+.divnot_documents_actions div{
+    display: inline-block;
 }
 
 /*Track progress*/
@@ -256,4 +272,68 @@ tr.field_row_display > td{
 /* Increase popup text font size */
 #content .popup-textfield{
     font-size: medium;
+}
+
+/* Style notarydivision workflow states */
+.divnot_transitions{
+    float: left;
+}
+[class^=divnot_state]{
+    border-radius: 0.5em;
+    padding: 0.3em;
+    padding-left: 0.5em;
+    color: white;
+}
+
+.divnot_state_Inpreparation{
+    background-color: #494949;
+}
+
+.divnot_state_Ininvestigation{
+    background-color: #ea6619;
+}
+
+.divnot_state_Passed{
+    background-color: #75ad0a;
+}
+
+.divnot_state_Cancelled{
+    background-color: red;
+}
+
+.action-bar{
+    width: auto;
+    background-color: #ddd;
+    border-radius: 0.5em;
+    padding: 0.4em;
+    padding-left: 1em;
+}
+
+.action-bar-text{
+    font-weight:bold;
+    float: left;
+    padding-right: 2em;
+    padding-top: 0.25em;
+}
+
+.divnot_title{
+    font-size: medium;
+}
+
+
+/* */
+.comment_title{
+    float: left;
+    padding-top: 0.25em;
+    padding-right: 1em;
+}
+.comment_text{
+    float: left;
+    padding-bottom: 1em;
+}
+
+/* style form display */
+dl.enableFormTabbing dd {
+    margin-left: 0.5em;
+    padding-top: 0.5em;
 }

@@ -14,15 +14,26 @@ class UrbdialActionsPanelView(ActionsPanelView):
         super(UrbdialActionsPanelView, self).__init__(context, request)
 
         self.SECTIONS_TO_RENDER = (
-            'renderTransitions',
             'renderEdit',
             'renderOwnDelete',
+        )
+
+
+class UrbdialTransitionsPanelView(ActionsPanelView):
+    """
+      This manage the view displaying workflow transitions on context.
+    """
+    def __init__(self, context, request):
+        super(UrbdialTransitionsPanelView, self).__init__(context, request)
+
+        self.SECTIONS_TO_RENDER = (
+            'renderTransitions',
         )
 
     def _transitionsToConfirm(self):
         transitions = {
             'NotaryDivision.Notify': 'simpleconfirm_view',
-            'NotaryDivision.Pass': '',
+            'NotaryDivision.Pass': 'dateconfirm_view',
             'NotaryDivision.CancelAct': 'simpleconfirm_view',
             'Precision.Publish': 'simpleconfirm_view',
             'FDObservation.Publish': 'simpleconfirm_view',

@@ -213,10 +213,8 @@ class NotaryDivision(UrbdialContainer):
         return self.get_state() == 'Passed'
 
     def get_passed_date(self):
-        history = self.workflow_history.values()[0]
-        for action in history:
-            if action.get('action') == 'Pass':
-                return action.get('time')
+        passed_date = self.get_date_of_last_transition('Pass')
+        return passed_date
 
     def get_objects(self, state=None, portal_type='', provides=None):
         catalog = api.portal.get_tool('portal_catalog')

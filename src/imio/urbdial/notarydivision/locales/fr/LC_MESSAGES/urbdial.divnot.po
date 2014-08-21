@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-08-20 10:55+0000\n"
+"POT-Creation-Date: 2014-08-21 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,11 +47,11 @@ msgstr "Justificatif des motifs d'exception"
 msgid "Article 90 reasons"
 msgstr "Cette division entre dans le champ de l’article 90 du CWATUPE et répond à (aux) exception(s) suivante(s)"
 
-#: ../content/parcel.py:49
+#: ../content/parcel.py:59
 msgid "Bis"
 msgstr "Bis"
 
-#: ../content/parcel.py:164
+#: ../content/parcel.py:170
 msgid "Built"
 msgstr "Bâti"
 
@@ -59,15 +59,19 @@ msgstr "Bâti"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
 
-#: ../content/parcel.py:96
+#: ../content/parcel.py:106
 msgid "Case of undivided parcel"
 msgstr "En cas d’indivision ou de démembrement de propriété, spécifiez les droits des parties."
+
+msgid "Comments"
+msgstr "Commentaires"
 
 #: ../profiles/default/types/ConfigFolder.xml
 msgid "ConfigFolder"
 msgstr "Dossier de configuration"
 
-#: ../browser/templates/simple_confirm.pt:35
+#: ../browser/templates/date_confirm.pt:40
+#: ../browser/templates/simple_confirm.pt:36
 msgid "Confirm"
 msgstr "Confirmer"
 
@@ -82,11 +86,11 @@ msgstr "Lot créé"
 msgid "DGO 4"
 msgstr "DGO 4"
 
-#: ../content/parcel.py:146
+#: ../content/parcel.py:152
 msgid "Deed type"
 msgstr "Type d'acte"
 
-#: ../content/parcel.py:34
+#: ../content/parcel.py:44
 msgid "Division"
 msgstr "Division"
 
@@ -98,7 +102,7 @@ msgstr "Sauf en cas de force majeure, les parties se sont engagées à maintenir
 msgid "Estate"
 msgstr "Objet de la division"
 
-#: ../content/parcel.py:86
+#: ../content/parcel.py:96
 msgid "Estate actual use"
 msgstr "Affectation actuelle du lot"
 
@@ -106,7 +110,7 @@ msgstr "Affectation actuelle du lot"
 msgid "Exclude from navigation"
 msgstr ""
 
-#: ../content/parcel.py:54
+#: ../content/parcel.py:64
 msgid "Exposant"
 msgstr "Exposant"
 
@@ -132,6 +136,9 @@ msgstr "Fichiers"
 #: ../content/notarydivision.py:37
 msgid "Firstname"
 msgstr "Prénom"
+
+msgid "Folder state"
+msgstr "État du dossier"
 
 #: ../content/notarydivision.py:62
 msgid "General informations"
@@ -164,7 +171,7 @@ msgstr "Direction(s) provinciale concernée(s)"
 msgid "Local township"
 msgstr "Commune(s) concernée(s)"
 
-#: ../content/parcel.py:28
+#: ../content/parcel.py:38
 msgid "Locality"
 msgstr "Commune"
 
@@ -203,7 +210,7 @@ msgstr "Nombre de lots créés"
 msgid "Number of initial parcels"
 msgstr "Nombre de lots initiaux"
 
-#: ../content/parcel.py:159
+#: ../content/parcel.py:165
 msgid "Other deed type"
 msgstr "Autre type d'acte"
 
@@ -219,7 +226,7 @@ msgstr "Notification d’une division pour des raisons autres que celles prévue
 msgid "Other plans must be attached in the «other files» tab."
 msgstr "Les plans autres que ceux réalisés par un géomètre sont à joindre dans l’onglet « Autres annexes »."
 
-#: ../content/parcel.py:126
+#: ../content/parcel.py:136
 msgid "Parcel destination"
 msgstr "Destination du lot"
 
@@ -239,7 +246,7 @@ msgstr "Référence du plan"
 msgid "Plans files"
 msgstr "Fichiers (plan)"
 
-#: ../content/parcel.py:59
+#: ../content/parcel.py:69
 msgid "Power"
 msgstr "Puissance"
 
@@ -251,7 +258,7 @@ msgstr "Précision"
 msgid "Previous comments"
 msgstr "Messages précédents"
 
-#: ../content/parcel.py:44
+#: ../content/parcel.py:54
 msgid "Radical"
 msgstr "Radical"
 
@@ -259,20 +266,28 @@ msgstr "Radical"
 msgid "Reference"
 msgstr "Référence du dossier en l'étude notariale"
 
-#: ../content/parcel.py:137
+#: ../content/parcel.py:147
 msgid "Road distance"
-msgstr "Distance à route"
+msgstr "Dimension à route (m)"
 
-#: ../content/parcel.py:39
+#: ../content/parcel.py:49
 msgid "Section"
 msgstr "Section"
 
 msgid "Specific rights"
 msgstr "droits des parties"
 
-#: ../content/parcel.py:64
+#: ../content/parcel.py:28
+msgid "Street"
+msgstr "Rue"
+
+#: ../content/parcel.py:33
+msgid "Street number"
+msgstr "N° de police"
+
+#: ../content/parcel.py:74
 msgid "Surface"
-msgstr "Superficie"
+msgstr "Superficie (m²)"
 
 #: ../content/comment.py:24
 msgid "Text"
@@ -300,6 +315,11 @@ msgstr "Oui"
 msgid "Undivided or dismemberment"
 msgstr "Indivision ou démembrement"
 
+#. Default: "Please, set the act's date signature."
+#: ../browser/templates/date_confirm.pt:33
+msgid "act_signature_date"
+msgstr "Veuillez renseigner la date de l'acte:"
+
 msgid "label_colname_cadastral_ref"
 msgstr "Réf. cadastrale"
 
@@ -315,6 +335,9 @@ msgstr "Divisions notariales"
 msgid "pod_templates_folder_title"
 msgstr "Modèles de documents"
 
+msgid "since"
+msgstr "depuis le"
+
 #: ../content/notarydivision_view.py:67
 msgid "warning_not_enough_created_parcels"
 msgstr "Veuillez renseigner les lots créés dans l'onglet « Objet de la division »."
@@ -324,7 +347,8 @@ msgid "warning_not_enough_initial_parcels"
 msgstr "Veuillez renseigner les lots de l'ensemble immobilier initial dans l'onglet « Objet de le division »."
 
 #. Default: "Confirm workflow transition ${transition_name} on this ${object_type} object."
-#: ../browser/templates/simple_confirm.pt:27
+#: ../browser/templates/date_confirm.pt:28
+#: ../browser/templates/simple_confirm.pt:28
 msgid "workflow_confirm"
 msgstr "Êtes vous certain de vouloir appliquer l'action ${transition_name} sur ce/cette ${object_type}?"
 

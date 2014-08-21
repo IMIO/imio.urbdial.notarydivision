@@ -7,6 +7,12 @@
       i18n:domain="plone.app.dexterity">
     <body>
 
+    <div metal:fill-slot="top_slot">
+        <metal:block metal:use-macro="here/global_defines/macros/defines" />
+        <div tal:define="member context/@@plone_portal_state/member;
+                         dummy python:request.set((member.has_permission('Manage portal', here) and 'enable_border' or 'disable_border'), 1);" />
+    </div>
+
     <metal:main fill-slot="main">
         <metal:main_macro define-macro="main">
             <metal:body define-macro="body_macro">
@@ -16,6 +22,23 @@
                 <h1 class="documentFirstHeading">
                     <span tal:replace="here/Title" tal:omit-tag="">Title</span>
                 </h1>
+
+                <div class="action-bar">
+                     <div class="action-bar-text divnot_title" tal:content="here/portal_type"
+                                i18n:translate="" i18n:domain="urbdial.divnot"/>
+                     <div class="action-bar-text">
+                         <span i18n:translate="" i18n:domain="urbdial.divnot">Folder state</span>:
+                         <span  tal:attributes="class python: 'divnot_state_%s' % here.get_state().replace(' ', '')"
+                                tal:content="here/get_state" i18n:translate="" i18n:domain="plone"/>
+                         <span i18n:translate="" i18n:domain="urbdial.divnot">since </span>
+                         <span tal:content="view/get_last_transition_date"/>
+                     </div>
+                     <div class="divnot_transitions"><tal:actions content="structure here/transitions_panel" /></div>
+                     <div class="divnot_documents_actions"><tal:actions content="structure here/documents_action" /></div>
+                     <div class="divnot_actions"><tal:actions content="structure here/actions_panel" /></div>
+                     <div class="visualClear"></div>
+                </div>
+
                 <table class="no-style-table">
                     <tr tal:repeat="widget view/widgets/values" class="field_row_display">
                         <td style="vertical-align:top"class="table_widget_label">
@@ -28,12 +51,6 @@
                 </table>
 
                 <dl class="formTabs enableFormTabbing">
-                    <div class="divnot_actions">
-                        <tal:actions content="structure here/actions_panel" />
-                    </div>
-                    <div class="documents_action">
-                        <tal:actions content="structure here/documents_action" />
-                    </div>
 
                     <tal:tabs repeat="group view/groups">
                         <dt class="formTab" tal:attributes="id python:''.join(('fieldset.', group.__name__)).replace('.', '-')">

@@ -24,6 +24,16 @@ class IParcel(model.Schema, INotaryDivisionElement):
         required=False,
     )
 
+    street = schema.TextLine(
+        title=_(u'Street'),
+        required=False,
+    )
+
+    street_number = schema.TextLine(
+        title=_(u'Street number'),
+        required=False,
+    )
+
     locality = schema.Choice(
         title=_(u'Locality'),
         vocabulary='imio.urbdial.notarydivision.Localities',
@@ -136,10 +146,6 @@ class ICreatedParcel(IParcel):
     road_distance = schema.TextLine(
         title=_(u'Road distance'),
         required=False,
-    )
-
-    road_distance_accuracy = schema.Choice(
-        vocabulary='imio.urbdial.notarydivision.SurfaceAccuracies',
     )
 
     deed_type = MasterSelectField(

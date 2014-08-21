@@ -5,6 +5,9 @@
     <hidden manager="plone.portalheader" skinname="Sunburst Theme">
         <viewlet name="plone.logo"/>
     </hidden>
+    <hidden manager="plone.abovecontent" skinname="Sunburst Theme">
+        <viewlet name="plone.path_bar"/>
+    </hidden>
     <hidden manager="plone.portalfooter" skinname="Sunburst Theme">
         <viewlet name="plone.footer"/>
     </hidden>

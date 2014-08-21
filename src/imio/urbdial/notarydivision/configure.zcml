@@ -13,6 +13,7 @@
 
     <include package="collective.ckeditor"/>
     <include package="collective.documentgenerator"/>
+    <include package="collective.js.jqueryui"/>
     <include package="collective.z3cform.datagridfield"/>
     <include package="collective.z3cform.rolefield"/>
     <include package="imio.actionspanel"/>

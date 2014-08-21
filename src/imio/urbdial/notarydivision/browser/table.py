@@ -209,6 +209,26 @@ class CadastralReferenceColumn(UrbdialColumn):
         return reference
 
 
+class AddressColumn(UrbdialColumn):
+    """
+    """
+
+    header = 'Street'
+    weight = 35
+
+    def renderCell(self, parcel):
+        street = self.get(parcel, 'street')
+        street_number = self.get(parcel, 'street_number')
+        if street:
+            if street_number:
+                address = u'{}, {}'.format(street_number, street)
+            else:
+                address = street
+        else:
+            address = street_number
+        return address
+
+
 class SurfaceColumn(UrbdialColumn):
     """
     """
@@ -263,11 +283,7 @@ class RoadDistanceColumn(UrbdialColumn):
     def renderCell(self, parcel):
         road_distance = self.get(parcel, 'road_distance')
         if road_distance:
-            accuracy = self.get(parcel, 'road_distance_accuracy')
-            accuracy_voc_factory = SurfaceAccuraciesVocabularyFactory()
-            accuracy_voc = accuracy_voc_factory(parcel)
-            accuracy = accuracy_voc.getTerm(accuracy).title
-            road_distance = road_distance and u'{} m ({})'.format(road_distance, accuracy) or ''
+            road_distance = u'{} m'.format(road_distance)
         return road_distance
 
 

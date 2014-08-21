@@ -284,10 +284,6 @@ class TestCreatedParcelFields(NotaryDivisionBrowserTest):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'road_distance'))
 
-    def test_road_distance_accuracy_attribute(self):
-        test_createdparcel = aq_base(self.test_createdparcel)
-        self.assertTrue(hasattr(test_createdparcel, 'road_distance_accuracy'))
-
     def test_built_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'built'))

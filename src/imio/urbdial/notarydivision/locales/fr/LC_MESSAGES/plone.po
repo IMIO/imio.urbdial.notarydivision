@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-20 09:43+0000\n"
+"POT-Creation-Date: 2014-08-20 13:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,13 @@ msgstr "annuler l'acte"
 
 #: ../profiles/default/workflows/Notification_workflow/definition.xml
 msgid "Cancelled"
-msgstr "Acte annulé"
+msgstr "acte annulé"
 
 #: ../profiles/default/workflows/Config_folder_workflow/definition.xml
 #: ../profiles/default/workflows/Config_item_workflow/definition.xml
 #: ../profiles/default/workflows/Root_folder_workflow/definition.xml
 msgid "Default"
-msgstr ""
+msgstr "Privé"
 
 #: ../profiles/default/workflows/Observation_workflow/definition.xml
 #: ../profiles/default/workflows/Parcel_workflow/definition.xml
@@ -45,6 +45,14 @@ msgid "Frozen"
 msgstr "Gelé"
 
 #: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "In investigation"
+msgstr "instruction"
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
+msgid "In preparation"
+msgstr "en préparation"
+
+#: ../profiles/default/workflows/Notification_workflow/definition.xml
 msgid "Notify"
 msgstr "notifier"
 
@@ -54,7 +62,7 @@ msgstr "passer l'acte"
 
 #: ../profiles/default/workflows/Notification_workflow/definition.xml
 msgid "Passed"
-msgstr "Acte passé"
+msgstr "acte passé"
 
 #: ../profiles/default/workflows/Observation_workflow/definition.xml
 #: ../profiles/default/workflows/Parcel_workflow/definition.xml
