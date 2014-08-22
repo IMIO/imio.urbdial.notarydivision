@@ -29,9 +29,12 @@
                      <div class="action-bar-text">
                          <span i18n:translate="" i18n:domain="urbdial.divnot">Folder state</span>:
                          <span  tal:attributes="class python: 'divnot_state_%s' % here.get_state().replace(' ', '')"
-                                tal:content="here/get_state" i18n:translate="" i18n:domain="plone"/>
-                         <span i18n:translate="" i18n:domain="urbdial.divnot">since </span>
-                         <span tal:content="view/get_last_transition_date"/>
+                                tal:define="state_comment here/get_state_comment">
+                             <tal:state content="here/get_state" i18n:translate="" i18n:domain="plone"/>
+                             <tal:comment condition="state_comment"> (<tal:raw content="state_comment"/>) </tal:comment>
+                         </span>
+                         <span i18n:translate="" i18n:domain="urbdial.divnot"> since </span>
+                         <span tal:content="view/get_last_state_date"/>
                      </div>
                      <div class="divnot_transitions"><tal:actions content="structure here/transitions_panel" /></div>
                      <div class="divnot_documents_actions"><tal:actions content="structure here/documents_action" /></div>

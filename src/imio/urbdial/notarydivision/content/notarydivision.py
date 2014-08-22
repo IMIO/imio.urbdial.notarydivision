@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from DateTime import DateTime
+
 from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield import DictRow
 
@@ -213,7 +215,7 @@ class NotaryDivision(UrbdialContainer):
         return self.get_state() == 'Passed'
 
     def get_passed_date(self):
-        passed_date = self.get_date_of_last_transition('Pass')
+        passed_date = DateTime(self.get_comment_of_state('Passed'))
         return passed_date
 
     def get_objects(self, state=None, portal_type='', provides=None):

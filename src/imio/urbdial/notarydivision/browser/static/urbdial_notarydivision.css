@@ -281,7 +281,8 @@ tr.field_row_display > td{
 [class^=divnot_state]{
     border-radius: 0.5em;
     padding: 0.3em;
-    padding-left: 0.5em;
+    padding-left: 0.7em;
+    margin-right: 0.5em;
     color: white;
 }
 

@@ -115,8 +115,8 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
         show_comments_zone = self.context.get_state() != 'In preparation'
         return show_comments_zone
 
-    def get_last_transition_date(self):
-        raw_date = self.context.get_last_transition_date()
+    def get_last_state_date(self):
+        raw_date = self.context.get_state_date()
         date = ''
         if raw_date:
             date = raw_date.strftime('%d/%m/%Y')

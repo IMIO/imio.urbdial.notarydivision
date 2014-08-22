@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from DateTime import DateTime
-
 from plone.dexterity.content import Container
 from plone.dexterity.content import Item
 
@@ -17,25 +15,19 @@ class UrbdialObject(object):
         state = api.content.get_state(self)
         return state
 
-    def get_date_of_last_transition(self, transition):
+    def get_state_date(self):
+        state = self.workflow_history.values()[0][-1]
+        return state['time']
+
+    def get_state_comment(self):
+        state = self.workflow_history.values()[0][-1]
+        return state['comments']
+
+    def get_comment_of_state(self, state):
         history = self.workflow_history.values()[0]
         for state_history in reversed(history):
-            if state_history.get('action') == transition:
-                date = self._get_transition_date(state_history)
-                return date
-
-    def get_last_transition_date(self):
-        last_state = self.workflow_history.values()[0][-1]
-        transition = last_state['action']
-        if transition:
-            date = self._get_transition_date(last_state)
-            return date
-
-    def _get_transition_date(self, state_history):
-        comment = state_history.get('comments', None)
-        if comment:
-            return DateTime(comment)
-        return state_history['time']
+            if state_history.get('review_state') == state:
+                return state_history['comments']
 
     def transition(self, transition):
         api.content.transition(self, transition)
