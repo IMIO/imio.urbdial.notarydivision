@@ -118,6 +118,14 @@ class TestInitialParcelFields(NotaryDivisionBrowserTest):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'number'))
 
+    def test_street_attribute(self):
+        test_initialparcel = aq_base(self.test_initialparcel)
+        self.assertTrue(hasattr(test_initialparcel, 'street'))
+
+    def test_streetnumber_attribute(self):
+        test_initialparcel = aq_base(self.test_initialparcel)
+        self.assertTrue(hasattr(test_initialparcel, 'street_number'))
+
     def test_locality_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'locality'))
@@ -149,6 +157,10 @@ class TestInitialParcelFields(NotaryDivisionBrowserTest):
     def test_surface_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'surface'))
+
+    def test_actualuse_attribute(self):
+        test_initialparcel = aq_base(self.test_initialparcel)
+        self.assertTrue(hasattr(test_initialparcel, 'actual_use'))
 
     def test_undivided_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
