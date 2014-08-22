@@ -23,9 +23,10 @@
                                     <strong><span tal:content="view/display_title"></span></strong>
                                 </span>
 
-                                <tal:text content="structure python: view.display_field('text')" />
-
-                                <tal:files content="structure python: view.display_field('files')" />
+                                <span class="comment_text">
+                                    <tal:text content="structure python: view.display_field('text')" />
+                                    <tal:files content="structure python: view.display_field('files')" />
+                                </span>
 
                             </tal:vars>
                         </tal:comments>
