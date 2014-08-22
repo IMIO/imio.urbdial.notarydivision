@@ -495,24 +495,6 @@ class TestNotaryDivisionMethods(NotaryDivisionBrowserTest):
 
         self.assertTrue(notarydivision.is_passed())
 
-    def test_get_passed_date(self):
-        notarydivision = self.test_divnot
-
-        # So far, no passed date.
-        self.assertTrue(notarydivision.is_in_draft())
-        self.assertTrue(notarydivision.get_notification_date() is None)
-
-        # Pass the notarydivision
-        notarydivision.transition('Notify')
-        notarydivision.transition('Pass')
-
-        now = DateTime()
-        passed_date = notarydivision.get_passed_date()
-        msg = "Passed date should exists."
-        self.assertTrue(passed_date, msg)
-        msg = "Delta bewteen now and passed_date should be < to 1 sec"
-        self.assertTrue(now - passed_date < 1, msg)
-
 
 class TestNotaryDivisionIntegration(CommentBrowserTest):
     """
