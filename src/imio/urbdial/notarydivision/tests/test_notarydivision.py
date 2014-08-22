@@ -495,6 +495,25 @@ class TestNotaryDivisionMethods(NotaryDivisionBrowserTest):
 
         self.assertTrue(notarydivision.is_passed())
 
+    def test_get_passed_date(self):
+        notarydivision = self.test_divnot
+
+        # So far, no passed date.
+        self.assertTrue(notarydivision.is_in_draft())
+        self.assertTrue(notarydivision.get_notification_date() is None)
+
+        # Pass the notarydivision
+        notarydivision.transition('Notify')
+        notarydivision.transition('Pass')
+        expected_date = '1986/09/18 14:43:40.171069 GMT+2'
+        state_history = notarydivision.workflow_history.values()[0][-1]
+        state_history['comments'] = expected_date
+
+        passed_date = notarydivision.get_passed_date()
+        msg = "Passed date should exists."
+        self.assertTrue(passed_date, msg)
+        self.assertTrue(passed_date == DateTime(expected_date))
+
 
 class TestNotaryDivisionIntegration(CommentBrowserTest):
     """
