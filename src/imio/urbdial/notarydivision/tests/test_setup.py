@@ -28,6 +28,14 @@ class TestInstallDependencies(unittest.TestCase):
         applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
         self.assertTrue(self.installer.isProductInstalled('plone.app.dexterity'))
 
+    def test_jqueryui_is_dependency_of_urbdial(self):
+        """
+        collective.js.jqueryui should be installed when we install urbdial
+        """
+        self.assertTrue(not self.installer.isProductInstalled('collective.js.jqueryui'))
+        applyProfile(self.portal, 'imio.urbdial.notarydivision:testing')
+        self.assertTrue(self.installer.isProductInstalled('collective.js.jqueryui'))
+
     def test_documentgenerator_is_dependency_of_urbdial(self):
         """
         collective.documentgenerator should be installed when we install urbdial
