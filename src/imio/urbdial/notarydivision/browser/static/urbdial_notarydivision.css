@@ -330,6 +330,7 @@ tr.field_row_display > td{
 }
 .comment_text{
     float: left;
+    clear: left;
     padding-bottom: 1em;
 }
 
