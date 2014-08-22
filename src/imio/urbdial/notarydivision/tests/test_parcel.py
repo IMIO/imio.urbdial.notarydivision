@@ -118,53 +118,131 @@ class TestInitialParcelFields(NotaryDivisionBrowserTest):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'number'))
 
+    def test_number_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'number' is not editable"
+        self.assertTrue('Numéro' in contents, msg)
+
     def test_street_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'street'))
+
+    def test_street_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'street' is not editable"
+        self.assertTrue('Rue' in contents, msg)
 
     def test_streetnumber_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'street_number'))
 
+    def test_streetnumber_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'streetnumber' is not editable"
+        self.assertTrue('N°' in contents, msg)
+
     def test_locality_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'locality'))
+
+    def test_locality_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'locality' is not editable"
+        self.assertTrue('Commune' in contents, msg)
 
     def test_division_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'division'))
 
+    def test_division_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'division' is not editable"
+        self.assertTrue('Division' in contents, msg)
+
     def test_section_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'section'))
+
+    def test_section_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'section' is not editable"
+        self.assertTrue('Section' in contents, msg)
 
     def test_radical_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'radical'))
 
+    def test_radical_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'radical' is not editable"
+        self.assertTrue('Radical' in contents, msg)
+
     def test_bis_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'bis'))
+
+    def test_bis_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'bis' is not editable"
+        self.assertTrue('Bis' in contents, msg)
 
     def test_exposant_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'exposant'))
 
+    def test_exposant_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'exposant' is not editable"
+        self.assertTrue('Exposant' in contents, msg)
+
     def test_power_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'power'))
+
+    def test_power_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'power' is not editable"
+        self.assertTrue('Puissance' in contents, msg)
 
     def test_surface_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'surface'))
 
+    def test_surface_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'surface' is not editable"
+        self.assertTrue('Superficie' in contents, msg)
+
     def test_actualuse_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'actual_use'))
 
+    def test_actualuse_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'actualuse' is not editable"
+        self.assertTrue('Affectation actuelle du lot' in contents, msg)
+
     def test_undivided_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
         self.assertTrue(hasattr(test_initialparcel, 'undivided_a'))
+
+    def test_undivided_field_edit(self):
+        self.browser.open(self.test_initialparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'undivided' is not editable"
+        self.assertTrue('En cas d’indivision ou de démembrement' in contents, msg)
 
     def test_specific_rights_attribute(self):
         test_initialparcel = aq_base(self.test_initialparcel)
@@ -272,42 +350,76 @@ class TestCreatedParcelFields(NotaryDivisionBrowserTest):
         parcel_type = portal_types.get(self.test_createdparcel.portal_type)
         self.assertTrue('ICreatedParcel' in parcel_type.schema)
 
-    def test_number_attribute(self):
-        test_createdparcel = aq_base(self.test_createdparcel)
-        self.assertTrue(hasattr(test_createdparcel, 'number'))
-
     def test_undivided_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'undivided_b'))
+
+    def test_undivided_field_edit(self):
+        self.browser.open(self.test_createdparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'undivided' is not editable"
+        self.assertTrue('En cas d’indivision ou de démembrement' in contents, msg)
 
     def test_specific_rights_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'specific_rights_b'))
 
-    def test_surface_attribute(self):
-        test_createdparcel = aq_base(self.test_createdparcel)
-        self.assertTrue(hasattr(test_createdparcel, 'surface'))
-
     def test_surface_accuracy_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'surface_accuracy'))
+
+    def test_bis_field_edit(self):
+        self.browser.open(self.test_createdparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'bis' is not editable"
+        self.assertTrue('Bis' in contents, msg)
 
     def test_road_distance_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'road_distance'))
 
+    def test_surfaceaccuracy_field_edit(self):
+        self.browser.open(self.test_createdparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'surfaceaccuracy' is not editable"
+        self.assertTrue('cadastrale' in contents, msg)
+
     def test_built_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'built'))
+
+    def test_built_field_edit(self):
+        self.browser.open(self.test_createdparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'built' is not editable"
+        self.assertTrue('Bâti' in contents, msg)
 
     def test_deed_type_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'deed_type'))
 
+    def test_deedtype_field_edit(self):
+        self.browser.open(self.test_createdparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'deedtype' is not editable"
+        self.assertTrue("Type d'acte" in contents, msg)
+
     def test_other_deed_type_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'other_deed_type'))
 
+    def test_otherdeedtype_field_edit(self):
+        self.browser.open(self.test_createdparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'otherdeedtype' is not editable"
+        self.assertTrue("Autre type d'acte" in contents, msg)
+
     def test_destination_attribute(self):
         test_createdparcel = aq_base(self.test_createdparcel)
         self.assertTrue(hasattr(test_createdparcel, 'destination'))
+
+    def test_destination_field_edit(self):
+        self.browser.open(self.test_createdparcel.absolute_url() + '/edit')
+        contents = self.browser.contents
+        msg = "field 'destination' is not editable"
+        self.assertTrue('Destination du lot' in contents, msg)
