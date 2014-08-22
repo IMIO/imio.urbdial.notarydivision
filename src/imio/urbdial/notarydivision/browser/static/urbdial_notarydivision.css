@@ -325,6 +325,7 @@ tr.field_row_display > td{
 /* */
 .comment_title{
     float: left;
+    clear: left;
     padding-top: 0.25em;
     padding-right: 1em;
 }
