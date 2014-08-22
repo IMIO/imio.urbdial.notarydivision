@@ -238,8 +238,6 @@ class SurfaceColumn(UrbdialColumn):
 
     def renderCell(self, parcel):
         surface = self.get(parcel, 'surface')
-        if surface:
-            surface = surface and u'{} m²'.format(surface) or ''
         return surface
 
 
@@ -257,7 +255,7 @@ class SurfaceAccuracyColumn(UrbdialColumn):
             accuracy_voc_factory = SurfaceAccuraciesVocabularyFactory()
             accuracy_voc = accuracy_voc_factory(parcel)
             accuracy = accuracy_voc.getTerm(accuracy).title
-            surface = surface and u'{} m² ({})'.format(surface, accuracy) or ''
+            surface = surface and u'{} ({})'.format(surface, accuracy) or ''
         return surface
 
 

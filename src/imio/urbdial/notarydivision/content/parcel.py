@@ -70,7 +70,7 @@ class IParcel(model.Schema, INotaryDivisionElement):
         required=False,
     )
 
-    surface = schema.Int(
+    surface = schema.TextLine(
         title=_(u'Surface'),
         required=False,
     )

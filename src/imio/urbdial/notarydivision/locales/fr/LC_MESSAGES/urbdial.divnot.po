@@ -283,11 +283,11 @@ msgstr "Rue"
 
 #: ../content/parcel.py:33
 msgid "Street number"
-msgstr "N° de police"
+msgstr "N°"
 
 #: ../content/parcel.py:74
 msgid "Surface"
-msgstr "Superficie (m²)"
+msgstr "Superficie"
 
 #: ../content/comment.py:24
 msgid "Text"
