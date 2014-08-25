@@ -4,6 +4,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from imio.actionspanel.browser.views import ActionsPanelView
 from imio.actionspanel.browser.views import DeleteGivenUidView
+from imio.urbdial.notarydivision.content.parcel import IParcel
 
 
 class UrbdialActionsPanelView(ActionsPanelView):
@@ -72,4 +73,7 @@ class DeleteObjectView(DeleteGivenUidView):
     """
 
     def _computeBackURL(self, obj):
-        return obj.aq_parent.absolute_url() + '/#fieldset-estate'
+        parent_url = obj.aq_parent.absolute_url()
+        if IParcel.providedBy(obj):
+            parent_url += '/#fieldset-estate'
+        return parent_url
