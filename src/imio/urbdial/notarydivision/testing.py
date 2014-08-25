@@ -114,16 +114,6 @@ REAL_INSTALL_FUNCTIONAL = FunctionalTesting(
 )
 
 
-ACCEPTANCE = FunctionalTesting(
-    bases=(
-        REAL_INSTALL_FIXTURE,
-        REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
-    ),
-    name="ACCEPTANCE"
-)
-
-
 class ExampleDivisionLayer(TestInstallUrbdialLayer):
 
     def setUpPloneSite(self, portal):
@@ -168,6 +158,15 @@ EXAMPLE_DIVISION_INTEGRATION = IntegrationTesting(
 EXAMPLE_DIVISION_FUNCTIONAL = FunctionalTesting(
     bases=(EXAMPLE_DIVISION_FIXTURE,),
     name="EXAMPLE_DIVISION_FUNCTIONAL"
+)
+
+ACCEPTANCE = FunctionalTesting(
+    bases=(
+        EXAMPLE_DIVISION_FIXTURE,
+        REMOTE_LIBRARY_BUNDLE_FIXTURE,
+        z2.ZSERVER_FIXTURE
+    ),
+    name="ACCEPTANCE"
 )
 
 TEST_OBSERVATION_ID = 'test_observation'
