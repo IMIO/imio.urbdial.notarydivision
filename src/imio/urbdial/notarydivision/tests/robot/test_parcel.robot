@@ -19,6 +19,16 @@ Test parcel delete redirects on estate tab
     Confirm Action
     Location should be  http://localhost:55001/plone/notarydivisions/test_notarydivision/#fieldset-estate
 
+Test parcel specific rights display
+    Go to  ${PLONE_URL}/notarydivisions/test_notarydivision
+    Click link  fieldset-estate
+    Edit initial parcel  1
+    Select Checkbox  form-widgets-undivided_a-0
+    Input Text  id=form-widgets-specific_rights_a  Im just a gigolo
+    Click button  form-buttons-save
+    Click link  droits des parties
+    Current Frame Contains  Im just a gigolo
+
 *** Keywords ***
 
 Suite Setup
@@ -30,6 +40,14 @@ Log in as admin
     Input text  id=__ac_name  test-user
     Input password  id=__ac_password  secret
     Click Button  submit
+
+Edit initial parcel
+    [Arguments]  ${parcel_number}
+    Edit parcel  ${parcel_number}  initial
+
+Edit parcel
+    [Arguments]  ${parcel_number}  ${parcel_type}
+    Click element  xpath= //fieldset[@id='${parcel_type}_estate']//tbody//tr[${parcel_number}]//img[@title='Modifier']
 
 Delete initial parcel
     [Arguments]  ${parcel_number}

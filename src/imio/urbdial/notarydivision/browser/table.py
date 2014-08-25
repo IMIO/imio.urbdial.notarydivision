@@ -343,7 +343,7 @@ class UndividedColumn(UrbdialColumn):
                 ref=parcel.absolute_url(),
                 rights=specific_rights
             )
-            undivided = '<pan id="urbdial-undivided">{undivided}.&nbsp&nbsp&nbsp{link}</span>'.format(
+            undivided = '<span id="urbdial-undivided">{undivided}.&nbsp&nbsp&nbsp{link}</span>'.format(
                 undivided=undivided,
                 link=link
             )
