@@ -19,7 +19,7 @@ Test parcel delete redirects on estate tab
     Confirm Action
     Location should be  http://localhost:55001/plone/notarydivisions/test_notarydivision/#fieldset-estate
 
-Test parcel specific rights display
+Test initial parcel specific rights display
     Go to  ${PLONE_URL}/notarydivisions/test_notarydivision
     Click link  fieldset-estate
     Edit initial parcel  1
@@ -28,6 +28,16 @@ Test parcel specific rights display
     Click button  form-buttons-save
     Click link  droits des parties
     Current Frame Contains  Im just a gigolo
+
+Test created parcel specific rights display
+    Go to  ${PLONE_URL}/notarydivisions/test_notarydivision
+    Click link  fieldset-estate
+    Edit created parcel  1
+    Select Checkbox  form-widgets-undivided_b-0
+    Input Text  id=form-widgets-specific_rights_b  Im singing in the rain
+    Click button  form-buttons-save
+    Click link  droits des parties
+    Current Frame Contains  Im singing in the rain
 
 *** Keywords ***
 
@@ -44,6 +54,10 @@ Log in as admin
 Edit initial parcel
     [Arguments]  ${parcel_number}
     Edit parcel  ${parcel_number}  initial
+
+Edit created parcel
+    [Arguments]  ${parcel_number}
+    Edit parcel  ${parcel_number}  created
 
 Edit parcel
     [Arguments]  ${parcel_number}  ${parcel_type}
