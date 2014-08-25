@@ -10,7 +10,7 @@ class TestInitialParcelListing(NotaryDivisionFunctionalBrowserTest):
     Test InitialParcel z3c.table listing.
     """
 
-    def test_initialparcel_listing_column_display(self, value_name, expected_value, setvalue=None):
+    def _test_initialparcel_listing_column_display(self, value_name, expected_value, setvalue=None):
         parcel = self.test_initialparcel
 
         self.browser.open(parcel.absolute_url())
@@ -33,7 +33,7 @@ class TestInitialParcelListing(NotaryDivisionFunctionalBrowserTest):
 
     def test_initialparcel_number_display(self):
         expected_value = '4242'
-        self.test_initialparcel_listing_column_display('number', expected_value)
+        self._test_initialparcel_listing_column_display('number', expected_value)
 
     def test_initialparcel_locality_display(self):
         expected_value = 'Braine-le-Château</td>'
@@ -41,7 +41,7 @@ class TestInitialParcelListing(NotaryDivisionFunctionalBrowserTest):
         def setlocality():
             self.test_initialparcel.locality = '1440'
 
-        self.test_initialparcel_listing_column_display('locality', expected_value, setlocality)
+        self._test_initialparcel_listing_column_display('locality', expected_value, setlocality)
 
     def test_initialparcel_cadastralref_display(self):
         expected_value = 'A 45 B/2 24 '
@@ -53,16 +53,16 @@ class TestInitialParcelListing(NotaryDivisionFunctionalBrowserTest):
             self.test_initialparcel.bis = '2'
             self.test_initialparcel.exposant = '24'
 
-        self.test_initialparcel_listing_column_display('Cadastral reference', expected_value, setref)
+        self._test_initialparcel_listing_column_display('Cadastral reference', expected_value, setref)
 
     def test_initialparcel_surface_display(self):
         expected_value = '66ha'
-        self.test_initialparcel_listing_column_display('surface', expected_value)
+        self._test_initialparcel_listing_column_display('surface', expected_value)
 
     def test_initialparcel_actual_use_display(self):
         expected_value = 'the wonders of you'
-        self.test_initialparcel_listing_column_display('actual_use', expected_value)
+        self._test_initialparcel_listing_column_display('actual_use', expected_value)
 
     def test_initialparcel_undivided_display(self):
         expected_value = 'droits des parties</a>'
-        self.test_initialparcel_listing_column_display('undivided_a', expected_value)
+        self._test_initialparcel_listing_column_display('undivided_a', expected_value)
