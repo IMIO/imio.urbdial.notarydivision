@@ -5,10 +5,6 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.browser.table import NextCreatedParcelsTable
-from imio.urbdial.notarydivision.browser.table import NextInitialParcelsTable
-from imio.urbdial.notarydivision.browser.table import PreviousCreatedParcelsTable
-from imio.urbdial.notarydivision.browser.table import PreviousInitialParcelsTable
 
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
@@ -100,24 +96,3 @@ class ParcelEditForm(edit.DefaultEditForm):
     """
     Parcel custom edit form.
     """
-
-    def render(self):
-        return ViewPageTemplateFile("templates/parcel_edit.pt")(self)
-
-    def render_previous_parcels_listing(self):
-        portal_type = self.context.portal_type
-        if portal_type == 'InitialParcel':
-            listing = PreviousInitialParcelsTable()
-        elif portal_type == 'CreatedParcel':
-            listing = PreviousCreatedParcelsTable()
-        listing.update()
-        return listing
-
-    def render_next_parcels_listing(self):
-        portal_type = self.context.portal_type
-        if portal_type == 'InitialParcel':
-            listing = NextInitialParcelsTable()
-        elif portal_type == 'CreatedParcel':
-            listing = NextCreatedParcelsTable()
-        listing.update()
-        return listing

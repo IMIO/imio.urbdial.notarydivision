@@ -96,46 +96,6 @@ class CreatedParcelValues(ValuesMixin):
         return created_parcels
 
 
-class PreviousParcelsValues(ValuesMixin):
-    """
-    """
-    @property
-    def values(self):
-        parcel = self.context
-        notarydivision = parcel.get_notarydivision()
-        parcels = notarydivision.get_parcels(portal_type=parcel.portal_type)
-        previous_parcels = [p for p in parcels if p.number < parcel.number]
-        return previous_parcels
-
-
-class NextParcelsValues(ValuesMixin):
-    """
-    """
-    @property
-    def values(self):
-        parcel = self.context
-        notarydivision = parcel.get_notarydivision()
-        parcels = notarydivision.get_parcels(portal_type=parcel.portal_type)
-        next_parcels = [p for p in parcels if p.number > parcel.number]
-        return next_parcels
-
-
-class PreviousInitialParcelsValues(PreviousParcelsValues):
-    """ """
-
-
-class NextInitialParcelsValues(NextParcelsValues):
-    """ """
-
-
-class PreviousCreatedParcelsValues(PreviousParcelsValues):
-    """ """
-
-
-class NextCreatedParcelsValues(NextParcelsValues):
-    """ """
-
-
 class UrbdialColumn(Column):
     """
     """

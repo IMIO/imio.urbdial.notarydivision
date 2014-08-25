@@ -64,6 +64,10 @@ class TestInitialParcelListing(NotaryDivisionFunctionalBrowserTest):
 
         self._test_initialparcel_listing_column_display('street', expected_value, set_street)
 
+    def test_initialparcel_street_display(self):
+        expected_value = '<td>saikonji street'
+        self._test_initialparcel_listing_column_display('street', expected_value)
+
     def test_initialparcel_surface_display(self):
         expected_value = '66ha'
         self._test_initialparcel_listing_column_display('surface', expected_value)
