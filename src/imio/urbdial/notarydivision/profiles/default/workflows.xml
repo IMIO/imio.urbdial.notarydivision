@@ -32,6 +32,9 @@
      <bound-workflow workflow_id="Precision_workflow" />
   </type>
 <!-- ##code-section workflowbindings -->
+  <type type_id="OtherNotaryDivision">
+     <bound-workflow workflow_id="Notification_workflow" />
+  </type>
   <type type_id="FDInadmissibleFolder">
      <bound-workflow workflow_id="Observation_workflow" />
   </type>

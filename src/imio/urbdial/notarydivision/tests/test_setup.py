@@ -174,8 +174,9 @@ class TestSetup(unittest.TestCase):
         portal_types = api.portal.get_tool('portal_types')
         divnot_folder = self.portal.notarydivisions
         allowed_types = divnot_folder.allowedContentTypes()
-        self.assertTrue(len(allowed_types) == 1)
+        self.assertTrue(len(allowed_types) == 2)
         self.assertTrue(portal_types.NotaryDivision in allowed_types)
+        self.assertTrue(portal_types.OtherNotaryDivision in allowed_types)
 
     def test_notarydivisions_folder_Reader_local_role(self):
         """

@@ -19,6 +19,13 @@
         provides="zope.publisher.interfaces.browser.IBrowserPage"
         factory=".notarydivision_view.NotaryDivisionAddView"
      />
+    <adapter
+        for="Products.CMFCore.interfaces.IFolderish
+             zope.publisher.interfaces.browser.IDefaultBrowserLayer
+             imio.urbdial.notarydivision.interfaces.IOtherNotaryDivisionFTI"
+        provides="zope.publisher.interfaces.browser.IBrowserPage"
+        factory=".notarydivision_view.NotaryDivisionAddView"
+     />
     <class class=".notarydivision_view.NotaryDivisionAddView">
         <require
             permission="cmf.AddPortalContent"
@@ -27,14 +34,14 @@
     </class>
 
     <browser:page
-        for=".notarydivision.INotaryDivision"
+        for=".notarydivision.IBaseNotaryDivision"
         name="edit"
         class=".notarydivision_view.NotaryDivisionEditForm"
         permission="cmf.ModifyPortalContent"
     />
 
     <browser:page
-        for=".notarydivision.INotaryDivision"
+        for=".notarydivision.IBaseNotaryDivision"
         name="view"
         class=".notarydivision_view.NotaryDivisionView"
         template="templates/notarydivision_view.pt"
@@ -111,7 +118,7 @@
 
     <!-- Register comments display macros  -->
     <browser:page
-        for=".notarydivision.INotaryDivision"
+        for=".notarydivision.IBaseNotaryDivision"
         name="comments_display"
         template="templates/comments_display.pt"
         permission="zope2.View"
@@ -163,7 +170,7 @@
 
     <!-- Register parcels add/display macros  -->
     <browser:page
-        for=".notarydivision.INotaryDivision"
+        for=".notarydivision.IBaseNotaryDivision"
         name="parcels"
         template="templates/parcels.pt"
         permission="zope2.View"

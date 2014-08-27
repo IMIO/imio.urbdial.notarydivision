@@ -48,9 +48,9 @@ class IApplicantsRowSchema(zope.interface.Interface):
 
 # NotaryDivision schema #
 
-class INotaryDivision(model.Schema, INotaryDivisionElement):
+class IBaseNotaryDivision(model.Schema, INotaryDivisionElement):
     """
-    NotaryDivision dexterity schema
+    NotaryDivision base dexterity schema
     """
 
     form.omitted('exclude_from_nav')
@@ -120,6 +120,68 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
         required=True,
     )
 
+
+class BaseNotaryDivision(UrbdialContainer):
+    """
+    NotaryDivision dexterity class
+    """
+    implements(IBaseNotaryDivision)
+
+    __ac_local_roles_block__ = True
+
+    def is_in_draft(self):
+        return self.get_state() == 'In preparation'
+
+    def get_notification_date(self):
+        history = self.workflow_history.values()[0]
+        for action in history:
+            if action.get('action') == 'Notify':
+                return action.get('time')
+
+    def is_passed(self):
+        return self.get_state() == 'Passed'
+
+    def get_passed_date(self):
+        passed_date = DateTime(self.get_comment_of_state('Passed'))
+        return passed_date
+
+    def get_objects(self, state=None, portal_type='', provides=None):
+        catalog = api.portal.get_tool('portal_catalog')
+
+        query = {'object_provides': provides.__identifier__}
+        if state:
+            query['review_state'] = state
+        if portal_type:
+            query['portal_type'] = portal_type
+
+        brains = catalog(
+            path={'query': '/'.join(self.getPhysicalPath())},
+            **query
+        )
+        objects = [brain.getObject() for brain in brains]
+
+        return objects
+
+    def get_comments(self, state=None, portal_type='', provides=IComment):
+        """
+        Query all comments of the current NotaryDivision.
+        """
+        comments = self.get_objects(state, portal_type, provides)
+        return comments
+
+    def get_parcels(self, state=None, portal_type='', provides=IParcel):
+        """
+        Query all parcels of the current NotaryDivision.
+        """
+        parcels = self.get_objects(state, portal_type, provides)
+        return parcels
+
+
+class INotaryDivision(IBaseNotaryDivision):
+    """
+    NotaryDivision (article 90) dexterity schema
+    """
+
     model.fieldset(
         'article_90',
         label=_(u"Article 90"),
@@ -141,8 +203,63 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     )
 
     model.fieldset(
+        'plan',
+        label=_(u"Plan"),
+        fields=['plan_reference', 'plan_date', 'geometrician', 'plan_files']
+    )
+
+    plan_reference = schema.TextLine(
+        title=_(u'Plan reference'),
+        required=False,
+    )
+
+    plan_date = schema.Date(
+        title=_(u'Plan date'),
+        required=False,
+    )
+
+    geometrician = schema.Text(
+        title=_(u'Geometrician'),
+        required=False,
+    )
+
+    form.widget('plan_files', MultiFileFieldWidget)
+    plan_files = schema.List(
+        title=_(u'Plans files'),
+        description=_(u'Other plans must be attached in the «other files» tab.'),
+        value_type=field.NamedBlobFile(),
+        required=False,
+    )
+
+    model.fieldset(
+        'annex',
+        label=_(u"Annex"),
+        fields=['annex_files']
+    )
+
+    form.widget('annex_files', MultiFileFieldWidget)
+    annex_files = schema.List(
+        title=_(u'Annex files'),
+        value_type=field.NamedBlobFile(),
+        required=False,
+    )
+
+
+class NotaryDivision(BaseNotaryDivision):
+    """
+    NotaryDivision dexterity class
+    """
+    implements(INotaryDivision)
+
+
+class IOtherNotaryDivision(IBaseNotaryDivision):
+    """
+    NotaryDivision (other reason) dexterity schema
+    """
+
+    model.fieldset(
         'otherdivision',
-        label=_(u"Other division"),
+        label=_(u"Reasons"),
         fields=['otherdivision_reason']
     )
 
@@ -194,57 +311,8 @@ class INotaryDivision(model.Schema, INotaryDivisionElement):
     )
 
 
-class NotaryDivision(UrbdialContainer):
+class OtherNotaryDivision(BaseNotaryDivision):
     """
     NotaryDivision dexterity class
     """
-    implements(INotaryDivision)
-
-    __ac_local_roles_block__ = True
-
-    def is_in_draft(self):
-        return self.get_state() == 'In preparation'
-
-    def get_notification_date(self):
-        history = self.workflow_history.values()[0]
-        for action in history:
-            if action.get('action') == 'Notify':
-                return action.get('time')
-
-    def is_passed(self):
-        return self.get_state() == 'Passed'
-
-    def get_passed_date(self):
-        passed_date = DateTime(self.get_comment_of_state('Passed'))
-        return passed_date
-
-    def get_objects(self, state=None, portal_type='', provides=None):
-        catalog = api.portal.get_tool('portal_catalog')
-
-        query = {'object_provides': provides.__identifier__}
-        if state:
-            query['review_state'] = state
-        if portal_type:
-            query['portal_type'] = portal_type
-
-        brains = catalog(
-            path={'query': '/'.join(self.getPhysicalPath())},
-            **query
-        )
-        objects = [brain.getObject() for brain in brains]
-
-        return objects
-
-    def get_comments(self, state=None, portal_type='', provides=IComment):
-        """
-        Query all comments of the current NotaryDivision.
-        """
-        comments = self.get_objects(state, portal_type, provides)
-        return comments
-
-    def get_parcels(self, state=None, portal_type='', provides=IParcel):
-        """
-        Query all parcels of the current NotaryDivision.
-        """
-        parcels = self.get_objects(state, portal_type, provides)
-        return parcels
+    implements(IOtherNotaryDivision)

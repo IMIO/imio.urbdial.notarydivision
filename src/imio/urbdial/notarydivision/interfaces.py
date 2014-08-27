@@ -19,6 +19,10 @@ class INotaryDivisionFTI(IDexterityFTI):
     """Marker interface for NotaryDivision FTI."""
 
 
+class IOtherNotaryDivisionFTI(IDexterityFTI):
+    """Marker interface for NotaryDivision FTI."""
+
+
 class IInitialParcelFTI(IDexterityFTI):
     """Marker interface for InitialParcel FTI."""
 

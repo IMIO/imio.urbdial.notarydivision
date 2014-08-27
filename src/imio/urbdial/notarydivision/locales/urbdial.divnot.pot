@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-21 13:59+0000\n"
+"POT-Creation-Date: 2014-08-27 12:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/parcel_view.py:36
+#: ../content/parcel_view.py:32
 msgid "Add parcel"
 msgstr ""
 
-#: ../content/notarydivision.py:183
+#: ../content/notarydivision.py:236
 msgid "Annex"
 msgstr ""
 
-#: ../content/notarydivision.py:189
+#: ../content/notarydivision.py:242
 msgid "Annex files"
 msgstr ""
 
@@ -33,19 +33,19 @@ msgstr ""
 msgid "Answer"
 msgstr ""
 
-#: ../content/notarydivision.py:73
+#: ../content/notarydivision.py:75
 msgid "Applicants"
 msgstr ""
 
-#: ../content/notarydivision.py:123
+#: ../content/notarydivision.py:187
 msgid "Article 90"
 msgstr ""
 
-#: ../content/notarydivision.py:137
+#: ../content/notarydivision.py:201
 msgid "Article 90 exceptions detail"
 msgstr ""
 
-#: ../content/notarydivision.py:129
+#: ../content/notarydivision.py:193
 msgid "Article 90 reasons"
 msgstr ""
 
@@ -95,11 +95,11 @@ msgstr ""
 msgid "Division"
 msgstr ""
 
-#: ../content/notarydivision.py:117
+#: ../content/notarydivision.py:119
 msgid "Entrusting"
 msgstr ""
 
-#: ../content/notarydivision.py:101
+#: ../content/notarydivision.py:103
 msgid "Estate"
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Estate actual use"
 msgstr ""
 
-#: ../content/notarydivision.py:56
+#: ../content/notarydivision.py:58
 msgid "Exclude from navigation"
 msgstr ""
 
@@ -134,14 +134,14 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: ../content/notarydivision.py:37
+#: ../content/notarydivision.py:39
 msgid "Firstname"
 msgstr ""
 
 msgid "Folder state"
 msgstr ""
 
-#: ../content/notarydivision.py:62
+#: ../content/notarydivision.py:64
 msgid "General informations"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Generate documents"
 msgstr ""
 
-#: ../content/notarydivision.py:169
+#: ../content/notarydivision.py:222
 msgid "Geometrician"
 msgstr ""
 
@@ -160,15 +160,15 @@ msgstr ""
 msgid "InitialParcel"
 msgstr ""
 
-#: ../content/parcel_view.py:46
+#: ../content/parcel_view.py:42
 msgid "Item created"
 msgstr ""
 
-#: ../content/notarydivision.py:82
+#: ../content/notarydivision.py:84
 msgid "Local DGO4"
 msgstr ""
 
-#: ../content/notarydivision.py:91
+#: ../content/notarydivision.py:93
 msgid "Local township"
 msgstr ""
 
@@ -176,7 +176,7 @@ msgstr ""
 msgid "Locality"
 msgstr ""
 
-#: ../content/notarydivision.py:42
+#: ../content/notarydivision.py:44
 msgid "Name"
 msgstr ""
 
@@ -202,11 +202,11 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: ../content/notarydivision.py:111
+#: ../content/notarydivision.py:113
 msgid "Number of created parcels"
 msgstr ""
 
-#: ../content/notarydivision.py:106
+#: ../content/notarydivision.py:108
 msgid "Number of initial parcels"
 msgstr ""
 
@@ -214,35 +214,35 @@ msgstr ""
 msgid "Other deed type"
 msgstr ""
 
-#: ../content/notarydivision.py:143
-msgid "Other division"
-msgstr ""
-
-#: ../content/notarydivision.py:148
+#: ../content/notarydivision.py:267
 msgid "Other division reason"
 msgstr ""
 
-#: ../content/notarydivision.py:176
+#: ../content/notarydivision.py:229
 msgid "Other plans must be attached in the «other files» tab."
+msgstr ""
+
+#: ../profiles/default/types/OtherNotaryDivision.xml
+msgid "OtherNotaryDivision"
 msgstr ""
 
 #: ../content/parcel.py:136
 msgid "Parcel destination"
 msgstr ""
 
-#: ../content/notarydivision.py:154
+#: ../content/notarydivision.py:207
 msgid "Plan"
 msgstr ""
 
-#: ../content/notarydivision.py:164
+#: ../content/notarydivision.py:217
 msgid "Plan date"
 msgstr ""
 
-#: ../content/notarydivision.py:159
+#: ../content/notarydivision.py:212
 msgid "Plan reference"
 msgstr ""
 
-#: ../content/notarydivision.py:175
+#: ../content/notarydivision.py:228
 msgid "Plans files"
 msgstr ""
 
@@ -262,7 +262,11 @@ msgstr ""
 msgid "Radical"
 msgstr ""
 
-#: ../content/notarydivision.py:67
+#: ../content/notarydivision.py:262
+msgid "Reasons"
+msgstr ""
+
+#: ../content/notarydivision.py:69
 msgid "Reference"
 msgstr ""
 
