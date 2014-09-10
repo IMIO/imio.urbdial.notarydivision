@@ -4,7 +4,6 @@ from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 
 from imio.urbdial.notarydivision.interfaces import ICommentFTI
 from imio.urbdial.notarydivision.interfaces import ICreatedParcelFTI
-from imio.urbdial.notarydivision.interfaces import IInitialParcelFTI
 from imio.urbdial.notarydivision.interfaces import IOtherNotaryDivisionFTI
 from imio.urbdial.notarydivision.interfaces import INotaryDivisionFTI
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
@@ -90,9 +89,6 @@ def set_FTI_marker_interfaces(context):
 
     divnot_type = site.portal_types.OtherNotaryDivision
     alsoProvides(divnot_type, IOtherNotaryDivisionFTI)
-
-    initial_parcel_type = site.portal_types.InitialParcel
-    alsoProvides(initial_parcel_type, IInitialParcelFTI)
 
     created_parcel_type = site.portal_types.CreatedParcel
     alsoProvides(created_parcel_type, ICreatedParcelFTI)

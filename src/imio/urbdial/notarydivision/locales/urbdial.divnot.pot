@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-27 12:32+0000\n"
+"POT-Creation-Date: 2014-09-08 10:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,14 @@ msgstr ""
 msgid "Add parcel"
 msgstr ""
 
-#: ../content/notarydivision.py:236
+msgid "Address"
+msgstr ""
+
+#: ../content/notarydivision.py:326
 msgid "Annex"
 msgstr ""
 
-#: ../content/notarydivision.py:242
+#: ../content/notarydivision.py:332
 msgid "Annex files"
 msgstr ""
 
@@ -33,22 +36,23 @@ msgstr ""
 msgid "Answer"
 msgstr ""
 
-#: ../content/notarydivision.py:75
+#: ../content/notarydivision.py:120
 msgid "Applicants"
 msgstr ""
 
-#: ../content/notarydivision.py:187
+#: ../content/notarydivision.py:277
 msgid "Article 90"
 msgstr ""
 
-#: ../content/notarydivision.py:201
+#: ../content/notarydivision.py:291
 msgid "Article 90 exceptions detail"
 msgstr ""
 
-#: ../content/notarydivision.py:193
+#: ../content/notarydivision.py:283
 msgid "Article 90 reasons"
 msgstr ""
 
+#: ../content/notarydivision.py:79
 #: ../content/parcel.py:59
 msgid "Bis"
 msgstr ""
@@ -60,6 +64,7 @@ msgstr ""
 msgid "Cadastral reference"
 msgstr ""
 
+#: ../content/notarydivision.py:186
 #: ../content/parcel.py:106
 msgid "Case of undivided parcel"
 msgstr ""
@@ -83,7 +88,7 @@ msgstr ""
 msgid "CreatedParcel"
 msgstr ""
 
-#: ../setuphandlers.py:150
+#: ../setuphandlers.py:154
 msgid "DGO 4"
 msgstr ""
 
@@ -91,26 +96,29 @@ msgstr ""
 msgid "Deed type"
 msgstr ""
 
+#: ../content/notarydivision.py:64
 #: ../content/parcel.py:44
 msgid "Division"
 msgstr ""
 
-#: ../content/notarydivision.py:119
+#: ../content/notarydivision.py:209
 msgid "Entrusting"
 msgstr ""
 
-#: ../content/notarydivision.py:103
+#: ../content/notarydivision.py:148
 msgid "Estate"
 msgstr ""
 
+#: ../content/notarydivision.py:181
 #: ../content/parcel.py:96
 msgid "Estate actual use"
 msgstr ""
 
-#: ../content/notarydivision.py:58
+#: ../content/notarydivision.py:103
 msgid "Exclude from navigation"
 msgstr ""
 
+#: ../content/notarydivision.py:84
 #: ../content/parcel.py:64
 msgid "Exposant"
 msgstr ""
@@ -134,14 +142,14 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: ../content/notarydivision.py:39
+#: ../content/notarydivision.py:41
 msgid "Firstname"
 msgstr ""
 
 msgid "Folder state"
 msgstr ""
 
-#: ../content/notarydivision.py:64
+#: ../content/notarydivision.py:109
 msgid "General informations"
 msgstr ""
 
@@ -149,7 +157,7 @@ msgstr ""
 msgid "Generate documents"
 msgstr ""
 
-#: ../content/notarydivision.py:222
+#: ../content/notarydivision.py:312
 msgid "Geometrician"
 msgstr ""
 
@@ -164,19 +172,20 @@ msgstr ""
 msgid "Item created"
 msgstr ""
 
-#: ../content/notarydivision.py:84
+#: ../content/notarydivision.py:129
 msgid "Local DGO4"
 msgstr ""
 
-#: ../content/notarydivision.py:93
+#: ../content/notarydivision.py:138
 msgid "Local township"
 msgstr ""
 
+#: ../content/notarydivision.py:58
 #: ../content/parcel.py:38
 msgid "Locality"
 msgstr ""
 
-#: ../content/notarydivision.py:44
+#: ../content/notarydivision.py:46
 msgid "Name"
 msgstr ""
 
@@ -186,11 +195,11 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: ../setuphandlers.py:138
+#: ../setuphandlers.py:142
 msgid "Notaries"
 msgstr ""
 
-#: ../setuphandlers.py:144
+#: ../setuphandlers.py:148
 msgid "Notaries admin"
 msgstr ""
 
@@ -202,23 +211,19 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: ../content/notarydivision.py:113
-msgid "Number of created parcels"
-msgstr ""
-
-#: ../content/notarydivision.py:108
-msgid "Number of initial parcels"
+#: ../content/notarydivision.py:203
+msgid "Number of created parcellings"
 msgstr ""
 
 #: ../content/parcel.py:165
 msgid "Other deed type"
 msgstr ""
 
-#: ../content/notarydivision.py:267
+#: ../content/notarydivision.py:357
 msgid "Other division reason"
 msgstr ""
 
-#: ../content/notarydivision.py:229
+#: ../content/notarydivision.py:319
 msgid "Other plans must be attached in the «other files» tab."
 msgstr ""
 
@@ -230,22 +235,27 @@ msgstr ""
 msgid "Parcel destination"
 msgstr ""
 
-#: ../content/notarydivision.py:207
+#: ../content/notarydivision.py:167
+msgid "Parcels"
+msgstr ""
+
+#: ../content/notarydivision.py:297
 msgid "Plan"
 msgstr ""
 
-#: ../content/notarydivision.py:217
+#: ../content/notarydivision.py:307
 msgid "Plan date"
 msgstr ""
 
-#: ../content/notarydivision.py:212
+#: ../content/notarydivision.py:302
 msgid "Plan reference"
 msgstr ""
 
-#: ../content/notarydivision.py:228
+#: ../content/notarydivision.py:318
 msgid "Plans files"
 msgstr ""
 
+#: ../content/notarydivision.py:89
 #: ../content/parcel.py:69
 msgid "Power"
 msgstr ""
@@ -258,15 +268,16 @@ msgstr ""
 msgid "Previous comments"
 msgstr ""
 
+#: ../content/notarydivision.py:74
 #: ../content/parcel.py:54
 msgid "Radical"
 msgstr ""
 
-#: ../content/notarydivision.py:262
+#: ../content/notarydivision.py:352
 msgid "Reasons"
 msgstr ""
 
-#: ../content/notarydivision.py:69
+#: ../content/notarydivision.py:114
 msgid "Reference"
 msgstr ""
 
@@ -274,6 +285,7 @@ msgstr ""
 msgid "Road distance"
 msgstr ""
 
+#: ../content/notarydivision.py:69
 #: ../content/parcel.py:49
 msgid "Section"
 msgstr ""
@@ -281,14 +293,17 @@ msgstr ""
 msgid "Specific rights"
 msgstr ""
 
+#: ../content/notarydivision.py:156
 #: ../content/parcel.py:28
 msgid "Street"
 msgstr ""
 
+#: ../content/notarydivision.py:161
 #: ../content/parcel.py:33
 msgid "Street number"
 msgstr ""
 
+#: ../content/notarydivision.py:176
 #: ../content/parcel.py:74
 msgid "Surface"
 msgstr ""
@@ -309,7 +324,7 @@ msgstr ""
 msgid "TownshipPrecisionDemand"
 msgstr ""
 
-#: ../setuphandlers.py:156
+#: ../setuphandlers.py:160
 msgid "Townships"
 msgstr ""
 
@@ -330,23 +345,19 @@ msgstr ""
 msgid "label_colname_number"
 msgstr ""
 
-#: ../setuphandlers.py:198
+#: ../setuphandlers.py:202
 msgid "notarydivisions_folder_title"
 msgstr ""
 
-#: ../setuphandlers.py:225
+#: ../setuphandlers.py:229
 msgid "pod_templates_folder_title"
 msgstr ""
 
 msgid "since"
 msgstr ""
 
-#: ../content/notarydivision_view.py:67
-msgid "warning_not_enough_created_parcels"
-msgstr ""
-
 #: ../content/notarydivision_view.py:65
-msgid "warning_not_enough_initial_parcels"
+msgid "warning_not_enough_created_parcels"
 msgstr ""
 
 #. Default: "Confirm workflow transition ${transition_name} on this ${object_type} object."

@@ -61,6 +61,7 @@
                         </dt>
                         <dd>
                             <table tal:condition="python: group.__name__ != 'estate'" class="no-style-table">
+
                                 <tr tal:repeat="widget group/widgets/values" class="field_row_display">
                                     <td style="vertical-align:top"class="table_widget_label">
                                         <label>
@@ -69,6 +70,7 @@
                                     </td>
                                     <td class="table_widget_value" tal:content="structure widget/render">Value</td>
                                 </tr>
+
                             </table>
 
                             <tal:estate_tab condition="python: group.__name__ == 'estate'"
@@ -77,18 +79,36 @@
 
                                 <fieldset id="initial_estate">
                                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Initial estate</legend>
-                                    <table>
+                                    <table class="no-style-table">
+
                                         <tr class="field_row_display">
                                             <td style="vertical-align:top"class="table_widget_label">
-                                                <label>Nombre de lots initiaux:</label>
+                                                <label>
+                                                    <tal:label i18n:translate="" i18n:domain="urbdial.divnot">Address</tal:label>:
+                                                </label>
                                             </td>
-                                            <td class="table_widget_value" tal:content="here/initial_parcels">Value</td>
+                                            <td class="table_widget_value" tal:content="view/get_address_display">Value</td>
                                         </tr>
+
+                                        <tr tal:repeat="widget view/get_initial_estate_widgets" class="field_row_display">
+                                            <td style="vertical-align:top"class="table_widget_label">
+                                                <label>
+                                                    <tal:label content="widget/label">Label</tal:label>:
+                                                </label>
+                                            </td>
+                                            <td class="table_widget_value" tal:content="structure widget/render">Value</td>
+                                        </tr>
+
+                                        <tr class="field_row_display">
+                                            <td style="vertical-align:top"class="table_widget_label">
+                                                <label>
+                                                    <tal:label i18n:translate="" i18n:domain="urbdial.divnot">Undivided or dismemberment</tal:label>:
+                                                </label>
+                                            </td>
+                                            <td class="table_widget_value" tal:content="structure view/get_undivided_display">Value</td>
+                                        </tr>
+
                                     </table>
-                                    <tal:listing content="structure view/render_InitiaParcel_listing" />
-                                    <tal:can_add_parcel condition="view/can_add_initial_parcel">
-                                        <metal:use_macro use-macro="add_initial_parcel" />
-                                    </tal:can_add_parcel>
                                 </fieldset>
 
                                 <fieldset id="created_estate">
@@ -98,7 +118,7 @@
                                             <td style="vertical-align:top"class="table_widget_label">
                                                 <label>Nombre de lots créés:</label>
                                             </td>
-                                            <td class="table_widget_value" tal:content="here/created_parcels">Value</td>
+                                            <td class="table_widget_value" tal:content="here/created_parcellings">Value</td>
                                         </tr>
                                     </table>
                                     <tal:listing content="structure view/render_CreatedParcel_listing" />

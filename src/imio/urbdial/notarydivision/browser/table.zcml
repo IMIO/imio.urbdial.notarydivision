@@ -8,14 +8,6 @@
   <adapter
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
-          imio.urbdial.notarydivision.browser.interfaces.IInitialParcelTable"
-     factory=".table.InitialParcelValues"
-     provides="z3c.table.interfaces.IValues"
-  />
-
-  <adapter
-     for="zope.interface.Interface
-          zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
      factory=".table.CreatedParcelValues"
      provides="z3c.table.interfaces.IValues"
@@ -61,28 +53,10 @@
   <adapter
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
-          imio.urbdial.notarydivision.browser.interfaces.IInitialParcelTable"
-     factory=".table.SurfaceColumn"
-     provides="z3c.table.interfaces.IColumn"
-     name="surfaceColumn"
-  />
-
-  <adapter
-     for="zope.interface.Interface
-          zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
      factory=".table.SurfaceAccuracyColumn"
      provides="z3c.table.interfaces.IColumn"
      name="surfaceaccuracyColumn"
-  />
-
-  <adapter
-     for="zope.interface.Interface
-          zope.publisher.interfaces.browser.IBrowserRequest
-          imio.urbdial.notarydivision.browser.interfaces.IInitialParcelTable"
-     factory=".table.ActualUseColumn"
-     provides="z3c.table.interfaces.IColumn"
-     name="actualuseColumn"
   />
 
   <adapter
@@ -124,17 +98,8 @@
   <adapter
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
-          imio.urbdial.notarydivision.browser.interfaces.IInitialParcelTable"
-     factory=".table.InitialParcelUndividedColumn"
-     provides="z3c.table.interfaces.IColumn"
-     name="undividedColumn"
-  />
-
-  <adapter
-     for="zope.interface.Interface
-          zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcelTable"
-     factory=".table.CreatedParcelUndividedColumn"
+     factory=".table.UndividedColumn"
      provides="z3c.table.interfaces.IColumn"
      name="undividedColumn"
   />

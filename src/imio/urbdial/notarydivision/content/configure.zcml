@@ -132,19 +132,6 @@
     <adapter
         for="Products.CMFCore.interfaces.IFolderish
              zope.publisher.interfaces.browser.IDefaultBrowserLayer
-             imio.urbdial.notarydivision.interfaces.IInitialParcelFTI"
-        provides="zope.publisher.interfaces.browser.IBrowserPage"
-        factory=".parcel_view.InitialParcelAddView"
-    />
-    <class class=".parcel_view.InitialParcelAddView">
-        <require
-            permission="cmf.AddPortalContent"
-            interface="zope.publisher.interfaces.browser.IBrowserPage"
-        />
-    </class>
-    <adapter
-        for="Products.CMFCore.interfaces.IFolderish
-             zope.publisher.interfaces.browser.IDefaultBrowserLayer
              imio.urbdial.notarydivision.interfaces.ICreatedParcelFTI"
         provides="zope.publisher.interfaces.browser.IBrowserPage"
         factory=".parcel_view.CreatedParcelAddView"
@@ -173,13 +160,6 @@
         for=".notarydivision.IBaseNotaryDivision"
         name="parcels"
         template="templates/parcels.pt"
-        permission="zope2.View"
-    />
-
-    <browser:page
-        for=".parcel.IInitialParcel"
-        name="view"
-        class=".parcel_view.ParcelView"
         permission="zope2.View"
     />
 

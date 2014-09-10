@@ -32,11 +32,6 @@ class TestNotaryDivision(unittest.TestCase):
         divnot_type = portal_types.NotaryDivision
         self.assertTrue(divnot_type.add_permission == 'cmf.AddPortalContent')
 
-    def test_InitialParcel_is_in_NotaryDivision_allowed_content_types(self):
-        portal_types = api.portal.get_tool('portal_types')
-        divnot_type = portal_types.NotaryDivision
-        self.assertTrue('InitialParcel' in divnot_type.allowed_content_types)
-
     def test_CreatedParcel_is_in_NotaryDivision_allowed_content_types(self):
         portal_types = api.portal.get_tool('portal_types')
         divnot_type = portal_types.NotaryDivision

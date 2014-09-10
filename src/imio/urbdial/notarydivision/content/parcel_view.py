@@ -24,40 +24,6 @@ class ParcelView(view.DefaultView):
         )
 
 
-class InitialParcelAddForm(add.DefaultAddForm):
-    """
-    InitialParcel custom add form.
-    """
-
-    @button.buttonAndHandler(_('Add parcel'), name='add')
-    def handleAdd(self, action):
-        data, errors = self.extractData()
-        if errors:
-            self.status = self.formErrorsMessage
-            return
-        obj = self.createAndAdd(data)
-        if obj is not None:
-            # mark only as finished if we get the new object
-            self._finishedAdd = True
-            IStatusMessage(self.request).addStatusMessage(_(u"Item created"), "info")
-
-
-class InitialParcelAddView(add.DefaultAddView):
-    """
-    InitialParcel custom AddView.
-    Required to customize AddForm:
-    - first we override the attr 'form' with our custom AddForm.
-    - then we register the AddView for our InitialParcel FTI.
-    """
-    form = InitialParcelAddForm
-
-    def render(self):
-        return ViewPageTemplateFile("templates/parcel_add.pt")(self)
-
-    def __getattr__(self, name):
-        return getattr(self.form_instance, name)
-
-
 class CreatedParcelAddForm(add.DefaultAddForm):
     """
     CreatedParcel custom add form.

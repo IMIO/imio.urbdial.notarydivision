@@ -13,14 +13,14 @@
   <type type_id="ConfigFolder">
      <bound-workflow workflow_id="Config_folder_workflow" />
   </type>
+  <type type_id="CreatedParcelling">
+     <bound-workflow workflow_id="Parcel_workflow" />
+  </type>
   <type type_id="FDObservation">
      <bound-workflow workflow_id="Observation_workflow" />
   </type>
   <type type_id="Folder">
      <bound-workflow workflow_id="Root_folder_workflow" />
-  </type>
-  <type type_id="InitialParcel">
-     <bound-workflow workflow_id="Parcel_workflow" />
   </type>
   <type type_id="NotaryDivision">
      <bound-workflow workflow_id="Notification_workflow" />

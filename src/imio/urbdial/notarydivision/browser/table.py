@@ -2,10 +2,7 @@
 
 from imio.urbdial.notarydivision.browser.interfaces import ICreatedParcelTable
 from imio.urbdial.notarydivision.browser.interfaces import IEditableParcelTable
-from imio.urbdial.notarydivision.browser.interfaces import IInitialParcelTable
-from imio.urbdial.notarydivision.browser.interfaces import INextParcelsTable
 from imio.urbdial.notarydivision.browser.interfaces import IParcelTable
-from imio.urbdial.notarydivision.browser.interfaces import IPreviouParcelsTable
 from imio.urbdial.notarydivision.content.vocabulary import DeedTypesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import LocalitiesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import SurfaceAccuraciesVocabularyFactory
@@ -24,14 +21,6 @@ class ParcelTable(Table):
     implements(IParcelTable)
 
 
-class InitialParcelTable(Table):
-    """
-    """
-    implements(IInitialParcelTable)
-
-    cssClasses = {'table': 'listing largetable'}
-
-
 class CreatedParcelTable(Table):
     """
     """
@@ -40,50 +29,10 @@ class CreatedParcelTable(Table):
     cssClasses = {'table': 'listing largetable'}
 
 
-class EditableInitialParcelTable(InitialParcelTable):
-    """
-    """
-    implements(IEditableParcelTable)
-
-
 class EditableCreatedParcelTable(CreatedParcelTable):
     """
     """
     implements(IEditableParcelTable)
-
-
-class PreviousInitialParcelsTable(InitialParcelTable):
-    """
-    """
-    implements(IPreviouParcelsTable)
-
-
-class NextInitialParcelsTable(InitialParcelTable):
-    """
-    """
-    implements(INextParcelsTable)
-
-
-class PreviousCreatedParcelsTable(InitialParcelTable):
-    """
-    """
-    implements(IPreviouParcelsTable)
-
-
-class NextCreatedParcelsTable(InitialParcelTable):
-    """
-    """
-    implements(INextParcelsTable)
-
-
-class InitialParcelValues(ValuesMixin):
-    """
-    """
-    @property
-    def values(self):
-        notarydivision = self.context
-        initial_parcels = notarydivision.get_parcels(portal_type='InitialParcel')
-        return initial_parcels
 
 
 class CreatedParcelValues(ValuesMixin):
@@ -292,7 +241,8 @@ class UndividedColumn(UrbdialColumn):
     """
 
     header = 'Undivided or dismemberment'
-    undivided = 'undivided_b'
+    weight = 90
+    undivided = 'undivided'
 
     def renderCell(self, parcel):
         undivided = getattr(parcel, self.undivided)
@@ -310,22 +260,6 @@ class UndividedColumn(UrbdialColumn):
         else:
             undivided = self.get(parcel, self.undivided)
         return undivided
-
-
-class InitialParcelUndividedColumn(UndividedColumn):
-    """
-    """
-
-    weight = 60
-    undivided = 'undivided_a'
-
-
-class CreatedParcelUndividedColumn(UndividedColumn):
-    """
-    """
-
-    weight = 90
-    undivided = 'undivided_b'
 
 
 class ActionsColumn(UrbdialColumn):

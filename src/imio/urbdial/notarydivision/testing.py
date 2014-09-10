@@ -3,9 +3,8 @@
 
 from imio.helpers.test_helpers import BrowserTest
 
-from imio.urbdial.notarydivision.testing_vars import TEST_CREATEDPARCEL_ID
+from imio.urbdial.notarydivision.testing_vars import TEST_CREATEDPARCELLING_ID
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
-from imio.urbdial.notarydivision.testing_vars import TEST_INITIALPARCEL_ID
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARYDIVISION_ID
 
@@ -124,19 +123,12 @@ class ExampleDivisionLayer(TestInstallUrbdialLayer):
             type='NotaryDivision',
             id=TEST_NOTARYDIVISION_ID,
             container=portal.notarydivisions,
-            initial_parcels=3,
-            created_parcels=5,
-        )
-
-        api.content.create(
-            type='InitialParcel',
-            id=TEST_INITIALPARCEL_ID,
-            container=test_divnot,
+            created_parcellings=5,
         )
 
         api.content.create(
             type='CreatedParcel',
-            id=TEST_CREATEDPARCEL_ID,
+            id=TEST_CREATEDPARCELLING_ID,
             container=test_divnot,
         )
 
@@ -227,8 +219,7 @@ class NotaryDivisionBrowserTest(BrowserTest):
     def setUp(self):
         super(NotaryDivisionBrowserTest, self).setUp()
         self.test_divnot = self.portal.notarydivisions.get(TEST_NOTARYDIVISION_ID)
-        self.test_initialparcel = self.test_divnot.get(TEST_INITIALPARCEL_ID)
-        self.test_createdparcel = self.test_divnot.get(TEST_CREATEDPARCEL_ID)
+        self.test_parcelling = self.test_divnot.get(TEST_CREATEDPARCELLING_ID)
         self.browser_login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
 

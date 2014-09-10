@@ -137,9 +137,6 @@ tr.field_row_display > td{
 }
 
 /* hide cancel button on parcel's add form */
-.kssattr-formname-InitialParcel #form-buttons-cancel{
-    display: none;
-}
 .kssattr-formname-CreatedParcel #form-buttons-cancel{
     display: none;
 }

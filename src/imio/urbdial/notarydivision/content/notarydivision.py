@@ -6,6 +6,7 @@ from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield import DictRow
 
 from imio.urbdial.notarydivision import _
+from imio.urbdial.notarydivision.browser.parcel_datagridfield import ParcelDataGridFieldFactory
 from imio.urbdial.notarydivision.content.base import UrbdialContainer
 from imio.urbdial.notarydivision.content.comment import IComment
 from imio.urbdial.notarydivision.content.parcel import IParcel
@@ -16,6 +17,7 @@ from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
 from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
+from plone.formwidget.masterselect import MasterSelectBoolField
 from plone.formwidget.multifile import MultiFileFieldWidget
 from plone.namedfile import field
 from plone.supermodel import model
@@ -42,6 +44,49 @@ class IApplicantsRowSchema(zope.interface.Interface):
 
     name = schema.TextLine(
         title=_(u'Name'),
+        required=False,
+    )
+
+
+# Parcels DataGridField schema #
+
+class IParcelRowSchema(zope.interface.Interface):
+    """
+    Schema for DataGridField widget's row of field 'parcels'
+    """
+    locality = schema.Choice(
+        title=_(u'Locality'),
+        vocabulary='imio.urbdial.notarydivision.Localities',
+        required=False,
+    )
+
+    division = schema.TextLine(
+        title=_(u'Division'),
+        required=False,
+    )
+
+    section = schema.TextLine(
+        title=_(u'Section'),
+        required=False,
+    )
+
+    radical = schema.TextLine(
+        title=_(u'Radical'),
+        required=False,
+    )
+
+    bis = schema.TextLine(
+        title=_(u'Bis'),
+        required=False,
+    )
+
+    exposant = schema.TextLine(
+        title=_(u'Exposant'),
+        required=False,
+    )
+
+    power = schema.TextLine(
+        title=_(u'Power'),
         required=False,
     )
 
@@ -101,16 +146,61 @@ class IBaseNotaryDivision(model.Schema, INotaryDivisionElement):
     model.fieldset(
         'estate',
         label=_(u"Estate"),
-        fields=['initial_parcels', 'created_parcels', 'entrusting']
+        fields=[
+            'street', 'street_number', 'parcels', 'surface', 'actual_use',
+            'undivided', 'specific_rights', 'created_parcellings', 'entrusting'
+        ]
     )
 
-    initial_parcels = schema.Int(
-        title=_(u'Number of initial parcels'),
+    street = schema.TextLine(
+        title=_(u'Street'),
         required=False,
     )
 
-    created_parcels = schema.Int(
-        title=_(u'Number of created parcels'),
+    street_number = schema.TextLine(
+        title=_(u'Street number'),
+        required=False,
+    )
+
+    form.widget('parcels', ParcelDataGridFieldFactory)
+    parcels = schema.List(
+        title=_(u'Parcels'),
+        required=False,
+        value_type=DictRow(
+            schema=IParcelRowSchema,
+            required=False
+        ),
+    )
+
+    surface = schema.TextLine(
+        title=_(u'Surface'),
+        required=False,
+    )
+
+    actual_use = schema.Text(
+        title=_(u'Estate actual use'),
+        required=False,
+    )
+
+    undivided = MasterSelectBoolField(
+        title=_(u'Case of undivided parcel'),
+        required=False,
+        slave_fields=(
+            {
+                'masterID': 'form-widgets-undivided-0',
+                'name': 'specific_rights',
+                'action': 'show',
+                'hide_values': 1,
+            },
+        ),
+    )
+
+    specific_rights = schema.Text(
+        required=False,
+    )
+
+    created_parcellings = schema.Int(
+        title=_(u'Number of created parcellings'),
         required=False,
     )
 

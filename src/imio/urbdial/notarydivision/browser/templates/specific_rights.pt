@@ -12,9 +12,7 @@
 <metal:main_macro define-macro="main">
     <metal:body define-macro="body_macro">
 
-    <tal:display define="attr_name python: hasattr(here, 'specific_rights_a') and 'specific_rights_a' or 'specific_rights_b'">
-        <div class="popup-textfield" tal:content="structure python: getattr(here, attr_name)"/>
-    </tal:display>
+    <div class="popup-textfield" tal:content="structure here/specific_rights"/>
 
 </metal:body>
 </metal:main_macro>

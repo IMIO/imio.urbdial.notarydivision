@@ -3,9 +3,8 @@
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.table import CreatedParcelTable
 from imio.urbdial.notarydivision.browser.table import EditableCreatedParcelTable
-from imio.urbdial.notarydivision.browser.table import EditableInitialParcelTable
-from imio.urbdial.notarydivision.browser.table import InitialParcelTable
 from imio.urbdial.notarydivision.content.comment_view import CommentContainerView
+from imio.urbdial.notarydivision.utils import translate
 
 from plone import api
 from plone.dexterity.browser import add
@@ -61,19 +60,8 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
         self.context = context
         self.request = request
         plone_utils = api.portal.get_tool('plone_utils')
-        if self.can_add_initial_parcel():
-            plone_utils.addPortalMessage(_('warning_not_enough_initial_parcels'), type="warning")
         if self.can_add_created_parcel():
             plone_utils.addPortalMessage(_('warning_not_enough_created_parcels'), type="warning")
-
-    def render_InitiaParcel_listing(self):
-        if self.context.get_state() == 'In preparation':
-            listing = EditableInitialParcelTable(self.context, self.request)
-        else:
-            listing = InitialParcelTable(self.context, self.request)
-        listing.update()
-        render = listing.render()
-        return render
 
     def render_CreatedParcel_listing(self):
         if self.context.get_state() == 'In preparation':
@@ -91,22 +79,12 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
             return False
         return can_add_parcel
 
-    def can_add_initial_parcel(self):
-        can_add_parcels = self.can_add_parcel()
-
-        notarydivision = self.context
-        existing_parcels = notarydivision.get_parcels(portal_type='InitialParcel')
-        more_parcels_needed = len(existing_parcels) < notarydivision.initial_parcels
-
-        can_add_initial_parcel = can_add_parcels and more_parcels_needed
-        return can_add_initial_parcel
-
     def can_add_created_parcel(self):
         can_add_parcels = self.can_add_parcel()
 
         notarydivision = self.context
         existing_parcels = notarydivision.get_parcels(portal_type='CreatedParcel')
-        more_parcels_needed = len(existing_parcels) < notarydivision.created_parcels
+        more_parcels_needed = len(existing_parcels) < notarydivision.created_parcellings
 
         can_add_created_parcel = can_add_parcels and more_parcels_needed
         return can_add_created_parcel
@@ -121,3 +99,40 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
         if raw_date:
             date = raw_date.strftime('%d/%m/%Y')
         return date
+
+    def get_address_display(self):
+        number = self.context.street_number
+        number = number and u'{}'.format(number) or u''
+        street = self.context.street
+        street = street and street or u''
+        if street and number:
+            address = u'{}, {}'.format(number, street)
+        else:
+            address = u'{}{}'.format(number, street)
+        return address
+
+    def get_undivided_display(self):
+        undivided = self.context.undivided
+        undivided_display = undivided and 'Yes' or 'No'
+        undivided_display = translate(undivided_display, domain='plone')
+        if undivided:
+            base_url = self.context.absolute_url()
+            link = '<a class="link-overlay" href="{ref}/@@specificrights">{rights}</a>'.format(
+                ref=base_url,
+                rights=translate('Specific rights')
+            )
+            undivided_display = '<span id="urbdial-undivided">{undivided}.&nbsp&nbsp&nbsp{link}</span>'.format(
+                undivided=undivided_display,
+                link=link
+            )
+        return undivided_display
+
+    def get_initial_estate_widgets(self):
+        """
+        Return initial estate fields of tab 'estate'.
+        """
+
+        estate_tab = [tab for tab in self.groups if tab.__name__ == 'estate'][0]
+        initial_estate_fields = ['actual_use', 'surface', 'parcels']
+        widgets = [w for w in estate_tab.widgets.values() if w.__name__ in initial_estate_fields]
+        return widgets

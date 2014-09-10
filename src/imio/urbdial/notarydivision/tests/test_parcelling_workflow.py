@@ -30,10 +30,6 @@ class TestParcelWorkflowDefinition(unittest.TestCase):
         available_workflows = self.wf_tool.listWorkflows()
         self.assertTrue('Parcel_workflow' in available_workflows)
 
-    def test_parcel_workflow_is_bound_to_InitialParcel_type(self):
-        Folder_worklows = self.wf_tool.getChainForPortalType('InitialParcel')
-        self.assertTrue('Parcel_workflow' in Folder_worklows)
-
     def test_parcel_workflow_is_bound_to_CreatedParcel_type(self):
         Folder_worklows = self.wf_tool.getChainForPortalType('CreatedParcel')
         self.assertTrue('Parcel_workflow' in Folder_worklows)
@@ -138,7 +134,7 @@ class TestParcelWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Workflow
         wf_tool = api.portal.get_tool('portal_workflow')
         parcel_wf = wf_tool.getWorkflowById('Parcel_workflow')
 
-        mapping = queryMultiAdapter((self.test_initialparcel, parcel_wf), IWorkflowStateRolesMapping)
+        mapping = queryMultiAdapter((self.test_parcelling, parcel_wf), IWorkflowStateRolesMapping)
         self.assertTrue(isinstance(mapping, parcel_workflow.StateRolesMapping))
 
     def test_notary_user_roles_on_draft_state(self):
@@ -146,7 +142,7 @@ class TestParcelWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Workflow
         self._test_roles_of_user_on_stateful_context(
             username=TEST_NOTARY_NAME,
             expected_roles=expected_roles,
-            context=self.test_initialparcel,
+            context=self.test_parcelling,
             state='Draft',
         )
 
@@ -155,7 +151,7 @@ class TestParcelWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Workflow
         self._test_roles_of_user_on_stateful_context(
             username=TEST_FD_NAME,
             expected_roles=expected_roles,
-            context=self.test_initialparcel,
+            context=self.test_parcelling,
             state='Draft',
         )
 
@@ -164,12 +160,12 @@ class TestParcelWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Workflow
         self._test_roles_of_user_on_stateful_context(
             username=TEST_TOWNSHIP_NAME,
             expected_roles=expected_roles,
-            context=self.test_initialparcel,
+            context=self.test_parcelling,
             state='Draft',
         )
 
     def test_notary_user_roles_on_published_state(self):
-        parcel = self.test_initialparcel
+        parcel = self.test_parcelling
         parcel.transition('Publish')
 
         expected_roles = ('Parcel Reader',)
@@ -181,7 +177,7 @@ class TestParcelWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Workflow
         )
 
     def test_fd_user_roles_on_published_state(self):
-        parcel = self.test_initialparcel
+        parcel = self.test_parcelling
         parcel.transition('Publish')
 
         expected_roles = ('Parcel Reader',)
@@ -193,7 +189,7 @@ class TestParcelWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Workflow
         )
 
     def test_township_user_roles_on_published_state(self):
-        parcel = self.test_initialparcel
+        parcel = self.test_parcelling
         parcel.transition('Publish')
 
         expected_roles = ('Parcel Reader',)

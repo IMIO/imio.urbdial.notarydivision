@@ -21,10 +21,26 @@
     />
 
     <browser:page
+        for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision"
+        name="specificrights"
+        template="templates/specific_rights.pt"
+        permission="zope2.View"
+    />
+
+    <browser:page
         for="imio.urbdial.notarydivision.content.parcel.IParcel"
         name="specificrights"
         template="templates/specific_rights.pt"
         permission="zope2.View"
+    />
+
+    <!-- Register custom display template for ParcelDataGridField widget-->
+    <z3c:widgetTemplate
+        for="..content.notarydivision.INotaryDivision"
+        mode="display"
+        widget=".parcel_datagridfield.ParcelDataGridField"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="templates/parcel_datagrid_display.pt"
     />
 
     <configure package="imio.actionspanel">

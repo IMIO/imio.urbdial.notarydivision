@@ -1,7 +1,3 @@
-<metal:initial_parcel_macro define-macro="add_initial_parcel_form">
-    <tal:add_initial_parcel replace="structure here/++add++InitialParcel" />
-</metal:initial_parcel_macro>
-
 <metal:initial_parcel_display define-macro="initial_parcel_display">
 
   <tal:block repeat="widget view/widgets/values">

@@ -14,9 +14,9 @@ from zope import schema
 from zope.interface import implements
 
 
-class IParcel(model.Schema, INotaryDivisionElement):
+class IParcelling(model.Schema, INotaryDivisionElement):
     """
-    Schema of Parcel
+    Schema of Parcelling
     """
 
     number = fields.AutoIncrementInt(
@@ -76,9 +76,9 @@ class IParcel(model.Schema, INotaryDivisionElement):
     )
 
 
-class Parcel(UrbdialItem):
+class Parcelling(UrbdialItem):
     """
-    Parcel base class
+    Parcelling base class
     """
 
     __ac_local_roles_block__ = True
@@ -87,53 +87,13 @@ class Parcel(UrbdialItem):
         return self.aq_parent
 
 
-class IInitialParcel(IParcel):
+class ICreatedParcelling(IParcelling):
     """
-    Schema of InitialParcel
-    """
-
-    actual_use = schema.Text(
-        title=_(u'Estate actual use'),
-        required=False,
-    )
-
-    form.order_before(surface='undivided_a')
-
-    # Add a '_a' at the end of the field so it can be distinguished from
-    # undivided_b to avoid javascript issues with the boolean master select
-    # widget.
-    undivided_a = MasterSelectBoolField(
-        title=_(u'Case of undivided parcel'),
-        required=False,
-        slave_fields=(
-            {
-                'masterID': 'form-widgets-undivided_a-0',
-                'name': 'specific_rights_a',
-                'action': 'show',
-                'hide_values': 1,
-            },
-        ),
-    )
-
-    specific_rights_a = schema.Text(
-        required=False,
-    )
-
-
-class InitialParcel(Parcel):
-    """
-    InitialParcel dexterity class
-    """
-    implements(IInitialParcel)
-
-
-class ICreatedParcel(IParcel):
-    """
-    Schema of CreatedParcel
+    Schema of CreatedParcelling
     """
 
     destination = schema.Text(
-        title=_(u'Parcel destination'),
+        title=_(u'Parcelling destination'),
         required=False,
     )
 
@@ -171,29 +131,26 @@ class ICreatedParcel(IParcel):
         required=False,
     )
 
-    # Add a '_b' at the end of the field so it can be distinguished from
-    # undivided_a to avoid javascript issues with the boolean master select
-    # widget.
-    undivided_b = MasterSelectBoolField(
-        title=_(u'Case of undivided parcel'),
+    undivided = MasterSelectBoolField(
+        title=_(u'Case of undivided parcelling'),
         required=False,
         slave_fields=(
             {
-                'masterID': 'form-widgets-undivided_b-0',
-                'name': 'specific_rights_b',
+                'masterID': 'form-widgets-undivided-0',
+                'name': 'specific_rights',
                 'action': 'show',
                 'hide_values': 1,
             },
         ),
     )
 
-    specific_rights_b = schema.Text(
+    specific_rights = schema.Text(
         required=False,
     )
 
 
-class CreatedParcel(Parcel):
+class CreatedParcelling(Parcelling):
     """
-    CreatedParcel dexterity class
+    CreatedParcelling dexterity class
     """
-    implements(ICreatedParcel)
+    implements(ICreatedParcelling)
