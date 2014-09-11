@@ -18,9 +18,9 @@
   />
 
   <adapter
-     for="..content.parcel.IParcel
+     for="..content.parcelling.IParcelling
           Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
-     factory=".parcel_workflow.StateRolesMapping"
+     factory=".parcelling_workflow.StateRolesMapping"
      provides=".interfaces.IWorkflowStateRolesMapping"
   />
 

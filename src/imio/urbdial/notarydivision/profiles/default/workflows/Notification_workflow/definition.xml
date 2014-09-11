@@ -13,7 +13,7 @@
  <permission>imio.urbdial.notarydivision: Add Precision</permission>
  <permission>imio.urbdial.notarydivision: Add FD Observation</permission>
  <permission>imio.urbdial.notarydivision: Add Township Observation</permission>
- <permission>imio.urbdial.notarydivision: Add Parcel</permission>
+ <permission>imio.urbdial.notarydivision: Add Parcelling</permission>
  <permission>imio.urbdial.notarydivision: Manage notification</permission>
  <state state_id="Cancelled"
         title="Cancelled"
@@ -30,7 +30,7 @@
    <permission-role>FD Observation Creator</permission-role>
    <permission-role>Township Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
-   <permission-role>Parcel Creator</permission-role>
+   <permission-role>Parcelling Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
@@ -54,9 +54,9 @@
    <permission-role>FD Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Parcel"
+  <permission-map name="imio.urbdial.notarydivision: Add Parcelling"
                   acquired="False">
-   <permission-role>Parcel Creator</permission-role>
+   <permission-role>Parcelling Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
@@ -91,7 +91,7 @@
    <permission-role>FD Observation Creator</permission-role>
    <permission-role>Township Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
-   <permission-role>Parcel Creator</permission-role>
+   <permission-role>Parcelling Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
@@ -115,9 +115,9 @@
    <permission-role>FD Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Parcel"
+  <permission-map name="imio.urbdial.notarydivision: Add Parcelling"
                   acquired="False">
-   <permission-role>Parcel Creator</permission-role>
+   <permission-role>Parcelling Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
@@ -151,7 +151,7 @@
    <permission-role>FD Observation Creator</permission-role>
    <permission-role>Township Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
-   <permission-role>Parcel Creator</permission-role>
+   <permission-role>Parcelling Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
@@ -175,9 +175,9 @@
    <permission-role>FD Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Parcel"
+  <permission-map name="imio.urbdial.notarydivision: Add Parcelling"
                   acquired="False">
-   <permission-role>Parcel Creator</permission-role>
+   <permission-role>Parcelling Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"
@@ -211,7 +211,7 @@
    <permission-role>FD Observation Creator</permission-role>
    <permission-role>Township Observation Creator</permission-role>
    <permission-role>Precision Creator</permission-role>
-   <permission-role>Parcel Creator</permission-role>
+   <permission-role>Parcelling Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
@@ -235,9 +235,9 @@
    <permission-role>FD Observation Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="imio.urbdial.notarydivision: Add Parcel"
+  <permission-map name="imio.urbdial.notarydivision: Add Parcelling"
                   acquired="False">
-   <permission-role>Parcel Creator</permission-role>
+   <permission-role>Parcelling Creator</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="imio.urbdial.notarydivision: Add Precision"

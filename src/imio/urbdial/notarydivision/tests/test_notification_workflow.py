@@ -125,7 +125,7 @@ class TestNotificationWorkflowDefinition(unittest.TestCase):
         self.assertTrue(len(roles_of_permission) == 5)
         self.assertTrue('Precision Creator' in roles_of_permission)
         self.assertTrue('FD Observation Creator' in roles_of_permission)
-        self.assertTrue('Parcel Creator' in roles_of_permission)
+        self.assertTrue('Parcelling Creator' in roles_of_permission)
         self.assertTrue('Township Observation Creator' in roles_of_permission)
         self.assertTrue('Manager' in roles_of_permission)
 
@@ -192,7 +192,7 @@ class TestNotificationWorkflowLocalRolesAssignment(NotaryDivisionBrowserTest, Wo
         self.assertTrue(isinstance(mapping, notification_workflow.StateRolesMapping))
 
     def test_notary_user_roles_on_preparation_state(self):
-        expected_roles = ('NotaryDivision Manager', 'Notification Manager', 'Parcel Creator')
+        expected_roles = ('NotaryDivision Manager', 'Notification Manager', 'Parcelling Creator')
         self._test_roles_of_user_on_stateful_context(
             username=TEST_NOTARY_NAME,
             expected_roles=expected_roles,

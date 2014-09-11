@@ -132,18 +132,18 @@
     <adapter
         for="Products.CMFCore.interfaces.IFolderish
              zope.publisher.interfaces.browser.IDefaultBrowserLayer
-             imio.urbdial.notarydivision.interfaces.ICreatedParcelFTI"
+             imio.urbdial.notarydivision.interfaces.ICreatedParcellingFTI"
         provides="zope.publisher.interfaces.browser.IBrowserPage"
-        factory=".parcel_view.CreatedParcelAddView"
+        factory=".parcelling_view.CreatedParcellingAddView"
     />
-    <class class=".parcel_view.CreatedParcelAddView">
+    <class class=".parcelling_view.CreatedParcellingAddView">
         <require
             permission="cmf.AddPortalContent"
             interface="zope.publisher.interfaces.browser.IBrowserPage"
         />
     </class>
 
-    <!-- z3c.form default value adapter for parcel's field 'number' -->
+    <!-- z3c.form default value adapter for parcelling's field 'number' -->
     <adapter
         for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
              zope.publisher.interfaces.browser.IBrowserRequest
@@ -155,18 +155,18 @@
         factory=".default_values.AutoIncrementDefaultValue"
     />
 
-    <!-- Register parcels add/display macros  -->
+    <!-- Register parcellings add/display macros  -->
     <browser:page
         for=".notarydivision.IBaseNotaryDivision"
-        name="parcels"
-        template="templates/parcels.pt"
+        name="parcellings"
+        template="templates/parcellings.pt"
         permission="zope2.View"
     />
 
     <browser:page
-        for=".parcel.ICreatedParcel"
+        for=".parcelling.ICreatedParcelling"
         name="view"
-        class=".parcel_view.ParcelView"
+        class=".parcelling_view.ParcellingView"
         permission="zope2.View"
     />
 

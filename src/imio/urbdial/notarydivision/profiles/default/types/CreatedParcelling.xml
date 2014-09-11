@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<object name="CreatedParcel" meta_type="Dexterity FTI" i18n:domain="urbdial.divnot"
+<object name="CreatedParcelling" meta_type="Dexterity FTI" i18n:domain="urbdial.divnot"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">CreatedParcel</property>
+ <property name="title" i18n:translate="">CreatedParcelling</property>
  <property name="description" i18n:translate="">None</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
- <property name="factory">CreatedParcel</property>
+ <property name="factory">CreatedParcelling</property>
  <property
-    name="add_view_expr">string:${folder_url}/++add++CreatedParcel</property>
+    name="add_view_expr">string:${folder_url}/++add++CreatedParcelling</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
@@ -16,9 +16,9 @@
   <element value="view"/>
  </property>
  <property name="default_view_fallback">False</property>
- <property name="add_permission">imio.urbdial.notarydivision.AddParcel</property>
- <property name="klass">imio.urbdial.notarydivision.content.parcel.CreatedParcel</property>
- <property name="schema">imio.urbdial.notarydivision.content.parcel.ICreatedParcel</property>
+ <property name="add_permission">imio.urbdial.notarydivision.AddParcelling</property>
+ <property name="klass">imio.urbdial.notarydivision.content.parcelling.CreatedParcelling</property>
+ <property name="schema">imio.urbdial.notarydivision.content.parcelling.ICreatedParcelling</property>
  <property name="schema_policy">dexterity</property>
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="@@edit"/>

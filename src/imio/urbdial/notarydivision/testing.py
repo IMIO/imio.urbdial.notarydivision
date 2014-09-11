@@ -127,7 +127,7 @@ class ExampleDivisionLayer(TestInstallUrbdialLayer):
         )
 
         api.content.create(
-            type='CreatedParcel',
+            type='CreatedParcelling',
             id=TEST_CREATEDPARCELLING_ID,
             container=test_divnot,
         )

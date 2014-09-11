@@ -1,8 +1,8 @@
 ## -*- coding: utf-8 -*-
 
-from imio.urbdial.notarydivision.browser.interfaces import ICreatedParcelTable
-from imio.urbdial.notarydivision.browser.interfaces import IEditableParcelTable
-from imio.urbdial.notarydivision.browser.interfaces import IParcelTable
+from imio.urbdial.notarydivision.browser.interfaces import ICreatedParcellingTable
+from imio.urbdial.notarydivision.browser.interfaces import IEditableParcellingTable
+from imio.urbdial.notarydivision.browser.interfaces import IParcellingTable
 from imio.urbdial.notarydivision.content.vocabulary import DeedTypesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import LocalitiesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import SurfaceAccuraciesVocabularyFactory
@@ -15,34 +15,34 @@ from z3c.table.value import ValuesMixin
 from zope.interface import implements
 
 
-class ParcelTable(Table):
+class ParcellingTable(Table):
     """
     """
-    implements(IParcelTable)
+    implements(IParcellingTable)
 
 
-class CreatedParcelTable(Table):
+class CreatedParcellingTable(Table):
     """
     """
-    implements(ICreatedParcelTable)
+    implements(ICreatedParcellingTable)
 
     cssClasses = {'table': 'listing largetable'}
 
 
-class EditableCreatedParcelTable(CreatedParcelTable):
+class EditableCreatedParcellingTable(CreatedParcellingTable):
     """
     """
-    implements(IEditableParcelTable)
+    implements(IEditableParcellingTable)
 
 
-class CreatedParcelValues(ValuesMixin):
+class CreatedParcellingValues(ValuesMixin):
     """
     """
     @property
     def values(self):
         notarydivision = self.context
-        created_parcels = notarydivision.get_parcels(portal_type='CreatedParcel')
-        return created_parcels
+        created_parcellings = notarydivision.get_parcellings(portal_type='CreatedParcelling')
+        return created_parcellings
 
 
 class UrbdialColumn(Column):
@@ -64,15 +64,15 @@ class UrbdialColumn(Column):
         return val
 
 
-class ParcelNumberColumn(UrbdialColumn):
+class ParcellingNumberColumn(UrbdialColumn):
     """
     """
 
     header = 'label_colname_number'
     weight = 10
 
-    def renderCell(self, parcel):
-        number = self.get(parcel, 'number')
+    def renderCell(self, parcelling):
+        number = self.get(parcelling, 'number')
         return number
 
 
@@ -83,11 +83,11 @@ class LocalityColumn(UrbdialColumn):
     header = 'Locality'
     weight = 20
 
-    def renderCell(self, parcel):
-        locality = self.get(parcel, 'locality')
+    def renderCell(self, parcelling):
+        locality = self.get(parcelling, 'locality')
         if locality:
             locality_voc_factory = LocalitiesVocabularyFactory()
-            locality_voc = locality_voc_factory(parcel)
+            locality_voc = locality_voc_factory(parcelling)
             locality = locality_voc.getTerm(locality).title
         return locality
 
@@ -99,13 +99,13 @@ class CadastralReferenceColumn(UrbdialColumn):
     header = 'label_colname_cadastral_ref'
     weight = 30
 
-    def renderCell(self, parcel):
-        division = self.get(parcel, 'division')
-        section = self.get(parcel, 'section')
-        radical = self.get(parcel, 'radical')
-        bis = self.get(parcel, 'bis')
-        exposant = self.get(parcel, 'exposant')
-        power = self.get(parcel, 'power')
+    def renderCell(self, parcelling):
+        division = self.get(parcelling, 'division')
+        section = self.get(parcelling, 'section')
+        radical = self.get(parcelling, 'radical')
+        bis = self.get(parcelling, 'bis')
+        exposant = self.get(parcelling, 'exposant')
+        power = self.get(parcelling, 'power')
 
         reference = '{division} {section} {radical}{bis} {exposant} {power}'.format(
             division=division,
@@ -125,9 +125,9 @@ class AddressColumn(UrbdialColumn):
     header = 'Street'
     weight = 35
 
-    def renderCell(self, parcel):
-        street = self.get(parcel, 'street')
-        street_number = self.get(parcel, 'street_number')
+    def renderCell(self, parcelling):
+        street = self.get(parcelling, 'street')
+        street_number = self.get(parcelling, 'street_number')
         if street:
             if street_number:
                 address = u'{}, {}'.format(street_number, street)
@@ -145,8 +145,8 @@ class SurfaceColumn(UrbdialColumn):
     header = 'Surface'
     weight = 40
 
-    def renderCell(self, parcel):
-        surface = self.get(parcel, 'surface')
+    def renderCell(self, parcelling):
+        surface = self.get(parcelling, 'surface')
         return surface
 
 
@@ -157,12 +157,12 @@ class SurfaceAccuracyColumn(UrbdialColumn):
     header = 'Surface'
     weight = 40
 
-    def renderCell(self, parcel):
-        surface = self.get(parcel, 'surface')
+    def renderCell(self, parcelling):
+        surface = self.get(parcelling, 'surface')
         if surface:
-            accuracy = self.get(parcel, 'surface_accuracy')
+            accuracy = self.get(parcelling, 'surface_accuracy')
             accuracy_voc_factory = SurfaceAccuraciesVocabularyFactory()
-            accuracy_voc = accuracy_voc_factory(parcel)
+            accuracy_voc = accuracy_voc_factory(parcelling)
             accuracy = accuracy_voc.getTerm(accuracy).title
             surface = surface and u'{} ({})'.format(surface, accuracy) or ''
         return surface
@@ -175,8 +175,8 @@ class ActualUseColumn(UrbdialColumn):
     header = 'Estate actual use'
     weight = 50
 
-    def renderCell(self, parcel):
-        actual_use = self.get(parcel, 'actual_use')
+    def renderCell(self, parcelling):
+        actual_use = self.get(parcelling, 'actual_use')
         return actual_use
 
 
@@ -187,8 +187,8 @@ class RoadDistanceColumn(UrbdialColumn):
     header = 'Road distance'
     weight = 50
 
-    def renderCell(self, parcel):
-        road_distance = self.get(parcel, 'road_distance')
+    def renderCell(self, parcelling):
+        road_distance = self.get(parcelling, 'road_distance')
         if road_distance:
             road_distance = u'{} m'.format(road_distance)
         return road_distance
@@ -201,13 +201,13 @@ class DeedTypeColumn(UrbdialColumn):
     header = 'Deed type'
     weight = 60
 
-    def renderCell(self, parcel):
-        deed_type = self.get(parcel, 'deed_type')
+    def renderCell(self, parcelling):
+        deed_type = self.get(parcelling, 'deed_type')
         if deed_type == 'autre':
-            deed_type = self.get(parcel, 'other_deed_type')
+            deed_type = self.get(parcelling, 'other_deed_type')
         elif deed_type:
             deed_type_voc_factory = DeedTypesVocabularyFactory()
-            deed_type_voc = deed_type_voc_factory(parcel)
+            deed_type_voc = deed_type_voc_factory(parcelling)
             deed_type = deed_type_voc.getTerm(deed_type).title
         return deed_type
 
@@ -216,11 +216,11 @@ class DestinationColumn(UrbdialColumn):
     """
     """
 
-    header = 'Parcel destination'
+    header = 'Parcelling destination'
     weight = 70
 
-    def renderCell(self, parcel):
-        destination = self.get(parcel, 'destination')
+    def renderCell(self, parcelling):
+        destination = self.get(parcelling, 'destination')
         return destination
 
 
@@ -231,8 +231,8 @@ class BuiltColumn(UrbdialColumn):
     header = 'Built'
     weight = 80
 
-    def renderCell(self, parcel):
-        built = self.get(parcel, 'built')
+    def renderCell(self, parcelling):
+        built = self.get(parcelling, 'built')
         return built
 
 
@@ -244,13 +244,13 @@ class UndividedColumn(UrbdialColumn):
     weight = 90
     undivided = 'undivided'
 
-    def renderCell(self, parcel):
-        undivided = getattr(parcel, self.undivided)
+    def renderCell(self, parcelling):
+        undivided = getattr(parcelling, self.undivided)
         if undivided:
-            undivided = self.get(parcel, self.undivided)
+            undivided = self.get(parcelling, self.undivided)
             specific_rights = translate('Specific rights')
             link = '<a class="link-overlay" href="{ref}/@@specificrights">{rights}</a>'.format(
-                ref=parcel.absolute_url(),
+                ref=parcelling.absolute_url(),
                 rights=specific_rights
             )
             undivided = '<span id="urbdial-undivided">{undivided}.&nbsp&nbsp&nbsp{link}</span>'.format(
@@ -258,7 +258,7 @@ class UndividedColumn(UrbdialColumn):
                 link=link
             )
         else:
-            undivided = self.get(parcel, self.undivided)
+            undivided = self.get(parcelling, self.undivided)
         return undivided
 
 
@@ -270,6 +270,6 @@ class ActionsColumn(UrbdialColumn):
     cssClasses = {'th': 'actionsheader'}
     header = 'actions'
 
-    def renderCell(self, parcel):
-        actions = parcel.restrictedTraverse('actions_panel')
+    def renderCell(self, parcelling):
+        actions = parcelling.restrictedTraverse('actions_panel')
         return actions()

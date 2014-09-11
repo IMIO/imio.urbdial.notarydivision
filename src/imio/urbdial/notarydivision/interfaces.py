@@ -23,8 +23,8 @@ class IOtherNotaryDivisionFTI(IDexterityFTI):
     """Marker interface for NotaryDivision FTI."""
 
 
-class ICreatedParcelFTI(IDexterityFTI):
-    """Marker interface for CreatedParcel FTI."""
+class ICreatedParcellingFTI(IDexterityFTI):
+    """Marker interface for CreatedParcelling FTI."""
 
 
 class IAvailableDocumentsForGeneration(Interface):

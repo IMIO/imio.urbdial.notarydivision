@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.browser.table import CreatedParcelTable
-from imio.urbdial.notarydivision.browser.table import EditableCreatedParcelTable
+from imio.urbdial.notarydivision.browser.table import CreatedParcellingTable
+from imio.urbdial.notarydivision.browser.table import EditableCreatedParcellingTable
 from imio.urbdial.notarydivision.content.comment_view import CommentContainerView
 from imio.urbdial.notarydivision.utils import translate
 
@@ -60,34 +60,34 @@ class NotaryDivisionView(view.DefaultView, CommentContainerView):
         self.context = context
         self.request = request
         plone_utils = api.portal.get_tool('plone_utils')
-        if self.can_add_created_parcel():
-            plone_utils.addPortalMessage(_('warning_not_enough_created_parcels'), type="warning")
+        if self.can_add_created_parcelling():
+            plone_utils.addPortalMessage(_('warning_not_enough_created_parcellings'), type="warning")
 
-    def render_CreatedParcel_listing(self):
+    def render_CreatedParcelling_listing(self):
         if self.context.get_state() == 'In preparation':
-            listing = EditableCreatedParcelTable(self.context, self.request)
+            listing = EditableCreatedParcellingTable(self.context, self.request)
         else:
-            listing = CreatedParcelTable(self.context, self.request)
+            listing = CreatedParcellingTable(self.context, self.request)
         listing.update()
         render = listing.render()
         return render
 
-    def can_add_parcel(self):
+    def can_add_parcelling(self):
         try:
-            can_add_parcel = checkPermission('imio.urbdial.notarydivision.AddParcel', self.context)
+            can_add_parcelling = checkPermission('imio.urbdial.notarydivision.AddParcelling', self.context)
         except:
             return False
-        return can_add_parcel
+        return can_add_parcelling
 
-    def can_add_created_parcel(self):
-        can_add_parcels = self.can_add_parcel()
+    def can_add_created_parcelling(self):
+        can_add_parcellings = self.can_add_parcelling()
 
         notarydivision = self.context
-        existing_parcels = notarydivision.get_parcels(portal_type='CreatedParcel')
-        more_parcels_needed = len(existing_parcels) < notarydivision.created_parcellings
+        existing_parcellings = notarydivision.get_parcellings()
+        more_parcellings_needed = len(existing_parcellings) < notarydivision.created_parcellings
 
-        can_add_created_parcel = can_add_parcels and more_parcels_needed
-        return can_add_created_parcel
+        can_add_created_parcelling = can_add_parcellings and more_parcellings_needed
+        return can_add_created_parcelling
 
     def show_comments_zone(self):
         show_comments_zone = self.context.get_state() != 'In preparation'

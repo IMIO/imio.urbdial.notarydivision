@@ -2,13 +2,19 @@
 from zope.interface import Interface
 
 
-class IParcelTable(Interface):
+class IParcellingTable(Interface):
     """
-    Marker interface for parcel table listing.
+    Marker interface for parcelling table listing.
     """
 
 
-class IEditableParcelTable(Interface):
+class ICreatedParcellingTable(Interface):
     """
-    Marker interface for parcel table listing with actions column.
+    Marker interface for parcelling table listing.
+    """
+
+
+class IEditableParcellingTable(Interface):
+    """
+    Marker interface for parcelling table listing with actions column.
     """

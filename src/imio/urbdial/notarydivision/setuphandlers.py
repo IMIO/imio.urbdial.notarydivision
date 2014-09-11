@@ -3,7 +3,7 @@
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 
 from imio.urbdial.notarydivision.interfaces import ICommentFTI
-from imio.urbdial.notarydivision.interfaces import ICreatedParcelFTI
+from imio.urbdial.notarydivision.interfaces import ICreatedParcellingFTI
 from imio.urbdial.notarydivision.interfaces import IOtherNotaryDivisionFTI
 from imio.urbdial.notarydivision.interfaces import INotaryDivisionFTI
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
@@ -90,8 +90,8 @@ def set_FTI_marker_interfaces(context):
     divnot_type = site.portal_types.OtherNotaryDivision
     alsoProvides(divnot_type, IOtherNotaryDivisionFTI)
 
-    created_parcel_type = site.portal_types.CreatedParcel
-    alsoProvides(created_parcel_type, ICreatedParcelFTI)
+    created_parcelling_type = site.portal_types.CreatedParcelling
+    alsoProvides(created_parcelling_type, ICreatedParcellingFTI)
 
     comment_types = [
         'Precision',
@@ -295,12 +295,15 @@ def create_test_users(context):
     """
     Create tests user for the different groups.
     """
-    api.user.create(
-        username=TEST_NOTARY_NAME, password=TEST_NOTARY_PASSWORD, email='notary@frnb.be',
-        properties={
-            'fullname': 'Maitre Nono',
-        }
-    )
+    try:
+        api.user.create(
+            username=TEST_NOTARY_NAME, password=TEST_NOTARY_PASSWORD, email='notary@frnb.be',
+            properties={
+                'fullname': 'Maitre Nono',
+            }
+        )
+    except:
+        import ipdb; ipdb.set_trace()
     api.group.add_user(username=TEST_NOTARY_NAME, groupname='notaries')
 
     api.user.create(

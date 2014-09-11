@@ -5,27 +5,27 @@ from imio.urbdial.notarydivision.testing import NotaryDivisionFunctionalBrowserT
 import transaction
 
 
-class TestCreatedParcelListing(NotaryDivisionFunctionalBrowserTest):
+class TestCreatedParcellingListing(NotaryDivisionFunctionalBrowserTest):
     """
-    Test CreatedParcel z3c.table listing.
+    Test CreatedParcelling z3c.table listing.
     """
 
     def _test_createdparcelling_listing_column_display(self, value_name, expected_value, setvalue=None):
-        parcel = self.test_parcelling
+        parcelling = self.test_parcelling
 
-        self.browser.open(parcel.absolute_url())
+        self.browser.open(parcelling.absolute_url())
         contents = self.browser.contents
         self.assertTrue(expected_value not in contents)
 
         if setvalue:
             setvalue()
         else:
-            setattr(parcel, value_name, expected_value)
+            setattr(parcelling, value_name, expected_value)
         transaction.commit()
 
-        self.browser.open(parcel.absolute_url())
+        self.browser.open(parcelling.absolute_url())
         contents = self.browser.contents
-        msg = "created parcel {value_name} '{expected_value}' is not displayed in created parcels listing".format(
+        msg = "created parcelling {value_name} '{expected_value}' is not displayed in created parcellings listing".format(
             value_name=value_name,
             expected_value=expected_value,
         )

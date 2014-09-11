@@ -4,7 +4,7 @@
  <object name="ConfigFolder" meta_type="Dexterity FTI"/>
  <object name="NotaryDivision" meta_type="Dexterity FTI"/>
  <object name="OtherNotaryDivision" meta_type="Dexterity FTI"/>
- <object name="CreatedParcel" meta_type="Dexterity FTI"/>
+ <object name="CreatedParcelling" meta_type="Dexterity FTI"/>
  <object name="Precision" meta_type="Dexterity FTI"/>
  <object name="FDObservation" meta_type="Dexterity FTI"/>
  <object name="FDPrecisionDemand" meta_type="Dexterity FTI"/>

@@ -28,7 +28,7 @@
     />
 
     <browser:page
-        for="imio.urbdial.notarydivision.content.parcel.IParcel"
+        for="imio.urbdial.notarydivision.content.parcelling.IParcelling"
         name="specificrights"
         template="templates/specific_rights.pt"
         permission="zope2.View"

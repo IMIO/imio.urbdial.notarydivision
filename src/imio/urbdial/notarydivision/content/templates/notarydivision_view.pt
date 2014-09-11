@@ -74,8 +74,7 @@
                             </table>
 
                             <tal:estate_tab condition="python: group.__name__ == 'estate'"
-                                            define="add_initial_parcel here/@@parcels/add_initial_parcel_form;
-                                                    add_created_parcel here/@@parcels/add_created_parcel_form">
+                                            define="add_created_parcelling here/@@parcellings/add_created_parcelling_form">
 
                                 <fieldset id="initial_estate">
                                     <legend i18n:translate="" i18n:domain="urbdial.divnot">Initial estate</legend>
@@ -121,10 +120,10 @@
                                             <td class="table_widget_value" tal:content="here/created_parcellings">Value</td>
                                         </tr>
                                     </table>
-                                    <tal:listing content="structure view/render_CreatedParcel_listing" />
-                                    <tal:can_add_parcel condition="view/can_add_created_parcel">
-                                        <metal:use_macro use-macro="add_created_parcel" />
-                                    </tal:can_add_parcel>
+                                    <tal:listing content="structure view/render_CreatedParcelling_listing" />
+                                    <tal:can_add_parcelling condition="view/can_add_created_parcelling">
+                                        <metal:use_macro use-macro="add_created_parcelling" />
+                                    </tal:can_add_parcelling>
                                 </fieldset>
 
                             </tal:estate_tab>

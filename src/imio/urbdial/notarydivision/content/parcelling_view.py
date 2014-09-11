@@ -13,9 +13,9 @@ from plone.dexterity.browser import view
 from z3c.form import button
 
 
-class ParcelView(view.DefaultView):
+class ParcellingView(view.DefaultView):
     """
-    Parcel custom View.
+    Parcelling custom View.
     """
 
     def __call__(self):
@@ -24,12 +24,12 @@ class ParcelView(view.DefaultView):
         )
 
 
-class CreatedParcelAddForm(add.DefaultAddForm):
+class CreatedParcellingAddForm(add.DefaultAddForm):
     """
-    CreatedParcel custom add form.
+    CreatedParcelling custom add form.
     """
 
-    @button.buttonAndHandler(_('Add parcel'), name='add')
+    @button.buttonAndHandler(_('Add parcelling'), name='add')
     def handleAdd(self, action):
         data, errors = self.extractData()
         if errors:
@@ -42,23 +42,23 @@ class CreatedParcelAddForm(add.DefaultAddForm):
             IStatusMessage(self.request).addStatusMessage(_(u"Item created"), "info")
 
 
-class CreatedParcelAddView(add.DefaultAddView):
+class CreatedParcellingAddView(add.DefaultAddView):
     """
-    CreatedParcel custom AddView.
+    CreatedParcelling custom AddView.
     Required to customize AddForm:
     - first we override the attr 'form' with our custom AddForm.
-    - then we register the AddView for our CreatedParcel FTI.
+    - then we register the AddView for our CreatedParcelling FTI.
     """
-    form = CreatedParcelAddForm
+    form = CreatedParcellingAddForm
 
     def render(self):
-        return ViewPageTemplateFile("templates/parcel_add.pt")(self)
+        return ViewPageTemplateFile("templates/parcelling_add.pt")(self)
 
     def __getattr__(self, name):
         return getattr(self.form_instance, name)
 
 
-class ParcelEditForm(edit.DefaultEditForm):
+class ParcellingEditForm(edit.DefaultEditForm):
     """
-    Parcel custom edit form.
+    Parcelling custom edit form.
     """

@@ -13,7 +13,7 @@
 
   <subscriber for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
                    Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-              handler=".workflow_events.publish_draft_parcels" />
+              handler=".workflow_events.publish_draft_parcellings" />
 
   <subscriber for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement
                    zope.lifecycleevent.interfaces.IObjectAddedEvent"

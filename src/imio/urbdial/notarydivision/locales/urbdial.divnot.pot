@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-08 10:22+0000\n"
+"POT-Creation-Date: 2014-09-10 14:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: urbdial.divnot\n"
 
-#: ../content/parcel_view.py:32
-msgid "Add parcel"
+#: ../content/parcelling_view.py:32
+msgid "Add parcelling"
 msgstr ""
 
 msgid "Address"
@@ -53,11 +53,11 @@ msgid "Article 90 reasons"
 msgstr ""
 
 #: ../content/notarydivision.py:79
-#: ../content/parcel.py:59
+#: ../content/parcelling.py:59
 msgid "Bis"
 msgstr ""
 
-#: ../content/parcel.py:170
+#: ../content/parcelling.py:130
 msgid "Built"
 msgstr ""
 
@@ -65,8 +65,8 @@ msgid "Cadastral reference"
 msgstr ""
 
 #: ../content/notarydivision.py:186
-#: ../content/parcel.py:106
-msgid "Case of undivided parcel"
+#: ../content/parcelling.py:135
+msgid "Case of undivided parcelling"
 msgstr ""
 
 msgid "Comments"
@@ -84,20 +84,20 @@ msgstr ""
 msgid "Created estate"
 msgstr ""
 
-#: ../profiles/default/types/CreatedParcel.xml
-msgid "CreatedParcel"
+#: ../profiles/default/types/CreatedParcelling.xml
+msgid "CreatedParcelling"
 msgstr ""
 
-#: ../setuphandlers.py:154
+#: ../setuphandlers.py:150
 msgid "DGO 4"
 msgstr ""
 
-#: ../content/parcel.py:152
+#: ../content/parcelling.py:112
 msgid "Deed type"
 msgstr ""
 
 #: ../content/notarydivision.py:64
-#: ../content/parcel.py:44
+#: ../content/parcelling.py:44
 msgid "Division"
 msgstr ""
 
@@ -110,7 +110,6 @@ msgid "Estate"
 msgstr ""
 
 #: ../content/notarydivision.py:181
-#: ../content/parcel.py:96
 msgid "Estate actual use"
 msgstr ""
 
@@ -119,7 +118,7 @@ msgid "Exclude from navigation"
 msgstr ""
 
 #: ../content/notarydivision.py:84
-#: ../content/parcel.py:64
+#: ../content/parcelling.py:64
 msgid "Exposant"
 msgstr ""
 
@@ -164,11 +163,7 @@ msgstr ""
 msgid "Initial estate"
 msgstr ""
 
-#: ../profiles/default/types/InitialParcel.xml
-msgid "InitialParcel"
-msgstr ""
-
-#: ../content/parcel_view.py:42
+#: ../content/parcelling_view.py:42
 msgid "Item created"
 msgstr ""
 
@@ -181,7 +176,7 @@ msgid "Local township"
 msgstr ""
 
 #: ../content/notarydivision.py:58
-#: ../content/parcel.py:38
+#: ../content/parcelling.py:38
 msgid "Locality"
 msgstr ""
 
@@ -190,16 +185,16 @@ msgid "Name"
 msgstr ""
 
 #: ../profiles/default/types/ConfigFolder.xml
-#: ../profiles/default/types/CreatedParcel.xml
+#: ../profiles/default/types/CreatedParcelling.xml
 #: ../profiles/default/types/FDInadmissibleFolder.xml
 msgid "None"
 msgstr ""
 
-#: ../setuphandlers.py:142
+#: ../setuphandlers.py:138
 msgid "Notaries"
 msgstr ""
 
-#: ../setuphandlers.py:148
+#: ../setuphandlers.py:144
 msgid "Notaries admin"
 msgstr ""
 
@@ -207,7 +202,7 @@ msgstr ""
 msgid "NotaryDivision"
 msgstr ""
 
-#: ../content/parcel.py:23
+#: ../content/parcelling.py:23
 msgid "Number"
 msgstr ""
 
@@ -215,7 +210,7 @@ msgstr ""
 msgid "Number of created parcellings"
 msgstr ""
 
-#: ../content/parcel.py:165
+#: ../content/parcelling.py:125
 msgid "Other deed type"
 msgstr ""
 
@@ -231,8 +226,8 @@ msgstr ""
 msgid "OtherNotaryDivision"
 msgstr ""
 
-#: ../content/parcel.py:136
-msgid "Parcel destination"
+#: ../content/parcelling.py:96
+msgid "Parcelling destination"
 msgstr ""
 
 #: ../content/notarydivision.py:167
@@ -256,7 +251,7 @@ msgid "Plans files"
 msgstr ""
 
 #: ../content/notarydivision.py:89
-#: ../content/parcel.py:69
+#: ../content/parcelling.py:69
 msgid "Power"
 msgstr ""
 
@@ -269,7 +264,7 @@ msgid "Previous comments"
 msgstr ""
 
 #: ../content/notarydivision.py:74
-#: ../content/parcel.py:54
+#: ../content/parcelling.py:54
 msgid "Radical"
 msgstr ""
 
@@ -281,12 +276,12 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: ../content/parcel.py:147
+#: ../content/parcelling.py:107
 msgid "Road distance"
 msgstr ""
 
 #: ../content/notarydivision.py:69
-#: ../content/parcel.py:49
+#: ../content/parcelling.py:49
 msgid "Section"
 msgstr ""
 
@@ -294,17 +289,17 @@ msgid "Specific rights"
 msgstr ""
 
 #: ../content/notarydivision.py:156
-#: ../content/parcel.py:28
+#: ../content/parcelling.py:28
 msgid "Street"
 msgstr ""
 
 #: ../content/notarydivision.py:161
-#: ../content/parcel.py:33
+#: ../content/parcelling.py:33
 msgid "Street number"
 msgstr ""
 
 #: ../content/notarydivision.py:176
-#: ../content/parcel.py:74
+#: ../content/parcelling.py:74
 msgid "Surface"
 msgstr ""
 
@@ -324,7 +319,7 @@ msgstr ""
 msgid "TownshipPrecisionDemand"
 msgstr ""
 
-#: ../setuphandlers.py:160
+#: ../setuphandlers.py:156
 msgid "Townships"
 msgstr ""
 
@@ -345,19 +340,19 @@ msgstr ""
 msgid "label_colname_number"
 msgstr ""
 
-#: ../setuphandlers.py:202
+#: ../setuphandlers.py:198
 msgid "notarydivisions_folder_title"
 msgstr ""
 
-#: ../setuphandlers.py:229
+#: ../setuphandlers.py:225
 msgid "pod_templates_folder_title"
 msgstr ""
 
 msgid "since"
 msgstr ""
 
-#: ../content/notarydivision_view.py:65
-msgid "warning_not_enough_created_parcels"
+#: ../content/notarydivision_view.py:64
+msgid "warning_not_enough_created_parcellings"
 msgstr ""
 
 #. Default: "Confirm workflow transition ${transition_name} on this ${object_type} object."

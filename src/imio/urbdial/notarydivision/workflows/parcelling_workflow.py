@@ -8,12 +8,12 @@ class StateRolesMapping(UrbdialWorkflowStateRolesMapping):
 
     mapping = {
         'Draft': {
-            'get_notary_office': ('Parcel Manager',),
+            'get_notary_office': ('Parcelling Manager',),
         },
 
         'Published': {
-            'notaries': ('Parcel Reader',),
-            'dgo4': ('Parcel Reader',),
-            'get_local_township': ('Parcel Reader',),
+            'notaries': ('Parcelling Reader',),
+            'dgo4': ('Parcelling Reader',),
+            'get_local_township': ('Parcelling Reader',),
         },
     }

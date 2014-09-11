@@ -8,8 +8,8 @@
         />
 
     <permission
-        id="imio.urbdial.notarydivision.AddParcel"
-        title="imio.urbdial.notarydivision: Add Parcel"
+        id="imio.urbdial.notarydivision.AddParcelling"
+        title="imio.urbdial.notarydivision: Add Parcelling"
         />
 
     <permission

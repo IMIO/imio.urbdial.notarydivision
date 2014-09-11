@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="Parcel_workflow"
-             title="Parcel_workflow"
+<dc-workflow workflow_id="Parcelling_workflow"
+             title="Parcelling_workflow"
              state_variable="review_state"
              initial_state="Draft"
              xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -16,8 +16,8 @@
   <exit-transition transition_id="Publish"/>
   <permission-map name="Access contents information"
                   acquired="False">
-   <permission-role>Parcel Reader</permission-role>
-   <permission-role>Parcel Manager</permission-role>
+   <permission-role>Parcelling Reader</permission-role>
+   <permission-role>Parcelling Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Add portal content"
@@ -26,18 +26,18 @@
   </permission-map>
   <permission-map name="Delete objects"
                   acquired="False">
-   <permission-role>Parcel Manager</permission-role>
+   <permission-role>Parcelling Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
                   acquired="False">
-   <permission-role>Parcel Manager</permission-role>
+   <permission-role>Parcelling Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="View"
                   acquired="False">
-   <permission-role>Parcel Reader</permission-role>
-   <permission-role>Parcel Manager</permission-role>
+   <permission-role>Parcelling Reader</permission-role>
+   <permission-role>Parcelling Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
@@ -46,8 +46,8 @@
         i18n:attributes="title">
   <permission-map name="Access contents information"
                   acquired="False">
-   <permission-role>Parcel Reader</permission-role>
-   <permission-role>Parcel Manager</permission-role>
+   <permission-role>Parcelling Reader</permission-role>
+   <permission-role>Parcelling Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Add portal content"
@@ -56,18 +56,18 @@
   </permission-map>
   <permission-map name="Delete objects"
                   acquired="False">
-   <permission-role>Parcel Manager</permission-role>
+   <permission-role>Parcelling Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
                   acquired="False">
-   <permission-role>Parcel Manager</permission-role>
+   <permission-role>Parcelling Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
   <permission-map name="View"
                   acquired="False">
-   <permission-role>Parcel Reader</permission-role>
-   <permission-role>Parcel Manager</permission-role>
+   <permission-role>Parcelling Reader</permission-role>
+   <permission-role>Parcelling Manager</permission-role>
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>

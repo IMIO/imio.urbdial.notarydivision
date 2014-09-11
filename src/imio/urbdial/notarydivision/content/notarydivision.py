@@ -9,7 +9,7 @@ from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.browser.parcel_datagridfield import ParcelDataGridFieldFactory
 from imio.urbdial.notarydivision.content.base import UrbdialContainer
 from imio.urbdial.notarydivision.content.comment import IComment
-from imio.urbdial.notarydivision.content.parcel import IParcel
+from imio.urbdial.notarydivision.content.parcelling import IParcelling
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
@@ -183,7 +183,7 @@ class IBaseNotaryDivision(model.Schema, INotaryDivisionElement):
     )
 
     undivided = MasterSelectBoolField(
-        title=_(u'Case of undivided parcel'),
+        title=_(u'Case of undivided parcelling'),
         required=False,
         slave_fields=(
             {
@@ -259,12 +259,12 @@ class BaseNotaryDivision(UrbdialContainer):
         comments = self.get_objects(state, portal_type, provides)
         return comments
 
-    def get_parcels(self, state=None, portal_type='', provides=IParcel):
+    def get_parcellings(self, state=None, portal_type='', provides=IParcelling):
         """
-        Query all parcels of the current NotaryDivision.
+        Query all parcellings of the current NotaryDivision.
         """
-        parcels = self.get_objects(state, portal_type, provides)
-        return parcels
+        parcellings = self.get_objects(state, portal_type, provides)
+        return parcellings
 
 
 class INotaryDivision(IBaseNotaryDivision):

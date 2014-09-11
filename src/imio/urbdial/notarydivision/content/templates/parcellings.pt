@@ -1,4 +1,4 @@
-<metal:initial_parcel_display define-macro="initial_parcel_display">
+<metal:initial_parcelling_display define-macro="initial_parcelling_display">
 
   <tal:block repeat="widget view/widgets/values">
       <div class="field" tal:condition="python:widget.__name__ not in ('IBasic.title', 'IBasic.description', 'title', 'description',)">
@@ -8,8 +8,8 @@
       </div>
   </tal:block>
 
-</metal:initial_parcel_display>
+</metal:initial_parcelling_display>
 
-<metal:created_parcel_macro define-macro="add_created_parcel_form">
-    <tal:add_created_parcel replace="structure here/++add++CreatedParcel" />
-</metal:created_parcel_macro>
+<metal:created_parcelling_macro define-macro="add_created_parcelling_form">
+    <tal:add_created_parcelling replace="structure here/++add++CreatedParcelling" />
+</metal:created_parcelling_macro>
