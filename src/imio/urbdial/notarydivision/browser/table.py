@@ -21,7 +21,7 @@ class ParcellingTable(Table):
     implements(IParcellingTable)
 
 
-class CreatedParcellingTable(Table):
+class CreatedParcellingTable(ParcellingTable):
     """
     """
     implements(ICreatedParcellingTable)
@@ -76,66 +76,20 @@ class ParcellingNumberColumn(UrbdialColumn):
         return number
 
 
-class LocalityColumn(UrbdialColumn):
+class LocalisationColumn(UrbdialColumn):
     """
     """
 
-    header = 'Locality'
+    header = 'Parcelling localisation'
     weight = 20
 
     def renderCell(self, parcelling):
-        locality = self.get(parcelling, 'locality')
-        if locality:
-            locality_voc_factory = LocalitiesVocabularyFactory()
-            locality_voc = locality_voc_factory(parcelling)
-            locality = locality_voc.getTerm(locality).title
-        return locality
-
-
-class CadastralReferenceColumn(UrbdialColumn):
-    """
-    """
-
-    header = 'label_colname_cadastral_ref'
-    weight = 30
-
-    def renderCell(self, parcelling):
-        division = self.get(parcelling, 'division')
-        section = self.get(parcelling, 'section')
-        radical = self.get(parcelling, 'radical')
-        bis = self.get(parcelling, 'bis')
-        exposant = self.get(parcelling, 'exposant')
-        power = self.get(parcelling, 'power')
-
-        reference = '{division} {section} {radical}{bis} {exposant} {power}'.format(
-            division=division,
-            section=section,
-            radical=radical,
-            bis=bis and '/{}'.format(bis) or '',
-            exposant=exposant,
-            power=power
-        )
-        return reference
-
-
-class AddressColumn(UrbdialColumn):
-    """
-    """
-
-    header = 'Street'
-    weight = 35
-
-    def renderCell(self, parcelling):
-        street = self.get(parcelling, 'street')
-        street_number = self.get(parcelling, 'street_number')
-        if street:
-            if street_number:
-                address = u'{}, {}'.format(street_number, street)
-            else:
-                address = street
-        else:
-            address = street_number
-        return address
+        localisation = self.get(parcelling, 'localisation')
+        if localisation:
+            localisation_voc_factory = LocalitiesVocabularyFactory()
+            localisation_voc = localisation_voc_factory(parcelling)
+            localisation = localisation_voc.getTerm(localisation).title
+        return localisation
 
 
 class SurfaceColumn(UrbdialColumn):
@@ -168,18 +122,6 @@ class SurfaceAccuracyColumn(UrbdialColumn):
         return surface
 
 
-class ActualUseColumn(UrbdialColumn):
-    """
-    """
-
-    header = 'Estate actual use'
-    weight = 50
-
-    def renderCell(self, parcelling):
-        actual_use = self.get(parcelling, 'actual_use')
-        return actual_use
-
-
 class RoadDistanceColumn(UrbdialColumn):
     """
     """
@@ -194,14 +136,42 @@ class RoadDistanceColumn(UrbdialColumn):
         return road_distance
 
 
+class DestinationColumn(UrbdialColumn):
+    """
+    """
+
+    header = 'Parcelling destination'
+    weight = 60
+
+    def renderCell(self, parcelling):
+        destination = self.get(parcelling, 'destination')
+        return destination
+
+
+class CededColumn(UrbdialColumn):
+    """
+    """
+
+    header = 'Ceded parcelling'
+    weight = 65
+
+    def renderCell(self, parcelling):
+        ceded = parcelling.ceded_parcelling and 'Yes' or 'No'
+        ceded_display = translate(ceded, domain='plone')
+        return  ceded_display
+
+
 class DeedTypeColumn(UrbdialColumn):
     """
     """
 
     header = 'Deed type'
-    weight = 60
+    weight = 70
 
     def renderCell(self, parcelling):
+        if not parcelling.ceded_parcelling:
+            return u'/'
+
         deed_type = self.get(parcelling, 'deed_type')
         if deed_type == 'autre':
             deed_type = self.get(parcelling, 'other_deed_type')
@@ -210,18 +180,6 @@ class DeedTypeColumn(UrbdialColumn):
             deed_type_voc = deed_type_voc_factory(parcelling)
             deed_type = deed_type_voc.getTerm(deed_type).title
         return deed_type
-
-
-class DestinationColumn(UrbdialColumn):
-    """
-    """
-
-    header = 'Parcelling destination'
-    weight = 70
-
-    def renderCell(self, parcelling):
-        destination = self.get(parcelling, 'destination')
-        return destination
 
 
 class BuiltColumn(UrbdialColumn):

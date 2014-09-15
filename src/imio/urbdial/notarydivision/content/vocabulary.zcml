@@ -44,4 +44,11 @@
         provides="zope.schema.interfaces.IVocabularyFactory"
     />
 
+    <!-- Ceded parcelling Vocabulary -->
+    <utility
+        factory=".vocabulary.CededVocabularyFactory"
+        name="imio.urbdial.notarydivision.CededVocabulary"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
 </configure>

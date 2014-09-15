@@ -8,6 +8,7 @@ from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElemen
 from plone.autoform import directives as form
 from plone.formwidget.masterselect import MasterSelectBoolField
 from plone.formwidget.masterselect import MasterSelectField
+from plone.formwidget.masterselect import MasterSelectRadioField
 from plone.supermodel import model
 
 from zope import schema
@@ -24,49 +25,8 @@ class IParcelling(model.Schema, INotaryDivisionElement):
         required=False,
     )
 
-    street = schema.TextLine(
-        title=_(u'Street'),
-        required=False,
-    )
-
-    street_number = schema.TextLine(
-        title=_(u'Street number'),
-        required=False,
-    )
-
-    locality = schema.Choice(
-        title=_(u'Locality'),
-        vocabulary='imio.urbdial.notarydivision.Localities',
-        required=False,
-    )
-
-    division = schema.TextLine(
-        title=_(u'Division'),
-        required=False,
-    )
-
-    section = schema.TextLine(
-        title=_(u'Section'),
-        required=False,
-    )
-
-    radical = schema.TextLine(
-        title=_(u'Radical'),
-        required=False,
-    )
-
-    bis = schema.TextLine(
-        title=_(u'Bis'),
-        required=False,
-    )
-
-    exposant = schema.TextLine(
-        title=_(u'Exposant'),
-        required=False,
-    )
-
-    power = schema.TextLine(
-        title=_(u'Power'),
+    localisation = schema.Text(
+        title=_(u'Parcelling localisation'),
         required=False,
     )
 
@@ -92,11 +52,6 @@ class ICreatedParcelling(IParcelling):
     Schema of CreatedParcelling
     """
 
-    destination = schema.Text(
-        title=_(u'Parcelling destination'),
-        required=False,
-    )
-
     form.order_before(surface='surface_accuracy')
 
     surface_accuracy = schema.Choice(
@@ -106,6 +61,40 @@ class ICreatedParcelling(IParcelling):
     road_distance = schema.TextLine(
         title=_(u'Road distance'),
         required=False,
+    )
+
+    destination = schema.Text(
+        title=_(u'Parcelling destination'),
+        required=False,
+    )
+
+    ceded_parcelling = MasterSelectRadioField(
+        title=_(u'Ceded'),
+        default=True,
+        vocabulary='imio.urbdial.notarydivision.CededVocabulary',
+        slave_fields=(
+            {
+                'masterID': 'form-widgets-ceded_parcelling-1',
+                'name': 'deed_type',
+                'action': 'hide',
+                'hide_values': 'no',
+                'siblings': True,
+            },
+            {
+                'masterID': 'form-widgets-ceded_parcelling-1',
+                'name': 'other_deed_type',
+                'action': 'hide',
+                'hide_values': 'no',
+                'siblings': True,
+            },
+            {
+                'masterID': 'form-widgets-ceded_parcelling-0',
+                'name': 'deed_type',
+                'action': 'show',
+                'hide_values': 'yes',
+                'siblings': True,
+            },
+        ),
     )
 
     deed_type = MasterSelectField(

@@ -132,3 +132,19 @@ class Article90VocabularyFactory(object):
 
         vocabulary = SimpleVocabulary(vocabulary_terms)
         return vocabulary
+
+
+class CededVocabularyFactory(object):
+    """
+    Vocabulary factory for article ceded parcellings options.
+    """
+
+    def __call__(self, context):
+
+        vocabulary_terms = [
+            SimpleTerm(True, 'yes', _('Ceded parcelling')),
+            SimpleTerm(False, 'no', _('Kept parcelling'))
+        ]
+
+        vocabulary = SimpleVocabulary(vocabulary_terms)
+        return vocabulary

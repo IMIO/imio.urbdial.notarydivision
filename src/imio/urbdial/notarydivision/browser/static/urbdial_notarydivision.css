@@ -55,60 +55,7 @@ tr.field_row_display > td{
 #form-widgets-number{
     width: 3em;
 }
-#formfield-form-widgets-locality{
-    display: inline-block;
-}
-#formfield-form-widgets-street{
-    display: inline-block;
-}
-#form-widgets-street{
-    display: inline-block;
-    width: 12em;
-}
-#formfield-form-widgets-street_number{
-    display: inline-block;
-    padding-right: 1.5em;
-}
-#form-widgets-street_number{
-    width: 2.5em;
-}
-#formfield-form-widgets-division{
-    display: inline-block;
-}
-#form-widgets-division{
-    width: 4em;
-}
-#formfield-form-widgets-section{
-    display: inline-block;
-}
-#form-widgets-section{
-    width: 4em;
-}
-#formfield-form-widgets-radical{
-    display: inline-block;
-}
-#form-widgets-radical{
-    width: 4em;
-}
-#formfield-form-widgets-bis{
-    display: inline-block;
-}
-#form-widgets-bis{
-    width: 2em;
-}
-#formfield-form-widgets-exposant{
-    display: inline-block;
-}
-#form-widgets-exposant{
-    width: 4em;
-}
-#formfield-form-widgets-power{
-    display: inline-block;
-}
-#form-widgets-power{
-    width: 4em;
-}
-#formfield-form-widgets-actual_use textarea{
+#formfield-form-widgets-localisation textarea{
     width: 46em;
     height: 1.5em;
 }
@@ -124,6 +71,7 @@ tr.field_row_display > td{
 }
 #formfield-form-widgets-surface_accuracy{
     display: inline-block;
+    vertical-align: top;
 }
 #formfield-form-widgets-road_distance{
     display: inline-block;
@@ -132,8 +80,17 @@ tr.field_row_display > td{
 #form-widgets-road_distance{
     width: 9em;
 }
-#formfield-form-widgets-road_distance_accuracy{
+#formfield-form-widgets-ceded_parcelling{
     display: inline-block;
+}
+#formfield-form-widgets-deed_type{
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 3em;
+}
+#formfield-form-widgets-other_deed_type{
+    display: inline-block;
+    vertical-align: top;
 }
 
 /* hide cancel button on parcel's add form */
@@ -336,4 +293,10 @@ tr.field_row_display > td{
 dl.enableFormTabbing dd {
     margin-left: 0.5em;
     padding-top: 0.5em;
+}
+
+#content li.formTab a.required span:after, #content-core li.formTab a.required span:after, div.field span.required:after {
+   color: Red;
+   content: "";
+   padding-left: 0.2em;
 }

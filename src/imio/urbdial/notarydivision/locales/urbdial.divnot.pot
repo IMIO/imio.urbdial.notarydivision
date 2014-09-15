@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-09-10 14:09+0000\n"
+"POT-Creation-Date: 2014-09-15 09:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,11 +53,10 @@ msgid "Article 90 reasons"
 msgstr ""
 
 #: ../content/notarydivision.py:79
-#: ../content/parcelling.py:59
 msgid "Bis"
 msgstr ""
 
-#: ../content/parcelling.py:130
+#: ../content/parcelling.py:119
 msgid "Built"
 msgstr ""
 
@@ -65,8 +64,16 @@ msgid "Cadastral reference"
 msgstr ""
 
 #: ../content/notarydivision.py:186
-#: ../content/parcelling.py:135
+#: ../content/parcelling.py:124
 msgid "Case of undivided parcelling"
+msgstr ""
+
+#: ../content/parcelling.py:72
+msgid "Ceded"
+msgstr ""
+
+#: ../content/vocabulary.py:145
+msgid "Ceded parcelling"
 msgstr ""
 
 msgid "Comments"
@@ -92,12 +99,11 @@ msgstr ""
 msgid "DGO 4"
 msgstr ""
 
-#: ../content/parcelling.py:112
+#: ../content/parcelling.py:101
 msgid "Deed type"
 msgstr ""
 
 #: ../content/notarydivision.py:64
-#: ../content/parcelling.py:44
 msgid "Division"
 msgstr ""
 
@@ -118,7 +124,6 @@ msgid "Exclude from navigation"
 msgstr ""
 
 #: ../content/notarydivision.py:84
-#: ../content/parcelling.py:64
 msgid "Exposant"
 msgstr ""
 
@@ -167,6 +172,10 @@ msgstr ""
 msgid "Item created"
 msgstr ""
 
+#: ../content/vocabulary.py:146
+msgid "Kept parcelling"
+msgstr ""
+
 #: ../content/notarydivision.py:129
 msgid "Local DGO4"
 msgstr ""
@@ -176,7 +185,6 @@ msgid "Local township"
 msgstr ""
 
 #: ../content/notarydivision.py:58
-#: ../content/parcelling.py:38
 msgid "Locality"
 msgstr ""
 
@@ -202,7 +210,7 @@ msgstr ""
 msgid "NotaryDivision"
 msgstr ""
 
-#: ../content/parcelling.py:23
+#: ../content/parcelling.py:24
 msgid "Number"
 msgstr ""
 
@@ -210,7 +218,7 @@ msgstr ""
 msgid "Number of created parcellings"
 msgstr ""
 
-#: ../content/parcelling.py:125
+#: ../content/parcelling.py:114
 msgid "Other deed type"
 msgstr ""
 
@@ -226,8 +234,12 @@ msgstr ""
 msgid "OtherNotaryDivision"
 msgstr ""
 
-#: ../content/parcelling.py:96
+#: ../content/parcelling.py:67
 msgid "Parcelling destination"
+msgstr ""
+
+#: ../content/parcelling.py:29
+msgid "Parcelling localisation"
 msgstr ""
 
 #: ../content/notarydivision.py:167
@@ -251,7 +263,6 @@ msgid "Plans files"
 msgstr ""
 
 #: ../content/notarydivision.py:89
-#: ../content/parcelling.py:69
 msgid "Power"
 msgstr ""
 
@@ -264,7 +275,6 @@ msgid "Previous comments"
 msgstr ""
 
 #: ../content/notarydivision.py:74
-#: ../content/parcelling.py:54
 msgid "Radical"
 msgstr ""
 
@@ -276,12 +286,11 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: ../content/parcelling.py:107
+#: ../content/parcelling.py:62
 msgid "Road distance"
 msgstr ""
 
 #: ../content/notarydivision.py:69
-#: ../content/parcelling.py:49
 msgid "Section"
 msgstr ""
 
@@ -289,17 +298,15 @@ msgid "Specific rights"
 msgstr ""
 
 #: ../content/notarydivision.py:156
-#: ../content/parcelling.py:28
 msgid "Street"
 msgstr ""
 
 #: ../content/notarydivision.py:161
-#: ../content/parcelling.py:33
 msgid "Street number"
 msgstr ""
 
 #: ../content/notarydivision.py:176
-#: ../content/parcelling.py:74
+#: ../content/parcelling.py:34
 msgid "Surface"
 msgstr ""
 

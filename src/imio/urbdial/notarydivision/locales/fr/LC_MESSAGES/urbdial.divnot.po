@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-09-10 14:09+0000\n"
+"POT-Creation-Date: 2014-09-15 09:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,11 +51,10 @@ msgid "Article 90 reasons"
 msgstr "Cette division entre dans le champ de l’article 90 du CWATUPE et répond à (aux) exception(s) suivante(s)"
 
 #: ../content/notarydivision.py:79
-#: ../content/parcelling.py:59
 msgid "Bis"
 msgstr "Bis"
 
-#: ../content/parcelling.py:130
+#: ../content/parcelling.py:119
 msgid "Built"
 msgstr "Bâti"
 
@@ -64,9 +63,17 @@ msgid "Cadastral reference"
 msgstr "Référence cadastrale"
 
 #: ../content/notarydivision.py:186
-#: ../content/parcelling.py:135
+#: ../content/parcelling.py:124
 msgid "Case of undivided parcelling"
 msgstr "En cas d'indivision ou démembrement, veuillez spécifier les droits des parties."
+
+#: ../content/parcelling.py:72
+msgid "Ceded"
+msgstr "Cession"
+
+#: ../content/vocabulary.py:145
+msgid "Ceded parcelling"
+msgstr "Lot cédé."
 
 msgid "Comments"
 msgstr "Commentaires"
@@ -91,12 +98,11 @@ msgstr "Lot créé"
 msgid "DGO 4"
 msgstr "DGO 4"
 
-#: ../content/parcelling.py:112
+#: ../content/parcelling.py:101
 msgid "Deed type"
 msgstr "Type d'acte"
 
 #: ../content/notarydivision.py:64
-#: ../content/parcelling.py:44
 msgid "Division"
 msgstr "Division"
 
@@ -117,7 +123,6 @@ msgid "Exclude from navigation"
 msgstr ""
 
 #: ../content/notarydivision.py:84
-#: ../content/parcelling.py:64
 msgid "Exposant"
 msgstr "Exposant"
 
@@ -166,6 +171,10 @@ msgstr "Ensemble immobilier initial"
 msgid "Item created"
 msgstr ""
 
+#: ../content/vocabulary.py:146
+msgid "Kept parcelling"
+msgstr "Lot restant non cédé"
+
 #: ../content/notarydivision.py:129
 msgid "Local DGO4"
 msgstr "Direction(s) provinciale concernée(s)"
@@ -175,7 +184,6 @@ msgid "Local township"
 msgstr "Commune(s) concernée(s)"
 
 #: ../content/notarydivision.py:58
-#: ../content/parcelling.py:38
 msgid "Locality"
 msgstr "Commune"
 
@@ -202,7 +210,7 @@ msgstr "Administrateur FRNB"
 msgid "NotaryDivision"
 msgstr "Division notariale"
 
-#: ../content/parcelling.py:23
+#: ../content/parcelling.py:24
 msgid "Number"
 msgstr "Numéro"
 
@@ -210,7 +218,7 @@ msgstr "Numéro"
 msgid "Number of created parcellings"
 msgstr "Nombre de lots créés"
 
-#: ../content/parcelling.py:125
+#: ../content/parcelling.py:114
 msgid "Other deed type"
 msgstr "Autre type d'acte"
 
@@ -226,9 +234,13 @@ msgstr "Les plans autres que ceux réalisés par un géomètre sont à joindre d
 msgid "OtherNotaryDivision"
 msgstr "Division notariale (hors article 90)"
 
-#: ../content/parcelling.py:96
+#: ../content/parcelling.py:67
 msgid "Parcelling destination"
 msgstr "Destination du lot"
+
+#: ../content/parcelling.py:29
+msgid "Parcelling localisation"
+msgstr "Identification du lot"
 
 #: ../content/notarydivision.py:167
 msgid "Parcels"
@@ -251,7 +263,6 @@ msgid "Plans files"
 msgstr "Fichiers (plan)"
 
 #: ../content/notarydivision.py:89
-#: ../content/parcelling.py:69
 msgid "Power"
 msgstr "Puissance"
 
@@ -264,7 +275,6 @@ msgid "Previous comments"
 msgstr "Messages précédents"
 
 #: ../content/notarydivision.py:74
-#: ../content/parcelling.py:54
 msgid "Radical"
 msgstr "Radical"
 
@@ -276,12 +286,11 @@ msgstr "Raisons"
 msgid "Reference"
 msgstr "Référence du dossier en l'étude notariale"
 
-#: ../content/parcelling.py:107
+#: ../content/parcelling.py:62
 msgid "Road distance"
 msgstr "Dimension à route (m)"
 
 #: ../content/notarydivision.py:69
-#: ../content/parcelling.py:49
 msgid "Section"
 msgstr "Section"
 
@@ -289,17 +298,15 @@ msgid "Specific rights"
 msgstr "droits des parties"
 
 #: ../content/notarydivision.py:156
-#: ../content/parcelling.py:28
 msgid "Street"
 msgstr "Rue"
 
 #: ../content/notarydivision.py:161
-#: ../content/parcelling.py:33
 msgid "Street number"
 msgstr "N°"
 
 #: ../content/notarydivision.py:176
-#: ../content/parcelling.py:74
+#: ../content/parcelling.py:34
 msgid "Surface"
 msgstr "Superficie"
 
