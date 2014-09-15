@@ -116,27 +116,21 @@ class TestCreatedParcellingFields(NotaryDivisionBrowserTest):
 
     def test_undivided_attribute(self):
         test_parcelling = aq_base(self.test_parcelling)
-        self.assertTrue(hasattr(test_parcelling, 'undivided_b'))
+        self.assertTrue(hasattr(test_parcelling, 'undivided'))
 
     def test_undivided_field_edit(self):
         self.browser.open(self.test_parcelling.absolute_url() + '/edit')
         contents = self.browser.contents
         msg = "field 'undivided' is not editable"
-        self.assertTrue('En cas d’indivision ou de démembrement' in contents, msg)
+        self.assertTrue('En cas d\'indivision ou démembrement' in contents, msg)
 
     def test_specific_rights_attribute(self):
         test_parcelling = aq_base(self.test_parcelling)
-        self.assertTrue(hasattr(test_parcelling, 'specific_rights_b'))
+        self.assertTrue(hasattr(test_parcelling, 'specific_rights'))
 
     def test_surface_accuracy_attribute(self):
         test_parcelling = aq_base(self.test_parcelling)
         self.assertTrue(hasattr(test_parcelling, 'surface_accuracy'))
-
-    def test_bis_field_edit(self):
-        self.browser.open(self.test_parcelling.absolute_url() + '/edit')
-        contents = self.browser.contents
-        msg = "field 'bis' is not editable"
-        self.assertTrue('Bis' in contents, msg)
 
     def test_road_distance_attribute(self):
         test_parcelling = aq_base(self.test_parcelling)

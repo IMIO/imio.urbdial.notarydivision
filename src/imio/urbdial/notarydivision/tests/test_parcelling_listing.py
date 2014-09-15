@@ -35,35 +35,6 @@ class TestCreatedParcellingListing(NotaryDivisionFunctionalBrowserTest):
         expected_value = '4242'
         self._test_createdparcelling_listing_column_display('number', expected_value)
 
-    def test_createdparcelling_locality_display(self):
-        expected_value = 'Braine-le-Château</td>'
-
-        def set_locality():
-            self.test_parcelling.locality = '1440'
-
-        self._test_createdparcelling_listing_column_display('locality', expected_value, set_locality)
-
-    def test_createdparcelling_cadastralref_display(self):
-        expected_value = 'A 45 B/2 24 '
-
-        def set_ref():
-            self.test_parcelling.division = 'A'
-            self.test_parcelling.section = '45'
-            self.test_parcelling.radical = 'B'
-            self.test_parcelling.bis = '2'
-            self.test_parcelling.exposant = '24'
-
-        self._test_createdparcelling_listing_column_display('Cadastral reference', expected_value, set_ref)
-
-    def test_createdparcelling_address_display(self):
-        expected_value = '666, saikonji street'
-
-        def set_street():
-            self.test_parcelling.street = 'saikonji street'
-            self.test_parcelling.street_number = '666'
-
-        self._test_createdparcelling_listing_column_display('street', expected_value, set_street)
-
     def test_createdparcelling_surface_display(self):
         expected_value = '66ha (mesurée)'
 
@@ -102,14 +73,6 @@ class TestCreatedParcellingListing(NotaryDivisionFunctionalBrowserTest):
         expected_value = 'the wonders of you'
         self._test_createdparcelling_listing_column_display('destination', expected_value)
 
-    def test_createdparcelling_built_display(self):
-        expected_value = 'Non</td>'
-
-        def set_built():
-            self.test_parcelling.built = False
-
-        self._test_createdparcelling_listing_column_display('built', expected_value, set_built)
-
     def test_createdparcelling_undivided_display(self):
         expected_value = 'droits des parties</a>'
-        self._test_createdparcelling_listing_column_display('undivided_b', expected_value)
+        self._test_createdparcelling_listing_column_display('undivided', expected_value)
