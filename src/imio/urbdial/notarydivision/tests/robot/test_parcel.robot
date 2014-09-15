@@ -15,26 +15,16 @@ Suite Teardown  Close all browsers
 Test parcel delete redirects on estate tab
     Go to  ${PLONE_URL}/notarydivisions/test_notarydivision
     Click link  fieldset-estate
-    Delete initial parcel  1
+    Delete parcel  1
     Confirm Action
     Location should be  http://localhost:55001/plone/notarydivisions/test_notarydivision/#fieldset-estate
-
-Test initial parcel specific rights display
-    Go to  ${PLONE_URL}/notarydivisions/test_notarydivision
-    Click link  fieldset-estate
-    Edit initial parcel  1
-    Select Checkbox  form-widgets-undivided_a-0
-    Input Text  id=form-widgets-specific_rights_a  Im just a gigolo
-    Click button  form-buttons-save
-    Click link  droits des parties
-    Current Frame Contains  Im just a gigolo
 
 Test created parcel specific rights display
     Go to  ${PLONE_URL}/notarydivisions/test_notarydivision
     Click link  fieldset-estate
-    Edit created parcel  1
-    Select Checkbox  form-widgets-undivided_b-0
-    Input Text  id=form-widgets-specific_rights_b  Im singing in the rain
+    Edit parcel  1
+    Select Checkbox  form-widgets-undivided-0
+    Input Text  id=form-widgets-specific_rights  Im singing in the rain
     Click button  form-buttons-save
     Click link  droits des parties
     Current Frame Contains  Im singing in the rain
@@ -51,22 +41,10 @@ Log in as admin
     Input password  id=__ac_password  secret
     Click Button  submit
 
-Edit initial parcel
-    [Arguments]  ${parcel_number}
-    Edit parcel  ${parcel_number}  initial
-
-Edit created parcel
-    [Arguments]  ${parcel_number}
-    Edit parcel  ${parcel_number}  created
-
 Edit parcel
-    [Arguments]  ${parcel_number}  ${parcel_type}
-    Click element  xpath= //fieldset[@id='${parcel_type}_estate']//tbody//tr[${parcel_number}]//img[@title='Modifier']
-
-Delete initial parcel
     [Arguments]  ${parcel_number}
-    Delete parcel  ${parcel_number}  initial
+    Click element  xpath= //tbody//tr[${parcel_number}]//img[@title='Modifier']
 
 Delete parcel
-    [Arguments]  ${parcel_number}  ${parcel_type}
-    Click element  xpath= //fieldset[@id='${parcel_type}_estate']//tbody//tr[${parcel_number}]//form[@name='deleteUidForm']//img
+    [Arguments]  ${parcel_number}
+    Click element  xpath= //tbody//tr[${parcel_number}]//form[@name='deleteUidForm']//img
