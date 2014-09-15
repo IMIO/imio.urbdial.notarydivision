@@ -43,8 +43,8 @@ Log in as admin
 
 Edit parcel
     [Arguments]  ${parcel_number}
-    Click element  xpath= //tbody//tr[${parcel_number}]//img[@title='Modifier']
+    Click element  xpath= //fieldset[@id='created_estate']//tbody//tr[${parcel_number}]//img[@title='Modifier']
 
 Delete parcel
     [Arguments]  ${parcel_number}
-    Click element  xpath= //tbody//tr[${parcel_number}]//form[@name='deleteUidForm']//img
+    Click element  xpath= //fieldset[@id='created_estate']//tbody//tr[${parcel_number}]//form[@name='deleteUidForm']//img
