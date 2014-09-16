@@ -295,15 +295,12 @@ def create_test_users(context):
     """
     Create tests user for the different groups.
     """
-    try:
-        api.user.create(
-            username=TEST_NOTARY_NAME, password=TEST_NOTARY_PASSWORD, email='notary@frnb.be',
-            properties={
-                'fullname': 'Maitre Nono',
-            }
-        )
-    except:
-        import ipdb; ipdb.set_trace()
+    api.user.create(
+        username=TEST_NOTARY_NAME, password=TEST_NOTARY_PASSWORD, email='notary@frnb.be',
+        properties={
+            'fullname': 'Maitre Nono',
+        }
+    )
     api.group.add_user(username=TEST_NOTARY_NAME, groupname='notaries')
 
     api.user.create(

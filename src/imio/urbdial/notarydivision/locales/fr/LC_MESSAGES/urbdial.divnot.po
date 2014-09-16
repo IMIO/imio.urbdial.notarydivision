@@ -73,7 +73,7 @@ msgstr "Cession"
 
 #: ../content/vocabulary.py:145
 msgid "Ceded parcelling"
-msgstr "Lot cédé."
+msgstr "Lot cédé"
 
 msgid "Comments"
 msgstr "Commentaires"
