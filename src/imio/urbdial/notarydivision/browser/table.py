@@ -96,18 +96,6 @@ class SurfaceColumn(UrbdialColumn):
 
     def renderCell(self, parcelling):
         surface = self.get(parcelling, 'surface')
-        return surface
-
-
-class SurfaceAccuracyColumn(UrbdialColumn):
-    """
-    """
-
-    header = 'Surface'
-    weight = 40
-
-    def renderCell(self, parcelling):
-        surface = self.get(parcelling, 'surface')
         if surface:
             accuracy = self.get(parcelling, 'surface_accuracy')
             accuracy_voc_factory = SurfaceAccuraciesVocabularyFactory()
