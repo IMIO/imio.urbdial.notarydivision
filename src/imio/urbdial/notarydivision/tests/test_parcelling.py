@@ -59,6 +59,19 @@ class TestCreatedParcellingAddForm(NotaryDivisionFunctionalBrowserTest):
         msg = "Inital parcelling add form is not visible on notary division"
         self.assertTrue('kssattr-formname-CreatedParcelling' in contents, msg)
 
+    def test_created_parcelling_add_button(self):
+        parcellings = self.test_divnot.get_parcellings()
+        self.assertTrue(len(parcellings) == 1)
+
+        self.browser.open(self.test_divnot.absolute_url())
+        form = self.browser.getForm('form')
+        button = form.getControl(name='form.buttons.add')
+        button.click()
+
+        parcellings = self.test_divnot.get_parcellings()
+        msg = "A new parcelling object should have been created after pshing the 'Add new parcelling' button"
+        self.assertTrue(len(parcellings) == 2, msg)
+
     def test_parcelling_number_autoincrement_starting_value(self):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
