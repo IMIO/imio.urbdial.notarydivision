@@ -26,6 +26,7 @@
     <include package=".browser" />
     <include package=".content" />
     <include package=".events" />
+    <include package=".listing" />
     <include package=".workflows" />
 
 </configure>

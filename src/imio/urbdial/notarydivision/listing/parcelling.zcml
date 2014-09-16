@@ -9,7 +9,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcellingTable"
-     factory=".table.CreatedParcellingValues"
+     factory=".parcelling.CreatedParcellingValues"
      provides="z3c.table.interfaces.IValues"
   />
 
@@ -18,7 +18,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.IParcellingTable"
-     factory=".table.ParcellingNumberColumn"
+     factory=".parcelling.ParcellingNumberColumn"
      provides="z3c.table.interfaces.IColumn"
      name="parcellingnumberColumn"
   />
@@ -27,7 +27,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.IParcellingTable"
-     factory=".table.LocalisationColumn"
+     factory=".parcelling.LocalisationColumn"
      provides="z3c.table.interfaces.IColumn"
      name="localisationColumn"
   />
@@ -36,7 +36,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcellingTable"
-     factory=".table.SurfaceColumn"
+     factory=".parcelling.SurfaceColumn"
      provides="z3c.table.interfaces.IColumn"
      name="surfaceColumn"
   />
@@ -45,7 +45,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcellingTable"
-     factory=".table.RoadDistanceColumn"
+     factory=".parcelling.RoadDistanceColumn"
      provides="z3c.table.interfaces.IColumn"
      name="roaddistanceColumn"
   />
@@ -54,7 +54,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcellingTable"
-     factory=".table.CededColumn"
+     factory=".parcelling.CededColumn"
      provides="z3c.table.interfaces.IColumn"
      name="cededColumn"
   />
@@ -63,7 +63,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcellingTable"
-     factory=".table.DeedTypeColumn"
+     factory=".parcelling.DeedTypeColumn"
      provides="z3c.table.interfaces.IColumn"
      name="deedtypeColumn"
   />
@@ -72,7 +72,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcellingTable"
-     factory=".table.DestinationColumn"
+     factory=".parcelling.DestinationColumn"
      provides="z3c.table.interfaces.IColumn"
      name="destinationColumn"
   />
@@ -81,7 +81,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcellingTable"
-     factory=".table.BuiltColumn"
+     factory=".parcelling.BuiltColumn"
      provides="z3c.table.interfaces.IColumn"
      name="builtColumn"
   />
@@ -90,7 +90,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.ICreatedParcellingTable"
-     factory=".table.UndividedColumn"
+     factory=".parcelling.UndividedColumn"
      provides="z3c.table.interfaces.IColumn"
      name="undividedColumn"
   />
@@ -99,7 +99,7 @@
      for="zope.interface.Interface
           zope.publisher.interfaces.browser.IBrowserRequest
           imio.urbdial.notarydivision.browser.interfaces.IEditableParcellingTable"
-     factory=".table.ActionsColumn"
+     factory=".parcelling.ActionsColumn"
      provides="z3c.table.interfaces.IColumn"
      name="actionsColumn"
   />
