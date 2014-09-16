@@ -72,3 +72,21 @@ class TestParcelDataGridFieldFunctional(NotaryDivisionFunctionalBrowserTest):
         self.assertTrue('Namur' in contents, msg)
         msg = "Cadastral reference value of 'parcel'field is not correctly displayed"
         self.assertTrue('Beez A 42/2 E 66' in contents, msg)
+
+    def test_empty_values_of_parcel_field_are_displayed(self):
+        parcel_value = {
+            'locality': None,
+            'division': 'Beez',
+            'section': 'A',
+            'radical': '42',
+            'bis': '2',
+            'exposant': 'E',
+            'power': '66',
+        }
+        self.test_divnot.parcels = [parcel_value]
+        transaction.commit()
+
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        msg = "Empty values are not displayed as 'N.C.'"
+        self.assertTrue('<span class="discreet">N.C</span>' in contents, msg)

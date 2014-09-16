@@ -187,7 +187,7 @@ tr.field_row_display > td{
 }
 
 /*Enlever le champ discret visible en modification */
-.discreet{
+p.discreet{
     display:none;
 }
 /*Track progres selected*/
