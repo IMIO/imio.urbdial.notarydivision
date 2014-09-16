@@ -10,8 +10,11 @@ from plone.app.testing import login
 from imio.urbdial.notarydivision.testing import CommentBrowserTest
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
 from imio.urbdial.notarydivision.testing import NotaryDivisionBrowserTest
+from imio.urbdial.notarydivision.testing import NotaryDivisionFunctionalBrowserTest
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
 from imio.urbdial.notarydivision.utils import translate
+
+import transaction
 
 import unittest
 
@@ -439,6 +442,41 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
             translate(u'InadmissibleFolder').encode('utf-8')
         )
         self.assertTrue(addInadmissibleFolder in contents, msg)
+
+
+class TestFunctionnalNotaryDivisionView(NotaryDivisionFunctionalBrowserTest):
+    """
+    Functionnal tests of NotaryDivision View.
+    """
+
+    def test_NotaryDivision_address_display(self):
+        self.test_divnot.street = u'rue du pré'
+        self.test_divnot.street_number = u'42'
+        transaction.commit()
+
+        self.browser.open(self.test_divnot.absolute_url())
+        expected_address = '42, rue du pré'
+        contents = self.browser.contents
+        msg = 'expected address display: "{}"'.format(expected_address)
+        self.assertTrue(expected_address in contents, msg)
+
+    def test_NotaryDivision_street_number_display(self):
+        self.test_divnot.street_number = u'42'
+        transaction.commit()
+
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue('42,' not in contents)
+        self.assertTrue('42' in contents)
+
+    def test_NotaryDivision_street_display(self):
+        self.test_divnot.street = u'rue du pré'
+        transaction.commit()
+
+        self.browser.open(self.test_divnot.absolute_url())
+        contents = self.browser.contents
+        self.assertTrue(', rue du pré' not in contents)
+        self.assertTrue('rue du pré' in contents)
 
 
 class TestNotaryDivisionMethods(NotaryDivisionBrowserTest):
