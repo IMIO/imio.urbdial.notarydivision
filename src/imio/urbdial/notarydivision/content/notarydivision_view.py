@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.listing.parcelling import CreatedParcellingTable
-from imio.urbdial.notarydivision.listing.parcelling import EditableCreatedParcellingTable
+from imio.urbdial.notarydivision.listing import CreatedParcellingTable
+from imio.urbdial.notarydivision.listing import EditableCreatedParcellingTable
 from imio.urbdial.notarydivision.content.comment_view import CommentContainerView
 from imio.urbdial.notarydivision.utils import translate
 

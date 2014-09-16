@@ -1,8 +1,8 @@
 ## -*- coding: utf-8 -*-
 
-from imio.urbdial.notarydivision.browser.interfaces import ICreatedParcellingTable
-from imio.urbdial.notarydivision.browser.interfaces import IEditableParcellingTable
-from imio.urbdial.notarydivision.browser.interfaces import IParcellingTable
+from imio.urbdial.notarydivision.listing.interfaces import ICreatedParcellingTable
+from imio.urbdial.notarydivision.listing.interfaces import IEditableParcellingTable
+from imio.urbdial.notarydivision.listing.interfaces import IParcellingTable
 from imio.urbdial.notarydivision.content.vocabulary import DeedTypesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import SurfaceAccuraciesVocabularyFactory
 from imio.urbdial.notarydivision.utils import translate
