@@ -4,7 +4,6 @@ from imio.urbdial.notarydivision.browser.interfaces import ICreatedParcellingTab
 from imio.urbdial.notarydivision.browser.interfaces import IEditableParcellingTable
 from imio.urbdial.notarydivision.browser.interfaces import IParcellingTable
 from imio.urbdial.notarydivision.content.vocabulary import DeedTypesVocabularyFactory
-from imio.urbdial.notarydivision.content.vocabulary import LocalitiesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import SurfaceAccuraciesVocabularyFactory
 from imio.urbdial.notarydivision.utils import translate
 
@@ -85,10 +84,6 @@ class LocalisationColumn(UrbdialColumn):
 
     def renderCell(self, parcelling):
         localisation = self.get(parcelling, 'localisation')
-        if localisation:
-            localisation_voc_factory = LocalitiesVocabularyFactory()
-            localisation_voc = localisation_voc_factory(parcelling)
-            localisation = localisation_voc.getTerm(localisation).title
         return localisation
 
 

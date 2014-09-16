@@ -15,7 +15,11 @@ class TestCreatedParcellingListing(NotaryDivisionFunctionalBrowserTest):
 
         self.browser.open(parcelling.absolute_url())
         contents = self.browser.contents
-        self.assertTrue(expected_value not in contents)
+        msg = "created parcelling {value_name} '{expected_value}' is already displayed in created parcellings listing".format(
+            value_name=value_name,
+            expected_value=expected_value,
+        )
+        self.assertTrue(expected_value not in contents, msg)
 
         if setvalue:
             setvalue()
@@ -35,6 +39,10 @@ class TestCreatedParcellingListing(NotaryDivisionFunctionalBrowserTest):
         expected_value = '4242'
         self._test_createdparcelling_listing_column_display('number', expected_value)
 
+    def test_createdparcelling_localistation_display(self):
+        expected_value = 'hawaii'
+        self._test_createdparcelling_listing_column_display('localisation', expected_value)
+
     def test_createdparcelling_surface_display(self):
         expected_value = '66ha (mesurée)'
 
@@ -51,6 +59,21 @@ class TestCreatedParcellingListing(NotaryDivisionFunctionalBrowserTest):
             self.test_parcelling.road_distance = '333'
 
         self._test_createdparcelling_listing_column_display('road_distance', expected_value, set_roaddistance)
+
+    def test_createdparcelling_destination_display(self):
+        expected_value = 'the wonders of you'
+        self._test_createdparcelling_listing_column_display('destination', expected_value)
+
+    def test_createdparcelling_ceded_parcelling_display(self):
+        # set undivided to true so there no 'Non' displayed on the view
+        self.test_divnot.undivided = True
+        transaction.commit()
+        expected_value = 'Non</td>'
+
+        def set_ceded_parcelling():
+            self.test_parcelling.ceded_parcelling = False
+
+        self._test_createdparcelling_listing_column_display('ceded_parcelling', expected_value, set_ceded_parcelling)
 
     def test_createdparcelling_deed_type_display(self):
         expected_value = 'droit de nue propriété</td>'
@@ -69,10 +92,21 @@ class TestCreatedParcellingListing(NotaryDivisionFunctionalBrowserTest):
 
         self._test_createdparcelling_listing_column_display('deed_type', expected_value, set_deedtype)
 
-    def test_createdparcelling_destination_display(self):
-        expected_value = 'the wonders of you'
-        self._test_createdparcelling_listing_column_display('destination', expected_value)
+    def test_createdparcelling_built_display(self):
+        # set undivided to true so there no 'Non' displayed on the view
+        self.test_divnot.undivided = True
+        transaction.commit()
+        expected_value = 'Non</td>'
+
+        def set_built():
+            self.test_parcelling.built = False
+
+        self._test_createdparcelling_listing_column_display('built', expected_value, set_built)
 
     def test_createdparcelling_undivided_display(self):
         expected_value = 'droits des parties</a>'
-        self._test_createdparcelling_listing_column_display('undivided', expected_value)
+
+        def set_undivided():
+            self.test_parcelling.undivided = True
+
+        self._test_createdparcelling_listing_column_display('undivided', expected_value, set_undivided)
