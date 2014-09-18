@@ -27,8 +27,7 @@
                 <span style="text-transform: lowercase;"
                       i18n:name="object_type" i18n:translate=""
                       tal:content="python: view.get_object().portal_type">object type</span>
-                <span style="font-weight: bold;"
-                      i18n:name="object_title" i18n:translate=""
+                <span style="font-weight: bold;" i18n:name="object_title"
                       tal:content="python: view.get_object().Title()">object title</span>
                 .
             </p>
