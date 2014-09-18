@@ -13,6 +13,7 @@ from imio.urbdial.notarydivision.content.parcelling import IParcelling
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
+from imio.urbdial.notarydivision.utils import get_display_values
 
 from plone import api
 from plone.app import textfield
@@ -218,6 +219,32 @@ class BaseNotaryDivision(UrbdialContainer):
     implements(IBaseNotaryDivision)
 
     __ac_local_roles_block__ = True
+
+    @property
+    def title(self):
+        applicants = self.applicants or []
+        applicants = ', '.join([app['name'].upper() for app in applicants])
+
+        localities = get_display_values(
+            self.local_township,
+            voc_name='imio.urbdial.notarydivision.townships',
+            separator=', '
+        )
+
+        title = '{ref} - {applicants} ({localities})'.format(
+            ref=self.reference or '',
+            applicants=applicants,
+            localities=localities
+        )
+        return title
+
+    @title.setter
+    def title(self, value):
+        """
+        Setter does nothing since the title is generated automatically
+        but should be available since plone try to set the title attribute
+        here and there..
+        """
 
     def is_in_draft(self):
         return self.get_state() == 'In preparation'

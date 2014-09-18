@@ -443,11 +443,39 @@ class TestNotaryDivisionView(NotaryDivisionBrowserTest):
         )
         self.assertTrue(addInadmissibleFolder in contents, msg)
 
+    def test_NotaryDivision_empty_title(self):
+        divnot = self.test_divnot
+        expected_title = ' -  (Sambreville)'
+        msg = 'expected title: "{}" but got "{}"'.format(expected_title, divnot.title)
+        self.assertTrue(expected_title == divnot.title, msg)
+
+    def test_NotaryDivision_title(self):
+        divnot = self.test_divnot
+        divnot.reference = 'REF 666'
+        divnot.applicants = [
+            {'name': 'Delcourt', 'firstname': 'Simon'},
+            {'name': 'Antoine', 'firstname': 'Vivian'},
+        ]
+
+        expected_title = 'REF 666 - DELCOURT, ANTOINE (Sambreville)'
+        msg = 'expected title: "{}" but got "{}"'.format(expected_title, divnot.title)
+        self.assertTrue(expected_title == divnot.title, msg)
+
 
 class TestFunctionnalNotaryDivisionView(NotaryDivisionFunctionalBrowserTest):
     """
     Functionnal tests of NotaryDivision View.
     """
+
+    def test_NotaryDivision_title_display(self):
+        divnot = self.test_divnot
+        divnot.reference = 'REF 666'
+        transaction.commit()
+
+        self.browser.open(divnot.absolute_url())
+        contents = self.browser.contents
+        msg = 'title "{}" is not visible on notarydivision view'.format(divnot.title)
+        self.assertTrue(divnot.title in contents, msg)
 
     def test_NotaryDivision_address_display(self):
         self.test_divnot.street = u'rue du pré'
@@ -455,8 +483,8 @@ class TestFunctionnalNotaryDivisionView(NotaryDivisionFunctionalBrowserTest):
         transaction.commit()
 
         self.browser.open(self.test_divnot.absolute_url())
-        expected_address = '42, rue du pré'
         contents = self.browser.contents
+        expected_address = '42, rue du pré'
         msg = 'expected address display: "{}"'.format(expected_address)
         self.assertTrue(expected_address in contents, msg)
 
