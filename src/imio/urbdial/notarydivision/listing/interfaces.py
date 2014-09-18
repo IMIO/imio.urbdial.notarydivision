@@ -8,13 +8,19 @@ class IParcellingTable(Interface):
     """
 
 
-class ICreatedParcellingTable(Interface):
+class ICreatedParcellingTable(IParcellingTable):
     """
-    Marker interface for parcelling table listing.
+    Marker interface for created parcelling table listing.
     """
 
 
-class IEditableParcellingTable(Interface):
+class IEditableParcellingTable(IParcellingTable):
     """
-    Marker interface for parcelling table listing with actions column.
+    Marker interface for created parcelling table listing with actions column.
+    """
+
+
+class INotaryDivisionTable(Interface):
+    """
+    Marker interface for notarydivision table listing.
     """

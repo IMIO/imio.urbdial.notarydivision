@@ -3,11 +3,11 @@
 from imio.urbdial.notarydivision.listing.interfaces import ICreatedParcellingTable
 from imio.urbdial.notarydivision.listing.interfaces import IEditableParcellingTable
 from imio.urbdial.notarydivision.listing.interfaces import IParcellingTable
+from imio.urbdial.notarydivision.listing.table import UrbdialColumn
 from imio.urbdial.notarydivision.content.vocabulary import DeedTypesVocabularyFactory
 from imio.urbdial.notarydivision.content.vocabulary import SurfaceAccuraciesVocabularyFactory
 from imio.urbdial.notarydivision.utils import translate
 
-from z3c.table.column import Column
 from z3c.table.table import Table
 from z3c.table.value import ValuesMixin
 
@@ -44,13 +44,10 @@ class CreatedParcellingValues(ValuesMixin):
         return created_parcellings
 
 
-class UrbdialColumn(Column):
+class ParcellingColumn(UrbdialColumn):
     """
+    Base class for parcelling listing columns.
     """
-
-    def renderHeadCell(self):
-        """Header cell content."""
-        return translate(self.header)
 
     def get(self, obj, attr):
         val = getattr(obj, attr)
@@ -63,7 +60,7 @@ class UrbdialColumn(Column):
         return val
 
 
-class ParcellingNumberColumn(UrbdialColumn):
+class ParcellingNumberColumn(ParcellingColumn):
     """
     """
 
@@ -75,7 +72,7 @@ class ParcellingNumberColumn(UrbdialColumn):
         return number
 
 
-class LocalisationColumn(UrbdialColumn):
+class LocalisationColumn(ParcellingColumn):
     """
     """
 
@@ -87,7 +84,7 @@ class LocalisationColumn(UrbdialColumn):
         return localisation
 
 
-class SurfaceColumn(UrbdialColumn):
+class SurfaceColumn(ParcellingColumn):
     """
     """
 
@@ -105,7 +102,7 @@ class SurfaceColumn(UrbdialColumn):
         return surface
 
 
-class RoadDistanceColumn(UrbdialColumn):
+class RoadDistanceColumn(ParcellingColumn):
     """
     """
 
@@ -119,7 +116,7 @@ class RoadDistanceColumn(UrbdialColumn):
         return road_distance
 
 
-class DestinationColumn(UrbdialColumn):
+class DestinationColumn(ParcellingColumn):
     """
     """
 
@@ -131,7 +128,7 @@ class DestinationColumn(UrbdialColumn):
         return destination
 
 
-class CededColumn(UrbdialColumn):
+class CededColumn(ParcellingColumn):
     """
     """
 
@@ -144,7 +141,7 @@ class CededColumn(UrbdialColumn):
         return  ceded_display
 
 
-class DeedTypeColumn(UrbdialColumn):
+class DeedTypeColumn(ParcellingColumn):
     """
     """
 
@@ -165,7 +162,7 @@ class DeedTypeColumn(UrbdialColumn):
         return deed_type
 
 
-class BuiltColumn(UrbdialColumn):
+class BuiltColumn(ParcellingColumn):
     """
     """
 
@@ -177,7 +174,7 @@ class BuiltColumn(UrbdialColumn):
         return built
 
 
-class UndividedColumn(UrbdialColumn):
+class UndividedColumn(ParcellingColumn):
     """
     """
 
@@ -203,7 +200,7 @@ class UndividedColumn(UrbdialColumn):
         return undivided
 
 
-class ActionsColumn(UrbdialColumn):
+class ActionsColumn(ParcellingColumn):
     """
     """
 

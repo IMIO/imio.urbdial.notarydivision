@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
-from imio.urbdial.notarydivision.utils import get_notarydivision
+from imio.urbdial.notarydivision.utils import aq_notarydivision
 
 from plone import api
 
@@ -104,9 +104,9 @@ class UrbdialWorkflowStateRolesMapping(WorkflowStateRolesMapping):
         return ['notaries']
 
     def get_local_dgo4(self):
-        notarydivision = get_notarydivision(self.obj)
+        notarydivision = aq_notarydivision(self.obj)
         return notarydivision.local_dgo4
 
     def get_local_township(self):
-        notarydivision = get_notarydivision(self.obj)
+        notarydivision = aq_notarydivision(self.obj)
         return notarydivision.local_township

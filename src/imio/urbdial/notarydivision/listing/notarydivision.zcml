@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="urbdial.divnot">
+
+  <!-- values -->
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.listing.interfaces.INotaryDivisionTable"
+     factory=".notarydivision.NotaryDivisionValues"
+     provides="z3c.table.interfaces.IValues"
+  />
+
+  <!-- columns -->
+  <adapter
+     for="zope.interface.Interface
+          zope.publisher.interfaces.browser.IBrowserRequest
+          imio.urbdial.notarydivision.listing.interfaces.INotaryDivisionTable"
+     factory=".notarydivision.TitleColumn"
+     provides="z3c.table.interfaces.IColumn"
+     name="titleColumn"
+  />
+
+</configure>
