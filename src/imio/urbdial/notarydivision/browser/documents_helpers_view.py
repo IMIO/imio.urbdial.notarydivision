@@ -2,7 +2,7 @@
 
 from Products.Five import BrowserView
 
-from imio.urbdial.notarydivision.utils import get_notarydivision
+from imio.urbdial.notarydivision.utils import aq_notarydivision
 
 from plone import api
 
@@ -19,7 +19,7 @@ class DocumentGenerationHelperView(BrowserView):
         super(DocumentGenerationHelperView, self).__init__(context, request)
         self.context = context
         self.request = request
-        self.notarydivision = get_notarydivision(context)
+        self.notarydivision = aq_notarydivision(context)
 
     def get_vocabulary_of_field(self, field_name='', obj=None):
         if obj is None:

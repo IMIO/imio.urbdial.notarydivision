@@ -26,7 +26,7 @@ def get_pod_templates_folder():
     return portal.pod_templates
 
 
-def get_notarydivision(obj):
+def aq_notarydivision(obj):
     if obj.portal_type == 'NotaryDivision':
         return obj
     if hasattr(obj, 'get_notarydivision'):
