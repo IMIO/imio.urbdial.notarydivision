@@ -11,7 +11,6 @@
         <metal:fill fill-slot="main">
 
             <div class="popup-textfield">
-                <h1 class="documentFirstHeading" tal:content="context/Title">Title</h1>
                 <form id="confirmTransitionForm" method="post"
                       tal:attributes="action python:context.absolute_url() + '/@@triggertransition'">
                     <input type="hidden" name="objectUid" tal:attributes="value context/UID"/>
@@ -28,7 +27,9 @@
                         <span style="text-transform: lowercase; font-weight: bold;"
                               i18n:name="object_type" i18n:translate=""
                               tal:content="python: view.get_object().portal_type">object type</span>
-                        object.
+                        <span style="font-weight: bold;" i18n:name="object_title"
+                              tal:content="python: view.get_object().Title()">object title</span>
+                        .
                     </p>
                     <p class="popups_field_descr" i18n:translate="act_signature_date">
                        Please, set the act's date signature.

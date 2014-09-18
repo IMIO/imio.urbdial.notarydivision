@@ -367,5 +367,5 @@ msgstr "Veuillez renseigner les lots créés dans l'onglet « Objet de la divisi
 #: ../browser/templates/date_confirm.pt:28
 #: ../browser/templates/simple_confirm.pt:28
 msgid "workflow_confirm"
-msgstr "Êtes vous certain de vouloir appliquer l'action ${transition_name} sur ce/cette ${object_type}?"
+msgstr "Êtes vous certain de vouloir appliquer l'action ${transition_name} sur le/la ${object_type} \"${object_title}\" ?"
 
