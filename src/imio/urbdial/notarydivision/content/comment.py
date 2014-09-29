@@ -43,7 +43,7 @@ class Comment(UrbdialContainer):
 
     def get_notarydivision(self):
         level = self
-        while(level.portal_type != 'NotaryDivision'):
+        while(level.portal_type not in ['NotaryDivision', 'OtherNotaryDivision']):
             level = level.aq_parent
         return level
 

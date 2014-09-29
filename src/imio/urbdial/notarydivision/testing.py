@@ -119,6 +119,7 @@ class ExampleDivisionLayer(TestInstallUrbdialLayer):
         super(ExampleDivisionLayer, self).setUpPloneSite(portal)
 
         # Create some test content
+        login(portal, TEST_NOTARY_NAME)
         test_divnot = api.content.create(
             type='NotaryDivision',
             id=TEST_NOTARYDIVISION_ID,
