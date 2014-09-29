@@ -2,6 +2,20 @@
     xmlns="http://namespaces.zope.org/zope"
     i18n_domain="urbdial.divnot">
 
+    <!-- Notary offices Vocabulary -->
+    <utility
+        factory=".vocabulary.NotaryOfficeVocabularyFactory"
+        name="imio.urbdial.notarydivision.notary_offices"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
+    <!-- Local notaries Vocabulary -->
+    <utility
+        factory=".vocabulary.LocalNotariesVocabularyFactory"
+        name="imio.urbdial.notarydivision.local_notaries"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
     <!-- Dgo4s Vocabulary -->
     <utility
         factory=".vocabulary.DGO4VocabularyFactory"

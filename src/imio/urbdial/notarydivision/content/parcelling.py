@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision import _
-from imio.urbdial.notarydivision.content import fields
 from imio.urbdial.notarydivision.content.base import UrbdialItem
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 
@@ -20,7 +19,7 @@ class IParcelling(model.Schema, INotaryDivisionElement):
     Schema of Parcelling
     """
 
-    number = fields.AutoIncrementInt(
+    number = schema.Int(
         title=_(u'Number'),
         required=False,
     )

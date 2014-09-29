@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from imio.urbdial.notarydivision.testing import TEST_INSTALL_INTEGRATION
-from imio.urbdial.notarydivision.vars import DGO4_LOCAL_GROUPS
-from imio.urbdial.notarydivision.vars import TOWNSHIPS_LOCAL_GROUPS
+from imio.urbdial.notarydivision.config import DGO4_LOCAL_GROUPS
+from imio.urbdial.notarydivision.config import TOWNSHIPS_LOCAL_GROUPS
 
 from plone import api
 

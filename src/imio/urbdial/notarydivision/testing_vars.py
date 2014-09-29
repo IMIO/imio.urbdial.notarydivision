@@ -5,6 +5,7 @@ TEST_NOTARYDIVISION_ID = 'test_notarydivision'
 TEST_CREATEDPARCELLING_ID = 'test_createdparcel'
 
 TEST_NOTARY_ID = 'notary'
+TEST_NOTARY_OFFICE = 'etude_leclercq'
 TEST_NOTARY_NAME = 'notary'
 TEST_NOTARY_PASSWORD = '12345'
 

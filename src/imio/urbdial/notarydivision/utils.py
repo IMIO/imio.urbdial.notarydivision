@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision.config import NOTARY_GROUP
+
 from plone import api
 
 from zope.component import getUtility
@@ -42,3 +44,16 @@ def get_display_values(values, voc_name, context=None, separator=None):
         display_values = separator.join(display_values)
 
     return display_values
+
+
+def get_notary_groups(user):
+    """
+    Return notary office groups of a user.
+    """
+    notary_group = api.group.get(NOTARY_GROUP)
+    notary_groups = notary_group.getGroupMembers()
+    user_groups = api.group.get_groups(user=user)
+
+    user_notary_groups = [g for g in user_groups if g in notary_groups]
+
+    return user_notary_groups

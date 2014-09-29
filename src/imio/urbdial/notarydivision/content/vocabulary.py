@@ -4,12 +4,69 @@ from Products.PlonePAS.tools.groupdata import GroupData
 
 from Products.CMFPlone.utils import normalizeString
 
+from imio.urbdial.notarydivision.utils import get_notary_groups
 from imio.urbdial.notarydivision.utils import translate as _
 
 from plone import api
 
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
+
+
+class NotaryOfficeVocabularyFactory(object):
+    """
+    Vocabulary for the notary offices: all subgroups of notaries group.
+    """
+
+    def __call__(self, context):
+        notary_group = api.group.get('notaries')
+        # get all subgroups of notaries group
+        notary_office_groups = [g for g in notary_group.getAllGroupMembers() if isinstance(g, GroupData)]
+
+        vocabulary_terms = []
+        for group in notary_office_groups:
+            vocabulary_terms.append(
+                SimpleTerm(group.id, group.id, group.getProperty('title'))
+            )
+
+        vocabulary = SimpleVocabulary(vocabulary_terms)
+        return vocabulary
+
+
+class LocalNotariesVocabularyFactory(object):
+    """
+    Return a vocabulary of all notaries in the same notary office than the field 'notary_office'
+    of the notarydivision or the same notary office than the current user.
+    """
+
+    def __call__(self, context):
+        # to implement
+
+        notary_offices = getattr(context, 'notary_office', None)
+        # in case of add form, the notary_office field is not assigned yet
+        if notary_offices is None:
+            current_user = api.user.get_current()
+            notary_office_groups = get_notary_groups(current_user)
+        else:
+            notary_office_groups = [api.group.get(name) for name in notary_offices]
+
+        local_notaries = self._get_users_from_groups(notary_office_groups)
+        vocabulary_terms = []
+        for notary in local_notaries:
+            vocabulary_terms.append(
+                SimpleTerm(notary.id, notary.id, notary.getProperty('fullname'))
+            )
+
+        vocabulary = SimpleVocabulary(vocabulary_terms)
+        return vocabulary
+
+    def _get_users_from_groups(self, group_list):
+        all_users = []
+        for group in group_list:
+            group_users = group.getGroupMembers()
+            all_users.extend(group_users)
+
+        return all_users
 
 
 class DGO4VocabularyFactory(object):

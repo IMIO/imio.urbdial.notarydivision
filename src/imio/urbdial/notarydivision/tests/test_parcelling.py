@@ -76,7 +76,7 @@ class TestCreatedParcellingAddForm(NotaryDivisionFunctionalBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = "Default created parcelling number should be 1"
-        self.assertTrue('autoincrementint-field" value="1"' in contents, msg)
+        self.assertTrue('int-field" value="1"' in contents, msg)
 
     def test_parcelling_number_autoincrement_value(self):
         """
@@ -87,7 +87,7 @@ class TestCreatedParcellingAddForm(NotaryDivisionFunctionalBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = "Default created parcelling number should be 2"
-        self.assertTrue('autoincrementint-field" value="2"' in contents, msg)
+        self.assertTrue('int-field" value="2"' in contents, msg)
 
     def test_parcelling_number_autoincrement_deleted_value(self):
         """
@@ -101,7 +101,7 @@ class TestCreatedParcellingAddForm(NotaryDivisionFunctionalBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = "Default created parcelling number should be 3"
-        self.assertTrue('autoincrementint-field" value="3"' in contents, msg)
+        self.assertTrue('int-field" value="3"' in contents, msg)
 
         # delete the number 1 created parcelling => the lowest available number become '1' again
         api.content.delete(self.test_parcelling)
@@ -109,8 +109,8 @@ class TestCreatedParcellingAddForm(NotaryDivisionFunctionalBrowserTest):
         self.browser.open(self.test_divnot.absolute_url())
         contents = self.browser.contents
         msg = "Default created parcelling number should be 1"
-        self.assertTrue('autoincrementint-field" value="1"' in contents, msg)
-        self.assertTrue('autoincrementint-field" value="3"' not in contents, msg)
+        self.assertTrue('int-field" value="1"' in contents, msg)
+        self.assertTrue('int-field" value="3"' not in contents, msg)
 
 
 class TestCreatedParcellingFields(NotaryDivisionBrowserTest):

@@ -18,6 +18,7 @@ from imio.urbdial.notarydivision.utils import get_display_values
 from plone import api
 from plone.app import textfield
 from plone.autoform import directives as form
+from plone.directives import dexterity
 from plone.formwidget.masterselect import MasterSelectBoolField
 from plone.formwidget.multifile import MultiFileFieldWidget
 from plone.namedfile import field
@@ -108,11 +109,31 @@ class IBaseNotaryDivision(model.Schema, INotaryDivisionElement):
     model.fieldset(
         'general',
         label=_(u"General informations"),
-        fields=['reference', 'applicants', 'local_dgo4', 'local_township']
+        fields=[
+            'reference', 'notary_office', 'folder_manager',
+            'applicants', 'local_dgo4', 'local_township'
+        ]
     )
 
     reference = schema.TextLine(
         title=_(u'Reference'),
+        required=False,
+    )
+
+    dexterity.write_permission(notary_office='cmf.ManagePortal')
+    notary_office = schema.Set(
+        title=_(u'Notary office'),
+        value_type=schema.Choice(
+            vocabulary='imio.urbdial.notarydivision.notary_offices'
+        ),
+        required=False,
+    )
+
+    folder_manager = schema.Set(
+        title=_(u'Folder manager'),
+        value_type=schema.Choice(
+            vocabulary='imio.urbdial.notarydivision.local_notaries'
+        ),
         required=False,
     )
 

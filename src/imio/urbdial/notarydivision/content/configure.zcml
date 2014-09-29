@@ -4,6 +4,7 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="urbdial.divnot">
 
+    <include file="default_values.zcml" />
     <include file="template_conditions.zcml" />
     <include file="vocabulary.zcml" />
 
@@ -142,18 +143,6 @@
             interface="zope.publisher.interfaces.browser.IBrowserPage"
         />
     </class>
-
-    <!-- z3c.form default value adapter for parcelling's field 'number' -->
-    <adapter
-        for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
-             zope.publisher.interfaces.browser.IBrowserRequest
-             zope.interface.Interface
-             imio.urbdial.notarydivision.interfaces.IAutoIncrementInt
-             zope.interface.Interface"
-        name="default"
-        provides="z3c.form.interfaces.IValue"
-        factory=".default_values.AutoIncrementDefaultValue"
-    />
 
     <!-- Register parcellings add/display macros  -->
     <browser:page

@@ -48,6 +48,7 @@ setup(
         'imio.actionspanel',
         'imio.helpers',
         'plone.api',
+        'plone.directives.dexterity',
         'plone.formwidget.masterselect',
         'plone.formwidget.multifile',
         'setuptools',

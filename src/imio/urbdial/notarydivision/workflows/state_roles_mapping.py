@@ -2,6 +2,7 @@
 
 from imio.urbdial.notarydivision.workflows.interfaces import IWorkflowStateRolesMapping
 from imio.urbdial.notarydivision.utils import aq_notarydivision
+from imio.urbdial.notarydivision.utils import get_notary_groups
 
 from plone import api
 
@@ -28,6 +29,7 @@ class WorkflowStateRolesMapping(object):
 
     def __init__(self, obj, workflow):
         self.obj = obj
+        self.object_created = True
 
     def get_group_roles_mapping_of(self, state):
         """
@@ -101,7 +103,15 @@ class UrbdialWorkflowStateRolesMapping(WorkflowStateRolesMapping):
     """
 
     def get_notary_office(self):
-        return ['notaries']
+        notarydivision = aq_notarydivision(self.obj)
+
+        if not self.object_created:
+            current_user = api.user.get_current()
+            user_notary_groups = get_notary_groups(current_user)
+            user_notary_offices = set([g.id for g in user_notary_groups])
+            return user_notary_offices
+
+        return notarydivision.notary_office
 
     def get_local_dgo4(self):
         notarydivision = aq_notarydivision(self.obj)

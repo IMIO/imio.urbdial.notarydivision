@@ -10,15 +10,17 @@ from imio.urbdial.notarydivision.testing_vars import TEST_FD_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_FD_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_NAME
+from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_OFFICE
 from imio.urbdial.notarydivision.testing_vars import TEST_NOTARY_PASSWORD
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_LOCALGROUP
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_NAME
 from imio.urbdial.notarydivision.testing_vars import TEST_TOWNSHIP_PASSWORD
 from imio.urbdial.notarydivision.utils import translate as _
 from imio.urbdial.notarydivision.utils import get_pod_templates_folder
-from imio.urbdial.notarydivision.vars import DGO4_LOCAL_GROUPS
-from imio.urbdial.notarydivision.vars import POD_TEMPLATES
-from imio.urbdial.notarydivision.vars import TOWNSHIPS_LOCAL_GROUPS
+from imio.urbdial.notarydivision.config import DGO4_LOCAL_GROUPS
+from imio.urbdial.notarydivision.config import NOTARY_LOCAL_GROUPS
+from imio.urbdial.notarydivision.config import POD_TEMPLATES
+from imio.urbdial.notarydivision.config import TOWNSHIPS_LOCAL_GROUPS
 
 from plone import api
 
@@ -162,6 +164,7 @@ def create_local_groups(context):
     """
     Create local sub groups for dgo4, townships and notaries.
     """
+    _create_subgroups(container='notaries', subgroups=NOTARY_LOCAL_GROUPS)
     _create_subgroups(container='dgo4', subgroups=DGO4_LOCAL_GROUPS)
     _create_subgroups(container='townships', subgroups=TOWNSHIPS_LOCAL_GROUPS)
 
@@ -301,7 +304,7 @@ def create_test_users(context):
             'fullname': 'Maitre Nono',
         }
     )
-    api.group.add_user(username=TEST_NOTARY_NAME, groupname='notaries')
+    api.group.add_user(username=TEST_NOTARY_NAME, groupname=TEST_NOTARY_OFFICE)
 
     api.user.create(
         username=TEST_FD_NAME, password=TEST_FD_PASSWORD, email='fd@dgo4.be',

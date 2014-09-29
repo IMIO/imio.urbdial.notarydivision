@@ -26,6 +26,11 @@ def update_local_roles(obj, event):
     if not mapping:
         return
 
+    # some local roles can be computed only after the object creation, we
+    # need to handle that case specifically
+    if not event.transition:
+        mapping.object_created = False
+
     # update objects local roles by removing each local role found on the
     # mapping for the old state
     old_state = event.old_state.title
