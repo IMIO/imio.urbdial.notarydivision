@@ -29,7 +29,8 @@ class DocumentGenerationHelperView(BrowserView):
         fti = portal_types.get(obj.portal_type)
         schema = fti.lookupSchema()
         field = schema.get(field_name)
-        voc_factory = queryUtility(IVocabularyFactory, field.value_type.vocabularyName)
+        voc_name = getattr(field, 'vocabularyName', None) or field.value_type.vocabularyName
+        voc_factory = queryUtility(IVocabularyFactory, voc_name)
 
         vocabulary = voc_factory(obj)
         return vocabulary
@@ -38,11 +39,11 @@ class DocumentGenerationHelperView(BrowserView):
         if obj is None:
             obj = self.context
 
-        vocabulary = self.get_vocabulary_of_field(field_name)
+        vocabulary = self.get_vocabulary_of_field(field_name, obj)
         term = vocabulary.getTerm(value)
         return term.title
 
-    def display_voc_values_of_field(self, field_name, values=[], obj=None):
+    def display_values(self, field_name, values=[], obj=None):
         if obj is None:
             obj = self.context
         if values == []:
@@ -52,29 +53,40 @@ class DocumentGenerationHelperView(BrowserView):
 
         return ', '.join(display_values)
 
+    def display_value(self, field_name, value='', obj=None):
+        if value == '':
+            value = getattr(obj, field_name)
+        return self.display_voc_value_of_field(field_name, value, obj)
+
     def date(self, date):
         return date.strftime('%d/%m/%Y')
 
     def fullname(self, username):
         return api.user.get(username).getProperty('fullname')
 
+    def display_address(self):
+        notarydivision = self.notarydivision
+        address = []
+        if notarydivision.street_number:
+            address.append(notarydivision.street_number)
+        if notarydivision.street:
+            address.append(notarydivision.street)
+        address_display = ', '.join(address)
+        return address_display
+
     def initial_estate_locality(self):
         voc_factory = queryUtility(IVocabularyFactory, "imio.urbdial.notarydivision.Localities")
-        localies_voc = voc_factory(self.notarydivision)
+        voc = voc_factory(self.notarydivision)
 
-        localities = []
-        for row in self.notarydivision.initial_estate:
-            locality = localies_voc.getTerm(row['locality']).title
-            if locality not in localities:
-                localities.append(locality)
+        localities = set([voc.getTerm(row['locality']).title for row in self.notarydivision.parcels])
 
         return ', '.join(list(localities))
 
-    def initial_estate_cadastral_ref(self):
-        cadastral_references = []
-        for row in self.notarydivision.initial_estate:
-            cadastral_references.append(self.get_reference_display(row))
-        return ', '.join(cadastral_references)
+    def list_parcels(self):
+        parcel_references = []
+        for row in self.notarydivision.parcels:
+            parcel_references.append(self.get_reference_display(row))
+        return parcel_references
 
     def get_reference_display(self, line):
         reference_fields = ['division', 'section', 'radical', 'bis', 'exposant', 'power']
@@ -87,6 +99,17 @@ class DocumentGenerationHelperView(BrowserView):
                 else:
                     reference = '{ref} {val}'.format(ref=reference, val=val)
         return reference
+
+    def list_ceded_parcellings(self):
+        parcellings = self.notarydivision.get_parcellings()
+        parcellings = sorted(parcellings, key=lambda parcelling: parcelling.number)
+        ceded_parcellings = [p for p in parcellings if p.ceded_parcelling]
+        return ceded_parcellings
+
+    def display_deed_type(self, parcelling):
+        if parcelling.deed_type == 'autre':
+            return parcelling.other_deed_type
+        return self.display_value('deed_type', obj=parcelling)
 
     def list_attachments(self, comment=None):
         if not comment:
