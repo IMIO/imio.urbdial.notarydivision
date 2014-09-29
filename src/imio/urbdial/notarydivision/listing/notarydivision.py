@@ -39,4 +39,16 @@ class TitleColumn(UrbdialColumn):
     weight = 10
 
     def renderCell(self, notarydivision):
-        return notarydivision.Title()
+        return notarydivision.Title
+
+
+class FolderManagerColumn(UrbdialColumn):
+    """
+    Display the folder manager of a notarydivision.
+    """
+
+    header = 'label_colname_title'
+    weight = 20
+
+    def renderCell(self, notarydivision):
+        return notarydivision.folder_manager

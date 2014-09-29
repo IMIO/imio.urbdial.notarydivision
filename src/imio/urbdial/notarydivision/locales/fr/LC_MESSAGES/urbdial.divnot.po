@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: imio.urbdial.notarydivision\n"
-"POT-Creation-Date: 2014-09-15 09:51+0000\n"
+"POT-Creation-Date: 2014-09-24 13:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,11 @@ msgstr "Ajouter un lot"
 msgid "Address"
 msgstr "Adresse"
 
-#: ../content/notarydivision.py:326
+#: ../content/notarydivision.py:374
 msgid "Annex"
 msgstr "Autres annexes"
 
-#: ../content/notarydivision.py:332
+#: ../content/notarydivision.py:380
 msgid "Annex files"
 msgstr "Fichiers des annexes"
 
@@ -34,27 +34,27 @@ msgstr "Fichiers des annexes"
 msgid "Answer"
 msgstr "Répondre"
 
-#: ../content/notarydivision.py:120
+#: ../content/notarydivision.py:142
 msgid "Applicants"
 msgstr "Requérant(s)"
 
-#: ../content/notarydivision.py:277
+#: ../content/notarydivision.py:325
 msgid "Article 90"
 msgstr "Article 90"
 
-#: ../content/notarydivision.py:291
+#: ../content/notarydivision.py:339
 msgid "Article 90 exceptions detail"
 msgstr "Justificatif des motifs d'exception"
 
-#: ../content/notarydivision.py:283
+#: ../content/notarydivision.py:331
 msgid "Article 90 reasons"
 msgstr "Cette division entre dans le champ de l’article 90 du CWATUPE et répond à (aux) exception(s) suivante(s)"
 
-#: ../content/notarydivision.py:79
+#: ../content/notarydivision.py:81
 msgid "Bis"
 msgstr "Bis"
 
-#: ../content/parcelling.py:119
+#: ../content/parcelling.py:118
 msgid "Built"
 msgstr "Bâti"
 
@@ -62,16 +62,16 @@ msgstr "Bâti"
 msgid "Cadastral reference"
 msgstr "Référence cadastrale"
 
-#: ../content/notarydivision.py:186
-#: ../content/parcelling.py:124
+#: ../content/notarydivision.py:208
+#: ../content/parcelling.py:123
 msgid "Case of undivided parcelling"
 msgstr "En cas d'indivision ou démembrement, veuillez spécifier les droits des parties."
 
-#: ../content/parcelling.py:72
+#: ../content/parcelling.py:71
 msgid "Ceded"
 msgstr "Cession"
 
-#: ../content/vocabulary.py:145
+#: ../content/vocabulary.py:202
 msgid "Ceded parcelling"
 msgstr "Lot cédé"
 
@@ -82,8 +82,8 @@ msgstr "Commentaires"
 msgid "ConfigFolder"
 msgstr "Dossier de configuration"
 
-#: ../browser/templates/date_confirm.pt:40
-#: ../browser/templates/simple_confirm.pt:36
+#: ../browser/templates/date_confirm.pt:41
+#: ../browser/templates/simple_confirm.pt:37
 msgid "Confirm"
 msgstr "Confirmer"
 
@@ -94,35 +94,35 @@ msgstr "Lots créés"
 msgid "CreatedParcelling"
 msgstr "Lot créé"
 
-#: ../setuphandlers.py:150
+#: ../setuphandlers.py:152
 msgid "DGO 4"
 msgstr "DGO 4"
 
-#: ../content/parcelling.py:101
+#: ../content/parcelling.py:100
 msgid "Deed type"
 msgstr "Type d'acte"
 
-#: ../content/notarydivision.py:64
+#: ../content/notarydivision.py:66
 msgid "Division"
 msgstr "Division"
 
-#: ../content/notarydivision.py:209
+#: ../content/notarydivision.py:231
 msgid "Entrusting"
 msgstr "Sauf en cas de force majeure, les parties se sont engagées à maintenir leurs intentions respectives dans un délai raisonnable "
 
-#: ../content/notarydivision.py:148
+#: ../content/notarydivision.py:170
 msgid "Estate"
 msgstr "Objet de la division"
 
-#: ../content/notarydivision.py:181
+#: ../content/notarydivision.py:203
 msgid "Estate actual use"
 msgstr "Affectation actuelle du lot"
 
-#: ../content/notarydivision.py:103
+#: ../content/notarydivision.py:105
 msgid "Exclude from navigation"
 msgstr ""
 
-#: ../content/notarydivision.py:84
+#: ../content/notarydivision.py:86
 msgid "Exposant"
 msgstr "Exposant"
 
@@ -145,14 +145,18 @@ msgstr "Non"
 msgid "Files"
 msgstr "Fichiers"
 
-#: ../content/notarydivision.py:41
+#: ../content/notarydivision.py:43
 msgid "Firstname"
 msgstr "Prénom"
+
+#: ../content/notarydivision.py:133
+msgid "Folder manager"
+msgstr "Responsable du dossier"
 
 msgid "Folder state"
 msgstr "État du dossier"
 
-#: ../content/notarydivision.py:109
+#: ../content/notarydivision.py:111
 msgid "General informations"
 msgstr "Informations générales"
 
@@ -160,7 +164,7 @@ msgstr "Informations générales"
 msgid "Generate documents"
 msgstr "Documents à générer"
 
-#: ../content/notarydivision.py:312
+#: ../content/notarydivision.py:360
 msgid "Geometrician"
 msgstr "Géomètre"
 
@@ -171,23 +175,23 @@ msgstr "Ensemble immobilier initial"
 msgid "Item created"
 msgstr ""
 
-#: ../content/vocabulary.py:146
+#: ../content/vocabulary.py:203
 msgid "Kept parcelling"
 msgstr "Lot restant non cédé"
 
-#: ../content/notarydivision.py:129
+#: ../content/notarydivision.py:151
 msgid "Local DGO4"
 msgstr "Direction(s) provinciale concernée(s)"
 
-#: ../content/notarydivision.py:138
+#: ../content/notarydivision.py:160
 msgid "Local township"
 msgstr "Commune(s) concernée(s)"
 
-#: ../content/notarydivision.py:58
+#: ../content/notarydivision.py:60
 msgid "Locality"
 msgstr "Commune"
 
-#: ../content/notarydivision.py:46
+#: ../content/notarydivision.py:48
 msgid "Name"
 msgstr "Nom"
 
@@ -198,35 +202,39 @@ msgid "None"
 msgstr ""
 
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:138
+#: ../setuphandlers.py:140
 msgid "Notaries"
 msgstr "Notaires"
 
-#: ../setuphandlers.py:144
+#: ../setuphandlers.py:146
 msgid "Notaries admin"
 msgstr "Administrateur FRNB"
+
+#: ../content/notarydivision.py:125
+msgid "Notary office"
+msgstr "Étude notariale"
 
 #: ../profiles/default/types/NotaryDivision.xml
 msgid "NotaryDivision"
 msgstr "Division notariale"
 
-#: ../content/parcelling.py:24
+#: ../content/parcelling.py:23
 msgid "Number"
 msgstr "Numéro"
 
-#: ../content/notarydivision.py:203
+#: ../content/notarydivision.py:225
 msgid "Number of created parcellings"
 msgstr "Nombre de lots créés"
 
-#: ../content/parcelling.py:114
+#: ../content/parcelling.py:113
 msgid "Other deed type"
 msgstr "Autre type d'acte"
 
-#: ../content/notarydivision.py:357
+#: ../content/notarydivision.py:405
 msgid "Other division reason"
 msgstr "Notification d’une division pour des raisons autres que celles prévues par l’article 90 du CWATUPE"
 
-#: ../content/notarydivision.py:319
+#: ../content/notarydivision.py:367
 msgid "Other plans must be attached in the «other files» tab."
 msgstr "Les plans autres que ceux réalisés par un géomètre sont à joindre dans l’onglet « Autres annexes »."
 
@@ -234,35 +242,35 @@ msgstr "Les plans autres que ceux réalisés par un géomètre sont à joindre d
 msgid "OtherNotaryDivision"
 msgstr "Division notariale (hors article 90)"
 
-#: ../content/parcelling.py:67
+#: ../content/parcelling.py:66
 msgid "Parcelling destination"
 msgstr "Destination du lot"
 
-#: ../content/parcelling.py:29
+#: ../content/parcelling.py:28
 msgid "Parcelling localisation"
 msgstr "Identification du lot"
 
-#: ../content/notarydivision.py:167
+#: ../content/notarydivision.py:189
 msgid "Parcels"
 msgstr "Parcelles"
 
-#: ../content/notarydivision.py:297
+#: ../content/notarydivision.py:345
 msgid "Plan"
 msgstr "Plan de géomètre"
 
-#: ../content/notarydivision.py:307
+#: ../content/notarydivision.py:355
 msgid "Plan date"
 msgstr "Date du plan"
 
-#: ../content/notarydivision.py:302
+#: ../content/notarydivision.py:350
 msgid "Plan reference"
 msgstr "Référence du plan"
 
-#: ../content/notarydivision.py:318
+#: ../content/notarydivision.py:366
 msgid "Plans files"
 msgstr "Fichiers (plan)"
 
-#: ../content/notarydivision.py:89
+#: ../content/notarydivision.py:91
 msgid "Power"
 msgstr "Puissance"
 
@@ -274,39 +282,39 @@ msgstr "Précision"
 msgid "Previous comments"
 msgstr "Messages précédents"
 
-#: ../content/notarydivision.py:74
+#: ../content/notarydivision.py:76
 msgid "Radical"
 msgstr "Radical"
 
-#: ../content/notarydivision.py:352
+#: ../content/notarydivision.py:400
 msgid "Reasons"
 msgstr "Raisons"
 
-#: ../content/notarydivision.py:114
+#: ../content/notarydivision.py:119
 msgid "Reference"
 msgstr "Référence du dossier en l'étude notariale"
 
-#: ../content/parcelling.py:62
+#: ../content/parcelling.py:61
 msgid "Road distance"
 msgstr "Dimension à route (m)"
 
-#: ../content/notarydivision.py:69
+#: ../content/notarydivision.py:71
 msgid "Section"
 msgstr "Section"
 
 msgid "Specific rights"
 msgstr "droits des parties"
 
-#: ../content/notarydivision.py:156
+#: ../content/notarydivision.py:178
 msgid "Street"
 msgstr "Rue"
 
-#: ../content/notarydivision.py:161
+#: ../content/notarydivision.py:183
 msgid "Street number"
 msgstr "N°"
 
-#: ../content/notarydivision.py:176
-#: ../content/parcelling.py:34
+#: ../content/notarydivision.py:198
+#: ../content/parcelling.py:33
 msgid "Surface"
 msgstr "Superficie"
 
@@ -326,7 +334,7 @@ msgstr "Observation"
 msgid "TownshipPrecisionDemand"
 msgstr "Demande de précision"
 
-#: ../setuphandlers.py:156
+#: ../setuphandlers.py:158
 msgid "Townships"
 msgstr "Communes"
 
@@ -337,7 +345,7 @@ msgid "Undivided or dismemberment"
 msgstr "Indivision ou démembrement"
 
 #. Default: "Please, set the act's date signature."
-#: ../browser/templates/date_confirm.pt:33
+#: ../browser/templates/date_confirm.pt:34
 msgid "act_signature_date"
 msgstr "Veuillez renseigner la date de l'acte:"
 
@@ -347,12 +355,15 @@ msgstr "Réf. cadastrale"
 msgid "label_colname_number"
 msgstr "N°"
 
+msgid "label_colname_title"
+msgstr "Titre"
+
 #. Default: "urbdial.divnot"
-#: ../setuphandlers.py:198
+#: ../setuphandlers.py:201
 msgid "notarydivisions_folder_title"
 msgstr "Divisions notariales"
 
-#: ../setuphandlers.py:225
+#: ../setuphandlers.py:228
 msgid "pod_templates_folder_title"
 msgstr "Modèles de documents"
 
@@ -363,9 +374,10 @@ msgstr "depuis le"
 msgid "warning_not_enough_created_parcellings"
 msgstr "Veuillez renseigner les lots créés dans l'onglet « Objet de la division »."
 
-#. Default: "Confirm workflow transition ${transition_name} on this ${object_type} object."
-#: ../browser/templates/date_confirm.pt:28
-#: ../browser/templates/simple_confirm.pt:28
+#. Default: "Confirm workflow transition ${transition_name} on this ${object_type} ${object_title} ."
+#: ../browser/templates/date_confirm.pt:30
+#: ../browser/templates/simple_confirm.pt:30
+#, fuzzy
 msgid "workflow_confirm"
 msgstr "Êtes vous certain de vouloir appliquer l'action ${transition_name} sur le/la ${object_type} \"${object_title}\" ?"
 
