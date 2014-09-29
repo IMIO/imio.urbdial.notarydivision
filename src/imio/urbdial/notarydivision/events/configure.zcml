@@ -7,17 +7,21 @@
                    Products.DCWorkflow.interfaces.IAfterTransitionEvent"
               handler=".workflow_events.update_local_roles" />
 
-  <subscriber for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
+  <subscriber for="imio.urbdial.notarydivision.content.notarydivision.IBaseNotaryDivision
                    Products.DCWorkflow.interfaces.IAfterTransitionEvent"
               handler=".workflow_events.close_comments" />
 
-  <subscriber for="imio.urbdial.notarydivision.content.notarydivision.INotaryDivision
+  <subscriber for="imio.urbdial.notarydivision.content.notarydivision.IBaseNotaryDivision
                    Products.DCWorkflow.interfaces.IAfterTransitionEvent"
               handler=".workflow_events.publish_draft_parcellings" />
 
   <subscriber for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement
                    zope.lifecycleevent.interfaces.IObjectAddedEvent"
               handler=".notarydivision_events.remove_owner_role" />
+
+  <subscriber for="imio.urbdial.notarydivision.content.interfaces.INotaryDivisionElement
+                   zope.lifecycleevent.interfaces.IObjectAddedEvent"
+              handler=".notarydivision_events.set_notary_office_field" />
 
   <subscriber for="imio.urbdial.notarydivision.content.comment.IObservation
                    zope.lifecycleevent.interfaces.IObjectAddedEvent"
