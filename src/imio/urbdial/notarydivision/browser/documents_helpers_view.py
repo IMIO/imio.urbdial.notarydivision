@@ -80,7 +80,7 @@ class DocumentGenerationHelperView(BrowserView):
         voc_factory = queryUtility(IVocabularyFactory, "imio.urbdial.notarydivision.Localities")
         voc = voc_factory(self.notarydivision)
 
-        localities = set([voc.getTerm(row['locality']).title for row in self.notarydivision.parcels])
+        localities = set([voc.getTerm(row['locality']).title for row in self.notarydivision.parcels if row['locality'] is not None])
 
         return ', '.join(list(localities))
 
