@@ -2,6 +2,7 @@
 
 from imio.urbdial.notarydivision import _
 from imio.urbdial.notarydivision.content.base import UrbdialContainer
+from imio.urbdial.notarydivision.config import NOTARY_DIVISION_TYPES
 from imio.urbdial.notarydivision.content.interfaces import INotaryDivisionElement
 from imio.urbdial.notarydivision.content.interfaces import IObservation
 
@@ -43,7 +44,7 @@ class Comment(UrbdialContainer):
 
     def get_notarydivision(self):
         level = self
-        while(level.portal_type not in ['NotaryDivision', 'OtherNotaryDivision']):
+        while(level.portal_type not in NOTARY_DIVISION_TYPES):
             level = level.aq_parent
         return level
 

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+NOTARY_DIVISION_TYPES = ['NotaryDivision', 'OtherNotaryDivision']
+
 NOTARY_GROUP = 'notaries'
 
 NOTARY_LOCAL_GROUPS = (

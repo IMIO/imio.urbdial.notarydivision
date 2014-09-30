@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from imio.urbdial.notarydivision.config import NOTARY_DIVISION_TYPES
 from imio.urbdial.notarydivision.config import NOTARY_GROUP
 
 from plone import api
@@ -29,7 +30,7 @@ def get_pod_templates_folder():
 
 
 def aq_notarydivision(obj):
-    if obj.portal_type in ['NotaryDivision', 'OtherNotaryDivision']:
+    if obj.portal_type in NOTARY_DIVISION_TYPES:
         return obj
     if hasattr(obj, 'get_notarydivision'):
         return obj.get_notarydivision()
