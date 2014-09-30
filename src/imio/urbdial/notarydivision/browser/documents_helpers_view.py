@@ -131,3 +131,8 @@ class DocumentGenerationHelperView(BrowserView):
             display = '{}, {}'.format(display_head, display_tail)
 
         return display
+
+    def get_comment_text(self, comment):
+        text = comment.text.raw
+        text = text.encode('utf-8')
+        return text
