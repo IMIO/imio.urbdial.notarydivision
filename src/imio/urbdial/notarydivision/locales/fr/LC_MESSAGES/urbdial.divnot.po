@@ -232,7 +232,7 @@ msgstr "Autre type d'acte"
 
 #: ../content/notarydivision.py:405
 msgid "Other division reason"
-msgstr "Notification d’une division pour des raisons autres que celles prévues par l’article 90 du CWATUPE, notamment lorsque la division emporte création d'un lot non bâti mais que les conditions d'application de l'article 88 du CWATUPE ne sont pas remplies."
+msgstr "Notification d’une division pour des raisons autres que celles prévues par l’article 90 du CWATUPE, notamment lorsque la division emporte création d'un lot non bâti mais que les conditions d'application de l'article 88 du CWATUPE ne sont pas remplies"
 
 #: ../content/notarydivision.py:367
 msgid "Other plans must be attached in the «other files» tab."

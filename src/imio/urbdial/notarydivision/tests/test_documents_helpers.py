@@ -59,7 +59,7 @@ class GenerationHelperMethods(CommentBrowserTest):
 
         notarydivision.local_township = set(['ac_namur', 'ac_sambreville'])
         expected_display = u"Namur, Sambreville"
-        result = view.display_voc_values_of_field(field_name='local_township')
+        result = view.display_values(field_name='local_township')
         self.assertTrue(result == expected_display)
 
     def test_date(self):
@@ -74,15 +74,13 @@ class GenerationHelperMethods(CommentBrowserTest):
     def test_initial_estate_locality(self):
         notarydivision = self.test_divnot
         view = self.get_helper_view(notarydivision)
-        notarydivision.initial_estate = [
+        notarydivision.parcels = [
             {
                 'division': None,
                 'power': None,
                 'locality': '5000',
                 'radical': None,
                 'section': None,
-                'surface': None,
-                'specific_rights': None,
                 'bis': None,
                 'exposant': None
             },
@@ -92,28 +90,24 @@ class GenerationHelperMethods(CommentBrowserTest):
                 'locality': '4970',
                 'radical': None,
                 'section': None,
-                'surface': None,
-                'specific_rights': None,
                 'bis': None,
                 'exposant': None
             }
         ]
         localities_display = view.initial_estate_locality()
-        expected_display = 'Namur, Stavelot'
+        expected_display = 'Stavelot, Namur'
         self._test_display(localities_display, expected_display)
 
-    def test_initial_estate_cadastral_ref(self):
+    def test_list_parcels(self):
         notarydivision = self.test_divnot
         view = self.get_helper_view(notarydivision)
-        notarydivision.initial_estate = [
+        notarydivision.parcels = [
             {
                 'division': 'Beez',
                 'power': '66',
                 'locality': None,
                 'radical': '42',
                 'section': 'A',
-                'surface': None,
-                'specific_rights': None,
                 'bis': '2',
                 'exposant': 'G'
             },
@@ -123,15 +117,13 @@ class GenerationHelperMethods(CommentBrowserTest):
                 'locality': None,
                 'radical': '999',
                 'section': 'B',
-                'surface': None,
-                'specific_rights': None,
                 'bis': None,
                 'exposant': 'H'
             }
         ]
-        cadastral_refs = view.initial_estate_cadastral_ref()
+        parcels = view.list_parcels()
         expected_display = ' Beez A 42/2 G 66,  Yolo B 999 H 42'
-        self._test_display(cadastral_refs, expected_display)
+        self._test_display(', '.join(parcels), expected_display)
 
     def test_list_attachments(self):
         observation = self.test_observation
