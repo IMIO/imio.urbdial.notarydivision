@@ -38,6 +38,8 @@ class DocumentGenerationHelperView(BrowserView):
     def display_voc_value_of_field(self, field_name, value='', obj=None):
         if obj is None:
             obj = self.context
+        if value == '':
+            value = getattr(obj, field_name)
 
         vocabulary = self.get_vocabulary_of_field(field_name, obj)
         term = vocabulary.getTerm(value)
@@ -136,3 +138,19 @@ class DocumentGenerationHelperView(BrowserView):
         text = comment.text.raw
         text = text.encode('utf-8')
         return text
+
+    def display_deed_types(self):
+        parcellings = self.list_ceded_parcellings()
+        display_values = [self.display_deed_type(p) for p in parcellings]
+        deed_types = ['un acte de {}'.format(deed_type) for deed_type in display_values]
+
+        if len(deed_types) == 1:
+            display = deed_types[0]
+        elif len(deed_types) == 2:
+            display = ' et '.join(deed_types[-2:])
+        else:
+            display_head = ', '.join(deed_types[0:-2])
+            display_tail = ' et '.join(deed_types[-2:])
+            display = '{}, {}'.format(display_head, display_tail)
+
+        return display
