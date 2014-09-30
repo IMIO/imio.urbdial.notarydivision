@@ -253,8 +253,8 @@ class BaseNotaryDivision(UrbdialContainer):
         )
 
         title = '{ref} - {applicants} ({localities})'.format(
-            ref=self.reference or '',
-            applicants=applicants,
+            ref=self.reference.encode('utf-8') or '',
+            applicants=applicants.encode('utf-8'),
             localities=localities
         )
         return title
